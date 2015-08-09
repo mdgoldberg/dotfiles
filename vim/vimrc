@@ -1,0 +1,25 @@
+" Using pathogen to manage vim plugins, which are installed 
+" in subfolders of .vim/bundle 
+execute pathogen#infect()
+Helptags
+
+" Use jk or kj to leave insert mode and return to normal mode
+imap jk <ESC>
+imap kj <ESC>
+imap JK <ESC>
+imap KJ <ESC>
+imap Jk <ESC>
+imap jK <ESC>
+imap Kj <ESC>
+imap kJ <ESC>
+
+set ignorecase
+set number
+
+set tw=79
+set sw=4
+set formatoptions-=t
+
+" YouCompleteMe Configuration
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
+nnoremap <leader>gt :YcmCompleter GetType<CR>
