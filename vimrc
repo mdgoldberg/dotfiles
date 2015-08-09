@@ -1,1 +1,0 @@
-/Users/mgoldberg/.vim/vimrc
