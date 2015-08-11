@@ -10,6 +10,7 @@ parser.add_argument('bundleName', help='the name of the Pathogen bundle to remov
 
 args = parser.parse_args()
 bundleName = args.bundleName
+bundleDir = 'vim/bundle/{}'.format(bundleName)
 
 # change into working directory
 os.chdir(os.path.expanduser('~/dotfiles'))
@@ -19,6 +20,11 @@ subprocess.call([
     'git',
     'stash'
     ])
+
+# make sure bundle is there
+if not os.path.isdir(bundleDir):
+    print 'ERROR: {} bundle not found.'.format(bundleName)
+    sys.exit(1)
 
 # now fix .gitmodules
 
@@ -87,14 +93,14 @@ subprocess.call([
     'git',
     'rm',
     '--cached',
-    'vim/bundle/{}'.format(bundleName)
+    bundleDir
     ])
 
 # remove the actual files
 subprocess.call([
     'rm',
     '-rf',
-    'vim/bundle/{}'.format(bundleName)
+    bundleDir
     ])
 
 # amend earlier commit with these changes
