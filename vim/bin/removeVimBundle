@@ -2,6 +2,7 @@
 
 import argparse
 import os
+import subprocess
 
 parser = argparse.ArgumentParser(description='Script to remove a Pathogen bundle from my Vim config')
 parser.add_argument('bundleName', help='the name of the Pathogen bundle to remove')
@@ -12,7 +13,13 @@ bundleName = args.bundleName
 # change into working directory
 os.chdir(os.path.expanduser('~/dotfiles'))
 
-# fixing .gitmodules
+# first stash current changes
+subprocess.call([
+    'git',
+    'stash'
+    ])
+
+# now fix .gitmodules
 
 print 'Removing lines from .gitmodules...'
 
@@ -39,7 +46,7 @@ with open('.gitmodules', 'w') as gitmodules:
 
 print '.gitmodules complete!'
 
-# fixing .git/config
+# now fix .git/config
 
 print 'Removing lines from .git/config...'
 
@@ -66,3 +73,33 @@ with open('.git/config', 'w') as gitconfig:
 
 print '.git/config complete!'
 
+# commit .gitmodules change
+subprocess.call([
+    'git',
+    'commit',
+    '-am',
+    'removed submodule: {}'.format(bundleName)
+    ])
+
+# remove submodule files from git
+subprocess.call([
+    'git',
+    'rm',
+    '--cached',
+    'vim/bundle/{}'.format(bundleName)
+    ])
+
+# remove the actual files
+subprocess.call([
+    'rm',
+    '-rf',
+    'vim/bundle/{}'.format(bundleName)
+    ])
+
+# amend earlier commit with these changes
+subprocess.call([
+    'git',
+    'commit',
+    '--amend',
+    '--no-edit'
+    ])
