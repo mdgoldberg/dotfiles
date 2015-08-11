@@ -117,7 +117,7 @@ function chpwd() {
 }
 
 # OPAM configuration
-. /Users/mgoldberg/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+. $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 eval `opam config env`
 
 # virtualenvwrapper configuration
@@ -125,18 +125,19 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh
 
-# export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/local/man:$MANPATH"
 
 export ECHO_NEST_API_KEY=MULF5TURMBIG5WPTW
 
 # configuring PATH
 export PATH=/usr/local/bin:/usr/local:/usr/bin:/bin:/usr/sbin:/sbin
-export PATH=$PATH:/Users/mgoldberg/anaconda/bin
+export PATH=$PATH:$HOME/anaconda/bin
 export PATH=$PATH:/opt/X11/bin:/usr/texbin
 export PATH=$PATH:/opt/local/bin
-export PATH=$PATH:/Users/mgoldberg/.opam/4.01.0/bin
-export PATH=$PATH:/Users/mgoldberg/Dropbox/Soph/AM121/AMPL
+export PATH=$PATH:$HOME/.opam/4.01.0/bin
+export PATH=$PATH:$HOME/Dropbox/Soph/AM121/AMPL
 export PATH=$PATH:/usr/local/share/pypy
+export PATH=$PATH:$HOME/.vim/bin
 
-PERL_MB_OPT="--install_base \"/Users/mgoldberg/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/mgoldberg/perl5"; export PERL_MM_OPT;
+PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
