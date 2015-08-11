@@ -3,6 +3,7 @@
 import argparse
 import os
 import subprocess
+import sys
 
 parser = argparse.ArgumentParser(description='Script to remove a Pathogen bundle from my Vim config')
 parser.add_argument('bundleName', help='the name of the Pathogen bundle to remove')
@@ -102,4 +103,11 @@ subprocess.call([
     'commit',
     '--amend',
     '--no-edit'
+    ])
+
+# unstash original changes
+subprocess.call([
+    'git',
+    'stash',
+    'pop
     ])
