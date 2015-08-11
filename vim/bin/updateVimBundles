@@ -9,8 +9,9 @@ which git >/dev/null || {
   exit 1
 }
 
-PATHOGEN_DIR="${HOME}/.vim/autoload"
-BUNDLES_DIR="${HOME}/.vim/bundle"
+DOTFILES_DIR="$HOME/dotfiles"
+PATHOGEN_DIR="$DOTFILES_DIR/vim/autoload"
+BUNDLES_DIR="$DOTFILES_DIR/vim/bundle"
 
 if [[ -d "${PATHOGEN_DIR}" ]]; then
   echo "Updating pathogen..."
@@ -21,6 +22,7 @@ fi
 
 if [[ -d "${BUNDLES_DIR}" ]]; then
   echo "Updating bundles..."
+  cd $DOTFILES_DIR;
   git submodule update --init --recursive;
   echo "Done updating bundles."
 fi
