@@ -100,7 +100,7 @@ subprocess.call([
     ])
 
 # amend earlier commit with these changes
-print ''
+print 'Amending these changes to earlier commit...'
 subprocess.call([
     'git',
     'commit',
@@ -110,6 +110,7 @@ subprocess.call([
     ])
 
 # unstash original changes
+print 'Unstashing original changes...'
 subprocess.call([
     'git',
     'stash',
