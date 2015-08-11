@@ -109,5 +109,5 @@ subprocess.call([
 subprocess.call([
     'git',
     'stash',
-    'pop
+    'pop'
     ])
