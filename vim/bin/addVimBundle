@@ -28,6 +28,13 @@ except OSError:
 
 newURL = 'git@github.com:{}/{}.git'.format(githubName, bundleName)
 
+# stash current changes
+subprocess.call([
+    'git',
+    'stash'
+    ])
+
+# add the submodule
 subprocess.call([
     'git',
     'submodule',
@@ -35,4 +42,12 @@ subprocess.call([
     '--force',
     newURL,
     'vim/bundle/{}'.format(bundleName)
+    ])
+
+# commit changes to .gitmodules and new submodule
+subprocess.call([
+    'git',
+    'commit',
+    '-m',
+    '"added submodule: {}"'.format(bundleName)
     ])
