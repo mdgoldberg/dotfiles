@@ -12,6 +12,8 @@ parser.add_argument('githubURL', help='either Github repo URL or clone URL for G
 args = parser.parse_args()
 url = args.githubURL
 
+# parse Github URL
+print 'Parsing Github URL...'
 match = re.match(r'.*[\/:](.*?)\/([^\.]*)(?:\.git)?', url)
 if not match:
     print 'Could not parse github URL'
@@ -20,24 +22,31 @@ if not match:
 githubName = match.group(1)
 bundleName = match.group(2)
 
+newURL = 'git@github.com:{}/{}.git'.format(githubName, bundleName)
+print 'Using {} for Github repo URL'.format(newURL)
+
+# change into working directory
+print 'Changing to ~/dotfiles...'
 try:
     os.chdir(os.path.expanduser('~/dotfiles'))
 except OSError:
     print 'Could not find ~/dotfiles'
     sys.exit(1)
 
-newURL = 'git@github.com:{}/{}.git'.format(githubName, bundleName)
-
 # stash current changes
+print 'Stashing changes...'
 subprocess.call([
     'git',
-    'stash'
+    'stash',
+    '-q'
     ])
 
 # add the submodule
+print 'Adding new submodule {}...'.format(bundleName)
 subprocess.call([
     'git',
     'submodule',
+    '--quiet',
     'add',
     '--force',
     newURL,
@@ -45,9 +54,11 @@ subprocess.call([
     ])
 
 # commit changes to .gitmodules and new submodule
+print 'Committing changes to .gitmodules and new submodule'
 subprocess.call([
     'git',
     'commit',
+    '--quiet',
     '-m',
     'added submodule: {}'.format(bundleName)
     ])

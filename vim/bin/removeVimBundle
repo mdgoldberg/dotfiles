@@ -14,14 +14,18 @@ bundleDir = 'vim/bundle/{}'.format(bundleName)
 
 # change into working directory
 print 'Changing to ~/dotfiles...'
-os.chdir(os.path.expanduser('~/dotfiles'))
+try:
+    os.chdir(os.path.expanduser('~/dotfiles'))
+except OSError:
+    print 'Could not find ~/dotfiles'
+    sys.exit(1)
 
 # first stash current changes
 print 'Stashing changes...'
 subprocess.call([
     'git',
     'stash',
-    '-q'
+    '--quiet'
     ])
 
 # make sure bundle is there
@@ -77,7 +81,8 @@ print 'Committing changes to .gitmodules...'
 subprocess.call([
     'git',
     'commit',
-    '-qam',
+    '--quiet',
+    '-am',
     'removed submodule: {}'.format(bundleName)
     ])
 
@@ -86,7 +91,7 @@ print 'Removing submodule files from git...'
 subprocess.call([
     'git',
     'rm',
-    '-q',
+    '--quiet',
     '--cached',
     bundleDir
     ])
@@ -104,7 +109,7 @@ print 'Amending these changes to earlier commit...'
 subprocess.call([
     'git',
     'commit',
-    '-q',
+    '--quiet',
     '--amend',
     '--no-edit'
     ])
@@ -115,5 +120,5 @@ subprocess.call([
     'git',
     'stash',
     'pop',
-    '-q'
+    '--quiet'
     ])
