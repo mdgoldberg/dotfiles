@@ -83,6 +83,9 @@ bindkey '^[[Z' reverse-menu-complete
 # use emacs key-bindings in shell
 bindkey -e
 
+# better settings for `less`
+export LESS=-iXFR
+
 # My Aliases
 alias lsaSh="ls -laSh"
 alias lsash="ls -laSh"
