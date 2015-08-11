@@ -7,6 +7,9 @@ import sys
 
 parser = argparse.ArgumentParser(description='Script to remove a Pathogen bundle from my Vim config')
 parser.add_argument('bundleName', help='the name of the Pathogen bundle to remove')
+parser.add_argument('--push',
+        action='store_true',
+        help='push commit to dotfiles repo if flag is present')
 
 args = parser.parse_args()
 bundleName = args.bundleName
@@ -113,6 +116,16 @@ subprocess.call([
     '--amend',
     '--no-edit'
     ])
+
+# pushing changes based on flag
+if push:
+    print 'Pushing changes to remote dotfiles repo...'
+    subprocess.call([
+        'git',
+        'push',
+        'origin',
+        'master'
+        ])
 
 # unstash original changes
 print 'Unstashing original changes...'
