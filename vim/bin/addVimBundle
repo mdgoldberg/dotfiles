@@ -49,7 +49,7 @@ subprocess.call([
     'git',
     'commit',
     '-m',
-    '"added submodule: {}"'.format(bundleName)
+    'added submodule: {}'.format(bundleName)
     ])
 
 # unstash changes
