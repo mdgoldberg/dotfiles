@@ -73,22 +73,26 @@ with open('.git/config', 'w') as gitconfig:
     gitconfig.writelines(keep_lines)
 
 # commit .gitmodules change
+print 'Committing changes to .gitmodules...'
 subprocess.call([
     'git',
     'commit',
-    '-am',
+    '-qam',
     'removed submodule: {}'.format(bundleName)
     ])
 
 # remove submodule files from git
+print 'Removing submodule files from git...'
 subprocess.call([
     'git',
     'rm',
+    '-q',
     '--cached',
     bundleDir
     ])
 
 # remove the actual files
+print 'Removing actual files with rm...'
 subprocess.call([
     'rm',
     '-rf',
@@ -96,9 +100,11 @@ subprocess.call([
     ])
 
 # amend earlier commit with these changes
+print ''
 subprocess.call([
     'git',
     'commit',
+    '-q',
     '--amend',
     '--no-edit'
     ])
@@ -107,5 +113,6 @@ subprocess.call([
 subprocess.call([
     'git',
     'stash',
-    'pop'
+    'pop',
+    '-q'
     ])
