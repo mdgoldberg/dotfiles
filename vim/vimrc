@@ -17,10 +17,6 @@ set ignorecase
 set number
 set autoread
 
-filetype plugin on
-filetype indent on
-syntax enable
-
 set tw=79
 set sw=4
 set formatoptions-=t
