@@ -86,20 +86,21 @@ bindkey -e
 # better settings for `less`
 export LESS=-iXFR
 
+# disable vim's r command
+disable r
+
 # My Aliases
-alias lsaSh="ls -laSh"
 alias lsash="ls -laSh"
 alias zshrc="vim ~/.zshrc"
 alias reload_zshrc="source ~/.zshrc"
-alias vimrc="vim ~/.vim/vimrc"
-alias vimupgrade="~/.vim/test.sh"
+alias vimrc="vim ~/.vimrc"
 alias emacs="/usr/local/emacs"
 alias lc="latexmk -c; echo ''; ls"
 alias py="python"
-disable r
 alias r="r -q"
 alias pipupgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo -H pip install -U"
 alias frosh="cd ~/Dropbox/Frosh"
+alias soph="cd ~/Dropbox/Soph"
 alias cs51="cd ~/Dropbox/Frosh/CS51/"
 alias cs61="cd ~/Dropbox/Frosh/CS61/"
 alias cs121="cd ~/Dropbox/Soph/CS121/cs121_psets/"
@@ -109,8 +110,8 @@ alias stat111="cd ~/Dropbox/Soph/'Stat 111'/stat111_psets/"
 alias cs124="cd ~/Dropbox/Soph/CS124/cs124_psets"
 alias cs181="cd ~/Dropbox/Soph/CS181/"
 alias turch="cd ~/Dropbox/Turchin/"
-alias soph="cd ~/Dropbox/Soph"
 alias spotifyproj="workon s2i; cd ~/Dropbox/CodeStuff/spotify2itunes/"
+alias dotfiles="cd ~/dotfiles"
 alias crim="workon crim; cd ~/Dropbox/Crimson/crimsononline"
 alias crim_clearcache="vagrant ssh -c 'rm -rf /srv/crimson/static/CACHE' && ./vagrant_manage.sh collectstatic --noinput"
 
