@@ -9,7 +9,10 @@ parser.add_argument('bundleName', help='the name of the Pathogen bundle to remov
 args = parser.parse_args()
 bundleName = args.bundleName
 
+# change into working directory
 os.chdir(os.path.expanduser('~/dotfiles'))
+
+# fixing .gitmodules
 
 print 'Removing lines from .gitmodules...'
 
@@ -35,6 +38,9 @@ with open('.gitmodules', 'w') as gitmodules:
     gitmodules.writelines(keep_lines)
 
 print '.gitmodules complete!'
+
+# fixing .git/config
+
 print 'Removing lines from .git/config...'
 
 with open('.git/config', 'r') as gitconfig:
@@ -59,3 +65,4 @@ with open('.git/config', 'w') as gitconfig:
     gitconfig.writelines(keep_lines)
 
 print '.git/config complete!'
+
