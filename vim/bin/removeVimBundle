@@ -11,30 +11,51 @@ bundleName = args.bundleName
 
 os.chdir(os.path.expanduser('~/dotfiles'))
 
-print 'Removing lines from .gitmodules'
+print 'Removing lines from .gitmodules...'
 
 with open('.gitmodules', 'r') as gitmodules:
     lines = gitmodules.readlines()
     keep_lines = []
     del_lines = []
     for line in lines:
-        if bundleName not in line:
-            keep_lines.append(line)
-        else:
+        if bundleName in line:
             del_lines.append(line)
+        else:
+            keep_lines.append(line)
 
-print 'Deleting following lines from .gitmodules:'
-for line in del_lines: print line.strip()
+print
+if del_lines:
+    print 'Deleting following lines from .gitmodules:'
+    for line in del_lines: print line.strip()
+else:
+    print 'No lines deleted from .gitmodules.'
+print
 
 with open('.gitmodules', 'w') as gitmodules:
     gitmodules.writelines(keep_lines)
 
-print '.gitmodules complete'
-print 'Removing lines from .git/config'
+print '.gitmodules complete!'
+print 'Removing lines from .git/config...'
 
 with open('.git/config', 'r') as gitconfig:
     lines = gitconfig.readlines()
     keep_lines = []
     del_lines = []
     for line in lines:
-        print line.strip()
+        if bundleName in line:
+            del_lines.append(line)
+        else:
+            keep_lines.append(line)
+
+print
+if del_lines:
+    print 'Deleting following lines from .git/config:'
+    for line in del_lines: print line.strip()
+else:
+    print 'No lines deleted from .git/config.'
+print
+
+with open('.git/config', 'w') as gitconfig:
+    gitconfig.writelines(keep_lines)
+
+print '.git/config complete!'
