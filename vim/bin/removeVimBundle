@@ -13,23 +13,25 @@ bundleName = args.bundleName
 bundleDir = 'vim/bundle/{}'.format(bundleName)
 
 # change into working directory
+print 'Changing to ~/dotfiles...'
 os.chdir(os.path.expanduser('~/dotfiles'))
 
 # first stash current changes
+print 'Stashing changes...'
 subprocess.call([
     'git',
-    'stash'
+    'stash',
+    '-q'
     ])
 
 # make sure bundle is there
+print 'Checking that bundle {} exists...'.format(bundleName)
 if not os.path.isdir(bundleDir):
     print 'ERROR: {} bundle not found.'.format(bundleName)
     sys.exit(1)
 
 # now fix .gitmodules
-
 print 'Removing lines from .gitmodules...'
-
 with open('.gitmodules', 'r') as gitmodules:
     lines = gitmodules.readlines()
     keep_lines = []
@@ -40,23 +42,19 @@ with open('.gitmodules', 'r') as gitmodules:
         else:
             keep_lines.append(line)
 
-print '---'
 if del_lines:
+    print '---'
     print 'Deleting following lines from .gitmodules:'
     for line in del_lines: print line.strip()
+    print '---'
 else:
     print 'No lines deleted from .gitmodules.'
-print '---'
 
 with open('.gitmodules', 'w') as gitmodules:
     gitmodules.writelines(keep_lines)
 
-print '.gitmodules complete!'
-
 # now fix .git/config
-
 print 'Removing lines from .git/config...'
-
 with open('.git/config', 'r') as gitconfig:
     lines = gitconfig.readlines()
     keep_lines = []
@@ -67,18 +65,16 @@ with open('.git/config', 'r') as gitconfig:
         else:
             keep_lines.append(line)
 
-print '---'
 if del_lines:
+    print '---'
     print 'Deleting following lines from .git/config:'
     for line in del_lines: print line.strip()
+    print '---'
 else:
     print 'No lines deleted from .git/config.'
-print '---'
 
 with open('.git/config', 'w') as gitconfig:
     gitconfig.writelines(keep_lines)
-
-print '.git/config complete!'
 
 # commit .gitmodules change
 subprocess.call([
