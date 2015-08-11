@@ -1,8 +1,40 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env python
 
-cd "$HOME/dotfiles";
-echo "gitmodules";
-cat .gitmodules | grep -v "$1";
-echo "git config";
-cat .git/config | grep -v "$1";
-# git rm --cached "vim/bundle/$1";
+import argparse
+import os
+
+parser = argparse.ArgumentParser(description='Script to remove a Pathogen bundle from my Vim config')
+parser.add_argument('bundleName', help='the name of the Pathogen bundle to remove')
+
+args = parser.parse_args()
+bundleName = args.bundleName
+
+os.chdir(os.path.expanduser('~/dotfiles'))
+
+print 'Removing lines from .gitmodules'
+
+with open('.gitmodules', 'r') as gitmodules:
+    lines = gitmodules.readlines()
+    keep_lines = []
+    del_lines = []
+    for line in lines:
+        if bundleName not in line:
+            keep_lines.append(line)
+        else:
+            del_lines.append(line)
+
+print 'Deleting following lines from .gitmodules:'
+for line in del_lines: print line.strip()
+
+with open('.gitmodules', 'w') as gitmodules:
+    gitmodules.writelines(keep_lines)
+
+print '.gitmodules complete'
+print 'Removing lines from .git/config'
+
+with open('.git/config', 'r') as gitconfig:
+    lines = gitconfig.readlines()
+    keep_lines = []
+    del_lines = []
+    for line in lines:
+        print line.strip()
