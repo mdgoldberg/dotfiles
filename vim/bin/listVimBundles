@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+cd $HOME/dotfiles;
+
+BUNDLES=($(find vim/bundle -type d -maxdepth 1 -mindepth 1));
+
+for RAW_BUNDLE in $BUNDLES; do
+    BUNDLE=$(basename $RAW_BUNDLE);
+    echo $BUNDLE;
+done;
