@@ -13,6 +13,7 @@ parser.add_argument('--push',
 
 args = parser.parse_args()
 bundleName = args.bundleName
+push = args.push
 bundleDir = 'vim/bundle/{}'.format(bundleName)
 
 # change into working directory
