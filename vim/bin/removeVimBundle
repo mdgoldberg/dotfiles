@@ -34,13 +34,13 @@ with open('.gitmodules', 'r') as gitmodules:
         else:
             keep_lines.append(line)
 
-print
+print '---'
 if del_lines:
     print 'Deleting following lines from .gitmodules:'
     for line in del_lines: print line.strip()
 else:
     print 'No lines deleted from .gitmodules.'
-print
+print '---'
 
 with open('.gitmodules', 'w') as gitmodules:
     gitmodules.writelines(keep_lines)
@@ -61,13 +61,13 @@ with open('.git/config', 'r') as gitconfig:
         else:
             keep_lines.append(line)
 
-print
+print '---'
 if del_lines:
     print 'Deleting following lines from .git/config:'
     for line in del_lines: print line.strip()
 else:
     print 'No lines deleted from .git/config.'
-print
+print '---'
 
 with open('.git/config', 'w') as gitconfig:
     gitconfig.writelines(keep_lines)
