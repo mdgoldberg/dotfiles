@@ -8,9 +8,13 @@ import sys
 
 parser = argparse.ArgumentParser(description='Script to add a Pathogen bundle to my Vim config')
 parser.add_argument('githubURL', help='either Github repo URL or clone URL for Github repo')
+parser.add_argument('--push',
+        action='store_true',
+        help='push commit to dotfiles repo if flag is present')
 
 args = parser.parse_args()
 url = args.githubURL
+push = args.push
 
 # parse Github URL
 print 'Parsing Github URL...'
@@ -63,7 +67,17 @@ subprocess.call([
     'added submodule: {}'.format(bundleName)
     ])
 
-# unstash changes
+# pushing changes based on flag
+if push:
+    print 'Pushing changes to remote dotfiles repo...'
+    subprocess.call([
+        'git',
+        'push',
+        'origin',
+        'master'
+        ])
+
+# unstash original changes
 print 'Reapplying original changes...'
 subprocess.call([
     'git',
