@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+cd "$HOME/dotfiles";
+echo "gitmodules";
+cat .gitmodules | grep -v "$1";
+echo "git config";
+cat .git/config | grep -v "$1";
+# git rm --cached "vim/bundle/$1";
