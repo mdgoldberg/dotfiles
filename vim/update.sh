@@ -16,15 +16,11 @@ if [[ -d "${PATHOGEN_DIR}" ]]; then
   echo "Updating pathogen..."
   curl -Sso "${PATHOGEN_DIR}/pathogen.vim" \
     https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+  echo "Done updating pathogen."
 fi
 
 if [[ -d "${BUNDLES_DIR}" ]]; then
   echo "Updating bundles..."
-  for bundle in "${BUNDLES_DIR}/"*; do
-    if [[ -d "${bundle}/.git" ]]; then
-      echo "Bundle: ${bundle}..."
-      cd "${bundle}"
-      git pull
-    fi
-  done
+  git submodule update --init --recursive;
+  echo "Done updating bundles."
 fi
