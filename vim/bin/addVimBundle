@@ -38,7 +38,7 @@ print 'Stashing changes...'
 subprocess.call([
     'git',
     'stash',
-    '-q'
+    '--quiet'
     ])
 
 # add the submodule
@@ -64,8 +64,10 @@ subprocess.call([
     ])
 
 # unstash changes
+print 'Reapplying original changes...'
 subprocess.call([
     'git',
     'stash',
-    'pop'
+    'pop',
+    '--quiet'
     ])
