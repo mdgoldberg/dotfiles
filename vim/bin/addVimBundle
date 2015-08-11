@@ -32,6 +32,7 @@ subprocess.call([
     'git',
     'submodule',
     'add',
+    '--force',
     newURL,
     'vim/bundle/{}'.format(bundleName)
     ])
