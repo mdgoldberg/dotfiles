@@ -108,6 +108,14 @@ subprocess.call([
     bundleDir
     ])
 
+# remove associated .git/modules/vim/bundle/BUNDLE folder
+print 'Removing associated folder in .git/modules/vim/bundle/BUNDLE folder ...'
+subprocess.call([
+    'rm',
+    '-rf',
+    '.git/modules/vim/bundle/{}'.format(bundleName)
+    ])
+
 # amend earlier commit with these changes
 print 'Amending these changes to earlier commit...'
 subprocess.call([
