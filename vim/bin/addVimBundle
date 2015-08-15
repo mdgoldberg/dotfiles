@@ -7,10 +7,10 @@ import subprocess
 import sys
 
 parser = argparse.ArgumentParser(description='Script to add a Pathogen bundle to my Vim config')
-parser.add_argument('githubURL', help='either Github repo URL or clone URL for Github repo')
-parser.add_argument('--push',
-        action='store_true',
-        help='push commit to dotfiles repo if flag is present')
+parser.add_argument('--push', action='store_true',
+                    help='push commit to dotfiles repo if flag is present')
+parser.add_argument('githubURL',
+                    help='either Github repo URL or clone URL for Github repo')
 
 args = parser.parse_args()
 url = args.githubURL
