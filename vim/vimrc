@@ -16,6 +16,7 @@ imap kJ <ESC>
 set ignorecase
 set number
 set autoread
+set nocompatible
 
 " YouCompleteMe Configuration
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
