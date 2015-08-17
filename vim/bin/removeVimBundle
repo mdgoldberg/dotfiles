@@ -35,6 +35,10 @@ subprocess.call([
 
 for bundleName in bundleNames:
 
+    print
+    print 'REMOVING {}'.format(bundleName)
+    print
+
     bundleDir = 'vim/bundle/{}'.format(bundleName)
 
     # fix .gitmodules
@@ -108,7 +112,8 @@ for bundleName in bundleNames:
     ])
 
     # remove associated .git/modules/vim/bundle/BUNDLE folder
-    print 'Removing associated folder in .git/modules/vim/bundle/BUNDLE folder ...'
+    print ('Removing associated folder in'
+           ' .git/modules/vim/bundle/{} folder...'.format(bundleName))
     subprocess.call([
         'rm',
         '-rf',
