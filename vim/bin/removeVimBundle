@@ -25,6 +25,14 @@ except OSError:
     print 'Could not find ~/dotfiles'
     sys.exit(1)
 
+# checkout master branch
+print 'Checking out master branch...'
+subprocess.call([
+    'git',
+    'checkout',
+    'master'
+])
+
 # first stash current changes
 print 'Stashing changes...'
 subprocess.call([
@@ -84,16 +92,6 @@ for bundleName in bundleNames:
     with open('.git/config', 'w') as gitconfig:
         gitconfig.writelines(keep_lines)
 
-    # commit .gitmodules change
-    print 'Committing changes to .gitmodules...'
-    subprocess.call([
-        'git',
-        'commit',
-        '--quiet',
-        '-am',
-        'removed submodule: {}'.format(bundleName)
-    ])
-
     # remove submodule files from git
     print 'Removing submodule files from git...'
     subprocess.call([
@@ -121,19 +119,26 @@ for bundleName in bundleNames:
         '.git/modules/vim/bundle/{}'.format(bundleName)
     ])
 
-    # amend earlier commit with these changes
-    print 'Amending these changes to earlier commit...'
-    subprocess.call([
-        'git',
-        'commit',
-        '--quiet',
-        '--amend',
-        '--no-edit'
-    ])
+
+# commit .gitmodules change
+print 'Committing changes to .gitmodules...'
+
+if len(bundleNames) > 1:
+    commit_msg = 'removed submodules: {}'.format(', '.join(bundleNames))
+else:
+    commit_msg = 'removed submodule: {}'.format(bundleName)
+
+subprocess.call([
+    'git',
+    'commit',
+    '--quiet',
+    '-am',
+    'removed submodule: {}'.format(bundleName)
+])
 
 # pushing changes based on flag
 if push:
-    print 'Pushing changes to remote dotfiles repo...'
+    print '--push deteced, so pushing changes to remote dotfiles repo...'
     subprocess.call([
         'git',
         'push',

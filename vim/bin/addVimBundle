@@ -78,12 +78,18 @@ for url in urls:
 
 # commit changes to .gitmodules and new submodule
 print 'Committing changes to .gitmodules and new submodule(s)...'
+
+if len(bundleNames) > 1:
+    commit_msg = 'added submodules: {}'.format(', '.join(bundleNames))
+else:
+    commit_msg = 'added submodule: {}'.format(bundleName)
+    
 subprocess.call([
     'git',
     'commit',
     '--quiet',
     '-m',
-    'added submodules: {}'.format(', '.join(bundleNames))
+    commit_msg
 ])
 
 # pushing changes based on flag
