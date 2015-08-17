@@ -35,9 +35,8 @@ subprocess.call([
 
 for bundleName in bundleNames:
 
-    print
+    print '-'*30
     print 'REMOVING {}'.format(bundleName)
-    print
 
     bundleDir = 'vim/bundle/{}'.format(bundleName)
 
@@ -55,7 +54,8 @@ for bundleName in bundleNames:
 
     if del_lines:
         print 'Deleting following lines from .gitmodules:'
-        for line in del_lines: print '\t{}'.format(line.strip())
+        for line in del_lines:
+            print '\t{}'.format(line.strip())
         else:
             print 'No lines deleted from .gitmodules.'
 
@@ -76,7 +76,8 @@ for bundleName in bundleNames:
 
     if del_lines:
         print 'Deleting following lines from .git/config:'
-        for line in del_lines: print '\t{}'.format(line.strip())
+        for line in del_lines:
+            print '\t{}'.format(line.strip())
         else:
             print 'No lines deleted from .git/config.'
 

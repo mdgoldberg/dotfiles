@@ -32,9 +32,23 @@ subprocess.call([
     'git',
     'stash',
     '--quiet'
-    ])
+])
+
+# checkout master branch
+print 'Checking out master branch...'
+subprocess.call([
+    'git',
+    'checkout',
+    '--quiet',
+    'master'
+])
+
+bundleNames = []
 
 for url in urls:
+
+    print '-'*30
+    print 'ADDING {}'.format(url)
 
     # parse Github URL
     print 'Parsing Github URL...'
@@ -45,6 +59,7 @@ for url in urls:
 
     githubName = match.group(1)
     bundleName = match.group(2)
+    bundleNames.append(bundleName)
 
     newURL = 'git@github.com:{}/{}.git'.format(githubName, bundleName)
     print 'Using {} for Github repo URL'.format(newURL)
@@ -59,27 +74,27 @@ for url in urls:
         '--force',
         newURL,
         'vim/bundle/{}'.format(bundleName)
-        ])
+    ])
 
-    # commit changes to .gitmodules and new submodule
-    print 'Committing changes to .gitmodules and new submodule...'
-    subprocess.call([
-        'git',
-        'commit',
-        '--quiet',
-        '-m',
-        'added submodule: {}'.format(bundleName)
-        ])
+# commit changes to .gitmodules and new submodule
+print 'Committing changes to .gitmodules and new submodule(s)...'
+subprocess.call([
+    'git',
+    'commit',
+    '--quiet',
+    '-m',
+    'added submodules: {}'.format(', '.join(bundleNames))
+])
 
 # pushing changes based on flag
 if push:
-    print 'Pushing changes to remote dotfiles repo...'
+    print '--push detected, so pushing changes to remote dotfiles repo...'
     subprocess.call([
         'git',
         'push',
         'origin',
         'master'
-        ])
+    ])
 
 # unstash original changes
 print 'Reapplying original changes...'
@@ -88,4 +103,4 @@ subprocess.call([
     'stash',
     'pop',
     '--quiet'
-    ])
+])
