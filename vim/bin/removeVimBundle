@@ -64,8 +64,8 @@ for bundleName in bundleNames:
         print 'Deleting following lines from .gitmodules:'
         for line in del_lines:
             print '\t{}'.format(line.strip())
-        else:
-            print 'No lines deleted from .gitmodules.'
+    else:
+        print 'No lines deleted from .gitmodules.'
 
     with open('.gitmodules', 'w') as gitmodules:
         gitmodules.writelines(keep_lines)
@@ -86,8 +86,8 @@ for bundleName in bundleNames:
         print 'Deleting following lines from .git/config:'
         for line in del_lines:
             print '\t{}'.format(line.strip())
-        else:
-            print 'No lines deleted from .git/config.'
+    else:
+        print 'No lines deleted from .git/config.'
 
     with open('.git/config', 'w') as gitconfig:
         gitconfig.writelines(keep_lines)
