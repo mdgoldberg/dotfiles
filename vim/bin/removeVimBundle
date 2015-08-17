@@ -30,6 +30,7 @@ print 'Checking out master branch...'
 subprocess.call([
     'git',
     'checkout',
+    '--quiet',
     'master'
 ])
 
@@ -92,6 +93,14 @@ for bundleName in bundleNames:
     with open('.git/config', 'w') as gitconfig:
         gitconfig.writelines(keep_lines)
 
+    # stash changes to .gitmodules
+    print 'Stashing changes to .gitmodules...'
+    subprocess.call([
+        'git',
+        'stash',
+        '--quiet'
+    ])
+
     # remove submodule files from git
     print 'Removing submodule files from git...'
     subprocess.call([
@@ -100,6 +109,15 @@ for bundleName in bundleNames:
         '--quiet',
         '--cached',
         bundleDir
+    ])
+    
+    # unstash changes to .gitmodules
+    print 'Unstashing changes to .gitmodules...'
+    subprocess.call([
+        'git',
+        'stash',
+        'pop',
+        '--quiet'
     ])
 
     # remove the actual files
@@ -119,9 +137,10 @@ for bundleName in bundleNames:
         '.git/modules/vim/bundle/{}'.format(bundleName)
     ])
 
+print '-'*30
 
-# commit .gitmodules change
-print 'Committing changes to .gitmodules...'
+# commit changes
+print 'Committing changes...'
 
 if len(bundleNames) > 1:
     commit_msg = 'removed submodules: {}'.format(', '.join(bundleNames))

@@ -76,6 +76,8 @@ for url in urls:
         'vim/bundle/{}'.format(bundleName)
     ])
 
+print '-'*30
+
 # commit changes to .gitmodules and new submodule
 print 'Committing changes to .gitmodules and new submodule(s)...'
 
