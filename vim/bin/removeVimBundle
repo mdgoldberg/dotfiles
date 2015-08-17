@@ -5,16 +5,17 @@ import os
 import subprocess
 import sys
 
-parser = argparse.ArgumentParser(description='Script to remove a Pathogen bundle from my Vim config')
-parser.add_argument('bundleName', help='the name of the Pathogen bundle to remove')
-parser.add_argument('--push',
-        action='store_true',
-        help='push commit to dotfiles repo if flag is present')
+parser = argparse.ArgumentParser(
+    description='Script to remove a Pathogen bundle from my Vim config'
+)
+parser.add_argument('bundleNames', nargs='+',
+                    help='the name(s) of the Pathogen bundle to remove')
+parser.add_argument('--push', action='store_true',
+                    help='push commit to dotfiles repo if flag is present')
 
 args = parser.parse_args()
-bundleName = args.bundleName
+bundleNames = args.bundleNames
 push = args.push
-bundleDir = 'vim/bundle/{}'.format(bundleName)
 
 # change into working directory
 print 'Changing to ~/dotfiles...'
@@ -32,98 +33,96 @@ subprocess.call([
     '--quiet'
     ])
 
-# make sure bundle is there
-print 'Checking that bundle {} exists...'.format(bundleName)
-if not os.path.isdir(bundleDir):
-    print 'ERROR: {} bundle not found.'.format(bundleName)
-    sys.exit(1)
+for bundleName in bundleNames:
 
-# now fix .gitmodules
-print 'Removing lines from .gitmodules...'
-with open('.gitmodules', 'r') as gitmodules:
-    lines = gitmodules.readlines()
-    keep_lines = []
-    del_lines = []
-    for line in lines:
-        if bundleName in line:
-            del_lines.append(line)
+    bundleDir = 'vim/bundle/{}'.format(bundleName)
+
+    # fix .gitmodules
+    print 'Removing lines from .gitmodules...'
+    with open('.gitmodules', 'r') as gitmodules:
+        lines = gitmodules.readlines()
+        keep_lines = []
+        del_lines = []
+        for line in lines:
+            if bundleName in line:
+                del_lines.append(line)
+            else:
+                keep_lines.append(line)
+
+    if del_lines:
+        print 'Deleting following lines from .gitmodules:'
+        for line in del_lines: print '\t{}'.format(line.strip())
         else:
-            keep_lines.append(line)
+            print 'No lines deleted from .gitmodules.'
 
-if del_lines:
-    print 'Deleting following lines from .gitmodules:'
-    for line in del_lines: print '\t{}'.format(line.strip())
-else:
-    print 'No lines deleted from .gitmodules.'
+    with open('.gitmodules', 'w') as gitmodules:
+        gitmodules.writelines(keep_lines)
 
-with open('.gitmodules', 'w') as gitmodules:
-    gitmodules.writelines(keep_lines)
+    # now fix .git/config
+    print 'Removing lines from .git/config...'
+    with open('.git/config', 'r') as gitconfig:
+        lines = gitconfig.readlines()
+        keep_lines = []
+        del_lines = []
+        for line in lines:
+            if bundleName in line:
+                del_lines.append(line)
+            else:
+                keep_lines.append(line)
 
-# now fix .git/config
-print 'Removing lines from .git/config...'
-with open('.git/config', 'r') as gitconfig:
-    lines = gitconfig.readlines()
-    keep_lines = []
-    del_lines = []
-    for line in lines:
-        if bundleName in line:
-            del_lines.append(line)
+    if del_lines:
+        print 'Deleting following lines from .git/config:'
+        for line in del_lines: print '\t{}'.format(line.strip())
         else:
-            keep_lines.append(line)
+            print 'No lines deleted from .git/config.'
 
-if del_lines:
-    print 'Deleting following lines from .git/config:'
-    for line in del_lines: print '\t{}'.format(line.strip())
-else:
-    print 'No lines deleted from .git/config.'
+    with open('.git/config', 'w') as gitconfig:
+        gitconfig.writelines(keep_lines)
 
-with open('.git/config', 'w') as gitconfig:
-    gitconfig.writelines(keep_lines)
-
-# commit .gitmodules change
-print 'Committing changes to .gitmodules...'
-subprocess.call([
-    'git',
-    'commit',
-    '--quiet',
-    '-am',
-    'removed submodule: {}'.format(bundleName)
+    # commit .gitmodules change
+    print 'Committing changes to .gitmodules...'
+    subprocess.call([
+        'git',
+        'commit',
+        '--quiet',
+        '-am',
+        'removed submodule: {}'.format(bundleName)
     ])
 
-# remove submodule files from git
-print 'Removing submodule files from git...'
-subprocess.call([
-    'git',
-    'rm',
-    '--quiet',
-    '--cached',
-    bundleDir
+    # remove submodule files from git
+    print 'Removing submodule files from git...'
+    subprocess.call([
+        'git',
+        'rm',
+        '--quiet',
+        '--cached',
+        bundleDir
     ])
 
-# remove the actual files
-print 'Removing actual files with rm...'
-subprocess.call([
-    'rm',
-    '-rf',
-    bundleDir
+    # remove the actual files
+    print 'Removing actual files with rm...'
+    subprocess.call([
+        'rm',
+        '-rf',
+        bundleDir
     ])
 
-# remove associated .git/modules/vim/bundle/BUNDLE folder
-print 'Removing associated folder in .git/modules/vim/bundle/BUNDLE folder ...'
-subprocess.call([
-    'rm',
-    '-rf',
-    '.git/modules/vim/bundle/{}'.format(bundleName)
+    # remove associated .git/modules/vim/bundle/BUNDLE folder
+    print 'Removing associated folder in .git/modules/vim/bundle/BUNDLE folder ...'
+    subprocess.call([
+        'rm',
+        '-rf',
+        '.git/modules/vim/bundle/{}'.format(bundleName)
     ])
 
-# amend earlier commit with these changes
-print 'Amending these changes to earlier commit...'
-subprocess.call([
-    'git',
-    'commit',
-    '--quiet',
-    '--amend',
-    '--no-edit'
+    # amend earlier commit with these changes
+    print 'Amending these changes to earlier commit...'
+    subprocess.call([
+        'git',
+        'commit',
+        '--quiet',
+        '--amend',
+        '--no-edit'
     ])
 
 # pushing changes based on flag
@@ -134,7 +133,7 @@ if push:
         'push',
         'origin',
         'master'
-        ])
+    ])
 
 # unstash original changes
 print 'Unstashing original changes...'
@@ -143,4 +142,4 @@ subprocess.call([
     'stash',
     'pop',
     '--quiet'
-    ])
+])

@@ -6,28 +6,17 @@ import re
 import subprocess
 import sys
 
-parser = argparse.ArgumentParser(description='Script to add a Pathogen bundle to my Vim config')
+parser = argparse.ArgumentParser(
+    description='Script to add (a) Pathogen bundle(s) to my Vim config'
+)
 parser.add_argument('--push', action='store_true',
                     help='push commit to dotfiles repo if flag is present')
-parser.add_argument('githubURL',
-                    help='either Github repo URL or clone URL for Github repo')
+parser.add_argument('githubURLs', nargs='+',
+                    help='either Github repo URL(s) or clone URL(s) for Github repo')
 
 args = parser.parse_args()
-url = args.githubURL
+urls = args.githubURLs
 push = args.push
-
-# parse Github URL
-print 'Parsing Github URL...'
-match = re.match(r'.*[\/:](.*?)\/([^\.]*)(?:\.git)?', url)
-if not match:
-    print 'Could not parse github URL'
-    sys.exit(1)
-
-githubName = match.group(1)
-bundleName = match.group(2)
-
-newURL = 'git@github.com:{}/{}.git'.format(githubName, bundleName)
-print 'Using {} for Github repo URL'.format(newURL)
 
 # change into working directory
 print 'Changing to ~/dotfiles...'
@@ -45,27 +34,42 @@ subprocess.call([
     '--quiet'
     ])
 
-# add the submodule
-print 'Adding new submodule {}...'.format(bundleName)
-subprocess.call([
-    'git',
-    'submodule',
-    '--quiet',
-    'add',
-    '--force',
-    newURL,
-    'vim/bundle/{}'.format(bundleName)
-    ])
+for url in urls:
 
-# commit changes to .gitmodules and new submodule
-print 'Committing changes to .gitmodules and new submodule'
-subprocess.call([
-    'git',
-    'commit',
-    '--quiet',
-    '-m',
-    'added submodule: {}'.format(bundleName)
-    ])
+    # parse Github URL
+    print 'Parsing Github URL...'
+    match = re.match(r'.*[\/:](.*?)\/([^\.]*)(?:\.git)?', url)
+    if not match:
+        print 'Could not parse github URL'
+        sys.exit(1)
+
+    githubName = match.group(1)
+    bundleName = match.group(2)
+
+    newURL = 'git@github.com:{}/{}.git'.format(githubName, bundleName)
+    print 'Using {} for Github repo URL'.format(newURL)
+
+    # add the submodule
+    print 'Adding new submodule {}...'.format(bundleName)
+    subprocess.call([
+        'git',
+        'submodule',
+        '--quiet',
+        'add',
+        '--force',
+        newURL,
+        'vim/bundle/{}'.format(bundleName)
+        ])
+
+    # commit changes to .gitmodules and new submodule
+    print 'Committing changes to .gitmodules and new submodule'
+    subprocess.call([
+        'git',
+        'commit',
+        '--quiet',
+        '-m',
+        'added submodule: {}'.format(bundleName)
+        ])
 
 # pushing changes based on flag
 if push:
