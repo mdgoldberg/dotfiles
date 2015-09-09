@@ -8,3 +8,4 @@ vmap <buffer> ,, <Plug>LatexWrapSelection
 vmap <buffer> .. <Plug>LatexEnvWrapSelection
 
 set fo+=t
+set tw=79
