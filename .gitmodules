@@ -49,6 +49,3 @@
 [submodule "vim/bundle/Vim-R-plugin"]
 	path = vim/bundle/Vim-R-plugin
 	url = git@github.com:vim-scripts/Vim-R-plugin.git
-[submodule "vim/bundle/VimCom"]
-	path = vim/bundle/VimCom
-	url = git@github.com:jalvesaq/VimCom.git
