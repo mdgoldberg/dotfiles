@@ -1,0 +1,9 @@
+[user]
+	name = mdgoldberg
+	email = mgoldberg@college.harvard.edu
+[core]
+	editor = vim
+[push]
+	default = simple
+[color]
+	ui = auto
