@@ -34,3 +34,8 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " remap C-Space to autocomplete
 inoremap <C-Space> <C-x><C-o>
+
+" Vim-Latex stuff
+let g:tex_flavor='latex'
+set grepprg=grep\ -nH\ $*
+
