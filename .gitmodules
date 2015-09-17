@@ -46,3 +46,6 @@
 [submodule "vim/bundle/Vim-R-plugin"]
 	path = vim/bundle/Vim-R-plugin
 	url = git@github.com:vim-scripts/Vim-R-plugin.git
+[submodule "vim/bundle/vim-latex"]
+	path = vim/bundle/vim-latex
+	url = git@github.com:vim-latex/vim-latex.git
