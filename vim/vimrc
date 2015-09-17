@@ -36,6 +36,8 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 inoremap <C-Space> <C-x><C-o>
 
 " Vim-Latex stuff
-let g:tex_flavor='latex'
 set grepprg=grep\ -nH\ $*
-
+let g:tex_flavor='latex'
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_ViewRule_pdf = 'open -a /Applications/Skim.app'
+let g:Tex_CompileRule_pdf='latexmk -pdf -interaction=nonstopmode $*'
