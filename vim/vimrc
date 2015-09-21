@@ -38,3 +38,15 @@ let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_ViewRule_pdf = 'open -a /Applications/Skim.app'
 let g:Tex_CompileRule_pdf='latexmk -pdf -interaction=nonstopmode $*'
+
+" Dispatch mappings
+nnoremap <leader>dp :Dispatch<CR>
+nnoremap <leader>dd :Dispatch!<CR>
+autocmd filetype rnoweb let b:dispatch = 'R CMD Sweave % && latexmk -pdf -interaction=nonstopmode %:r.tex && latexmk -c'
+autocmd filetype python let b:dispatch = 'python %'
+autocmd filetype r let b:dispatch = 'r -q %'
+autocmd filetype tex let b:dispatch = 'latexmk -pdf -interaction=nonstopmode % && latexmk -c'
+
+" Quickfix mappings
+nnoremap <leader>qo :copen<CR>
+nnoremap <leader>qc :cclose<CR>
