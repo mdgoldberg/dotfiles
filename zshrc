@@ -119,8 +119,11 @@ export MANPATH="/usr/local/man:$MANPATH"
 
 export ECHO_NEST_API_KEY=MULF5TURMBIG5WPTW
 
-# configuring PATH
-export PATH=/usr/local/bin:/usr/local:/usr/bin:/bin:/usr/sbin:/sbin
+# configuring environment variables and PATH
+export DATADIR=$HOME/dotfiles/data
+export BINDIR=$HOME/dotfiles/bin
+export PATH=$BINDIR
+export PATH=$PATH:/usr/local/bin:/usr/local:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=$PATH:$HOME/anaconda/bin
 export PATH=$PATH:/opt/X11/bin:/usr/texbin
 export PATH=$PATH:/opt/local/bin
