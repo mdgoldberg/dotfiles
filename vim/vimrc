@@ -47,7 +47,7 @@ autocmd filetype python let b:dispatch = 'python %'
 autocmd filetype r let b:dispatch = 'r -q %'
 autocmd filetype tex let b:dispatch = 'latexmk -pdf -interaction=nonstopmode % && latexmk -c'
 
-" Quickfix mappings
+" Quickfix/Preview mappings
 nnoremap <leader>qo :copen<CR>
 nnoremap <leader>qc :cclose<CR>
-nnoremap <leader>qq :cclose<CR>
+nnoremap <leader>qq :cclose<CR>:pclose<CR>

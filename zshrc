@@ -98,7 +98,7 @@ alias turch="cd ~/Dropbox/Turchin/"
 alias spotifyproj="workon s2i; cd ~/Dropbox/CodeStuff/spotify2itunes/"
 alias pfr="workon pfr; cd ~/Dropbox/CodeStuff/HSACPosts/NFLPosts/pfr"
 alias dotfiles="cd ~/dotfiles"
-alias crim="workon crim; cd ~/Dropbox/Crimson/crimsononline"
+alias crim="workon crimson; cd ~/Dropbox/Crimson/crimsononline"
 alias crim_clearcache="vagrant ssh -c 'rm -rf /srv/crimson/static/CACHE' && ./vagrant_manage.sh collectstatic --noinput"
 
 function chpwd() {
