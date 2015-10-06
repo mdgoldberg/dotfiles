@@ -42,7 +42,7 @@ let g:Tex_CompileRule_pdf='latexmk -pdf -interaction=nonstopmode $*'
 " Dispatch mappings
 nnoremap <leader>dp :w<CR>:silent execute "Dispatch"<CR>
 nnoremap <leader>dd :w<CR>:silent execute "Dispatch!"<CR>
-autocmd filetype rnoweb let b:dispatch = 'R CMD Sweave % && latexmk -pdf -interaction=nonstopmode %:r.tex && latexmk -c'
+autocmd filetype rnoweb let b:dispatch = 'R CMD Sweave % && latexmk -pdf %:r.tex && latexmk -c'
 autocmd filetype python let b:dispatch = 'python %'
 autocmd filetype r let b:dispatch = 'r -q %'
 autocmd filetype tex let b:dispatch = 'latexmk -pdf -interaction=nonstopmode % && latexmk -c'
@@ -51,3 +51,6 @@ autocmd filetype tex let b:dispatch = 'latexmk -pdf -interaction=nonstopmode % &
 nnoremap <leader>qo :copen<CR>
 nnoremap <leader>qc :cclose<CR>
 nnoremap <leader>qq :cclose<CR>:pclose<CR>
+
+" unmap random Vim-R-plugin mappings
+autocmd filetype tex,rnoweb let g:vimrplugin_insert_mode_cmds = 0
