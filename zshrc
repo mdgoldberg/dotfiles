@@ -46,7 +46,10 @@ export EDITOR=vim
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python pip django virtualenvwrapper brew osx autojump vagrant history sudo)
+plugins=(git autojump python pip django virtualenvwrapper brew osx vagrant history sudo)
+
+# autojump fix
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
 # User configuration
 
