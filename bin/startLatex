@@ -21,6 +21,8 @@ if os.path.isfile(template):
         text = f.read()
 else:
     text = requests.get(url).text
+    with open(template, 'w') as f:
+        f.write(text)
 
 with open(newfile, 'w') as f:
     f.write(text)
