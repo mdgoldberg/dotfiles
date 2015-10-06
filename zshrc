@@ -106,10 +106,6 @@ function chpwd() {
     ls
 }
 
-# OPAM configuration
-. $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-eval `opam config env`
-
 # virtualenvwrapper configuration
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
