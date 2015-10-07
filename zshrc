@@ -109,11 +109,6 @@ function chpwd() {
     ls
 }
 
-# virtualenvwrapper configuration
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-source /usr/local/bin/virtualenvwrapper.sh
-
 export MANPATH="/usr/local/man:$MANPATH"
 
 export ECHO_NEST_API_KEY=MULF5TURMBIG5WPTW
@@ -134,3 +129,8 @@ export PATH=$PATH:/usr/local/share/pypy
 
 PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
+
+# virtualenvwrapper configuration
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=$(which python)
+source /usr/local/bin/virtualenvwrapper.sh
