@@ -18,6 +18,10 @@ set number
 set autoread
 set nocompatible
 
+" set colorscheme
+syntax enable
+set background=dark
+
 " YouCompleteMe Configuration
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
