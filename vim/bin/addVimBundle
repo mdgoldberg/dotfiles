@@ -62,7 +62,7 @@ for url in urls:
     bundleNames.append(bundleName)
 
     newURL = 'git@github.com:{}/{}.git'.format(githubName, bundleName)
-    print 'Using {} for Github repo URL'.format(newURL)
+    print 'Using {} for Github clone URL'.format(newURL)
 
     # add the submodule
     print 'Adding new submodule {}...'.format(bundleName)
