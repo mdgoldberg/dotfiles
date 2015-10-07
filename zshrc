@@ -118,7 +118,6 @@ export DATADIR=$HOME/dotfiles/data
 export BINDIR=$HOME/dotfiles/bin
 export PATH=$BINDIR
 export PATH=$PATH:$HOME/.vim/bin
-export PATH=$PATH:$HOME/anaconda/bin
 export PATH=$PATH:/usr/local/bin:/usr/local
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=$PATH:/opt/X11/bin:/usr/texbin
