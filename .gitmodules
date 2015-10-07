@@ -53,3 +53,6 @@
 	path = vim/bundle/Vim-R-plugin
 	url = git@github.com:vim-scripts/Vim-R-plugin.git
 	ignore = dirty
+[submodule "vim/bundle/vim-plugin-random-colorscheme-picker"]
+	path = vim/bundle/vim-plugin-random-colorscheme-picker
+	url = git@github.com:sunuslee/vim-plugin-random-colorscheme-picker.git
