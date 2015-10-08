@@ -46,10 +46,13 @@ let g:Tex_CompileRule_pdf='latexmk -pdf -interaction=nonstopmode "$*"'
 " Dispatch mappings
 nnoremap <leader>dp :w<CR>:silent execute "Dispatch"<CR>
 nnoremap <leader>dd :w<CR>:silent execute "Dispatch!"<CR>
+" Defaults
 autocmd filetype rnoweb let b:dispatch = 'R CMD Sweave "%" && latexmk -pdf "%:r.tex" && latexmk -c'
 autocmd filetype python let b:dispatch = 'python "%"'
 autocmd filetype r let b:dispatch = 'r -q "%"'
 autocmd filetype tex let b:dispatch = 'latexmk -pdf -interaction=nonstopmode "%" && latexmk -c'
+" Special for viewing PDFs from tex and Rnw files
+autocmd filetype tex,rnoweb nnoremap <leader>dv :w<CR>:silent execute "Dispatch! open '%:r.pdf'"<CR>
 
 " Quickfix/Preview mappings
 nnoremap <leader>qo :copen<CR>
