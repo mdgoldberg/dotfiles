@@ -8,12 +8,19 @@
 \usepackage{enumerate}
 \usepackage{amsmath, amssymb, amsthm, mathtools}
 
-\newcommand{\E}{\mathbb{E}}
+\newcommand{\E}[1]{\mathbb{E}\left[ #1 \right]}
 \newcommand{\N}{\mathbb{N}}
-\newcommand{\var}{\textrm{Var}}
-\newcommand{\cov}{\textrm{Cov}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}[1]{\mathcal{F}_{#1}}
+\newcommand{\var}[1]{\mathrm{Var}\left[ #1 \right]}
+\newcommand{\cov}[2]{\mathrm{Cov}\left[ #1 , #2 \right]}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
 \newcommand{\iid}{\textrm{ i.i.d.}}
 \newcommand{\simiid}{\overset\iid\sim}
+\newcommand{\myif}{& \textrm{if }}
+\newcommand{\myotherwise}{& \textrm{otherwise.}}
+
 
 \begin{document}
 \maketitle
