@@ -76,6 +76,8 @@ alias py="python"
 alias ipy="ipython"
 alias r="r -q"
 alias pipupgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo -H pip install -U"
+alias uploadTestPyPI="python setup.py register sdist upload -r pypitest"
+alias uploadPyPI="python setup.py register sdist upload -r pypi"
 # frosh
 alias frosh="cd ~/Dropbox/Frosh"
 alias cs51="cd ~/Dropbox/Frosh/CS51/"
