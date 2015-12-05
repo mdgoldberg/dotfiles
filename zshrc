@@ -76,8 +76,8 @@ alias py="python"
 alias ipy="ipython"
 alias r="r -q"
 alias pipupgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo -H pip install -U"
-alias uploadTestPyPI="python setup.py register sdist upload -r pypitest"
-alias uploadPyPI="python setup.py register sdist upload -r pypi"
+alias uploadTestPyPI="python setup.py register sdist bdist_wheel upload -r pypitest"
+alias uploadPyPI="python setup.py register sdist bdist_wheel upload -r pypi"
 # frosh
 alias frosh="cd ~/Dropbox/Frosh"
 alias cs51="cd ~/Dropbox/Frosh/CS51/"
@@ -119,13 +119,13 @@ export ECHO_NEST_API_KEY=MULF5TURMBIG5WPTW
 export DATADIR=$HOME/dotfiles/data
 export BINDIR=$HOME/dotfiles/bin
 export PATH=$BINDIR
-export PATH=$PATH:$HOME/anaconda/bin
 export PATH=$PATH:$HOME/.vim/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=$PATH:/opt/X11/bin:/usr/texbin
 export PATH=$PATH:/opt/local/bin
 export PATH=$PATH:$HOME/Dropbox/Soph/AM121/AMPL
+export PATH=$PATH:$HOME/anaconda/bin
 
 PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
