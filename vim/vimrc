@@ -62,6 +62,9 @@ nnoremap <leader>qq :cclose<CR>:pclose<CR>
 " unmap random Vim-R-plugin mappings
 autocmd filetype tex,rnoweb let g:vimrplugin_insert_mode_cmds = 0
 
+" Jedi overrides
+" let g:jedi#popup_on_dot = 0
+
 set wrap
 set linebreak
 nnoremap j gj
