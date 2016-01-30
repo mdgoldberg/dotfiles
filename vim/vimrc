@@ -54,7 +54,7 @@ nnoremap <leader>qq :cclose<CR>:pclose<CR>
 autocmd filetype tex,rnoweb let g:vimrplugin_insert_mode_cmds = 0
 
 " Jedi overrides
-" let g:jedi#popup_on_dot = 0
+let g:jedi#popup_on_dot = 0
 
 set wrap
 set linebreak
