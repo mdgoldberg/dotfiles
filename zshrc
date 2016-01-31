@@ -95,8 +95,9 @@ function chpwd() {
 export MANPATH="/usr/local/man:$MANPATH"
 
 # configuring environment variables and PATH
-export DATADIR=$HOME/dotfiles/data
-export BINDIR=$HOME/dotfiles/bin
+export DOTFILES_DIR=$HOME/dotfiles
+export DATA_DIR=$HOME/dotfiles/data
+export BIN_DIR=$HOME/dotfiles/bin
 export PATH=$BINDIR
 export PATH=$PATH:$HOME/.vim/bin
 export PATH=$PATH:$HOME/anaconda2/bin
