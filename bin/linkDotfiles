@@ -13,16 +13,18 @@ def src_fn(rel_fn):
 
 DOTFILES = [
     'zshrc',
+    'slate',
     'vim',
     'tmux.conf',
+    'gitconfig',
     'pypirc',
-    'slate',
 ]
 
 for dotf in DOTFILES:
     try:
         print src_fn(dotf), '->', dest_fn(dotf)
         os.symlink(src_fn(dotf), dest_fn(dotf))
+        print 'Symlink complete!'
     except OSError as e:
         print str(e)
         pass
