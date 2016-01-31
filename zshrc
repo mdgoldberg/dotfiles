@@ -96,9 +96,9 @@ export MANPATH="/usr/local/man:$MANPATH"
 
 # configuring environment variables and PATH
 export DOTFILES_DIR=$HOME/dotfiles
-export DATA_DIR=$HOME/dotfiles/data
-export BIN_DIR=$HOME/dotfiles/bin
-export PATH=$BINDIR
+export DATA_DIR=$DOTFILES_DIR/data
+export BIN_DIR=$DOTFILES_DIR/bin
+export PATH=$BIN_DIR
 export PATH=$PATH:$HOME/.vim/bin
 export PATH=$PATH:$HOME/anaconda2/bin
 export PATH=$PATH:/usr/local/bin
