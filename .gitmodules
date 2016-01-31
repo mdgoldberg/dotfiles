@@ -25,9 +25,6 @@
 [submodule "vim/bundle/vim-python-pep8-indent"]
 	path = vim/bundle/vim-python-pep8-indent
 	url = git@github.com:hynek/vim-python-pep8-indent.git
-[submodule "vim/bundle/supertab"]
-	path = vim/bundle/supertab
-	url = git@github.com:ervandew/supertab.git
 [submodule "vim/bundle/csv.vim"]
 	path = vim/bundle/csv.vim
 	url = git@github.com:chrisbra/csv.vim.git
@@ -56,3 +53,6 @@
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = git@github.com:majutsushi/tagbar.git
+[submodule "vim/bundle/supertab"]
+	path = vim/bundle/supertab
+	url = git@github.com:ervandew/supertab.git
