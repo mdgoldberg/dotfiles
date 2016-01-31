@@ -18,6 +18,7 @@ DOTFILES = [
     'tmux.conf',
     'gitconfig',
     'pypirc',
+    'git_template',
 ]
 
 for dotf in DOTFILES:
