@@ -79,7 +79,11 @@ alias cs109="cd ~/Dropbox/Junior/CS109"
 alias stat131="cd ~/Dropbox/Junior/Stat131"
 alias cs182="cd ~/Dropbox/Junior/CS182"
 alias cs136="cd ~/Dropbox/Junior/CS136"
-alias cs161="cd ~/Dropbox/Junior/CS161"
+
+# jr - cs161
+export CS161_DIR="~/Dropbox/Junior/CS161"
+alias cs161="cd $CS161_DIR"
+alias os161-gdb="mips-harvard-os161-gdb"
 
 # side projects/employment
 alias turch="cd ~/Dropbox/Turchin/"
