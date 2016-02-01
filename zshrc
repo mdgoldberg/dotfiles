@@ -88,10 +88,22 @@ alias dotfiles="cd ~/dotfiles"
 alias crim="workon crim; cd ~/Dropbox/Crimson/crimsononline"
 alias crim_clearcache="vagrant ssh -c 'rm -rf /srv/crimson/static/CACHE' && ./vagrant_manage.sh collectstatic --noinput"
 
+# automatically ls after cd
 function chpwd() {
     emulate -L zsh
     ls
 }
+
+# set up a Framework build of Python
+function fwpy {
+	if [[ ! -z "$VIRTUAL_ENV" ]]; then
+		PYTHONHOME=$VIRTUAL_ENV /usr/local/bin/python "$@"
+	else
+		/usr/local/bin/python "$@"
+	fi
+}
+# set up a Framework build of IPython
+alias fwipy="fwpy -m IPython"
 
 export MANPATH="/usr/local/man:$MANPATH"
 
@@ -110,3 +122,4 @@ export PATH=$PATH:/opt/X11/bin:/usr/texbin
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=$(which python)
 source /usr/local/bin/virtualenvwrapper.sh
+
