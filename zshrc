@@ -78,7 +78,8 @@ alias cs134="cd ~/Dropbox/Junior/CS134"
 alias cs109="cd ~/Dropbox/Junior/CS109"
 alias stat131="cd ~/Dropbox/Junior/Stat131"
 alias cs182="cd ~/Dropbox/Junior/CS182"
-alias sw25="cd ~/Dropbox/Junior/SW25"
+alias cs136="cd ~/Dropbox/Junior/CS136"
+alias cs161="cd ~/Dropbox/Junior/CS161"
 
 # side projects/employment
 alias turch="cd ~/Dropbox/Turchin/"
