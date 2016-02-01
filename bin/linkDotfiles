@@ -19,6 +19,7 @@ DOTFILES = [
     'gitconfig',
     'pypirc',
     'git_template',
+    'gitignore_global',
 ]
 
 for dotf in DOTFILES:

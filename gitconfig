@@ -3,6 +3,7 @@
 	email = mgoldberg@college.harvard.edu
 [core]
 	editor = vim
+	excludesfile = /Users/mgoldberg/.gitignore_global
 [push]
 	default = simple
 [color]
