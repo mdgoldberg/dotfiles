@@ -2,7 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
+# Look in $HOME/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
@@ -24,8 +24,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Preferred editor for local and remote sessions
 export EDITOR=vim
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Which plugins would you like to load? (plugins can be found in $HOME/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to $HOME/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git autojump python pip django virtualenvwrapper brew osx vagrant history sudo)
 
@@ -50,47 +50,50 @@ disable r
 
 # My Aliases
 alias lsash="ls -laSh"
-alias zshrc="vim ~/.zshrc"
-alias reload_zshrc="source ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
+alias zshrc="vim $HOME/.zshrc"
+alias reload_zshrc="source $HOME/.zshrc"
+alias vimrc="vim $HOME/.vim/vimrc"
 alias lc="latexmk -c; echo ''; ls"
 alias py="python"
 alias ipy="ipython"
 alias r="r -q"
+alias diff="colordiff"
 alias pipupgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo -H pip install -U"
 alias uploadPyPI="rm -rf dist && python setup.py sdist bdist_wheel && twine upload dist/*"
 alias htop="sudo htop"
 # frosh
-alias frosh="cd ~/Dropbox/Frosh"
-alias cs51="cd ~/Dropbox/Frosh/CS51/"
-alias cs61="cd ~/Dropbox/Frosh/CS61/"
+alias frosh="cd $HOME/Dropbox/Frosh"
+alias cs51="cd $HOME/Dropbox/Frosh/CS51/"
+alias cs61="cd $HOME/Dropbox/Frosh/CS61/"
 # soph
-alias soph="cd ~/Dropbox/Soph"
-alias cs121="cd ~/Dropbox/Soph/CS121/cs121_psets/"
-alias am121="cd ~/Dropbox/Soph/AM121/am121_psets/"
-alias stat110="cd ~/Dropbox/Soph/'Stat 110'/stat110_psets/"
-alias stat111="cd ~/Dropbox/Soph/'Stat 111'/stat111_psets/"
-alias cs124="cd ~/Dropbox/Soph/CS124/cs124_psets"
-alias cs181="cd ~/Dropbox/Soph/CS181/"
+alias soph="cd $HOME/Dropbox/Soph"
+alias cs121="cd $HOME/Dropbox/Soph/CS121/cs121_psets/"
+alias am121="cd $HOME/Dropbox/Soph/AM121/am121_psets/"
+alias stat110="cd $HOME/Dropbox/Soph/'Stat 110'/stat110_psets/"
+alias stat111="cd $HOME/Dropbox/Soph/'Stat 111'/stat111_psets/"
+alias cs124="cd $HOME/Dropbox/Soph/CS124/cs124_psets"
+alias cs181="cd $HOME/Dropbox/Soph/CS181/"
 # jr
-alias jr="cd ~/Dropbox/Junior"
-alias cs134="cd ~/Dropbox/Junior/CS134"
-alias cs109="cd ~/Dropbox/Junior/CS109"
-alias stat131="cd ~/Dropbox/Junior/Stat131"
-alias cs182="cd ~/Dropbox/Junior/CS182"
-alias cs136="cd ~/Dropbox/Junior/CS136"
+alias jr="cd $HOME/Dropbox/Junior"
+alias cs134="cd $HOME/Dropbox/Junior/CS134"
+alias cs109="cd $HOME/Dropbox/Junior/CS109"
+alias stat131="cd $HOME/Dropbox/Junior/Stat131"
+alias cs182="cd $HOME/Dropbox/Junior/CS182"
+alias cs136="cd $HOME/Dropbox/Junior/CS136"
 
 # jr - cs161
-export CS161_DIR="~/Dropbox/Junior/CS161"
+export CS161_DIR="$HOME/Dropbox/Junior/CS161"
 alias cs161="cd $CS161_DIR"
-alias os161-gdb="mips-harvard-os161-gdb"
+alias os161="cd $CS161_DIR/os161"
+alias gdb161="mips-harvard-os161-gdb"
+alias root="cd $CS161_DIR/root"
 
 # side projects/employment
-alias turch="cd ~/Dropbox/Turchin/"
-alias spotifyproj="workon s2i; cd ~/Dropbox/CodeStuff/spotify2itunes/"
-alias pfr="workon pfr; cd ~/Dropbox/CodeStuff/HSACPosts/NFLPosts/pfr"
-alias dotfiles="cd ~/dotfiles"
-alias crim="workon crim; cd ~/Dropbox/Crimson/crimsononline"
+alias turch="cd $HOME/Dropbox/Turchin/"
+alias spotifyproj="workon s2i; cd $HOME/Dropbox/CodeStuff/spotify2itunes/"
+alias pfr="workon pfr; cd $HOME/Dropbox/CodeStuff/HSACPosts/NFLPosts/pfr"
+alias dotfiles="cd $HOME/dotfiles"
+alias crim="workon crim; cd $HOME/Dropbox/Crimson/crimsononline"
 alias crim_clearcache="vagrant ssh -c 'rm -rf /srv/crimson/static/CACHE' && ./vagrant_manage.sh collectstatic --noinput"
 
 # automatically ls after cd
