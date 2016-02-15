@@ -1,4 +1,7 @@
+" tabs are 2 spaces
 set sw=2
+set expandtab
+
 set iskeyword+=:
 
 set wrap
