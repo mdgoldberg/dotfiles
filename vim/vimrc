@@ -49,8 +49,9 @@ autocmd filetype rnoweb let b:dispatch = 'R CMD Sweave "%" && latexmk -pdf "%:r.
 autocmd filetype python let b:dispatch = 'python "%"'
 autocmd filetype r let b:dispatch = 'r -q "%"'
 autocmd filetype tex let b:dispatch = 'latexmk -pdf -interaction=nonstopmode "%" && latexmk -c'
-" Special for viewing PDFs from tex and Rnw files
-autocmd filetype tex,rnoweb nnoremap <leader>dv :w<CR>:silent execute "Dispatch! open '%:r.pdf'"<CR>
+autocmd filetype text let b:dispatch = 'pandoc "%" -o "%:r.pdf" -V geometry:margin=0.5in'
+" Special for viewing PDFs
+autocmd filetype tex,rnoweb,text nnoremap <leader>dv :w<CR>:silent execute "Dispatch! open '%:r.pdf'"<CR>
 
 " Quickfix/Preview mappings
 nnoremap <leader>qo :copen<CR>
@@ -63,8 +64,14 @@ autocmd filetype tex,rnoweb let g:vimrplugin_insert_mode_cmds = 0
 " Jedi overrides
 let g:jedi#popup_on_dot = 0
 
+" wrap and linebreak
 set wrap
 set linebreak
+
+" default tab settings: 4-space tabs, tabs as spaces
+set shiftwidth=4
+set expandtab
+
 nnoremap j gj
 nnoremap k gk
 nnoremap 0 g0
