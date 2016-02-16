@@ -70,6 +70,7 @@ set linebreak
 
 " default tab settings: 4-space tabs, tabs as spaces
 set shiftwidth=4
+set tabstop=4
 set expandtab
 
 nnoremap j gj
