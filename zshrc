@@ -88,6 +88,22 @@ alias os161="cd $CS161_DIR/os161"
 alias gdb161="mips-harvard-os161-gdb"
 alias root="cd $CS161_DIR/root"
 
+# auto-build os161 kernel
+function build161() {
+    if [[ -z "$1" ]]; then
+        echo "usage: build161 asst_num";
+        return;
+    fi
+
+    cd "$CS161_DIR/os161/kern/conf"
+    ./config "ASST$1"
+    cd "$CS161_DIR/os161/kern/compile/ASST$1"
+    bmake depends
+    bmake
+    bmake install
+    cd "$CS161_DIR/root"
+}
+
 # side projects/employment
 alias turch="cd $HOME/Dropbox/Turchin/"
 alias spotifyproj="workon s2i; cd $HOME/Dropbox/CodeStuff/spotify2itunes/"
