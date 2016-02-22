@@ -20,6 +20,7 @@ DOTFILES = [
     'pypirc',
     'git_template',
     'gitignore_global',
+    'oh-my-zsh',
 ]
 
 for dotf in DOTFILES:
