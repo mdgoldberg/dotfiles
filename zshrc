@@ -98,7 +98,7 @@ function build161() {
     cd "$CS161_DIR/os161/kern/conf"
     ./config "ASST$1"
     cd "$CS161_DIR/os161/kern/compile/ASST$1"
-    bmake depends
+    bmake depend
     bmake
     bmake install
     cd "$CS161_DIR/root"
