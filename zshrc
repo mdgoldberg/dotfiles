@@ -61,6 +61,8 @@ alias diff="colordiff"
 alias pipupgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo -H pip install -U"
 alias uploadPyPI="rm -rf dist && python setup.py sdist bdist_wheel && twine upload dist/*"
 alias htop="sudo htop"
+alias gloga='git log --oneline --decorate --color --graph --all'
+
 # frosh
 alias frosh="cd $HOME/Dropbox/Frosh"
 alias cs51="cd $HOME/Dropbox/Frosh/CS51/"
@@ -85,13 +87,30 @@ alias cs136="cd $HOME/Dropbox/Junior/CS136"
 export CS161_DIR="$HOME/Dropbox/Junior/CS161"
 alias cs161="cd $CS161_DIR"
 alias os161="cd $CS161_DIR/os161"
-alias gdb161="mips-harvard-os161-gdb"
-alias root="cd $CS161_DIR/root"
+alias root161="cd $CS161_DIR/root"
+alias debug161="sys161 -w kernel"
+alias gdb161="mips-harvard-os161-gdb kernel"
 
 # auto-build os161 kernel
 function build161() {
     if [[ -z "$1" ]]; then
         echo "usage: build161 asst_num";
+        return;
+    fi
+
+    orig_cwd=$(pwd);
+    cd "$CS161_DIR/os161/kern/conf"
+    ./config "ASST$1"
+    cd "$CS161_DIR/os161/kern/compile/ASST$1"
+    bmake depend
+    bmake
+    bmake install
+    cd "$orig_cwd";
+}
+
+function run161() {
+    if [[ -z "$1" ]]; then
+        echo "usage: run161 asst_num";
         return;
     fi
 
@@ -101,7 +120,8 @@ function build161() {
     bmake depend
     bmake
     bmake install
-    cd "$CS161_DIR/root"
+    cd "$CS161_DIR/root";
+    sys161 kernel;
 }
 
 # side projects/employment
@@ -146,4 +166,3 @@ export PATH=$PATH:/opt/X11/bin:/usr/texbin
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=$(which python)
 source /usr/local/bin/virtualenvwrapper.sh
-
