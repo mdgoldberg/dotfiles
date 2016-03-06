@@ -59,6 +59,7 @@ alias ipy="ipython"
 alias r="r -q"
 alias diff="colordiff"
 alias pipupgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo -H pip install -U"
+alias registerPyPI="python setup.py register"
 alias uploadPyPI="rm -rf dist && python setup.py sdist bdist_wheel && twine upload dist/*"
 alias htop="sudo htop"
 alias gloga='git log --oneline --decorate --color --graph --all'
@@ -88,11 +89,12 @@ export CS161_DIR="$HOME/Dropbox/Junior/CS161"
 alias cs161="cd $CS161_DIR"
 alias os161="cd $CS161_DIR/os161"
 alias root161="cd $CS161_DIR/root"
-alias debug161="sys161 -w kernel"
+alias run161="cd $CS161_DIR/root; sys161 kernel"
+alias debug161="cd $CS161_DIR/root; sys161 -w kernel"
 alias gdb161="mips-harvard-os161-gdb kernel"
 
 # auto-build os161 kernel
-function build161() {
+function fullbuild161() {
     if [[ -z "$1" ]]; then
         echo "usage: build161 asst_num";
         return;
@@ -108,26 +110,34 @@ function build161() {
     cd "$orig_cwd";
 }
 
-function run161() {
+# auto-build os161 kernel #2
+function build161() {
     if [[ -z "$1" ]]; then
-        echo "usage: run161 asst_num";
+        echo "usage: build161 asst_num";
         return;
     fi
 
-    cd "$CS161_DIR/os161/kern/conf"
-    ./config "ASST$1"
+    orig_cwd=$(pwd);
     cd "$CS161_DIR/os161/kern/compile/ASST$1"
     bmake depend
     bmake
     bmake install
-    cd "$CS161_DIR/root";
-    sys161 kernel;
+    cd "$orig_cwd";
+}
+
+# auto-build userland for 161
+function ubuild161() {
+    orig_cwd=$(pwd);
+    cd "$CS161_DIR/os161/userland"
+    bmake
+    bmake install
+    cd "$orig_cwd";
 }
 
 # side projects/employment
 alias turch="cd $HOME/Dropbox/Turchin/"
 alias spotifyproj="workon s2i; cd $HOME/Dropbox/CodeStuff/spotify2itunes/"
-alias pfr="workon pfr; cd $HOME/Dropbox/CodeStuff/HSACPosts/NFLPosts/pfr"
+alias sportsref="workon sportsref; cd $HOME/Dropbox/CodeStuff/HSACPosts/NFLPosts/sportsref"
 alias dotfiles="cd $HOME/dotfiles"
 alias crim="workon crim; cd $HOME/Dropbox/Crimson/crimsononline"
 alias crim_clearcache="vagrant ssh -c 'rm -rf /srv/crimson/static/CACHE' && ./vagrant_manage.sh collectstatic --noinput"
