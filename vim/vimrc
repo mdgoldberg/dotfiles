@@ -18,6 +18,9 @@ set number
 set autoread
 set nocompatible
 
+" enable the mouse
+set mouse=a
+
 " set colorscheme
 syntax enable
 set background=dark
@@ -73,6 +76,7 @@ set shiftwidth=4
 set tabstop=4
 set expandtab
 
+" make movements visual lines instead of actual lines
 nnoremap j gj
 nnoremap k gk
 nnoremap 0 g0
