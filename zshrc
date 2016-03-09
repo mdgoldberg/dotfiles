@@ -110,7 +110,7 @@ function fullbuild161() {
     cd "$orig_cwd";
 }
 
-# auto-build os161 kernel #2
+# auto-build os161 kernel (doesn't run ./config ASST#)
 function build161() {
     if [[ -z "$1" ]]; then
         echo "usage: build161 asst_num";
