@@ -22,8 +22,9 @@ set nocompatible
 set mouse=a
 
 " set colorscheme
-syntax enable
+colorscheme slate
 set background=dark
+syntax on
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
