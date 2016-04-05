@@ -45,8 +45,14 @@ bindkey -e
 # better settings for `less`
 export LESS=-iXFR
 
-# disable vim's r command
+# disable vim's r command so it doesn't interfere with R
 disable r
+
+# note: precmd is run before each command
+precmd()
+{
+    stty sane;
+}
 
 # My Aliases
 alias lsash="ls -laSh"
@@ -91,7 +97,7 @@ alias os161="cd $CS161_DIR/os161"
 alias root161="cd $CS161_DIR/root"
 alias run161="cd $CS161_DIR/root; sys161 kernel"
 alias debug161="cd $CS161_DIR/root; sys161 -w kernel"
-alias gdb161="mips-harvard-os161-gdb kernel"
+alias gdb161="cd $CS161_DIR/root; mips-harvard-os161-gdb kernel"
 
 # auto-build os161 kernel
 function fullbuild161() {
