@@ -53,7 +53,7 @@ autocmd filetype rnoweb let b:dispatch = 'R CMD Sweave "%" && latexmk -pdf "%:r.
 autocmd filetype python let b:dispatch = 'python "%"'
 autocmd filetype r let b:dispatch = 'r -q "%"'
 autocmd filetype tex let b:dispatch = 'latexmk -pdf -interaction=nonstopmode "%" && latexmk -c'
-autocmd filetype text let b:dispatch = 'pandoc "%" -o "%:r.pdf" -V geometry:margin=0.5in'
+autocmd filetype text let b:dispatch = 'pandoc "%" -r markdown+raw_tex+latex_macros -o "%:r.pdf" -V geometry:margin=0.5in'
 " Special for viewing PDFs
 autocmd filetype tex,rnoweb,text nnoremap <leader>dv :w<CR>:silent execute "Dispatch! open '%:r.pdf'"<CR>
 
