@@ -176,7 +176,7 @@ export PATH=$PATH:$HOME/.vim/bin
 export PATH=$PATH:$HOME/anaconda2/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin
-export PATH=$PATH:/opt/X11/bin:/usr/texbin
+export PATH=$PATH:/opt/X11/bin:/Library/TeX/texbin
 
 # virtualenvwrapper configuration
 export WORKON_HOME=$HOME/.virtualenvs
