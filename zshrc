@@ -95,7 +95,6 @@ export CS161_DIR="$HOME/Dropbox/Junior/CS161"
 alias cs161="cd $CS161_DIR"
 alias os161="cd $CS161_DIR/os161"
 alias root161="cd $CS161_DIR/root"
-alias run161="cd $CS161_DIR/root; sys161 kernel"
 alias debug161="cd $CS161_DIR/root; sys161 -w kernel"
 alias gdb161="cd $CS161_DIR/root; mips-harvard-os161-gdb kernel"
 
@@ -135,9 +134,15 @@ function build161() {
 function ubuild161() {
     orig_cwd=$(pwd);
     cd "$CS161_DIR/os161/userland"
+    bmake depend
     bmake
     bmake install
     cd "$orig_cwd";
+}
+
+function run161() {
+  cd $CS161_DIR/root;
+  sys161 "$@" kernel "mount sfs lhd1";
 }
 
 # side projects/employment
