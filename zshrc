@@ -95,8 +95,8 @@ export CS161_DIR="$HOME/Dropbox/Junior/CS161"
 alias cs161="cd $CS161_DIR"
 alias os161="cd $CS161_DIR/os161"
 alias root161="cd $CS161_DIR/root"
-alias debug161="cd $CS161_DIR/root; sys161 -w kernel"
-alias gdb161="cd $CS161_DIR/root; mips-harvard-os161-gdb kernel"
+alias debug161="cd $CS161_DIR/root > /dev/null; sys161 -w kernel"
+alias gdb161="cd $CS161_DIR/root > /dev/null; mips-harvard-os161-gdb kernel"
 
 # auto-build os161 kernel
 function fullbuild161() {
@@ -106,13 +106,13 @@ function fullbuild161() {
     fi
 
     orig_cwd=$(pwd);
-    cd "$CS161_DIR/os161/kern/conf"
+    cd "$CS161_DIR/os161/kern/conf" > /dev/null
     ./config "ASST$1"
-    cd "$CS161_DIR/os161/kern/compile/ASST$1"
+    cd "$CS161_DIR/os161/kern/compile/ASST$1" > /dev/null
     bmake depend
     bmake
     bmake install
-    cd "$orig_cwd";
+    cd "$orig_cwd" > /dev/null;
 }
 
 # auto-build os161 kernel (doesn't run ./config ASST#)
@@ -123,26 +123,51 @@ function build161() {
     fi
 
     orig_cwd=$(pwd);
-    cd "$CS161_DIR/os161/kern/compile/ASST$1"
+    cd "$CS161_DIR/os161/kern/compile/ASST$1" > /dev/null
     bmake depend
     bmake
     bmake install
-    cd "$orig_cwd";
+    cd "$orig_cwd" > /dev/null;
 }
 
 # auto-build userland for 161
 function ubuild161() {
     orig_cwd=$(pwd);
-    cd "$CS161_DIR/os161/userland"
+    cd "$CS161_DIR/os161/userland" > /dev/null
     bmake depend
     bmake
     bmake install
-    cd "$orig_cwd";
+    cd "$orig_cwd" > /dev/null
 }
 
+# run sys161, mounting an SFS volume immediately
 function run161() {
-  cd $CS161_DIR/root;
+  cd $CS161_DIR/root > /dev/null;
   sys161 "$@" kernel "mount sfs lhd1";
+}
+
+# dump the SFS journal
+function dumpsfs161() {
+    orig_cwd=$(pwd);
+    cd "$CS161_DIR/root" > /dev/null;
+    hostbin/host-dumpsfs "$@" LHD1.img;
+    cd "$orig_cwd" > /dev/null;
+}
+
+# check the SFS volume's consistency
+function sfsck161() {
+    orig_cwd=$(pwd);
+    cd "$CS161_DIR/root" > /dev/null;
+    hostbin/host-sfsck LHD1.img;
+    cd "$orig_cwd" > /dev/null;
+}
+
+# clean the SFS volume
+function wipesfs161() {
+    orig_cwd=$(pwd);
+    cd "$CS161_DIR/root" > /dev/null;
+    hostbin/host-mksfs LHD1.img mydisk;
+    cd "$orig_cwd" > /dev/null;
 }
 
 # side projects/employment
