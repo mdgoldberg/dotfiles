@@ -1,9 +1,12 @@
 #! /usr/bin/env python2.7
 
 import os
+import subprocess
 
 HOME_DIR = os.getenv('HOME')
 DOTFILES_DIR = os.getenv('DOTFILES_DIR')
+
+# 1. CREATE SYMLINKS
 
 def dest_fn(rel_fn):
     return os.path.join(HOME_DIR, '.' + rel_fn)
@@ -31,3 +34,13 @@ for dotf in DOTFILES:
     except OSError as e:
         print str(e)
         pass
+
+# 2. INSTALL VUNDLE AND PLUGINS
+subprocess.call(
+    ['git', 'clone',
+     'https://github.com/VundleVim/Vundle.vim.git',
+     '~/.vim/bundle/Vundle.vim']
+)
+subprocess.call(
+    ['vim', '+PluginInstall', '+qall']
+)
