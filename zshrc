@@ -173,7 +173,7 @@ function wipesfs161() {
 # side projects/employment
 alias turch="cd $HOME/Dropbox/Turchin/"
 alias spotifyproj="workon s2i; cd $HOME/Dropbox/CodeStuff/spotify2itunes/"
-alias sportsref="workon sportsref; cd $HOME/Dropbox/CodeStuff/HSACPosts/NFLPosts/sportsref"
+alias sportsref="workon sportsref; cd $HOME/Dropbox/CodeStuff/HSACPosts/sportsref"
 alias dotfiles="cd $HOME/dotfiles"
 alias crim="workon crim; cd $HOME/Dropbox/Crimson/crimsononline"
 alias crim_clearcache="vagrant ssh -c 'rm -rf /srv/crimson/static/CACHE' && ./vagrant_manage.sh collectstatic --noinput"
@@ -187,9 +187,9 @@ function chpwd() {
 # set up a Framework build of Python
 function fwpy {
 	if [[ ! -z "$VIRTUAL_ENV" ]]; then
-		PYTHONHOME=$VIRTUAL_ENV /usr/local/bin/python "$@"
+		PYTHONHOME=$VIRTUAL_ENV python "$@"
 	else
-		/usr/local/bin/python "$@"
+		python "$@"
 	fi
 }
 # set up a Framework build of IPython
@@ -203,8 +203,8 @@ export DATA_DIR=$DOTFILES_DIR/data
 export BIN_DIR=$DOTFILES_DIR/bin
 export PATH=$BIN_DIR
 export PATH=$PATH:$HOME/.vim/bin
-export PATH=$PATH:$HOME/anaconda2/bin
 export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=$PATH:/opt/X11/bin:/Library/TeX/texbin
 
