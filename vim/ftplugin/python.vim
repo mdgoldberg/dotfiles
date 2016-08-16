@@ -8,9 +8,6 @@ set autoindent
 set fileformat=unix
 retab
 
-" Flag unnecessary whitespace
-match BadWhitespace /\s\+$/
-
 " UTF-8
 set encoding=utf-8
 
@@ -32,6 +29,4 @@ autocmd filetype python let b:dispatch = 'python "%"'
 
 " SimpylFold options
 let g:SimpylFold_docstring_preview=1
-
-" Jedi overrides
-let g:jedi#popup_on_dot = 0
+let g:SimpylFold_fold_import=0
