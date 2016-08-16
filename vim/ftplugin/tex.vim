@@ -1,20 +1,18 @@
-" tabs are 2 spaces
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
-set noexpandtab
-
 set iskeyword+=:
 
 set wrap
 set linebreak
-nnoremap j gj
-nnoremap k gk
-nnoremap 0 g0
-nnoremap ^ g^
-nnoremap $ g$
-vnoremap j gj
-vnoremap k gk
-vnoremap 0 g0
-vnoremap ^ g^
-vnoremap $ g$
+
+" Vim-Latex configs
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_ViewRule_pdf = 'open -a /Applications/Skim.app'
+let g:Tex_CompileRule_pdf='latexmk -pdf -interaction=nonstopmode "$*"'
+
+" Dispatch configs
+let b:dispatch = 'latexmk -pdf -interaction=nonstopmode "%" && latexmk -c'
+nnoremap <leader>dv :w<CR>:silent execute "Dispatch! open '%:r.pdf'"<CR>
+
+" Unmap random Vim-R-Plugin stuff
+let g:vimrplugin_insert_mode_cmds = 0
