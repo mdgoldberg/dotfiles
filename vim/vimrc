@@ -24,6 +24,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'bitc/vim-bad-whitespace'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'yegappan/greplace'
 
 " Python plugins
 Plugin 'vim-scripts/indentpython.vim'

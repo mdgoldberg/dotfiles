@@ -30,3 +30,6 @@ autocmd filetype python let b:dispatch = 'python "%"'
 " SimpylFold options
 let g:SimpylFold_docstring_preview=1
 let g:SimpylFold_fold_import=0
+
+" set up red vertical line at 80th column
+set colorcolumn=80
