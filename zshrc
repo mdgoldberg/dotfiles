@@ -59,16 +59,17 @@ alias lsash="ls -laSh"
 alias zshrc="vim $HOME/.zshrc"
 alias reload_zshrc="source $HOME/.zshrc"
 alias vimrc="vim $HOME/.vim/vimrc"
-alias lc="latexmk -c; echo ''; ls"
+alias htop="sudo htop"
+alias gloga='git log --oneline --decorate --color --graph --all'
 alias py="python"
 alias ipy="ipython"
 alias r="r -q"
+alias lc="latexmk -c; echo ''; ls"
 alias diff="colordiff"
-alias pipupgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo -H pip install -U"
-alias registerPyPI="python setup.py register"
-alias uploadPyPI="rm -rf dist && python setup.py sdist bdist_wheel && twine upload dist/*"
-alias htop="sudo htop"
-alias gloga='git log --oneline --decorate --color --graph --all'
+alias pip_upgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo -H pip install -U"
+alias register_pypi="python setup.py register"
+alias upload_pypi="rm -rf dist && python setup.py sdist bdist_wheel && twine upload dist/*"
+alias new_data_analysis="cookiecutter https://github.com/drivendata/cookiecutter-data-science"
 
 # frosh
 alias frosh="cd $HOME/Dropbox/Frosh"
