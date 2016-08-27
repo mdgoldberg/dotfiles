@@ -33,3 +33,6 @@ let g:SimpylFold_fold_import=0
 
 " set up red vertical line at 80th column
 set colorcolumn=80
+
+" jedi-vim configs
+let g:jedi#popup_on_dot = 0
