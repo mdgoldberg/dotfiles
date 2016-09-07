@@ -36,3 +36,6 @@ set colorcolumn=80
 
 " jedi-vim configs
 let g:jedi#popup_on_dot = 0
+
+" set flake8 to be the checker for Syntastic
+let g:syntastic_python_checkers = ['flake8']

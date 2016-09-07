@@ -21,12 +21,12 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'lambacck/vim-matchit'
 Plugin 'scrooloose/syntastic'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'bitc/vim-bad-whitespace'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'yegappan/greplace'
 
 " Python plugins
+Plugin 'davidhalter/jedi-vim'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'nvie/vim-flake8'
