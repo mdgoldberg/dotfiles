@@ -1,7 +1,5 @@
 #! /usr/bin/env python
 
-# link: http://www.cs.technion.ac.il/~yogi/Courses/CS-Scientific-Writing/examples/simple/simple.tex
-
 import os
 import requests
 import sys
@@ -13,7 +11,7 @@ url = ('http://www.cs.technion.ac.il/~yogi/Courses/'
 if len(sys.argv) >= 2:
     newfile = sys.argv[1]
 else:
-    print 'Usage: makeLatex filename'
+    print 'Usage: startLatex filename'
     sys.exit(1)
 
 if os.path.isfile(template):
