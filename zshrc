@@ -29,8 +29,8 @@ export EDITOR=vim
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git autojump python pip django virtualenvwrapper brew osx vagrant history sudo)
 
-# autojump fix
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+# autojump config
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 # User configuration
 
