@@ -90,6 +90,12 @@ alias cs109="cd $HOME/Dropbox/Junior/CS109"
 alias stat131="cd $HOME/Dropbox/Junior/Stat131"
 alias cs182="cd $HOME/Dropbox/Junior/CS182"
 alias cs136="cd $HOME/Dropbox/Junior/CS136"
+# sr
+alias sr="cd $HOME/Dropbox/Senior"
+alias mcb112="cd $HOME/Dropbox/Senior/mcb112 && workon mcb112"
+alias psy1401="cd $HOME/Dropbox/Senior/psy1401"
+alias stat120="cd $HOME/Dropbox/Senior/stat120"
+alias tf_cs182="cd $HOME/Dropbox/Senior/cs182"
 
 # jr - cs161
 export CS161_DIR="$HOME/Dropbox/Junior/CS161"
