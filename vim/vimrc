@@ -83,8 +83,8 @@ let g:SuperTabContextDiscoverDiscovery =
             \ ["&completefunc:<c-p>", "&omnifunc:<c-x><c-o>"]
 
 " Dispatch mappings
-nnoremap <leader>dp :w<CR>:silent execute "Dispatch"<CR>
-nnoremap <leader>dd :w<CR>:silent execute "Dispatch!"<CR>
+nnoremap <leader>dp :w<CR>:Dispatch<CR>
+nnoremap <leader>dd :w<CR>:Dispatch!<CR>
 
 " Quickfix/Preview/Location mappings
 nnoremap <leader>qq :cclose<CR> :pclose<CR> :lclose<CR>
