@@ -10,9 +10,5 @@ let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_ViewRule_pdf = 'open -a /Applications/Skim.app'
 let g:Tex_CompileRule_pdf='latexmk -pdf -interaction=nonstopmode "$*"'
 
-" Dispatch configs
-let b:dispatch = 'latexmk -pdf -interaction=nonstopmode "%" && latexmk -c'
-nnoremap <leader>dv :w<CR>:silent execute "Dispatch! open '%:r.pdf'"<CR>
-
 " Unmap random Vim-R-Plugin stuff
 let g:vimrplugin_insert_mode_cmds = 0
