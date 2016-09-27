@@ -8,16 +8,28 @@
 \usepackage{enumerate}
 \usepackage{amsmath, amssymb, amsthm, mathtools}
 
+% Statistics
 \newcommand{\E}[1]{\mathbb{E}\left[ #1 \right]}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\F}[1]{\mathcal{F}_{#1}}
 \newcommand{\var}[1]{\mathrm{Var}\left[ #1 \right]}
 \newcommand{\cov}[2]{\mathrm{Cov}\left[ #1 , #2 \right]}
-\DeclareMathOperator*{\argmax}{arg\,max}
-\DeclareMathOperator*{\argmin}{arg\,min}
 \newcommand{\iid}{\textrm{ i.i.d.}}
 \newcommand{\simiid}{\overset\iid\sim}
+% Distributions
+\newcommand{\Norm}[2]{\mathrm{\mathcal{N}\left(#1, #2\right)}}
+\newcommand{\Bin}[2]{\mathrm{Bin\left(#1, #2\right)}}
+\newcommand{\Bern}[1]{\mathrm{Bern\left( #1 \right)}}
+\newcommand{\Pois}[1]{\mathrm{Pois\left( #1 \right)}}
+\newcommand{\Expo}[1]{\mathrm{Expo\left( #1 \right)}}
+\newcommand{\GammaDist}[2]{\mathrm{Gamma\left( #1, #2 \right)}}
+% Sets
+\newcommand{\R}{\mathbb{Z}} % reals
+\newcommand{\Z}{\mathbb{Z}} % integers
+\newcommand{\N}{\mathbb{N}} % natural numbers
+\newcommand{\F}[1]{\mathcal{F}_{#1}}
+% argmin, argmax
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+% if/otherwise for cases environment
 \newcommand{\myif}{& \textrm{if }}
 \newcommand{\myotherwise}{& \textrm{otherwise.}}
 
