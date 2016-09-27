@@ -24,9 +24,6 @@ if 'VIRTUAL_ENV' in os.environ:
     execfile(activate_this, dict(__file__=activate_this))
 EOF
 
-" Dispatch command
-autocmd filetype python let b:dispatch = 'python "%"'
-
 " SimpylFold options
 let g:SimpylFold_docstring_preview=1
 let g:SimpylFold_fold_import=0

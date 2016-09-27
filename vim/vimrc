@@ -83,8 +83,9 @@ let g:SuperTabContextDiscoverDiscovery =
             \ ["&completefunc:<c-p>", "&omnifunc:<c-x><c-o>"]
 
 " Dispatch mappings
-nnoremap <leader>dp :w<CR>:Dispatch<CR>
-nnoremap <leader>dd :w<CR>:Dispatch!<CR>
+nnoremap <leader>dp :w<CR>:Make "%:r.pdf"<CR>
+nnoremap <leader>dd :w<CR>:Make! "%:r.pdf"<CR>
+nnoremap <leader>dv :w<CR>:Dispatch! open "%:r.pdf"<CR>
 
 " Quickfix/Preview/Location mappings
 nnoremap <leader>qq :cclose<CR> :pclose<CR> :lclose<CR>
