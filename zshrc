@@ -180,7 +180,7 @@ function wipesfs161() {
 # side projects/employment
 alias turch="cd $HOME/Dropbox/Turchin/"
 alias spotifyproj="workon s2i; cd $HOME/Dropbox/CodeStuff/spotify2itunes/"
-alias sportsref="workon sportsref; cd $HOME/Dropbox/CodeStuff/HSACPosts/sportsref"
+alias sportsref="workon sportsref; cd $HOME/Dropbox/CodeStuff/sports_analytics/sportsref"
 alias dotfiles="cd $HOME/dotfiles"
 alias crim="workon crim; cd $HOME/Dropbox/Crimson/crimsononline"
 alias crim_clearcache="vagrant ssh -c 'rm -rf /srv/crimson/static/CACHE' && ./vagrant_manage.sh collectstatic --noinput"
