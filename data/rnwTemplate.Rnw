@@ -7,6 +7,7 @@
 \usepackage[margin=0.5in]{geometry}
 \usepackage{enumerate}
 \usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage[parfill]{parskip}
 
 % Statistics
 \newcommand{\Prob}[1]{P\left( #1 \right)}
@@ -18,6 +19,7 @@
 \newcommand{\simiid}{\overset\iid\sim}
 % Distributions
 \newcommand{\Norm}[2]{\mathrm{\mathcal{N}\left(#1, #2\right)}}
+\newcommand{\Unif}[2]{\mathrm{Unif\left(#1, #2\right)}}
 \newcommand{\Bin}[2]{\mathrm{Bin\left(#1, #2\right)}}
 \newcommand{\Bern}[1]{\mathrm{Bern\left( #1 \right)}}
 \newcommand{\Pois}[1]{\mathrm{Pois\left( #1 \right)}}
