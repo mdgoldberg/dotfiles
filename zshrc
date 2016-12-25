@@ -61,10 +61,12 @@ alias reload_zshrc="source $HOME/.zshrc"
 alias vimrc="vim $HOME/.vim/vimrc"
 alias htop="sudo htop"
 alias gloga='git log --oneline --decorate --color --graph --all'
-alias py="python"
+alias py="python2"
 alias py3="python3"
-alias ipy="python -m IPython"
+alias ipy="python2 -m IPython"
 alias ipy3="python3 -m IPython"
+alias pip="python2 -m pip"
+alias pip3="python3 -m pip"
 alias r="r -q"
 alias lc="latexmk -c; echo ''; ls"
 alias diff="colordiff"
@@ -196,13 +198,22 @@ function chpwd() {
 # set up a Framework build of Python
 function fwpy {
 	if [[ ! -z "$VIRTUAL_ENV" ]]; then
-		PYTHONHOME=$VIRTUAL_ENV python "$@"
+		PYTHONHOME=$VIRTUAL_ENV /usr/local/bin/python2 "$@"
 	else
-		python "$@"
+		python2 "$@"
+	fi
+}
+# set up a Framework build of Python
+function fwpy3 {
+	if [[ ! -z "$VIRTUAL_ENV" ]]; then
+		PYTHONHOME=$VIRTUAL_ENV /usr/local/bin/python3 "$@"
+	else
+		python3 "$@"
 	fi
 }
 # set up a Framework build of IPython
 alias fwipy="fwpy -m IPython"
+alias fwipy3="fwpy3 -m IPython"
 
 export MANPATH="/usr/local/man:$MANPATH"
 
