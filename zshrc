@@ -72,7 +72,7 @@ alias lc="latexmk -c; echo ''; ls"
 alias diff="colordiff"
 alias pip_upgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo -H pip install -U"
 alias register_pypi="python setup.py register"
-alias upload_pypi="rm -rf dist && python setup.py sdist bdist_wheel && twine upload dist/*"
+alias upload_pypi="rm -rf dist && python setup.py sdist bdist_wheel && twine upload dist/* && rm -rf dist build *.egg_info"
 alias new_data_analysis="cookiecutter https://github.com/drivendata/cookiecutter-data-science"
 
 # frosh
@@ -232,3 +232,6 @@ export PATH=$PATH:/opt/X11/bin:/Library/TeX/texbin
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=$(which python)
 source /usr/local/bin/virtualenvwrapper.sh
+
+# fzf configuration
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
