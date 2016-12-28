@@ -1,67 +1,112 @@
-set nocompatible
-filetype off
+" Vim-Plug Plugin Manager
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" install vim-plug if not already installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
 
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " General plugins
-Plugin 'tpope/vim-sensible'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'ervandew/supertab'
-Plugin 'majutsushi/tagbar'
-Plugin 'sirver/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'lambacck/vim-matchit'
-Plugin 'scrooloose/syntastic'
-Plugin 'bitc/vim-bad-whitespace'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'yegappan/greplace'
+Plug 'tpope/vim-sensible'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ervandew/supertab'
+Plug 'majutsushi/tagbar'
+Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+Plug 'lambacck/vim-matchit'
+Plug 'scrooloose/syntastic'
+Plug 'bitc/vim-bad-whitespace'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'yegappan/greplace'
 
 " Python plugins
-Plugin 'davidhalter/jedi-vim'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'nvie/vim-flake8'
-Plugin 'ivanov/vim-ipython'
+Plug 'davidhalter/jedi-vim'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'tmhedberg/SimpylFold'
+Plug 'nvie/vim-flake8'
+Plug 'ivanov/vim-ipython'
 
 " Other language-specific plugins
-Plugin 'lervag/vimtex'
-Plugin 'Vim-R-plugin2'
-Plugin 'derekwyatt/vim-scala'
+Plug 'lervag/vimtex'
+Plug 'Vim-R-plugin2'
+Plug 'derekwyatt/vim-scala'
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-" see :h vundle for more details or wiki for FAQ
+" vim > vi
+set nocompatible
 
+" syntax highlighting and auto-indentation
+syntax on
+filetype indent on
+filetype plugin on
+set ai
+set si
 
-" Use jk or kj to leave insert mode and return to normal mode
-imap jk <ESC>
-imap kj <ESC>
-imap JK <ESC>
-imap KJ <ESC>
-imap Jk <ESC>
-imap jK <ESC>
-imap Kj <ESC>
-imap kJ <ESC>
+" use ; instead of :
+nnoremap ; :"
 
-" some random nice settings
+" use jk or kj to leave insert mode and return to normal mode
+imap jk <ESC>:w<CR>
+imap kj <ESC>:w<CR>
+imap JK <ESC>:w<CR>
+imap KJ <ESC>:w<CR>
+imap Jk <ESC>:w<CR>
+imap jK <ESC>:w<CR>
+imap Kj <ESC>:w<CR>
+imap kJ <ESC>:w<CR>
+
+" faster tab navigation
+nnoremap <S-tab> :tabprevious<CR>
+nnoremap <tab> :tabnext<CR>
+
+" use system clipboard by default
+set clipboard=unnamed
+
+" searching options
+set incsearch
+set showcmd
 set ignorecase
+set smartcase
+
+" disable backups
+set nobackup
+set nowritebackup
+set noswapfile
+
+" disable annoying beep on errors
+set noerrorbells
+if has('autocmd')
+  autocmd GUIEnter * set vb t_vb=
+endif
+
+" keep at least 5 lines on either side of cursor
+set scrolloff=5
+
+" window options
+set showmode
+set showcmd
+set ruler
+set ttyfast
+set backspace=indent,eol,start
+set laststatus=2
+
+" line numbers
 set number
-set autoread
+highlight LineNr ctermfg=gray ctermbg=black
+
+" better tab completion on commands
+set wildmenu
+set wildmode=list:longest
+
+" close buffer when tab is closed
+set nohidden
 
 " enable the mouse
 set mouse=a
@@ -69,36 +114,35 @@ set mouse=a
 " set colorscheme
 colorscheme slate
 set background=dark
-syntax on
+
+" shortcuts to common commands
+let mapleader = ","
+nnoremap <leader>e :tabnew<CR>:CommandT<CR>
+" nnoremap <leader>l :NERDTreeToggle<CR>
+nnoremap <leader>o :CommandT<CR>
+nnoremap <leader>t :tabnew<CR>
+nnoremap <leader>s :vsplit<CR>
+nnoremap <leader>w :tabclose<CR>
 
 " trigger fold with space and open all folds by default
 nnoremap <space> za
 au BufRead * normal zR
 
-" Supertab configs
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-let g:SuperTabContextDiscoverDiscovery =
-            \ ["&completefunc:<c-p>", "&omnifunc:<c-x><c-o>"]
-
-" Dispatch mappings
-nnoremap <leader>dp :w<CR>:Make "%:r.pdf"<CR>
-nnoremap <leader>dd :w<CR>:Make! "%:r.pdf"<CR>
-nnoremap <leader>dv :w<CR>:Dispatch! open "%:r.pdf"<CR>
-
-" Quickfix/Preview/Location mappings
+" shortcut to close mini windows
 nnoremap <leader>qq :cclose<CR>:pclose<CR>:lclose<CR>
 
 " wrap and linebreak
 set wrap
 set linebreak
 
-" default tab settings
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set noexpandtab
+" default tab settings - expand tabs to 4 spaces
+set shiftwidth=4
+set tabstop=4
+set smarttab
+set expandtab
+
+" always show tab line to avoid annoying resize
+set showtabline=2
 
 " make movements visual lines instead of actual lines
 nnoremap j gj
@@ -126,3 +170,15 @@ let g:syntastic_check_on_wq = 0
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" Supertab configs
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+let g:SuperTabContextDiscoverDiscovery =
+            \ ["&completefunc:<c-p>", "&omnifunc:<c-x><c-o>"]
+
+" Dispatch mappings
+nnoremap <leader>dp :w<CR>:Make "%:r.pdf"<CR>
+nnoremap <leader>dd :w<CR>:Make! "%:r.pdf"<CR>
+nnoremap <leader>dv :w<CR>:Dispatch! open "%:r.pdf"<CR>
