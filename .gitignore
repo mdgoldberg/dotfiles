@@ -3,4 +3,5 @@
 **/*.pyc
 **/*.swp
 **/.hate
-vim/bundle
+vim/autoload
+vim/plugged
