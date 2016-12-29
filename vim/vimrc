@@ -11,7 +11,6 @@ call plug#begin('~/.vim/plugged')
 
 " General plugins
 Plug 'tpope/vim-sensible'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
 Plug 'sirver/ultisnips'
@@ -24,18 +23,20 @@ Plug 'scrooloose/syntastic'
 Plug 'bitc/vim-bad-whitespace'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'yegappan/greplace'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Python plugins
-Plug 'davidhalter/jedi-vim'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'tmhedberg/SimpylFold'
-Plug 'nvie/vim-flake8'
-Plug 'ivanov/vim-ipython'
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
+Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
+Plug 'nvie/vim-flake8', { 'for': 'python' }
+Plug 'ivanov/vim-ipython', { 'for': 'python' }
 
 " Other language-specific plugins
-Plug 'lervag/vimtex'
-Plug 'Vim-R-plugin2'
-Plug 'derekwyatt/vim-scala'
+Plug 'lervag/vimtex', { 'for': ['tex', 'rnoweb'] }
+Plug 'Vim-R-plugin2', { 'for': ['R', 'rnoweb'] }
+Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 
 call plug#end()
 
