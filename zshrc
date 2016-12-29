@@ -1,8 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in $HOME/.oh-my-zsh/themes/
+# Set name of the theme to load.  Look in $HOME/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
@@ -10,21 +9,18 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 export EDITOR=vim
 
-# Which plugins would you like to load? (plugins can be found in $HOME/.oh-my-zsh/plugins/*)
+# Plugins can be found in $HOME/.oh-my-zsh/plugins/*
 # Custom plugins may be added to $HOME/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git autojump python pip django virtualenvwrapper brew osx vagrant history sudo)
@@ -32,9 +28,8 @@ plugins=(git autojump python pip django virtualenvwrapper brew osx vagrant histo
 # autojump config
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
-# User configuration
-
-source $ZSH/oh-my-zsh.sh
+# fzf configuration
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # enable shift+tab for going back in auto complete menu
 bindkey '^[[Z' reverse-menu-complete
@@ -232,6 +227,3 @@ export PATH=$PATH:/opt/X11/bin:/Library/TeX/texbin
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=$(which python)
 source /usr/local/bin/virtualenvwrapper.sh
-
-# fzf configuration
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
