@@ -6,7 +6,29 @@ import subprocess
 HOME_DIR = os.getenv('HOME')
 DOTFILES_DIR = os.getenv('DOTFILES_DIR')
 
-# 1. CREATE SYMLINKS
+# 1. INSTALL OH-MY-ZSH
+
+subprocess.call(
+    ['curl', '-fsSLo', 'oh-my-zsh-install.sh',
+     'https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh']
+)
+subprocess.call(
+    ['sh', 'oh-my-zsh-install.sh']
+)
+os.remove('oh-my-zsh-install.sh')
+
+# 2. INSTALL VIM-PLUG AND PLUGINS
+
+subprocess.call(
+    ['curl', '-fLo', '{}/.vim/autoload/plug.vim'.format(HOME_DIR),
+     '--create-dirs',
+     'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim']
+)
+subprocess.call(
+    ['vim', '+PlugInstall', '+qall']
+)
+
+# 3. CREATE SYMLINKS
 
 
 def dest_fn(rel_fn):
@@ -38,25 +60,3 @@ for dotf in DOTFILES:
     except OSError as e:
         print str(e)
         pass
-
-# 2. INSTALL VIM-PLUG AND PLUGINS
-
-subprocess.call(
-    ['curl', '-fLo', '{}/.vim/autoload/plug.vim'.format(HOME_DIR),
-     '--create-dirs',
-     'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim']
-)
-subprocess.call(
-    ['vim', '+PlugInstall', '+qall']
-)
-
-# 3. INSTALL OH-MY-ZSH
-
-subprocess.call(
-    ['curl', '-fsSLo', 'oh-my-zsh-install.sh',
-     'https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh']
-)
-subprocess.call(
-    ['sh', 'oh-my-zsh-install.sh']
-)
-os.remove('oh-my-zsh-install.sh')
