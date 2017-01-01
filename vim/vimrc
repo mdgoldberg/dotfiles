@@ -51,17 +51,17 @@ set ai
 set si
 
 " use ; instead of :
-nnoremap ; :"
+nnoremap ; :
 
 " use jk or kj to leave insert mode and return to normal mode
-imap jk <ESC>:w<CR>
-imap kj <ESC>:w<CR>
-imap JK <ESC>:w<CR>
-imap KJ <ESC>:w<CR>
-imap Jk <ESC>:w<CR>
-imap jK <ESC>:w<CR>
-imap Kj <ESC>:w<CR>
-imap kJ <ESC>:w<CR>
+imap jk <ESC>
+imap kj <ESC>
+imap JK <ESC>
+imap KJ <ESC>
+imap Jk <ESC>
+imap jK <ESC>
+imap Kj <ESC>
+imap kJ <ESC>
 
 " faster tab navigation
 nnoremap <S-tab> :tabprevious<CR>
@@ -118,9 +118,9 @@ set background=dark
 
 " shortcuts to common commands
 let mapleader = ","
-nnoremap <leader>e :tabnew<CR>:CommandT<CR>
+nnoremap <leader>e :tabnew<CR>:FZF<CR>
 " nnoremap <leader>l :NERDTreeToggle<CR>
-nnoremap <leader>o :CommandT<CR>
+nnoremap <leader>o :FZF<CR>
 nnoremap <leader>t :tabnew<CR>
 nnoremap <leader>s :vsplit<CR>
 nnoremap <leader>w :tabclose<CR>

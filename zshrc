@@ -25,6 +25,10 @@ export EDITOR=vim
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git autojump python pip django virtualenvwrapper brew osx vagrant history sudo)
 
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
 # autojump config
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
@@ -56,11 +60,11 @@ alias reload_zshrc="source $HOME/.zshrc"
 alias vimrc="vim $HOME/.vim/vimrc"
 alias htop="sudo htop"
 alias gloga='git log --oneline --decorate --color --graph --all'
-alias py="python2"
+alias py="python"
 alias py3="python3"
-alias ipy="python2 -m IPython"
+alias ipy="python -m IPython"
 alias ipy3="python3 -m IPython"
-alias pip="python2 -m pip"
+alias pip="python -m pip"
 alias pip3="python3 -m pip"
 alias r="r -q"
 alias lc="latexmk -c; echo ''; ls"
@@ -193,9 +197,9 @@ function chpwd() {
 # set up a Framework build of Python
 function fwpy {
 	if [[ ! -z "$VIRTUAL_ENV" ]]; then
-		PYTHONHOME=$VIRTUAL_ENV /usr/local/bin/python2 "$@"
+		PYTHONHOME=$VIRTUAL_ENV /usr/local/bin/python "$@"
 	else
-		python2 "$@"
+		python "$@"
 	fi
 }
 # set up a Framework build of Python
@@ -210,9 +214,10 @@ function fwpy3 {
 alias fwipy="fwpy -m IPython"
 alias fwipy3="fwpy3 -m IPython"
 
-export MANPATH="/usr/local/man:$MANPATH"
+# prevent Python from generating bytecode
+export PYTHONDONTWRITEBYTECODE=1
 
-# configuring environment variables and PATH
+# configuring environment variables like PATH
 export DOTFILES_DIR=$HOME/dotfiles
 export DATA_DIR=$DOTFILES_DIR/data
 export BIN_DIR=$DOTFILES_DIR/bin
@@ -222,6 +227,7 @@ export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=$PATH:/opt/X11/bin:/Library/TeX/texbin
+export MANPATH="/usr/local/man:$MANPATH"
 
 # virtualenvwrapper configuration
 export WORKON_HOME=$HOME/.virtualenvs
