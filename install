@@ -17,7 +17,13 @@ subprocess.call(
 )
 os.remove('oh-my-zsh-install.sh')
 
-# 2. INSTALL VIM-PLUG AND PLUGINS
+# 2. INSTALL BREW AND PIP PACKAGES
+# TODO: make this optional using one of click, invoke, fabric, etc.
+
+subprocess.call('cat brew_packages.txt | xargs brew install', shell=True)
+subprocess.call('pip install -r pip_packages.txt', shell=True)
+
+# 3. INSTALL VIM-PLUG AND PLUGINS
 
 subprocess.call(
     ['curl', '-fLo', '{}/.vim/autoload/plug.vim'.format(HOME_DIR),
@@ -28,7 +34,7 @@ subprocess.call(
     ['vim', '+PlugInstall', '+qall']
 )
 
-# 3. CREATE SYMLINKS
+# 4. CREATE SYMLINKS
 
 
 def dest_fn(rel_fn):
