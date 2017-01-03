@@ -4,7 +4,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load.  Look in $HOME/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="geoffgarside"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -216,6 +216,9 @@ alias fwipy3="fwpy3 -m IPython"
 
 # prevent Python from generating bytecode
 export PYTHONDONTWRITEBYTECODE=1
+
+# homebrew Github API token
+export HOMEBREW_GITHUB_API_TOKEN='eeb95873d06281e27cab7598476edfed645a9c2a'
 
 # configuring environment variables like PATH
 export DOTFILES_DIR=$HOME/dotfiles
