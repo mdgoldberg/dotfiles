@@ -217,8 +217,8 @@ alias fwipy3="fwpy3 -m IPython"
 # prevent Python from generating bytecode
 export PYTHONDONTWRITEBYTECODE=1
 
-# homebrew Github API token
-export HOMEBREW_GITHUB_API_TOKEN='eeb95873d06281e27cab7598476edfed645a9c2a'
+# holds passwords and API tokens that shouldn't be in source control
+source .secrets
 
 # configuring environment variables like PATH
 export DOTFILES_DIR=$HOME/dotfiles
