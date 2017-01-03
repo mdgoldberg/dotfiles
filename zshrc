@@ -214,12 +214,6 @@ function fwpy3 {
 alias fwipy="fwpy -m IPython"
 alias fwipy3="fwpy3 -m IPython"
 
-# prevent Python from generating bytecode
-export PYTHONDONTWRITEBYTECODE=1
-
-# holds passwords and API tokens that shouldn't be in source control
-source .secrets
-
 # configuring environment variables like PATH
 export DOTFILES_DIR=$HOME/dotfiles
 export DATA_DIR=$DOTFILES_DIR/data
@@ -231,6 +225,12 @@ export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=$PATH:/opt/X11/bin:/Library/TeX/texbin
 export MANPATH="/usr/local/man:$MANPATH"
+
+# prevent Python from generating bytecode
+export PYTHONDONTWRITEBYTECODE=1
+
+# holds passwords and API tokens that shouldn't be in source control
+source $DOTFILES_DIR/.secrets
 
 # virtualenvwrapper configuration
 export WORKON_HOME=$HOME/.virtualenvs
