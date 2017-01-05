@@ -232,6 +232,9 @@ export PYTHONDONTWRITEBYTECODE=1
 # holds passwords and API tokens that shouldn't be in source control
 source $DOTFILES_DIR/.secrets
 
+# enables zsh autocomplete when using invoke (make for Python)
+source $DATA_DIR/pyinvoke_completions.zsh
+
 # virtualenvwrapper configuration
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=$(which python)
