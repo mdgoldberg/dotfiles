@@ -116,14 +116,20 @@ set mouse=a
 colorscheme slate
 set background=dark
 
+" function to check whether there is an open file in the current tab
+function! TabIsEmpty()
+    return winnr('$') == 1 && len(expand('%')) == 0 && line2byte(line('$') + 1) <= 2
+endfunction
+
 " shortcuts to common commands
 let mapleader = ","
-nnoremap <leader>e :tabnew<CR>:FZF<CR>
-" nnoremap <leader>l :NERDTreeToggle<CR>
-nnoremap <leader>o :FZF<CR>
-nnoremap <leader>t :tabnew<CR>
-nnoremap <leader>s :vsplit<CR>
+nnoremap <leader>e :FZF<CR>
+nnoremap <leader>n :tabnew<CR>
+nnoremap <expr> <leader>o TabIsEmpty() ? ":FZF<CR>" : ":tabnew<CR>:FZF<CR>"
 nnoremap <leader>w :tabclose<CR>
+nnoremap <leader>t :Tags<CR>
+nnoremap <leader>s :vsplit<CR>
+" nnoremap <leader>l :NERDTreeToggle<CR>
 
 " trigger fold with space and open all folds by default
 nnoremap <space> za
