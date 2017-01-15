@@ -6,6 +6,7 @@ set textwidth=79
 set expandtab
 set autoindent
 set fileformat=unix
+set nosmartindent
 retab
 
 " UTF-8

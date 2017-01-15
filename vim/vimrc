@@ -67,9 +67,6 @@ imap kJ <ESC>
 nnoremap <S-tab> :tabprevious<CR>
 nnoremap <tab> :tabnext<CR>
 
-" use system clipboard by default
-set clipboard=unnamed
-
 " searching options
 set incsearch
 set showcmd
