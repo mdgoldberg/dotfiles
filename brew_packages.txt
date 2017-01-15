@@ -19,6 +19,7 @@ freeglut
 freetype
 fzf
 gcc
+gd
 gdb
 gdbm
 gettext
@@ -26,6 +27,7 @@ git
 glib
 gmp
 gmp4
+gmp@4
 graphviz
 gringo
 hadoop
@@ -33,6 +35,7 @@ hdf5
 htop-osx
 isl
 isl012
+isl@0.12
 jpeg
 kallisto
 lame
@@ -62,6 +65,7 @@ pyside
 python
 python3
 qt
+qt5
 r
 readline
 reattach-to-user-namespace
@@ -75,6 +79,7 @@ szip
 tmux
 tree
 utf8proc
+webp
 wget
 x264
 xvid
