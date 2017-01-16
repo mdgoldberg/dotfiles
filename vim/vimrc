@@ -10,21 +10,31 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " General plugins
-Plug 'tpope/vim-sensible'
-Plug 'ervandew/supertab'
-Plug 'majutsushi/tagbar'
+" Plug 'tpope/vim-sensible'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-vividchalk'
+Plug 'bling/vim-airline'
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'bling/vim-airline'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'ervandew/supertab'
+Plug 'scrooloose/nerdtree'
+Plug 'majutsushi/tagbar'
+Plug 'airblade/vim-gitgutter'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
-Plug 'lambacck/vim-matchit'
-Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-unimpaired'
+Plug 'tommcdo/vim-exchange'
+Plug 'vim-scripts/matchit.zip'
 Plug 'bitc/vim-bad-whitespace'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'yegappan/greplace'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 
 " Python plugins
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
@@ -110,8 +120,8 @@ set nohidden
 set mouse=a
 
 " set colorscheme
-colorscheme slate
 set background=dark
+colorscheme solarized
 
 " function to check whether there is an open file in the current tab
 function! TabIsEmpty()
@@ -128,8 +138,7 @@ nnoremap <leader>t :Tags<CR>
 nnoremap <leader>s :vsplit<CR>
 " nnoremap <leader>l :NERDTreeToggle<CR>
 
-" trigger fold with space and open all folds by default
-nnoremap <space> za
+" open all folds by default
 au BufRead * normal zR
 
 " shortcut to close mini windows
