@@ -36,6 +36,8 @@ Plug 'bitc/vim-bad-whitespace'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'yegappan/greplace'
 
+" TODO: learn easymotion/sneak/etc.
+
 " Python plugins
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
@@ -137,6 +139,9 @@ nnoremap <leader>w :tabclose<CR>
 nnoremap <leader>t :Tags<CR>
 nnoremap <leader>s :vsplit<CR>
 " nnoremap <leader>l :NERDTreeToggle<CR>
+
+" TODO: read the maximum-awesome vimrc for key mappings
+" TODO: add mappings for useful plugins I recently added
 
 " open all folds by default
 au BufRead * normal zR
