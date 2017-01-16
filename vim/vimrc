@@ -35,7 +35,7 @@ Plug 'ivanov/vim-ipython', { 'for': 'python' }
 
 " Other language-specific plugins
 Plug 'lervag/vimtex', { 'for': ['tex', 'rnoweb'] }
-Plug 'Vim-R-plugin2', { 'for': ['R', 'rnoweb'] }
+Plug 'Vim-R-plugin2', { 'for': ['r', 'rnoweb'] }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 
 call plug#end()
