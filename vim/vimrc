@@ -36,6 +36,7 @@ Plug 'bitc/vim-bad-whitespace'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'yegappan/greplace'
 
+" TODO: fix FZF :Tags command so it finds the tags file at .git/tags
 " TODO: learn easymotion/sneak/etc.
 
 " Python plugins
