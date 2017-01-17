@@ -1,6 +1,6 @@
 [user]
 	name = mdgoldberg
-	email = mgoldberg@college.harvard.edu
+	email = matt.goldberg7@gmail.com
 [core]
 	editor = vim
 	excludesfile = /Users/mgoldberg/.gitignore_global
@@ -12,3 +12,6 @@
 	templatedir = ~/.git_template
 [alias]
 	ctags = !.git/hooks/ctags
+[merge]
+	commit = no
+	ff = no
