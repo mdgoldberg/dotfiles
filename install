@@ -1,5 +1,7 @@
-#! /usr/bin/env python2.7
+#! /usr/bin/env python3
 
+from __future__ import print_function
+from builtins import str
 import os
 import subprocess
 
@@ -60,9 +62,9 @@ for dotf in DOTFILES:
     try:
         src = src_fn(dotf)
         dest = dest_fn(dotf)
-        print src, '->', dest
+        print(src, '->', dest)
         os.symlink(src, dest)
-        print 'Symlink complete!'
+        print('Symlink complete!')
     except OSError as e:
-        print str(e)
+        print(str(e))
         pass

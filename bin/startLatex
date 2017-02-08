@@ -1,26 +1,21 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
+from __future__ import print_function
 import os
-import requests
 import sys
 
-template = os.getenv('DATA_DIR', '') + '/latexTemplate.tex'
-url = ('http://www.cs.technion.ac.il/~yogi/Courses/'
-       'CS-Scientific-Writing/examples/simple/simple.tex')
+template = os.getenv('DATA_DIR', '') + '/latex_template.tex'
 
 if len(sys.argv) >= 2:
     newfile = sys.argv[1]
 else:
-    print 'Usage: startLatex filename'
+    print('Usage: startLatex filename')
     sys.exit(1)
 
-if os.path.isfile(template):
-    with open(template, 'r') as f:
-        text = f.read()
-else:
-    text = requests.get(url).text
-    with open(template, 'w') as f:
-        f.write(text)
+assert os.path.isfile(template)
+
+with open(template, 'r') as f:
+    text = f.read()
 
 with open(newfile, 'w') as f:
     f.write(text)

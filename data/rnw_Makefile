@@ -1,0 +1,19 @@
+.PHONY: view clean
+
+RNW_FILE = RNW_FILE_HERE.Rnw
+TEX_FILE = $(RNW_FILE:%.Rnw=%.tex)
+TARGET_FILE = $(RNW_FILE:%.Rnw=%.pdf)
+
+R_OPTS="--vanilla"
+
+$(TARGET_FILE): $(RNW_FILE)
+	R $(R_OPTS) -e 'library(knitr); knit("$<")'
+	latexmk -pdf $(TEX_FILE)
+	make clean
+
+clean:
+	latexmk -c $(TARGET_FILE)
+	rm -f $(TEX_FILE)
+
+view: $(RNW_FILE)
+	open $(TARGET_FILE)

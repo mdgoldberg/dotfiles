@@ -1,26 +1,27 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
+from __future__ import print_function
 import os
-import requests
+import subprocess
 import sys
-
-template = os.getenv('DATA_DIR', '') + '/rnwTemplate.Rnw'
-url = ('http://www.cs.technion.ac.il/~yogi/Courses/'
-       'CS-Scientific-Writing/examples/simple/simple.tex')
 
 if len(sys.argv) >= 2:
     newfile = sys.argv[1]
+    new_dir = os.path.dirname(newfile)
+    new_dir = new_dir if new_dir else os.getcwd()
 else:
-    print 'Usage: startLatex filename'
+    print('Usage: startLatex filename')
     sys.exit(1)
 
-if os.path.isfile(template):
-    with open(template, 'r') as f:
-        text = f.read()
-else:
-    text = requests.get(url).text
-    with open(template, 'w') as f:
-        f.write(text)
+data_dir = os.getenv('DATA_DIR')
+assert data_dir
 
-with open(newfile, 'w') as f:
-    f.write(text)
+template = data_dir + '/rnw_template.Rnw'
+assert os.path.isfile(template)
+
+rnw_makefile = data_dir + '/rnw_Makefile'
+assert os.path.isfile(rnw_makefile)
+make_dest = '{}/Makefile'.format(new_dir)
+
+subprocess.run(['cp', template, newfile])
+subprocess.run(['cp', rnw_makefile, make_dest])
