@@ -5,7 +5,7 @@
 	editor = vim
 	excludesfile = /Users/mgoldberg/.gitignore_global
 [push]
-	default = simple
+	default = current
 [color]
 	ui = auto
 [init]
