@@ -78,5 +78,8 @@ for dotf in DOTFILES:
 
 vimrc_src = '{}/.vim/vimrc'.format(HOME_DIR)
 vimrc_dest = '{}/.vimrc'.format(HOME_DIR)
-os.remove(vimrc_dest)
+try:
+    os.remove(vimrc_dest)
+exept OSError:
+    pass
 os.symlink(vimrc_src, vimrc_dest)
