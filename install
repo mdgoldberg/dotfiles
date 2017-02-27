@@ -80,6 +80,6 @@ vimrc_src = '{}/.vim/vimrc'.format(HOME_DIR)
 vimrc_dest = '{}/.vimrc'.format(HOME_DIR)
 try:
     os.remove(vimrc_dest)
-exept OSError:
+except OSError:
     pass
 os.symlink(vimrc_src, vimrc_dest)
