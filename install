@@ -72,7 +72,7 @@ SRC_DST_MAP = {
     'zshrc': [from_home('.zshrc')],
     'slate': [from_home('.slate')],
     'vim': [from_home('.vim'), from_home('.config/nvim')],
-    'vimrc': [from_home('.vimrc'), from_home('.config/nvim/init.vim')],
+    'vim/vimrc': [from_home('.vimrc'), from_home('.config/nvim/init.vim')],
     'tmux.conf': [from_home('.tmux.conf')],
     'gitconfig': [from_home('.gitconfig')],
     'pypirc': [from_home('.pypirc')],
