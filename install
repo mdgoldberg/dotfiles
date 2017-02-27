@@ -9,6 +9,15 @@ import subprocess
 HOME_DIR = os.getenv('HOME')
 DOTFILES_DIR = os.path.dirname(os.path.realpath(__file__))
 
+
+def from_home(s):
+    return '{}/{}'.format(HOME_DIR, s)
+
+
+def from_dotfiles(s):
+    return '{}/{}'.format(DOTFILES_DIR, s)
+
+
 # 1. INSTALL OH-MY-ZSH
 
 subprocess.call(
@@ -40,46 +49,37 @@ subprocess.call(
 # 4. CREATE SYMLINKS
 
 
-def dest_fn(rel_fn):
-    return os.path.join(HOME_DIR, '.' + rel_fn)
-
-
-def src_fn(rel_fn):
-    return os.path.join(DOTFILES_DIR, rel_fn)
-
-
-DOTFILES = [
-    'zshrc',
-    'slate',
-    'vim',
-    'tmux.conf',
-    'gitconfig',
-    'pypirc',
-    'git_template',
-    'gitignore_global',
-]
-
-for dotf in DOTFILES:
+def create_symlink(src, dst):
     try:
-        src = src_fn(dotf)
-        dest = dest_fn(dotf)
-        print(src, '->', dest)
-        # remove old file if it exists
-        if os.path.isfile(dest) or os.path.islink(dest):
-            os.remove(dest)
-        elif os.path.isdir(dest):
-            shutil.rmtree(dest)
+        print(src, '->', dst)
+        # remove old file/dir if it exists
+        if os.path.isfile(dst) or os.path.islink(dst):
+            os.remove(dst)
+        else:
+            shutil.rmtree(dst)
+        # make sure necessary directories exist
+        base_dir = os.path.dirname(src)
+        if not os.path.exists(base_dir):
+            os.makedirs(base_dir)
         # make a symlink
-        os.symlink(src, dest)
+        os.symlink(src, dst)
         print('Symlink complete!')
     except OSError as e:
         print(str(e))
-        pass
 
-vimrc_src = '{}/.vim/vimrc'.format(HOME_DIR)
-vimrc_dest = '{}/.vimrc'.format(HOME_DIR)
-try:
-    os.remove(vimrc_dest)
-except OSError:
-    pass
-os.symlink(vimrc_src, vimrc_dest)
+
+SRC_DST_MAP = {
+    'zshrc': [from_home('.zshrc')],
+    'slate': [from_home('.slate')],
+    'vim': [from_home('.vim'), from_home('.config/nvim')],
+    'vimrc': [from_home('.vimrc'), from_home('.config/nvim/init.vim')],
+    'tmux.conf': [from_home('.tmux.conf')],
+    'gitconfig': [from_home('.gitconfig')],
+    'pypirc': [from_home('.pypirc')],
+    'git_template': [from_home('.git_template')],
+    'gitignore_global': [from_home('.gitignore_global')]
+}
+
+for src, dsts in SRC_DST_MAP.items():
+    for dst in dsts:
+        create_symlink(from_dotfiles(src), dst)
