@@ -6,8 +6,8 @@ import subprocess
 import sys
 
 if len(sys.argv) >= 2:
-    newfile = sys.argv[1]
-    new_dir = os.path.dirname(newfile)
+    new_file = sys.argv[1]
+    new_dir = os.path.dirname(new_file)
     new_dir = new_dir if new_dir else os.getcwd()
 else:
     print('Usage: startLatex filename')
@@ -23,5 +23,13 @@ rnw_makefile = data_dir + '/rnw_Makefile'
 assert os.path.isfile(rnw_makefile)
 make_dest = '{}/Makefile'.format(new_dir)
 
-subprocess.run(['cp', template, newfile])
+subprocess.run(['cp', template, new_file])
 subprocess.run(['cp', rnw_makefile, make_dest])
+
+with open(make_dest, 'r') as f:
+    makefile = f.read()
+
+makefile = makefile.replace('RNW_FILE_HERE.Rnw', new_file)
+
+with open(make_dest, 'w') as f:
+    f.write(makefile)

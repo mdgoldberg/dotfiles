@@ -6,28 +6,30 @@
 
 \usepackage[margin=0.5in]{geometry}
 \usepackage{enumerate}
-\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage{amsmath, amssymb, amsthm, mathtools, bm, bbm}
 \usepackage[parfill]{parskip}
 
 % Statistics
 \newcommand{\Prob}[1]{P\left( #1 \right)}
 \newcommand{\PDF}[1]{f\left( #1 \right)}
 \newcommand{\E}[1]{\mathbb{E}\left[ #1 \right]}
-\newcommand{\var}[1]{\mathrm{Var}\left[ #1 \right]}
-\newcommand{\cov}[2]{\mathrm{Cov}\left[ #1 , #2 \right]}
+\newcommand{\var}[1]{\textrm{Var}\left[ #1 \right]}
+\newcommand{\cov}[2]{\textrm{Cov}\left[ #1 , #2 \right]}
 \newcommand{\iid}{\textrm{ i.i.d.}}
 \newcommand{\simiid}{\overset\iid\sim}
 \newcommand{\like}[1]{\mathcal{L}\left( #1 \right)}
 \newcommand{\loglike}[1]{\ell \left( #1 \right)}
+\newcommand{\Indic}[1]{\mathbb{1}\left( #1 \right)}
 % Distributions
-\newcommand{\Norm}[2]{\mathrm{\mathcal{N}\left(#1, #2\right)}}
-\newcommand{\Unif}[2]{\mathrm{Unif\left(#1, #2\right)}}
-\newcommand{\Bin}[2]{\mathrm{Bin\left(#1, #2\right)}}
-\newcommand{\Bern}[1]{\mathrm{Bern\left( #1 \right)}}
-\newcommand{\Pois}[1]{\mathrm{Pois\left( #1 \right)}}
-\newcommand{\Expo}[1]{\mathrm{Expo\left( #1 \right)}}
-\newcommand{\GammaDist}[2]{\mathrm{Gamma\left( #1, #2 \right)}}
-\newcommand{\BetaDist}[2]{\mathrm{Beta\left( #1, #2 \right)}}
+\newcommand{\Norm}[2]{\mathcal{N}\left(#1, #2\right)}
+\newcommand{\Unif}[2]{\textrm{Unif}\left(#1, #2\right)}
+\newcommand{\Bin}[2]{\textrm{Bin}\left(#1, #2\right)}
+\newcommand{\Bern}[1]{\textrm{Bern}\left( #1 \right)}
+\newcommand{\Pois}[1]{\textrm{Pois}\left( #1 \right)}
+\newcommand{\Expo}[1]{\textrm{Expo}\left( #1 \right)}
+\newcommand{\GammaDist}[2]{\textrm{Gamma}\left( #1, #2 \right)}
+\newcommand{\BetaDist}[2]{\textrm{Beta}\left( #1, #2 \right)}
+\newcommand{\InvGamma}[2]{\textrm{Inv-Gamma}\left( #1, #2 \right)}
 % Sets
 \newcommand{\R}{\mathbb{Z}} % reals
 \newcommand{\Z}{\mathbb{Z}} % integers
@@ -36,12 +38,17 @@
 % Other Math
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max}
-\newcommand{\myexp}[1]{\exp\left[ #1 \right]}
-\newcommand{\FirstDeriv}[2]{\frac{\partial}{\partial #1 \left[ #2 \right]}}
+\newcommand{\myexp}[1]{\exp\left( #1 \right)}
+\newcommand{\mylog}[1]{\log\left( #1 \right)}
+\newcommand{\FirstDeriv}[2]{\frac{\partial}{\partial #1} \left[ #2 \right]}
 \newcommand{\SecondDeriv}[2]{\frac{\partial^2}{\partial {#1}^2} \left[ #2 \right]}
-% if/otherwise for cases environment
-\newcommand{\myif}{& \textrm{if }}
-\newcommand{\myotherwise}{& \textrm{otherwise}}
+\newcommand{\parfrac}[2]{\left( \frac{#1}{#2} \right)}
+\newcommand{\paren}[1]{\left( #1 \right)}
+\newcommand{\inv}[1]{{#1}^{-1}}
+% common text
+\newcommand{\myif}{& \textrm{if }} % for cases environment
+\newcommand{\myotherwise}{& \textrm{otherwise}} % for cases environment
+\newcommand{\myand}{\text{and}}
 
 
 \begin{document}
