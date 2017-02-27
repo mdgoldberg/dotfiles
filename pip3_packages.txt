@@ -6,6 +6,7 @@ cssselect==1.0.1
 decorator==4.0.10
 entrypoints==0.2.2
 future==0.16.0
+greenlet==0.4.12
 html5lib==0.9999999
 ipykernel==4.5.2
 ipython==5.1.0
@@ -21,8 +22,10 @@ lxml==3.7.2
 MarkupSafe==0.23
 mementos==1.2.2
 mistune==0.7.3
+msgpack-python==0.4.8
 nbconvert==5.0.0
 nbformat==4.2.0
+neovim==0.1.13
 notebook==4.3.1
 numexpr==2.6.1
 numpy==1.11.3
@@ -46,7 +49,7 @@ scipy==0.18.1
 simplegeneric==0.8.1
 six==1.10.0
 sklearn==0.0
--e git+git@github.com:mdgoldberg/sportsref.git@2af5e88b1148847a00434c185b31a98edd535780#egg=sportsref
+-e git+git@github.com:mdgoldberg/sportsref.git@759e87b8917f00c22d6b13c94478472633e32aa2#egg=sportsref
 statsmodels==0.6.1
 stevedore==1.20.0
 terminado==0.6
