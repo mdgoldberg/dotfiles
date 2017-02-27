@@ -65,9 +65,9 @@ for dotf in DOTFILES:
         dest = dest_fn(dotf)
         print(src, '->', dest)
         # remove old file if it exists
-        if os.path.isfile(dest):
+        if os.path.isfile(dest) or os.path.islink(dest):
             os.remove(dest)
-        else:
+        elif os.path.isdir(dest):
             shutil.rmtree(dest)
         # make a symlink
         os.symlink(src, dest)
