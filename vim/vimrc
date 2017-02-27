@@ -10,7 +10,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " General plugins
-" Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-sensible'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-vividchalk'
 Plug 'bling/vim-airline'
@@ -22,8 +22,7 @@ Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'scrooloose/syntastic'
+Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
@@ -47,9 +46,9 @@ Plug 'nvie/vim-flake8', { 'for': 'python' }
 Plug 'ivanov/vim-ipython', { 'for': 'python' }
 
 " Other language-specific plugins
-Plug 'lervag/vimtex', { 'for': ['tex', 'rnoweb'] }
+Plug 'lervag/vimtex', { 'for': ['tex'] }
 Plug 'Vim-R-plugin2', { 'for': ['r', 'rnoweb'] }
-Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
+Plug 'derekwyatt/vim-scala', { 'for': ['scala'] }
 
 call plug#end()
 
