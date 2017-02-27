@@ -6,6 +6,8 @@
 	excludesfile = /Users/mgoldberg/.gitignore_global
 [push]
 	default = current
+[pull]
+	ff = yes
 [color]
 	ui = auto
 [init]
