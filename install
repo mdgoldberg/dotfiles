@@ -1,8 +1,9 @@
-#! /usr/bin/env python3
+#! /usr/bin/env python
 
 from __future__ import print_function
 from builtins import str
 import os
+import shutil
 import subprocess
 
 HOME_DIR = os.getenv('HOME')
@@ -63,6 +64,12 @@ for dotf in DOTFILES:
         src = src_fn(dotf)
         dest = dest_fn(dotf)
         print(src, '->', dest)
+        # remove old file if it exists
+        if os.path.isfile(dest):
+            os.remove(dest)
+        else:
+            shutil.rmtree(dest)
+        # make a symlink
         os.symlink(src, dest)
         print('Symlink complete!')
     except OSError as e:
