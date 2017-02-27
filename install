@@ -75,3 +75,8 @@ for dotf in DOTFILES:
     except OSError as e:
         print(str(e))
         pass
+
+vimrc_src = '{}/.vim/vimrc'.format(HOME_DIR)
+vimrc_dest = '{}/.vimrc'.format(HOME_DIR)
+os.remove(vimrc_dest)
+os.symlink(vimrc_src, vimrc_dest)
