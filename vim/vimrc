@@ -46,7 +46,6 @@ Plug 'nvie/vim-flake8', { 'for': 'python' }
 Plug 'ivanov/vim-ipython', { 'for': 'python' }
 
 " Other language-specific plugins
-Plug 'lervag/vimtex', { 'for': ['tex'] }
 Plug 'Vim-R-plugin2', { 'for': ['r', 'rnoweb'] }
 Plug 'derekwyatt/vim-scala', { 'for': ['scala'] }
 
