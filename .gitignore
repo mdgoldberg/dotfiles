@@ -2,7 +2,7 @@
 **/.netrwhist
 **/*.pyc
 **/*.swp
-**/.hate
 vim/autoload
 vim/plugged
+vim/init.vim
 .secrets
