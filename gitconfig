@@ -7,7 +7,7 @@
 [push]
 	default = current
 [pull]
-	ff = yes
+	ff = only
 [color]
 	ui = auto
 [init]

@@ -14,7 +14,6 @@ Plug 'tpope/vim-sensible'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-vividchalk'
 Plug 'bling/vim-airline'
-Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -34,6 +33,9 @@ Plug 'vim-scripts/matchit.zip'
 Plug 'bitc/vim-bad-whitespace'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'yegappan/greplace'
+if has('nvim') || v:version >= 704
+    Plug 'sirver/ultisnips'
+endif
 
 " TODO: fix FZF :Tags command so it finds the tags file at .git/tags
 " TODO: learn easymotion/sneak/etc.
