@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 
 " General plugins
 Plug 'tpope/vim-sensible'
+Plug 'embear/vim-localvimrc'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-vividchalk'
 Plug 'bling/vim-airline'
@@ -142,7 +143,7 @@ nnoremap <leader>s :vsplit<CR>
 " nnoremap <leader>l :NERDTreeToggle<CR>
 
 " TODO: read the maximum-awesome vimrc for key mappings
-" TODO: add mappings for useful plugins I recently added
+" TODO: add mappings for useful plugins I've added above
 
 " open all folds by default
 au BufRead * normal zR
@@ -174,7 +175,7 @@ vnoremap ^ g^
 vnoremap $ g$
 
 " Tagbar mapping
-noremap <leader>tb :TagbarToggle<CR>
+noremap <leader>b :TagbarToggle<CR>
 
 " Set Ultisnips configs
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -189,6 +190,4 @@ let g:SuperTabContextDiscoverDiscovery =
             \ ["&completefunc:<c-p>", "&omnifunc:<c-x><c-o>"]
 
 " Dispatch mappings
-nnoremap <leader>dp :w<CR>:Make "%:r.pdf"<CR>
-nnoremap <leader>dd :w<CR>:Make! "%:r.pdf"<CR>
-nnoremap <leader>dv :w<CR>:Dispatch! open "%:r.pdf"<CR>
+nnoremap <leader>c :w<CR>:Make!<CR>
