@@ -102,6 +102,7 @@ alias stat120="cd $HOME/Dropbox/Senior/stat120"
 alias tf_cs182="cd $HOME/Dropbox/Senior/cs182"
 alias stat149="cd $HOME/Dropbox/Senior/stat149"
 alias stat220="cd $HOME/Dropbox/Senior/stat220"
+alias thesis="cd $HOME/Dropbox/Senior/goldberg_thesis/nba_lineup_evaluation && workon sportsref"
 
 # jr - cs161
 export CS161_DIR="$HOME/Dropbox/Junior/CS161"
