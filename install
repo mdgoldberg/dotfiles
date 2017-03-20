@@ -1,13 +1,18 @@
-#! /usr/bin/env python
+#! /usr/bin/env python2
 
 from __future__ import print_function
-from builtins import str
 import os
 import shutil
 import subprocess
 
 HOME_DIR = os.getenv('HOME')
 DOTFILES_DIR = os.path.dirname(os.path.realpath(__file__))
+
+# TODO: make it modular/optional using invoke
+# TODO: install homebrew itself
+# TODO: different solution for installing all brews (xargs doesn't work)
+# TODO: install tpm for tmux
+# TODO: install fonts?
 
 
 def from_home(s):
@@ -30,10 +35,10 @@ subprocess.call(
 os.remove('oh-my-zsh-install.sh')
 
 # 2. INSTALL BREW AND PIP PACKAGES
-# TODO: make this optional using one of click, invoke, fabric, etc.
 
 subprocess.call('cat brew_packages.txt | xargs brew install', shell=True)
-subprocess.call('pip install -r pip_packages.txt', shell=True)
+subprocess.call('sudo pip install -r pip_packages.txt', shell=True)
+subprocess.call('sudo pip3 install -r pip3_packages.txt', shell=True)
 
 # 3. INSTALL VIM-PLUG AND PLUGINS
 

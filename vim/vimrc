@@ -174,6 +174,10 @@ vnoremap 0 g0
 vnoremap ^ g^
 vnoremap $ g$
 
+" recognize *.tex files as tex, not plaintex
+let g:tex_flavor = "latex"
+
+
 " Tagbar mapping
 noremap <leader>b :TagbarToggle<CR>
 
@@ -191,3 +195,7 @@ let g:SuperTabContextDiscoverDiscovery =
 
 " Dispatch mappings
 nnoremap <leader>c :w<CR>:Make!<CR>
+
+" localvimrc configs
+let g:localvimrc_sandbox = 0
+let g:localvimrc_persistent = 1

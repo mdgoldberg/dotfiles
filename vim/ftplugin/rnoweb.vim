@@ -3,7 +3,7 @@ set iskeyword+=:
 set wrap
 set linebreak
 set fo+=t
-set tw=85
+set tw=84
 
 " tabs as spaces
 set tabstop=4 shiftwidth=4 expandtab

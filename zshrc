@@ -32,8 +32,9 @@ source $ZSH/oh-my-zsh.sh
 # autojump config
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
-# fzf configuration
+# fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'  # to find hidden files
 
 # enable shift+tab for going back in auto complete menu
 bindkey '^[[Z' reverse-menu-complete
@@ -96,13 +97,13 @@ alias cs182="cd $HOME/Dropbox/Junior/CS182"
 alias cs136="cd $HOME/Dropbox/Junior/CS136"
 # sr
 alias sr="cd $HOME/Dropbox/Senior"
-alias mcb112="cd $HOME/Dropbox/Senior/mcb112 && workon mcb112"
+alias mcb112="cd $HOME/Dropbox/Senior/mcb112"
 alias psy1401="cd $HOME/Dropbox/Senior/psy1401"
 alias stat120="cd $HOME/Dropbox/Senior/stat120"
 alias tf_cs182="cd $HOME/Dropbox/Senior/cs182"
 alias stat149="cd $HOME/Dropbox/Senior/stat149"
 alias stat220="cd $HOME/Dropbox/Senior/stat220"
-alias thesis="cd $HOME/Dropbox/Senior/goldberg_thesis/nba_lineup_evaluation && workon sportsref"
+alias thesis="cd $HOME/Dropbox/Senior/goldberg_thesis/nba_lineup_evaluation"
 
 # jr - cs161
 export CS161_DIR="$HOME/Dropbox/Junior/CS161"
@@ -186,8 +187,8 @@ function wipesfs161() {
 
 # side projects/employment
 alias turch="cd $HOME/Dropbox/Turchin/"
-alias spotifyproj="workon s2i; cd $HOME/Dropbox/CodeStuff/spotify2itunes/"
-alias sportsref="workon sportsref; cd $HOME/Dropbox/CodeStuff/sports_analytics/sportsref"
+alias spotifyproj="cd $HOME/Dropbox/CodeStuff/spotify2itunes/"
+alias sportsref="cd $HOME/Dropbox/CodeStuff/sports_analytics/sportsref"
 alias dotfiles="cd $HOME/dotfiles"
 
 # automatically ls after cd
@@ -237,7 +238,10 @@ source $DOTFILES_DIR/.secrets
 # enables zsh autocomplete when using invoke (make for Python)
 source $DATA_DIR/pyinvoke_completions.zsh
 
-# virtualenvwrapper configuration
+# virtualenvwrapper config
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=$(which python)
 source /usr/local/bin/virtualenvwrapper.sh
+
+# ocaml/opam config
+eval `opam config env`
