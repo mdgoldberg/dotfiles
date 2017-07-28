@@ -12,8 +12,11 @@ set smartindent
 set mouse=a
 
 " set colorscheme
-" let g:solarized_termcolors=256
-set termguicolors
+if has('nvim')
+    set termguicolors
+else
+    let g:solarized_termcolors=256
+endif
 set background=dark
 colorscheme solarized
 
