@@ -36,7 +36,7 @@ nnoremap <leader>e :FZF<CR>
 nnoremap <expr> <leader>o TabIsEmpty() ? ":FZF<CR>" : ":tabnew<CR>:FZF<CR>"
 nnoremap <leader>t :Tags<CR>
 nnoremap <leader>v :vsplit<CR>
-nnoremap <leader>h :hsplit<CR>
+nnoremap <leader>h :split<CR>
 nnoremap <leader>l :NERDTreeToggle<CR>
 noremap <leader>b :TagbarToggle<CR>
 
