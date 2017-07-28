@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#!/usr/bin/python
 
 from __future__ import print_function
 import os
@@ -186,3 +186,5 @@ def update_vim(ctx):
 def update_packages(ctx):
     """Updates all brew, pip, and vim packages."""
     pass
+
+# TODO: fonts from https://github.com/google/fonts/archive/master.zip
