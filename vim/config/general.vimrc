@@ -12,13 +12,13 @@ set smartindent
 set mouse=a
 
 " set colorscheme
+set background=dark
 if has('nvim')
     set termguicolors
+    colorscheme solarized
 else
-    let g:solarized_termcolors=256
+    colorscheme slate
 endif
-set background=dark
-colorscheme solarized
 
 " window options
 set showmode
