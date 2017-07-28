@@ -11,6 +11,20 @@ imap jK <ESC>
 imap Kj <ESC>
 imap kJ <ESC>
 
+" use ESC to leave insert mode in nvim terminal buffers
+" and activate other ways I leave insert mode
+if has('nvim')
+    tnoremap <ESC> <C-\><C-n>
+    tmap jk <ESC>
+    tmap kj <ESC>
+    tmap JK <ESC>
+    tmap KJ <ESC>
+    tmap Jk <ESC>
+    tmap jK <ESC>
+    tmap Kj <ESC>
+    tmap kJ <ESC>
+endif
+
 " make movements visual lines instead of actual lines
 nnoremap j gj
 nnoremap k gk
@@ -30,6 +44,7 @@ endfunction
 let mapleader = ","
 nnoremap <leader>n :tabnew<CR>
 nnoremap <leader>w :tabclose<CR>
+nnoremap <leader>q :q<CR>
 nnoremap <tab> :tabnext<CR>
 nnoremap <S-tab> :tabprevious<CR>
 nnoremap <leader>e :FZF<CR>
