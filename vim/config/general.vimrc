@@ -12,7 +12,8 @@ set smartindent
 set mouse=a
 
 " set colorscheme
-let g:solarized_termcolors=256
+" let g:solarized_termcolors=256
+set termguicolors
 set background=dark
 colorscheme solarized
 
@@ -34,6 +35,7 @@ set linebreak
 
 " searching options
 set incsearch
+set nohlsearch
 set showcmd
 set ignorecase
 set smartcase

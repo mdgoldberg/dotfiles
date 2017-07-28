@@ -18,7 +18,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR=vim
+export EDITOR=nvim
 
 # Plugins can be found in $HOME/.oh-my-zsh/plugins/*
 # Custom plugins may be added to $HOME/.oh-my-zsh/custom/plugins/
@@ -56,9 +56,9 @@ precmd()
 
 # My Aliases
 alias lsash="ls -laSh"
-alias zshrc="vim $HOME/.zshrc"
+alias zshrc="nvim $HOME/.zshrc"
 alias reload_zshrc="source $HOME/.zshrc"
-alias vimrc="vim $HOME/.vim/vimrc"
+alias vimrc="nvim $HOME/.vim/vimrc"
 alias htop="sudo htop"
 alias gloga='git log --oneline --decorate --color --graph --all'
 alias py2="python2"
@@ -70,8 +70,6 @@ alias pip3="python3 -m pip"
 alias r="r -q"
 alias lc="latexmk -c; echo ''; ls"
 alias diff="colordiff"
-alias pip_upgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo -H pip install -U"
-alias pip3_upgrade="pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 sudo -H pip install -U"
 alias register_pypi="python2 setup.py register"
 alias upload_pypi="rm -rf dist && python2 setup.py sdist bdist_wheel && twine upload dist/* && rm -rf dist build *.egg_info"
 alias new_data_analysis="cookiecutter https://github.com/drivendata/cookiecutter-data-science"
@@ -198,7 +196,7 @@ function chpwd() {
 }
 
 # set up a Framework build of Python
-function fwpy {
+function fwpy2 {
 	if [[ ! -z "$VIRTUAL_ENV" ]]; then
 		PYTHONHOME=$VIRTUAL_ENV /usr/local/bin/python2 "$@"
 	else
@@ -214,7 +212,7 @@ function fwpy3 {
 	fi
 }
 # set up a Framework build of IPython
-alias fwipy="fwpy -m IPython"
+alias fwipy2="fwpy2 -m IPython"
 alias fwipy3="fwpy3 -m IPython"
 
 # configuring environment variables like PATH
@@ -222,7 +220,6 @@ export DOTFILES_DIR=$HOME/dotfiles
 export DATA_DIR=$DOTFILES_DIR/data
 export BIN_DIR=$DOTFILES_DIR/bin
 export PATH=$BIN_DIR
-export PATH=$PATH:$HOME/.vim/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin

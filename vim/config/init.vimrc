@@ -9,12 +9,12 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " General plugins
-Plug 'altercation/vim-colors-solarized'
-Plug 'embear/vim-localvimrc'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'bling/vim-airline'
-" TODO: fix FZF :Tags command so it finds the tags file at .git/tags
+Plug 'powerline/fonts'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" TODO: fix FZF :Tags command so it finds the tags file at .git/tags
 Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
@@ -22,10 +22,12 @@ Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
 Plug 'vim-scripts/matchit.zip'
 Plug 'bitc/vim-bad-whitespace'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'yegappan/greplace'
+Plug 'embear/vim-localvimrc'
 if has('nvim') || v:version >= 704
     Plug 'sirver/ultisnips'
     Plug 'honza/vim-snippets'
