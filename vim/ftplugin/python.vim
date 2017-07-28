@@ -33,5 +33,5 @@ let g:SimpylFold_fold_import=0
 set colorcolumn=80
 
 " jedi-vim configs
-let g:jedi#popup_on_dot = 0
-let g:jedi#show_call_signatures = 0
+" let g:jedi#popup_on_dot = 0
+" let g:jedi#show_call_signatures = 0
