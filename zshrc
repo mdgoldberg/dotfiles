@@ -55,8 +55,8 @@ precmd()
 }
 
 # source my aliases
-source $HOME/dotfiles/zshrc_config/aliases.vim
-source $HOME/dotfiles/zshrc_config/school.vim
+source $HOME/dotfiles/zshrc_config/aliases.zshrc
+source $HOME/dotfiles/zshrc_config/school.zshrc
 
 # side projects/employment
 alias turch="cd $HOME/Dropbox/Turchin/"
