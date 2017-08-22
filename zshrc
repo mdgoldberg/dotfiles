@@ -6,8 +6,8 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="geoffgarside"
 
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# no auto-correction
+unsetopt correct
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
