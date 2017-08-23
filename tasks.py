@@ -112,11 +112,11 @@ def pip_packages(ctx):
     """Installs python2 and python3 packages."""
     print("Installing pip2 and pip3 packages...")
     ctx.run(
-        'sudo python2 -m pip install -r pip2_packages.txt',
+        'python2 -m pip install -r pip2_packages.txt',
         echo=True, warn=True
     )
     ctx.run(
-        'sudo python3 -m pip install -r pip3_packages.txt', echo=True
+        'python3 -m pip install -r pip3_packages.txt', echo=True, warn=True
     )
 
 
@@ -128,17 +128,15 @@ def vim_plugins(ctx):
 
 
 @invoke.task(pre=[create_symlinks, homebrew, brew_packages, oh_my_zsh,
-                  tmux_packages, pip_packages, vim_plugins])
-def fresh_install(ctx):
-    """Installs all tools (brew, zsh, tmux, pip, vim) and packages from
-    scratch, and installs symlinks."""
-    pass
+                  tmux_packages, vim_plugins])
+def fresh_install(ctx, python_packages=False):
+    """Installs all tools (brew, zsh, tmux, vim) from scratch, and installs
+    symlinks.
 
-
-@invoke.task(pre=[brew_packages, tmux_packages, pip_packages, vim_plugins])
-def install_packages(ctx):
-    """Installs all brew, tmux, pip, and vim packages and plugins."""
-    pass
+    NOTE: DOES NOT INSTALL PYTHON PACKAGES BY DEFAULT. USE FLAG IF NEEDED.
+    """
+    if python_packages:
+        pip_packages(ctx)
 
 
 @invoke.task
@@ -165,12 +163,12 @@ def update_pip(ctx):
     print("Updating pip packages...")
     ctx.run(
         'pip2 freeze --local | grep -v "^\-e" | cut -d = -f 1  | '
-        'xargs -n1 sudo -H pip2 install -U', echo=True, warn=True
+        'xargs -n1 pip2 install -U', echo=True, warn=True
     )
     ctx.run('pip2 freeze > pip2_packages.txt', echo=True)
     ctx.run(
         'pip3 freeze --local | grep -v "^\-e" | cut -d = -f 1  | '
-        'xargs -n1 sudo -H pip3 install -U', echo=True, warn=True
+        'xargs -n1 pip3 install -U', echo=True, warn=True
     )
     ctx.run('pip3 freeze > pip3_packages.txt', echo=True)
 

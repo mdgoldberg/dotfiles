@@ -23,11 +23,12 @@ export EDITOR=nvim
 # Plugins can be found in $HOME/.oh-my-zsh/plugins/*
 # Custom plugins may be added to $HOME/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump python pip django virtualenvwrapper osx vagrant history sudo)
+plugins=(git autojump python pip osx history sudo)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# User Configuration
+# ------------------
 
 # autojump config
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
@@ -48,12 +49,6 @@ export LESS=-iXFR
 # disable vim's r command so it doesn't interfere with R
 disable r
 
-# note: precmd is run before each command
-precmd()
-{
-    stty sane;
-}
-
 # source my aliases
 source $HOME/dotfiles/zshrc_config/aliases.zshrc
 source $HOME/dotfiles/zshrc_config/school.zshrc
@@ -70,33 +65,12 @@ function chpwd() {
     ls
 }
 
-# set up a Framework build of Python
-function fwpy2 {
-	if [[ ! -z "$VIRTUAL_ENV" ]]; then
-		PYTHONHOME=$VIRTUAL_ENV /usr/local/bin/python2 "$@"
-	else
-		python2 "$@"
-	fi
-}
-# set up a Framework build of Python
-function fwpy3 {
-	if [[ ! -z "$VIRTUAL_ENV" ]]; then
-		PYTHONHOME=$VIRTUAL_ENV /usr/local/bin/python3 "$@"
-	else
-		python3 "$@"
-	fi
-}
-# set up a Framework build of IPython
-alias fwipy2="fwpy2 -m IPython"
-alias fwipy3="fwpy3 -m IPython"
-
-# configuring environment variables like PATH
+# configuring environment variables, esp. PATH
 export DOTFILES_DIR=$HOME/dotfiles
 export DATA_DIR=$DOTFILES_DIR/data
 export BIN_DIR=$DOTFILES_DIR/bin
 export PATH=$BIN_DIR
-export PATH=$PATH:/usr/local/bin
-export PATH=$PATH:/usr/local/sbin
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=$PATH:/opt/X11/bin:/Library/TeX/texbin
 export MANPATH="/usr/local/man:$MANPATH"
@@ -110,7 +84,10 @@ source $DOTFILES_DIR/.secrets
 # enables zsh autocomplete when using invoke (make for Python)
 source $DATA_DIR/pyinvoke_completions.zsh
 
-# virtualenvwrapper config
-export VIRTUALENVWRAPPER_PYTHON=$(which python2)
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+# python installation and pyenv configuration
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PYTHON_CONFIGURE_OPTS="--enable-framework"
+pyenv install -s 2.7.13
+pyenv install -s 3.6.2
+pyenv global 3.6.2 2.7.13

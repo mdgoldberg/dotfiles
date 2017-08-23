@@ -1,3 +1,4 @@
 java
 skim
 xquartz
+iterm2
