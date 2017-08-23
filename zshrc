@@ -92,3 +92,4 @@ export PYTHON_CONFIGURE_OPTS="--enable-framework"
 pyenv install -s 2.7.13
 pyenv install -s 3.6.2
 pyenv global 3.6.2 2.7.13
+pyenv virtualenvwrapper
