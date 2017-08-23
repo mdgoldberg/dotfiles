@@ -79,6 +79,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 export PYTHONDONTWRITEBYTECODE=1
 
 # holds passwords and API tokens that shouldn't be in source control
+touch $DOTFILES_DIR/.secrets
 source $DOTFILES_DIR/.secrets
 
 # enables zsh autocomplete when using invoke (make for Python)
