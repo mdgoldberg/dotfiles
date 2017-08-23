@@ -81,19 +81,6 @@ def brew_packages(ctx):
 
 
 @invoke.task
-def tmux_packages(ctx):
-    """Installs tpm and tmux plugins."""
-    print("Installing tpm and tmux plugins...")
-    ctx.run(
-        'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm',
-        echo=True, warn=True
-    )
-    ctx.run(
-        '~/.tmux/plugins/tpm/bin/install_plugins', echo=True
-    )
-
-
-@invoke.task
 def oh_my_zsh(ctx):
     """Installs oh-my-zsh for zsh shell."""
     print("Installing oh-my-zsh...")
@@ -105,6 +92,19 @@ def oh_my_zsh(ctx):
         'sh oh-my-zsh-install.sh', echo=True, warn=True
     )
     os.remove('oh-my-zsh-install.sh')
+
+
+@invoke.task
+def tmux_packages(ctx):
+    """Installs tpm and tmux plugins."""
+    print("Installing tpm and tmux plugins...")
+    ctx.run(
+        'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm',
+        echo=True, warn=True
+    )
+    ctx.run(
+        '~/.tmux/plugins/tpm/bin/install_plugins', echo=True
+    )
 
 
 @invoke.task
