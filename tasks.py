@@ -10,7 +10,7 @@ DOTFILES_DIR = '{}/dotfiles'.format(HOME_DIR)
 SRC_DST_MAP = {
     'zshrc': ['.zshrc'],
     'vim': ['.vim'], 'vim/vimrc': ['.vimrc'],
-    'init.vim': ['.config/nvim/init.vim'],
+    'vim/init.vim': ['.config/nvim/init.vim'],
     'tmux.conf': ['.tmux.conf'],
     'gitconfig': ['.gitconfig'],
     'pypirc': ['.pypirc'],

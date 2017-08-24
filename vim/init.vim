@@ -1,1 +1,3 @@
-/Users/mattgoldberg/dotfiles/vim/vimrc
+set runtimepath+=~/.vim,~/.vim/after
+set packpath+=~/.vim
+source ~/.vimrc

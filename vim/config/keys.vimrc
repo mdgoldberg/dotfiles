@@ -43,7 +43,7 @@ endfunction
 " shortcuts to common commands re: tabs, windows, and navigation
 let mapleader = ","
 nnoremap <leader>n :tabnew<CR>
-nnoremap <leader>w :tabclose<CR>
+nnoremap <expr> <leader>w winnr('$1') == 1 ? ":q<CR>" : ":tabclose<CR>"
 nnoremap <leader>q :q<CR>
 nnoremap <tab> :tabnext<CR>
 nnoremap <S-tab> :tabprevious<CR>
@@ -51,9 +51,10 @@ nnoremap <leader>e :FZF<CR>
 nnoremap <expr> <leader>o TabIsEmpty() ? ":FZF<CR>" : ":tabnew<CR>:FZF<CR>"
 nnoremap <leader>t :Tags<CR>
 nnoremap <leader>v :vsplit<CR>
-nnoremap <leader>h :split<CR>
+nnoremap <leader>s :split<CR>
 nnoremap <leader>l :NERDTreeToggle<CR>
 noremap <leader>b :TagbarToggle<CR>
+nnoremap <leader>pl :NERDTreeFocus<CR>
 
 " TODO: read the maximum-awesome vimrc for key mappings
 " TODO: add mappings for useful plugins I've added above
