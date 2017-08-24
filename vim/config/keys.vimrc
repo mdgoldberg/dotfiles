@@ -50,10 +50,11 @@ nnoremap <S-tab> :tabprevious<CR>
 nnoremap <leader>e :FZF<CR>
 nnoremap <expr> <leader>o TabIsEmpty() ? ":FZF<CR>" : ":tabnew<CR>:FZF<CR>"
 nnoremap <leader>t :Tags<CR>
+nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>s :split<CR>
 nnoremap <leader>l :NERDTreeToggle<CR>
-noremap <leader>b :TagbarToggle<CR>
+noremap <leader>d :TagbarToggle<CR>
 nnoremap <leader>pl :NERDTreeFocus<CR>
 
 " TODO: read the maximum-awesome vimrc for key mappings

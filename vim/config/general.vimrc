@@ -78,3 +78,6 @@ set expandtab
 
 " always show tab line to avoid annoying resize
 set showtabline=2
+
+" useful for using buffers
+set hidden
