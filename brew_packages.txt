@@ -3,6 +3,7 @@ aspcud
 autoconf
 autojump
 automake
+awscli
 bmake
 cairo
 camlp4
@@ -11,6 +12,7 @@ cloog
 cmake
 colordiff
 coreutils
+cscope
 ctags
 ffmpeg
 fontconfig
@@ -28,6 +30,7 @@ gmp
 gmp@4
 graphviz
 gringo
+icu4c
 isl
 isl@0.12
 jemalloc
@@ -43,9 +46,12 @@ libtool
 libuv
 libvterm
 libyaml
+macvim
+mongodb
 mpfr
 msgpack
 neovim
+node
 ocaml
 ocamlbuild
 openssl
@@ -53,6 +59,7 @@ pcre
 perl
 pixman
 pkg-config
+postgresql
 pyenv
 pyenv-virtualenv
 pyenv-virtualenvwrapper
@@ -62,6 +69,7 @@ r
 readline
 reattach-to-user-namespace
 ruby
+s3cmd
 sqlite
 the_silver_searcher
 tmux
