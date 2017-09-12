@@ -57,5 +57,8 @@ nnoremap <leader>l :NERDTreeToggle<CR>
 noremap <leader>f :TagbarToggle<CR>
 nnoremap <leader>pl :NERDTreeFocus<CR>
 
+
+nnoremap <C-w>z <C-w>_ <bar> <C-w>\|
+
 " TODO: read the maximum-awesome vimrc for key mappings
-" TODO: add mappings for useful plugins I've added above
+" TODO: add mappings for useful plugins I've added but don't use much
