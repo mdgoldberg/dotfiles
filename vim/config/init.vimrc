@@ -35,9 +35,9 @@ endif
 
 " TODO: learn these plugins
 Plug 'tommcdo/vim-exchange'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " TODO: install & learn easymotion/sneak/etc.
 
 " Python plugins
