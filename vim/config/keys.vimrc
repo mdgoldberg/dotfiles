@@ -40,11 +40,12 @@ function! TabIsEmpty()
     return winnr('$') == 1 && len(expand('%')) == 0 && line2byte(line('$') + 1) <= 2
 endfunction
 
-" shortcuts to common commands re: tabs, windows, and navigation
+" shortcuts to common commands
 let mapleader = ","
 nnoremap <leader>n :tabnew<CR>
 nnoremap <expr> <leader>w winnr('$') > 1 ? ":q<CR>" : ":tabclose<CR>"
-nnoremap <leader>q :q<CR>
+nnoremap <leader>q :qall<CR>
+nnoremap <leader>c :cclose<CR>:pclose<CR>:lclose<CR>
 nnoremap <tab> :tabnext<CR>
 nnoremap <S-tab> :tabprevious<CR>
 nnoremap <leader>e :FZF<CR>
@@ -53,11 +54,22 @@ nnoremap <leader>t :Tags<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>s :split<CR>
-nnoremap <leader>l :NERDTreeToggle<CR>
 noremap <leader>f :TagbarToggle<CR>
-nnoremap <leader>pl :NERDTreeFocus<CR>
 
+" fugitive mappings (TODO)
+nnoremap <leader>gb :Gblame<CR>
 
+" netrw mappings
+augroup netrw_mappings
+    autocmd!
+    autocmd filetype netrw call NetrwMappings()
+augroup END
+function! NetrwMappings()
+    nnoremap <buffer> <leader>w <C-^>
+    nnoremap <buffer> <leader>q <C-^>
+endfunction
+
+" zoom in on a vim window/split (use "<C-w> =" to reset)
 nnoremap <C-w>z <C-w>_ <bar> <C-w>\|
 
 " TODO: read the maximum-awesome vimrc for key mappings

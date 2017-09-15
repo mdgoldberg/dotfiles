@@ -13,9 +13,12 @@ let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 let g:SuperTabContextDiscoverDiscovery =
             \ ["&completefunc:<c-p>", "&omnifunc:<c-x><c-o>"]
 
-" Dispatch mappings
-nnoremap <leader>c :w<CR>:Make!<CR>
-
 " localvimrc configs
 let g:localvimrc_sandbox = 0
 let g:localvimrc_persistent = 1
+
+" vinegar/netrw configs
+let g:netrw_liststyle = 3
+
+" Tagbar configs
+let g:tagbar_sort = 0

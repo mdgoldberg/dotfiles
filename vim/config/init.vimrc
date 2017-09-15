@@ -10,42 +10,44 @@ call plug#begin('~/.vim/plugged')
 
 " General plugins
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
-Plug 'bling/vim-airline'
 Plug 'powerline/fonts'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " TODO: fix FZF :Tags command so it finds the tags file at .git/tags
 Plug 'ervandew/supertab'
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'vim-scripts/argtextobj.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-scripts/matchit.zip'
+Plug 'tpope/vim-repeat'
 Plug 'bitc/vim-bad-whitespace'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'yegappan/greplace'
 Plug 'embear/vim-localvimrc'
+Plug 'bling/vim-airline'
+Plug 'yegappan/greplace'
+Plug 'vim-scripts/matchit.zip'
 if has('nvim') || v:version >= 704
     Plug 'sirver/ultisnips'
     Plug 'honza/vim-snippets'
 endif
 
+" indent and function argument text objects
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'vim-scripts/argtextobj.vim'
+
 " TODO: learn these plugins
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tpope/vim-vinegar'
 " TODO: install & learn easymotion/sneak/etc.
 
 " Python plugins
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
 Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
-Plug 'nvie/vim-flake8', { 'for': 'python' }
-Plug 'ivanov/vim-ipython', { 'for': 'python' }
 
 " Other language-specific plugins
 Plug 'jalvesaq/Nvim-R', { 'for': ['r', 'rnoweb'] }

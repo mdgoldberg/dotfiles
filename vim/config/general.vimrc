@@ -70,8 +70,8 @@ set nohidden
 " open all folds by default
 au BufRead * normal zR
 
-" shortcut to close mini windows
-nnoremap <leader>qq :cclose<CR>:pclose<CR>:lclose<CR>
+" set encoding to UTF8
+set encoding=utf-8
 
 " default tab settings - expand tabs to 4 spaces
 set shiftwidth=4
