@@ -35,7 +35,7 @@ source $ZSH/oh-my-zsh.sh
 
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'  # to find hidden files
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore-dir .git -g ""'  # to find hidden files
 
 # enable shift+tab for going back in auto complete menu
 bindkey '^[[Z' reverse-menu-complete
