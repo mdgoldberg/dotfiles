@@ -60,9 +60,6 @@ perl
 pixman
 pkg-config
 postgresql
-pyenv
-pyenv-virtualenv
-pyenv-virtualenvwrapper
 python
 python3
 r
@@ -72,6 +69,7 @@ ruby
 s3cmd
 sqlite
 the_silver_searcher
+tig
 tmux
 tree
 unibilium

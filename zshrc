@@ -62,11 +62,15 @@ function chpwd() {
     ls
 }
 
-# configuring environment variables, esp. PATH
+# configuring some environment variables
 export DOTFILES_DIR=$HOME/dotfiles
 export DATA_DIR=$DOTFILES_DIR/data
 export BIN_DIR=$DOTFILES_DIR/bin
-export PATH=$BIN_DIR
+
+# configuring PATH
+export PATH=""
+export PATH=$PATH:~/.pyenv/bin
+export PATH=$PATH:$BIN_DIR
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=$PATH:/opt/X11/bin:/Library/TeX/texbin
@@ -82,11 +86,9 @@ source $DOTFILES_DIR/.secrets
 # enables zsh autocomplete when using invoke (make for Python)
 source $DATA_DIR/pyinvoke_completions.zsh
 
-# python installation
-PYENV_LINK1=='https://raw.githubusercontent.com/'
-PYENV_LINK2='pyenv/pyenv-installer/master/bin/pyenv-installer'
-[[ -z $(which pyenv | grep 'not found') ]] && curl -L \
-    $PYENV_LINK1$PYENV_LINK2 | bash
+# pyenv installation
+PYENV_URL='https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer'
+command -v pyenv > /dev/null 2>&1 || curl -L $PYENV_URL | bash
 
 # pyenv configuration
 eval "$(pyenv init -)"
@@ -95,4 +97,5 @@ export PYTHON_CONFIGURE_OPTS="--enable-framework"
 pyenv install -s 2.7.13
 pyenv install -s 3.6.2
 pyenv global 3.6.2 2.7.13
-pyenv virtualenvwrapper
+
+source "$DOTFILES_DIR/zshrc_config/`uname`.zshrc"
