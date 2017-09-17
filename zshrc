@@ -23,15 +23,12 @@ export EDITOR=nvim
 # Plugins can be found in $HOME/.oh-my-zsh/plugins/*
 # Custom plugins may be added to $HOME/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump python pip osx history sudo)
+plugins=(git autojump python pip history sudo)
 
 source $ZSH/oh-my-zsh.sh
 
 # User Configuration
 # ------------------
-
-# autojump config
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -85,7 +82,13 @@ source $DOTFILES_DIR/.secrets
 # enables zsh autocomplete when using invoke (make for Python)
 source $DATA_DIR/pyinvoke_completions.zsh
 
-# python installation and pyenv configuration
+# python installation
+PYENV_LINK1=='https://raw.githubusercontent.com/'
+PYENV_LINK2='pyenv/pyenv-installer/master/bin/pyenv-installer'
+[[ -z $(which pyenv | grep 'not found') ]] && curl -L \
+    $PYENV_LINK1$PYENV_LINK2 | bash
+
+# pyenv configuration
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export PYTHON_CONFIGURE_OPTS="--enable-framework"

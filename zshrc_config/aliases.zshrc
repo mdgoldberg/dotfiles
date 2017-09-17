@@ -1,7 +1,7 @@
 alias lsash="ls -laSh"
-alias zshrc="nvim $HOME/.zshrc"
+alias zshrc="$EDITOR $HOME/.zshrc"
 alias reload_zshrc="source $HOME/.zshrc"
-alias vimrc="nvim $HOME/.vim/vimrc"
+alias vimrc="$EDITOR $HOME/.vim/vimrc"
 alias htop="sudo htop"
 alias gloga='git log --oneline --decorate --color --graph --all'
 alias py="python"
