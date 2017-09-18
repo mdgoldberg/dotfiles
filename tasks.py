@@ -131,6 +131,20 @@ def install_oh_my_zsh(ctx):
     )
     os.remove('oh-my-zsh-install.sh')
 
+    # also install honukai theme
+    print("Installing honukai zsh theme and colors...")
+    THEME_URL = ('https://raw.githubusercontent.com/'
+                 'oskarkrawczyk/honukai-iterm/master/honukai.zsh-theme')
+    ctx.run(
+        'curl {} -o ~/.oh-my-zsh/themes/honukai.zsh-theme'.format(THEME_URL),
+        echo=True
+    )
+    # also notify user for iTerm2 colors
+    COLORS_URL = ('https://raw.githubusercontent.com/'
+                  'oskarkrawczyk/honukai-iterm/master/honukai.itermcolors')
+    print('\n\nNOTE: Also install the honukai iTerm2 colorscheme '
+          'from {}'.format(COLORS_URL))
+
 
 @invoke.task
 def tmux_packages(ctx):
@@ -167,7 +181,7 @@ def vim_plugins(ctx):
 
 
 @invoke.task(pre=[create_symlinks, install_homebrew, brew_packages,
-                  install_fzf, install_oh_my_zsh, tmux_packages, vim_plugins])
+                  install_oh_my_zsh, tmux_packages, vim_plugins])
 def fresh_install(ctx, python_packages=False):
     """Installs all tools (brew, zsh, tmux, vim) from scratch, and installs
     symlinks.
