@@ -60,6 +60,8 @@ perl
 pixman
 pkg-config
 postgresql
+pyenv
+pyenv-virtualenv
 python
 python3
 r

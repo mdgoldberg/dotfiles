@@ -86,16 +86,5 @@ source $DOTFILES_DIR/.secrets
 # enables zsh autocomplete when using invoke (make for Python)
 source $DATA_DIR/pyinvoke_completions.zsh
 
-# pyenv installation
-PYENV_URL='https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer'
-command -v pyenv > /dev/null 2>&1 || curl -L $PYENV_URL | bash
-
-# pyenv configuration
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PYTHON_CONFIGURE_OPTS="--enable-framework"
-pyenv install -s 2.7.13
-pyenv install -s 3.6.2
-pyenv global 3.6.2 2.7.13
-
+touch "$DOTFILES_DIR/zshrc_config/`uname`.zshrc"
 source "$DOTFILES_DIR/zshrc_config/`uname`.zshrc"
