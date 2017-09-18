@@ -6,8 +6,6 @@
 	excludesfile = /Users/mgoldberg/.gitignore_global
 [push]
 	default = current
-[pull]
-	ff = only
 [color]
 	ui = auto
 [init]
@@ -15,5 +13,4 @@
 [alias]
 	ctags = !.git/hooks/ctags
 [merge]
-	commit = no
-	ff = no
+	ff = only
