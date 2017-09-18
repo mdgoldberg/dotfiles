@@ -50,17 +50,19 @@ disable r
 source $HOME/dotfiles/zshrc_config/aliases.zshrc
 source $HOME/dotfiles/zshrc_config/school.zshrc
 
-# side projects/employment
-alias turch="cd $HOME/Dropbox/Turchin/"
-alias spotifyproj="cd $HOME/Dropbox/CodeStuff/spotify2itunes/"
-alias sportsref="cd $HOME/Dropbox/CodeStuff/sports_analytics/sportsref"
-alias dotfiles="cd $HOME/dotfiles"
-
 # automatically ls after cd
 function chpwd() {
     emulate -L zsh
     ls
 }
+
+# pyenv and pyenv-virtualenvwrapper configuration
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PYTHON_CONFIGURE_OPTS="--enable-framework"
+pyenv install -s 2.7.13
+pyenv install -s 3.6.2
+pyenv global 3.6.2 2.7.13
 
 # configuring some environment variables
 export DOTFILES_DIR=$HOME/dotfiles

@@ -22,3 +22,9 @@ alias new_data_analysis="cookiecutter https://github.com/drivendata/cookiecutter
 # side projects/employment
 alias sportsref="cd $HOME/Dropbox/CodeStuff/sports_analytics/sportsref"
 alias dotfiles="cd $HOME/dotfiles"
+
+# side projects/employment
+alias turch="cd $HOME/Dropbox/Turchin/"
+alias spotifyproj="cd $HOME/Dropbox/CodeStuff/spotify2itunes/"
+alias sportsref="cd $HOME/Dropbox/CodeStuff/sports_analytics/sportsref"
+alias dotfiles="cd $HOME/dotfiles"
