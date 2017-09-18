@@ -1,1 +1,1 @@
-export PATH=$PATH:$HOME/linuxbrew/.linuxbrew/bin
+export PATH="$PATH:$(brew --prefix)/bin"
