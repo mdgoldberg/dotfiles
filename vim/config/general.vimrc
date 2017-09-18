@@ -14,7 +14,6 @@ set mouse=a
 " set colorscheme
 set background=dark
 if has('nvim')
-    set termguicolors
     colorscheme solarized
 else
     colorscheme slate
