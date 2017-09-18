@@ -30,10 +30,6 @@ source $ZSH/oh-my-zsh.sh
 # User Configuration
 # ------------------
 
-# fzf config
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore-dir .git -g ""'  # to find hidden files
-
 # enable shift+tab for going back in auto complete menu
 bindkey '^[[Z' reverse-menu-complete
 #
@@ -56,14 +52,6 @@ function chpwd() {
     ls
 }
 
-# pyenv and pyenv-virtualenvwrapper configuration
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PYTHON_CONFIGURE_OPTS="--enable-framework"
-pyenv install -s 2.7.13
-pyenv install -s 3.6.2
-pyenv global 3.6.2 2.7.13
-
 # configuring some environment variables
 export DOTFILES_DIR=$HOME/dotfiles
 export DATA_DIR=$DOTFILES_DIR/data
@@ -78,6 +66,21 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=$PATH:/opt/X11/bin:/Library/TeX/texbin
 export MANPATH="/usr/local/man:$MANPATH"
 
+# platform-specific configs
+touch "$DOTFILES_DIR/zshrc_config/`uname`.zshrc"
+source "$DOTFILES_DIR/zshrc_config/`uname`.zshrc"
+
+# pyenv and pyenv-virtualenvwrapper configuration
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+pyenv install -s 2.7.13
+pyenv install -s 3.6.2
+pyenv global 3.6.2 2.7.13
+
+# fzf config
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore-dir .git -g ""'  # to find hidden files
+
 # prevent Python from generating bytecode
 export PYTHONDONTWRITEBYTECODE=1
 
@@ -87,6 +90,3 @@ source $DOTFILES_DIR/.secrets
 
 # enables zsh autocomplete when using invoke (make for Python)
 source $DATA_DIR/pyinvoke_completions.zsh
-
-touch "$DOTFILES_DIR/zshrc_config/`uname`.zshrc"
-source "$DOTFILES_DIR/zshrc_config/`uname`.zshrc"

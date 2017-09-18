@@ -8,3 +8,6 @@ plugins+=(osx)
 
 # autojump config
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
+# Framework python build for OS X
+export PYTHON_CONFIGURE_OPTS="--enable-framework"
