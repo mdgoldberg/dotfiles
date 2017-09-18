@@ -53,6 +53,9 @@ def create_symlinks(ctx):
 @invoke.task
 def homebrew(ctx):
     """Installs homebrew."""
+    if ctx.run('uname', hide=True).stdout != 'Darwin':
+        print('Not on OS X, so not installing brew packages!')
+        return
     print("Installing homebrew...")
     ctx.run(
         '/usr/bin/ruby -e "$(curl -fsSL '
@@ -64,6 +67,9 @@ def homebrew(ctx):
 @invoke.task
 def brew_packages(ctx):
     """Installs homebrew packages."""
+    if ctx.run('uname', hide=True).stdout != 'Darwin':
+        print('Not on OS X, so not installing brew packages!')
+        return
     print("Installing homebrew packages...")
     with open('brew_cask_packages.txt', 'r') as f:
         cask_packages = [p.strip() for p in f.readlines()]
