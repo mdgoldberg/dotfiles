@@ -53,7 +53,7 @@ def create_symlinks(ctx):
 @invoke.task
 def install_homebrew(ctx):
     """Installs homebrew."""
-    if ctx.run('uname', hide=True).stdout != 'Darwin':
+    if 'DARWIN' not in ctx.run('uname', hide=True).stdout.upper():
         print('Not on OS X, so not installing homebrew!')
         return
     print("Installing homebrew...")
@@ -67,7 +67,7 @@ def install_homebrew(ctx):
 @invoke.task
 def install_linuxbrew(ctx):
     """Installs linuxbrew."""
-    if ctx.run('uname', hide=True).stdout != 'Linux':
+    if 'LINUX' not in ctx.run('uname', hide=True).stdout.upper():
         print('Not on Linux, so not installing linuxbrew!')
         return
     print("Installing linuxbrew...")
@@ -81,7 +81,7 @@ def install_linuxbrew(ctx):
 @invoke.task
 def brew_packages(ctx):
     """Installs homebrew packages."""
-    if ctx.run('uname', hide=True).stdout != 'Darwin':
+    if 'DARWIN' not in ctx.run('uname', hide=True).stdout.upper():
         print('Not on OS X, so not installing brew packages!')
         return
     print("Installing homebrew packages...")
@@ -101,7 +101,7 @@ def brew_packages(ctx):
 @invoke.task
 def linuxbrew_packages(ctx):
     """Installs linuxbrew packages."""
-    if ctx.run('uname', hide=True).stdout != 'Linux':
+    if 'LINUX' not in ctx.run('uname', hide=True).stdout.upper():
         print('Not on Linux, so not installing linuxbrew packages!')
         return
     print("Installing linuxbrew packages...")
