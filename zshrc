@@ -90,3 +90,7 @@ source $DOTFILES_DIR/.secrets
 
 # enables zsh autocomplete when using invoke (make for Python)
 source $DATA_DIR/pyinvoke_completions.zsh
+
+# overwrite defaults
+touch $DOTFILES_DIR/.overwrite
+source $DOTFILES_DIR/.overwrite
