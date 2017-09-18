@@ -51,7 +51,7 @@ def create_symlinks(ctx):
 
 
 @invoke.task
-def homebrew(ctx):
+def install_homebrew(ctx):
     """Installs homebrew."""
     if ctx.run('uname', hide=True).stdout != 'Darwin':
         print('Not on OS X, so not installing brew packages!')
@@ -85,7 +85,14 @@ def brew_packages(ctx):
 
 
 @invoke.task
-def oh_my_zsh(ctx):
+def install_fzf(ctx):
+    """Installs FZF."""
+    ctx.run('git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf')
+    ctx.run('~/.fzf/install')
+
+
+@invoke.task
+def install_oh_my_zsh(ctx):
     """Installs oh-my-zsh for zsh shell."""
     print("Installing oh-my-zsh...")
     ctx.run(
@@ -132,8 +139,8 @@ def vim_plugins(ctx):
     ctx.run('nvim +PlugInstall +qall', echo=True)
 
 
-@invoke.task(pre=[create_symlinks, homebrew, brew_packages, oh_my_zsh,
-                  tmux_packages, vim_plugins])
+@invoke.task(pre=[create_symlinks, install_homebrew, brew_packages,
+                  install_fzf, install_oh_my_zsh, tmux_packages, vim_plugins])
 def fresh_install(ctx, python_packages=False):
     """Installs all tools (brew, zsh, tmux, vim) from scratch, and installs
     symlinks.
