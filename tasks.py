@@ -128,6 +128,7 @@ def pip_packages(ctx):
 def vim_plugins(ctx):
     """Installs vim-plug and all vim plugins specified in config/init.vim."""
     print("Installing vim plugins...")
+    ctx.run('vim +PlugInstall +qall', echo=True)
     ctx.run('nvim +PlugInstall +qall', echo=True)
 
 
@@ -181,6 +182,7 @@ def update_pip(ctx):
 def update_vim(ctx):
     """Updates all vim plugins."""
     print("Updating vim plugins...")
+    ctx.run('vim +PlugClean +PlugInstall +PlugUpdate +qall', echo=True)
     ctx.run('nvim +PlugClean +PlugInstall +PlugUpdate +qall', echo=True)
 
 
