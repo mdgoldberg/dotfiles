@@ -16,7 +16,7 @@ set encoding=utf-8
 let python_highlight_all=1
 
 " virtualenv support
-py << EOF
+py3 << EOF
 import os
 import sys
 if 'VIRTUAL_ENV' in os.environ:
