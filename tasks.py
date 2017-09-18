@@ -119,13 +119,6 @@ def linuxbrew_packages(ctx):
 
 
 @invoke.task
-def install_fzf(ctx):
-    """Installs FZF."""
-    ctx.run('git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf')
-    ctx.run('~/.fzf/install')
-
-
-@invoke.task
 def install_oh_my_zsh(ctx):
     """Installs oh-my-zsh for zsh shell."""
     print("Installing oh-my-zsh...")
