@@ -18,7 +18,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR=nvim
+command -v nvim > /dev/null && export EDITOR=nvim || export EDITOR=vim
 
 # Plugins can be found in $HOME/.oh-my-zsh/plugins/*
 # Custom plugins may be added to $HOME/.oh-my-zsh/custom/plugins/

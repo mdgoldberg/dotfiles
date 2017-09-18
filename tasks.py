@@ -54,12 +54,26 @@ def create_symlinks(ctx):
 def install_homebrew(ctx):
     """Installs homebrew."""
     if ctx.run('uname', hide=True).stdout != 'Darwin':
-        print('Not on OS X, so not installing brew packages!')
+        print('Not on OS X, so not installing homebrew!')
         return
     print("Installing homebrew...")
     ctx.run(
         '/usr/bin/ruby -e "$(curl -fsSL '
         'https://raw.githubusercontent.com/Homebrew/install/master/install)"',
+        echo=True
+    )
+
+
+@invoke.task
+def install_linuxbrew(ctx):
+    """Installs linuxbrew."""
+    if ctx.run('uname', hide=True).stdout != 'Linux':
+        print('Not on Linux, so not installing linuxbrew!')
+        return
+    print("Installing linuxbrew...")
+    ctx.run(
+        '/usr/bin/ruby -e "$(curl -fsSL '
+        'https://raw.githubusercontent.com/Linuxbrew/install/master/install)"',
         echo=True
     )
 
@@ -81,6 +95,26 @@ def brew_packages(ctx):
         packages = [p.strip() for p in f.readlines()]
     ctx.run(
         'brew install {}'.format(' '.join(packages)), echo=True
+    )
+
+
+@invoke.task
+def linuxbrew_packages(ctx):
+    """Installs linuxbrew packages."""
+    if ctx.run('uname', hide=True).stdout != 'Linux':
+        print('Not on Linux, so not installing linuxbrew packages!')
+        return
+    print("Installing linuxbrew packages...")
+    # with open('brew_cask_packages.txt', 'r') as f:
+    #     cask_packages = [p.strip() for p in f.readlines()]
+    # ctx.run(
+    #     'brew cask install {}'.format(' '.join(cask_packages)),
+    #     echo=True, warn=True
+    # )
+    with open('linuxbrew_packages.txt', 'r') as f:
+        packages = [p.strip() for p in f.readlines()]
+    ctx.run(
+        'linuxbrew install {}'.format(' '.join(packages)), echo=True
     )
 
 
