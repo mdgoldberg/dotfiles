@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugged')
 
 " General plugins
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'rafi/awesome-vim-colorschemes'
 Plug 'powerline/fonts'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
