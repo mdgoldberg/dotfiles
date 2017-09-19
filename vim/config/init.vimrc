@@ -48,7 +48,6 @@ Plug 'tpope/vim-vinegar'
 " Python plugins
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
-Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
 
 " Other language-specific plugins
 Plug 'jalvesaq/Nvim-R', { 'for': ['r', 'rnoweb'] }
