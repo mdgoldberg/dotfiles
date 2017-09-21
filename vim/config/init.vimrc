@@ -16,7 +16,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " TODO: fix FZF :Tags command so it finds the tags file at .git/tags
 Plug 'ervandew/supertab'
-Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'airblade/vim-gitgutter'
