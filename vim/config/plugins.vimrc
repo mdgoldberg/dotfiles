@@ -22,3 +22,6 @@ let g:netrw_liststyle = 3
 
 " Tagbar configs
 let g:tagbar_sort = 0
+
+" gitgutter configs
+let g:gitgutter_realtime = 0

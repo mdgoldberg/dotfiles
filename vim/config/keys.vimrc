@@ -1,5 +1,6 @@
 " use ; instead of :
 nnoremap ; :
+vnoremap ; :
 
 " use jk or kj to leave insert mode and return to normal mode
 imap jk <ESC>
@@ -10,6 +11,9 @@ imap Jk <ESC>
 imap jK <ESC>
 imap Kj <ESC>
 imap kJ <ESC>
+
+" zoom in on a vim window/split (use "<C-w> =" to reset)
+nnoremap <C-w>z <C-w>_ <bar> <C-w>\|
 
 " use ESC to leave insert mode in nvim terminal buffers
 " and activate other ways I leave insert mode
@@ -59,6 +63,11 @@ noremap <leader>f :TagbarToggle<CR>
 " fugitive mappings (TODO)
 nnoremap <leader>gb :Gblame<CR>
 
+" iron mappings
+let g:iron_map_defaults=0
+nnoremap <leader>r <Plug>(iron-send-motion)
+vnoremap <leader>r <Plug>(iron-send-motion)
+
 " netrw mappings
 augroup netrw_mappings
     autocmd!
@@ -68,9 +77,6 @@ function! NetrwMappings()
     nnoremap <buffer> <leader>w <C-^>
     nnoremap <buffer> <leader>q <C-^>
 endfunction
-
-" zoom in on a vim window/split (use "<C-w> =" to reset)
-nnoremap <C-w>z <C-w>_ <bar> <C-w>\|
 
 " TODO: read the maximum-awesome vimrc for key mappings
 " TODO: add mappings for useful plugins I've added but don't use much

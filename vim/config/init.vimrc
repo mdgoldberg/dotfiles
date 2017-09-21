@@ -48,9 +48,12 @@ Plug 'tpope/vim-vinegar'
 " Python plugins
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
+Plug 'hkupty/iron.nvim'
 
 " Other language-specific plugins
 Plug 'jalvesaq/Nvim-R', { 'for': ['r', 'rnoweb'] }
 Plug 'derekwyatt/vim-scala', { 'for': ['scala'] }
 
 call plug#end()
+
+" :UpdateRemotePlugins
