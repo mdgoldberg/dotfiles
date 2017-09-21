@@ -13,6 +13,8 @@ imap Kj <ESC>
 imap kJ <ESC>
 
 " zoom in on a vim window/split (use "<C-w> =" to reset)
+set wmh=0
+set wmw=0
 nnoremap <C-w>z <C-w>_ <bar> <C-w>\|
 
 " use ESC to leave insert mode in nvim terminal buffers
@@ -38,6 +40,12 @@ nnoremap $ g$
 vnoremap 0 g0
 vnoremap ^ g^
 vnoremap $ g$
+
+" move through windows using CTRL+ h, j, k, l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " function to check whether there is an open file in the current tab
 function! TabIsEmpty()
