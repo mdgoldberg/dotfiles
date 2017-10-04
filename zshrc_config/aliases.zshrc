@@ -1,3 +1,4 @@
+alias ed="$EDITOR"
 alias lsash="ls -laSh"
 alias zshrc="$EDITOR $HOME/.zshrc"
 alias reload_zshrc="source $HOME/.zshrc"
