@@ -13,6 +13,9 @@ let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 let g:SuperTabContextDiscoverDiscovery =
             \ ["&completefunc:<c-p>", "&omnifunc:<c-x><c-o>"]
 
+" fzf config for hidden files
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+
 " localvimrc configs
 let g:localvimrc_sandbox = 0
 let g:localvimrc_persistent = 1
