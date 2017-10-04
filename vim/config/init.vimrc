@@ -14,7 +14,6 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'powerline/fonts'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" TODO: fix FZF :Tags command so it finds the tags file at .git/tags
 Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-tmux-navigator'
@@ -53,6 +52,10 @@ Plug 'hkupty/iron.nvim'
 " Other language-specific plugins
 Plug 'jalvesaq/Nvim-R', { 'for': ['r', 'rnoweb'] }
 Plug 'derekwyatt/vim-scala', { 'for': ['scala'] }
+Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
+Plug 'prettier/vim-prettier', {
+            \ 'do': 'npm install prettier',
+            \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 
 call plug#end()
 
