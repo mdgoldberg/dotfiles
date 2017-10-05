@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'powerline/fonts'
+Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ervandew/supertab'
@@ -41,8 +42,8 @@ Plug 'vim-scripts/argtextobj.vim'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-vinegar'
 " TODO: install & learn easymotion/sneak/etc.
+" TODO: install & learn some sort of project search plugin (CtrlSF)
 
 " Python plugins
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
@@ -59,4 +60,4 @@ Plug 'prettier/vim-prettier', {
 
 call plug#end()
 
-" :UpdateRemotePlugins
+" TODO :UpdateRemotePlugins

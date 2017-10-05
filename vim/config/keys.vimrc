@@ -8,8 +8,7 @@ imap kj <ESC>
 imap JK <ESC>
 imap KJ <ESC>
 imap Jk <ESC>
-imap jK <ESC>
-imap Kj <ESC>
+imap jK <ESC> imap Kj <ESC>
 imap kJ <ESC>
 
 " zoom in on a vim window/split (use "<C-w> =" to reset)
@@ -54,7 +53,6 @@ endfunction
 
 " shortcuts to common commands
 let mapleader = ","
-nnoremap <leader>n :tabnew<CR>
 nnoremap <expr> <leader>w winnr('$') > 1 ? ":q<CR>" : ":tabclose<CR>"
 nnoremap <leader>q :qall<CR>
 nnoremap <leader>c :cclose<CR>:pclose<CR>:lclose<CR>
@@ -68,13 +66,10 @@ nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>s :split<CR>
 noremap <leader>f :TagbarToggle<CR>
 
-" fugitive mappings (TODO)
-nnoremap <leader>gb :Gblame<CR>
+" jedi mappings (TODO)
 
-" iron mappings
+" iron mappings (TODO)
 let g:iron_map_defaults=0
-nnoremap <leader>r <Plug>(iron-send-motion)
-vnoremap <leader>r <Plug>(iron-send-motion)
 
 " netrw mappings
 augroup netrw_mappings

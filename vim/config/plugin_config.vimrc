@@ -1,3 +1,15 @@
+" set colorscheme
+set background=dark
+if has('nvim')
+    set termguicolors
+    " set Vim-specific sequences for RGB colors
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    colorscheme solarized
+else
+    colorscheme slate
+endif
+
 " recognize *.tex files as tex, not plaintex
 let g:tex_flavor = "latex"
 
@@ -11,7 +23,8 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 let g:SuperTabContextDiscoverDiscovery =
-            \ ["&completefunc:<c-p>", "&omnifunc:<c-x><c-o>"]
+            \ ["&completefunc:<c-n>", "&omnifunc:<c-x><c-o>"]
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
 " fzf config for hidden files
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
