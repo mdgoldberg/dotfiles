@@ -46,6 +46,15 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" quickfix and :grep configs
+set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column\ --vimgrep
+set grepformat=%f:%l:%c:%m,%f:%l:%m
+augroup quickfix
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost l*    lwindow
+augroup END
+
 " disable annoying beep on errors
 set noerrorbells
 if has('autocmd')
@@ -59,8 +68,8 @@ set scrolloff=5
 set wildmenu
 set wildmode=list:longest
 
-" close buffer when tab is closed
-set nohidden
+" keep buffer open when tab is closed
+set hidden
 
 " open all folds by default
 au BufRead * normal zR
