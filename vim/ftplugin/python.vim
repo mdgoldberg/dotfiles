@@ -2,7 +2,7 @@
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set textwidth=79
+set textwidth=100
 set expandtab
 set autoindent
 set fileformat=unix
@@ -29,12 +29,8 @@ let python_highlight_all=1
 " 	EOF
 " endif
 
-" SimpylFold options
-let g:SimpylFold_docstring_preview=1
-let g:SimpylFold_fold_import=0
-
-" set up red vertical line at 80th column
-set colorcolumn=80
+" set up red vertical line at 101st column
+set colorcolumn=101
 
 " jedi-vim configs
 let g:jedi#popup_on_dot = 0
