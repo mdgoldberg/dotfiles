@@ -57,9 +57,10 @@ augroup END
 
 " disable annoying beep on errors
 set noerrorbells
-if has('autocmd')
-  autocmd GUIEnter * set vb t_vb=
-endif
+augroup error_bells
+    autocmd!
+    autocmd GUIEnter * set vb t_vb=
+augroup END
 
 " keep at least 5 lines on either side of cursor
 set scrolloff=5
