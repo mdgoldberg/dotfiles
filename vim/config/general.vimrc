@@ -47,13 +47,15 @@ set nowritebackup
 set noswapfile
 
 " quickfix and :grep configs
-set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column\ --vimgrep
-set grepformat=%f:%l:%c:%m,%f:%l:%m
-augroup quickfix
-    autocmd!
-    autocmd QuickFixCmdPost [^l]* cwindow
-    autocmd QuickFixCmdPost l*    lwindow
-augroup END
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column\ --vimgrep
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+    augroup quickfix
+        autocmd!
+        autocmd QuickFixCmdPost [^l]* cwindow
+        autocmd QuickFixCmdPost l*    lwindow
+    augroup END
+endif
 
 " disable annoying beep on errors
 set noerrorbells

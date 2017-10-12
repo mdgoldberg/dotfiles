@@ -48,7 +48,7 @@ Plug 'tpope/vim-abolish'
 " Python plugins
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
-Plug 'hkupty/iron.nvim'
+Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Other language-specific plugins
 Plug 'jalvesaq/Nvim-R', { 'for': ['r', 'rnoweb'] }
@@ -59,5 +59,3 @@ Plug 'prettier/vim-prettier', {
             \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 
 call plug#end()
-
-" TODO :UpdateRemotePlugins
