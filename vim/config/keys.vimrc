@@ -66,7 +66,12 @@ nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>s :split<CR>
 noremap <leader>f :TagbarToggle<CR>
 
-" jedi mappings (TODO)
+" yapf mapping to <leader>y
+if executable('yapf')
+    nnoremap <leader>y :call yapf#YAPF()<CR>
+endif
+
+" jedi mappings (TODO?)
 
 " iron mappings (TODO)
 let g:iron_map_defaults=0

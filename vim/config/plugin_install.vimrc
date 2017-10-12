@@ -26,7 +26,6 @@ Plug 'tpope/vim-repeat'
 Plug 'bitc/vim-bad-whitespace'
 Plug 'embear/vim-localvimrc'
 Plug 'bling/vim-airline'
-Plug 'yegappan/greplace'
 Plug 'vim-scripts/matchit.zip'
 
 " ultisnips
@@ -55,6 +54,7 @@ Plug 'tpope/vim-abolish'
 " Python plugins
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
+Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 
 " Other language-specific plugins
 Plug 'jalvesaq/Nvim-R', { 'for': ['r', 'rnoweb'] }
