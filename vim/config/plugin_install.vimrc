@@ -15,7 +15,6 @@ Plug 'powerline/fonts'
 Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'ervandew/supertab'
 Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-scripts/argtextobj.vim'
@@ -41,8 +40,6 @@ if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plug 'zchee/deoplete-jedi'
     Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 endif
 
 " indent and function argument text objects

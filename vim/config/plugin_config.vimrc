@@ -14,17 +14,9 @@ endif
 let g:tex_flavor = "latex"
 
 " Set Ultisnips configs
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<leader><tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" Supertab configs
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-let g:SuperTabContextDiscoverDiscovery =
-            \ ["&completefunc:<c-n>", "&omnifunc:<c-x><c-o>"]
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
 " fzf config for hidden files
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
@@ -42,8 +34,23 @@ let g:tagbar_sort = 0
 " gitgutter configs
 let g:gitgutter_realtime = 0
 
-" use deoplete
+" deoplete configs
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+
+" use tab to trigger deoplete
+let g:deoplete#disable_auto_complete = 1
+inoremap <silent><expr> <TAB>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ deoplete#mappings#manual_complete()
+
+function! s:check_back_space() abort "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
 
 " disable jedi-vim's completion, just use mappings
-let g:jedi#completions_enabled = 0
+if has('nvim')
+    let g:jedi#completions_enabled = 0
+endif
