@@ -48,7 +48,7 @@ set noswapfile
 
 " configs to use ag for :grep
 if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column\ --vimgrep
+    set grepprg=ag\ --nogroup\ --nocolor\ --column\ --vimgrep
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 

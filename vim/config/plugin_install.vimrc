@@ -29,9 +29,20 @@ Plug 'embear/vim-localvimrc'
 Plug 'bling/vim-airline'
 Plug 'yegappan/greplace'
 Plug 'vim-scripts/matchit.zip'
+
+" ultisnips
 if has('nvim') || v:version >= 704
     Plug 'sirver/ultisnips'
     Plug 'honza/vim-snippets'
+endif
+
+" neovim-only plugins and their alternatives
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'zchee/deoplete-jedi'
+    Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 endif
 
 " indent and function argument text objects
@@ -43,12 +54,9 @@ Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
 " TODO: install & learn easymotion/sneak/etc.
-" TODO: install & learn some sort of project search plugin (CtrlSF)
 
 " Python plugins
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
-Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Other language-specific plugins
 Plug 'jalvesaq/Nvim-R', { 'for': ['r', 'rnoweb'] }
