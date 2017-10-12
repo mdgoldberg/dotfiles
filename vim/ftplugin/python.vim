@@ -32,10 +32,7 @@ let python_highlight_all=1
 " set up red vertical line at 101st column
 set colorcolumn=101
 
-" jedi-vim configs
-let g:jedi#popup_on_dot = 0
-let g:jedi#show_call_signatures = 0
-
+" set up yapf mapping
 if executable('yapf')
     augroup yapf_mapping
         autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr><C-o>

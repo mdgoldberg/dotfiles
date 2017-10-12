@@ -56,6 +56,7 @@ Plug 'tpope/vim-abolish'
 " TODO: install & learn easymotion/sneak/etc.
 
 " Python plugins
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
 
 " Other language-specific plugins

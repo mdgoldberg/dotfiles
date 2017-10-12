@@ -41,3 +41,9 @@ let g:tagbar_sort = 0
 
 " gitgutter configs
 let g:gitgutter_realtime = 0
+
+" use deoplete
+let g:deoplete#enable_at_startup = 1
+
+" disable jedi-vim's completion, just use mappings
+let g:jedi#completions_enabled = 0
