@@ -9,13 +9,15 @@ DOTFILES_DIR = '{}/dotfiles'.format(HOME_DIR)
 
 SRC_DST_MAP = {
     'zshrc': ['.zshrc'],
-    'vim': ['.vim'], 'vim/vimrc': ['.vimrc'],
+    'vim': ['.vim'],
+    'vim/vimrc': ['.vimrc'],
     'vim/init.vim': ['.config/nvim/init.vim'],
     'tmux.conf': ['.tmux.conf'],
     'gitconfig': ['.gitconfig'],
     'pypirc': ['.pypirc'],
     'git_template': ['.git_template'],
-    'gitignore_global': ['.gitignore_global']
+    'gitignore_global': ['.gitignore_global'],
+    'ctags': ['.ctags']
 }
 
 
@@ -41,10 +43,8 @@ def create_symlinks(ctx):
         for dst in dsts:
             try:
                 print('{} -> {}'.format(src, dst))
-                create_symlink(
-                    '{}/{}'.format(DOTFILES_DIR, src),
-                    '{}/{}'.format(HOME_DIR, dst)
-                )
+                create_symlink('{}/{}'.format(DOTFILES_DIR, src),
+                               '{}/{}'.format(HOME_DIR, dst))
                 print('Symlink complete!')
             except OSError as e:
                 print(str(e))
@@ -60,8 +60,7 @@ def install_homebrew(ctx):
     ctx.run(
         '/usr/bin/ruby -e "$(curl -fsSL '
         'https://raw.githubusercontent.com/Homebrew/install/master/install)"',
-        echo=True
-    )
+        echo=True)
 
 
 @invoke.task
@@ -74,8 +73,7 @@ def install_linuxbrew(ctx):
     ctx.run(
         '/usr/bin/ruby -e "$(curl -fsSL '
         'https://raw.githubusercontent.com/Linuxbrew/install/master/install)"',
-        echo=True
-    )
+        echo=True)
 
 
 @invoke.task
@@ -89,13 +87,11 @@ def brew_packages(ctx):
         cask_packages = [p.strip() for p in f.readlines()]
     ctx.run(
         'brew cask install {}'.format(' '.join(cask_packages)),
-        echo=True, warn=True
-    )
+        echo=True,
+        warn=True)
     with open('brew_packages.txt', 'r') as f:
         packages = [p.strip() for p in f.readlines()]
-    ctx.run(
-        'brew install {}'.format(' '.join(packages)), echo=True
-    )
+    ctx.run('brew install {}'.format(' '.join(packages)), echo=True)
 
 
 @invoke.task
@@ -113,9 +109,7 @@ def linuxbrew_packages(ctx):
     # )
     with open('linuxbrew_packages.txt', 'r') as f:
         packages = [p.strip() for p in f.readlines()]
-    ctx.run(
-        'linuxbrew install {}'.format(' '.join(packages)), echo=True
-    )
+    ctx.run('linuxbrew install {}'.format(' '.join(packages)), echo=True)
 
 
 @invoke.task
@@ -124,11 +118,9 @@ def install_oh_my_zsh(ctx):
     print("Installing oh-my-zsh...")
     ctx.run(
         'curl -fsSLo oh-my-zsh-install.sh https://raw.github.com/'
-        'robbyrussell/oh-my-zsh/master/tools/install.sh', echo=True
-    )
-    ctx.run(
-        'sh oh-my-zsh-install.sh', echo=True, warn=True
-    )
+        'robbyrussell/oh-my-zsh/master/tools/install.sh',
+        echo=True)
+    ctx.run('sh oh-my-zsh-install.sh', echo=True, warn=True)
     os.remove('oh-my-zsh-install.sh')
 
     # also install honukai theme
@@ -137,8 +129,7 @@ def install_oh_my_zsh(ctx):
                  'oskarkrawczyk/honukai-iterm/master/honukai.zsh-theme')
     ctx.run(
         'curl {} -o ~/.oh-my-zsh/themes/honukai.zsh-theme'.format(THEME_URL),
-        echo=True
-    )
+        echo=True)
     # also notify user for iTerm2 colors
     COLORS_URL = ('https://raw.githubusercontent.com/'
                   'oskarkrawczyk/honukai-iterm/master/honukai.itermcolors')
@@ -152,11 +143,9 @@ def tmux_packages(ctx):
     print("Installing tpm and tmux plugins...")
     ctx.run(
         'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm',
-        echo=True, warn=True
-    )
-    ctx.run(
-        '~/.tmux/plugins/tpm/bin/install_plugins', echo=True
-    )
+        echo=True,
+        warn=True)
+    ctx.run('~/.tmux/plugins/tpm/bin/install_plugins', echo=True)
 
 
 @invoke.task
@@ -164,12 +153,9 @@ def pip_packages(ctx):
     """Installs python2 and python3 packages."""
     print("Installing pip2 and pip3 packages...")
     ctx.run(
-        'python2 -m pip install -r pip2_packages.txt',
-        echo=True, warn=True
-    )
+        'python2 -m pip install -r pip2_packages.txt', echo=True, warn=True)
     ctx.run(
-        'python3 -m pip install -r pip3_packages.txt', echo=True, warn=True
-    )
+        'python3 -m pip install -r pip3_packages.txt', echo=True, warn=True)
 
 
 @invoke.task
@@ -180,8 +166,10 @@ def vim_plugins(ctx):
     ctx.run('nvim +PlugInstall +qall', echo=True)
 
 
-@invoke.task(pre=[create_symlinks, install_homebrew, brew_packages,
-                  install_oh_my_zsh, tmux_packages, vim_plugins])
+@invoke.task(pre=[
+    create_symlinks, install_homebrew, brew_packages, install_oh_my_zsh,
+    tmux_packages, vim_plugins
+])
 def fresh_install(ctx, python_packages=False):
     """Installs all tools (brew, zsh, tmux, vim) from scratch, and installs
     symlinks.
@@ -216,13 +204,15 @@ def update_pip(ctx):
     print("Updating pip packages...")
     ctx.run(
         'pip2 freeze --local | grep -v "^\-e" | cut -d = -f 1  | '
-        'xargs -n1 pip2 install -U', echo=True, warn=True
-    )
+        'xargs -n1 pip2 install -U',
+        echo=True,
+        warn=True)
     ctx.run('pip2 freeze > pip2_packages.txt', echo=True)
     ctx.run(
         'pip3 freeze --local | grep -v "^\-e" | cut -d = -f 1  | '
-        'xargs -n1 pip3 install -U', echo=True, warn=True
-    )
+        'xargs -n1 pip3 install -U',
+        echo=True,
+        warn=True)
     ctx.run('pip3 freeze > pip3_packages.txt', echo=True)
 
 
@@ -238,5 +228,6 @@ def update_vim(ctx):
 def update_packages(ctx):
     """Updates all brew, pip, and vim packages."""
     pass
+
 
 # TODO: fonts from https://github.com/google/fonts/archive/master.zip
