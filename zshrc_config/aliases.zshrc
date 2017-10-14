@@ -1,4 +1,5 @@
 alias vim="nvim"
+command -v python3 >/dev/null 2>&1 || alias vim="nvim"
 alias lsash="ls -laSh"
 alias zshrc="$EDITOR $HOME/.zshrc"
 alias reload_zshrc="source $HOME/.zshrc"
