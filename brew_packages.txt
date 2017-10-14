@@ -55,6 +55,7 @@ node
 ocaml
 ocamlbuild
 openssl
+pandoc
 pcre
 perl
 pixman
@@ -62,6 +63,7 @@ pkg-config
 postgresql
 pyenv
 pyenv-virtualenv
+pyenv-virtualenvwrapper
 python
 python3
 r

@@ -76,6 +76,7 @@ eval "$(pyenv virtualenv-init -)"
 pyenv install -s 2.7.13
 pyenv install -s 3.6.2
 pyenv global 3.6.2 2.7.13
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
