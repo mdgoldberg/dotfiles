@@ -113,6 +113,26 @@ def linuxbrew_packages(ctx):
 
 
 @invoke.task
+def pyenv_install(ctx):
+    """Installs python versions from pyenv and configures virtualenvs."""
+    py2_ver = '2.7.14'
+    py3_ver = '3.6.3'
+    ctx.run('eval "$(pyenv init -)"')
+    ctx.run('eval "$(pyenv virtualenv-init -)"')
+    for py_ver in (py2_ver, py3_ver):
+        print('Installing python version {}'.format(py_ver))
+        ctx.run('pyenv install -s {}'.format(py_ver))
+        print('Configuring a virtualenv for {} and installing CLI tools'.format(py_ver))
+        venv_name = 'python{}_venv'.format(py_ver[0])
+        ctx.run('pyenv virtualenv {} {}'.format(py_ver, venv_name), echo=True)
+        ctx.run('pyenv activate {}'.format(venv_name))
+        ctx.run('pip install neovim jedi ipython jupyter yapf', echo=True)
+        ctx.run('pyenv deactivate')
+    print('Making {} the primary version, {} the secondary version'.format(py2_ver, py3_ver))
+    ctx.run('pyenv global {} {}'.format(py3_ver, py2_ver))
+
+
+@invoke.task
 def install_oh_my_zsh(ctx):
     """Installs oh-my-zsh for zsh shell."""
     print("Installing oh-my-zsh...")
@@ -167,7 +187,7 @@ def vim_plugins(ctx):
 
 
 @invoke.task(pre=[
-    create_symlinks, install_homebrew, brew_packages, install_oh_my_zsh,
+    create_symlinks, install_homebrew, brew_packages, pyenv_install, install_oh_my_zsh,
     tmux_packages, vim_plugins
 ])
 def fresh_install(ctx, python_packages=False):

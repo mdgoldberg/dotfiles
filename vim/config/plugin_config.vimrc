@@ -34,6 +34,10 @@ let g:tagbar_sort = 0
 " gitgutter configs
 let g:gitgutter_realtime = 0
 
+" python versions
+let g:python_host_prog = '/Users/mgoldberg/.pyenv/versions/python2_venv/bin/python'
+let g:python3_host_prog = '/Users/mgoldberg/.pyenv/versions/python3_venv/bin/python'
+
 " deoplete configs
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1

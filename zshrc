@@ -70,12 +70,9 @@ export MANPATH="/usr/local/man:$MANPATH"
 touch "$DOTFILES_DIR/zshrc_config/`uname`.zshrc"
 source "$DOTFILES_DIR/zshrc_config/`uname`.zshrc"
 
-# pyenv and pyenv-virtualenvwrapper configuration
+# pyenv and pyenv-virtualenvwrapper startup and config
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-pyenv install -s 2.7.14
-pyenv install -s 3.6.3
-pyenv global 3.6.3 2.7.14
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # fzf config
