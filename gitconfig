@@ -3,7 +3,7 @@
 	email = matt.goldberg7@gmail.com
 [core]
 	editor = vim
-	excludesfile = /Users/mgoldberg/.gitignore_global
+	excludesfile = $HOME/.gitignore_global
 [push]
 	default = current
 [color]
