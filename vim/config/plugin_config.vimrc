@@ -35,8 +35,8 @@ let g:tagbar_sort = 0
 let g:gitgutter_realtime = 0
 
 " python versions
-let g:python_host_prog = '$HOME/.pyenv/versions/python2_venv/bin/python'
-let g:python3_host_prog = '$HOME/.pyenv/versions/python3_venv/bin/python'
+let g:python_host_prog = $HOME . '/.pyenv/versions/python2_venv/bin/python'
+let g:python3_host_prog = $HOME . '/.pyenv/versions/python3_venv/bin/python'
 
 " deoplete configs
 let g:deoplete#enable_at_startup = 1
