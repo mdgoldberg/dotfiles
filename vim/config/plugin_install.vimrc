@@ -27,12 +27,13 @@ Plug 'bitc/vim-bad-whitespace'
 Plug 'embear/vim-localvimrc'
 Plug 'bling/vim-airline'
 Plug 'vim-scripts/matchit.zip'
+Plug 'chiel92/vim-autoformat'
 
 " ultisnips
-if has('nvim') || v:version >= 704
-    Plug 'sirver/ultisnips'
-    Plug 'honza/vim-snippets'
-endif
+" if has('nvim') || v:version >= 704
+"     Plug 'sirver/ultisnips'
+"     Plug 'honza/vim-snippets'
+" endif
 
 " neovim-only plugins and their alternatives
 if has('nvim')
@@ -54,7 +55,6 @@ Plug 'tpope/vim-abolish'
 " Python plugins
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
-Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 
 " Other language-specific plugins
 Plug 'jalvesaq/Nvim-R', { 'for': ['r', 'rnoweb'] }

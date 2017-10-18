@@ -41,10 +41,10 @@ vnoremap ^ g^
 vnoremap $ g$
 
 " move through windows using CTRL+ h, j, k, l
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 
 " function to check whether there is an open file in the current tab
 function! TabIsEmpty()
@@ -64,12 +64,8 @@ nnoremap <leader>t :Tags<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>s :split<CR>
-noremap <leader>f :TagbarToggle<CR>
-
-" yapf mapping to <leader>y
-if executable('yapf')
-    nnoremap <leader>y :call yapf#YAPF()<CR>
-endif
+noremap <leader>l :TagbarToggle<CR>
+noremap <leader>f :Autoformat<CR>
 
 " jedi mappings (TODO?)
 
