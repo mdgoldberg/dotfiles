@@ -1,11 +1,14 @@
 from __future__ import print_function
 import os
 import shutil
+import subprocess
 
 import invoke
 
 HOME_DIR = os.getenv('HOME')
 DOTFILES_DIR = '{}/dotfiles'.format(HOME_DIR)
+
+PYENV_ROOT = subprocess.run(['pyenv', 'root'], stdout=subprocess.PIPE).stdout.strip()
 
 SRC_DST_MAP = {
     'zshrc': ['.zshrc'],
@@ -19,6 +22,7 @@ SRC_DST_MAP = {
     'gitignore_global': ['.gitignore_global'],
     'ctags': ['.ctags'],
     'style.yapf': ['.config/yapf/style'],
+    'virtualenv_hooks.sh': [f'{PYENV_ROOT}/pyenv.d/virtualenv/after.bash']
 }
 
 
@@ -188,7 +192,7 @@ def vim_plugins(ctx):
 
 
 @invoke.task(pre=[
-    create_symlinks, install_homebrew, brew_packages, pyenv_install, install_oh_my_zsh,
+    install_homebrew, brew_packages, create_symlinks, pyenv_install, install_oh_my_zsh,
     tmux_packages, vim_plugins
 ])
 def fresh_install(ctx, python_packages=False):

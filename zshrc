@@ -60,7 +60,6 @@ export BIN_DIR=$DOTFILES_DIR/bin
 # configuring PATH
 export PATH=""
 export PATH=$PATH:$BIN_DIR
-export PATH=$PATH:~/.pyenv/bin
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin
 export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=$PATH:/opt/X11/bin:/Library/TeX/texbin
