@@ -38,6 +38,9 @@ let g:gitgutter_realtime = 0
 let g:python_host_prog = $HOME . '/.pyenv/versions/python2_venv/bin/python'
 let g:python3_host_prog = $HOME . '/.pyenv/versions/python3_venv/bin/python'
 
+" autoformat configs
+let g:autoformat_autoindent = 0
+
 " deoplete configs
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
