@@ -8,7 +8,10 @@ import invoke
 HOME_DIR = os.getenv('HOME')
 DOTFILES_DIR = '{}/dotfiles'.format(HOME_DIR)
 
-PYENV_ROOT = subprocess.run(['pyenv', 'root'], stdout=subprocess.PIPE).stdout.strip()
+PYENV_ROOT = os.path.relpath(
+    subprocess.run(['pyenv', 'root'], stdout=subprocess.PIPE).stdout.strip().decode('utf-8'),
+    HOME_DIR)
+
 
 SRC_DST_MAP = {
     'zshrc': ['.zshrc'],
@@ -22,7 +25,7 @@ SRC_DST_MAP = {
     'gitignore_global': ['.gitignore_global'],
     'ctags': ['.ctags'],
     'style.yapf': ['.config/yapf/style'],
-    'virtualenv_hooks.sh': [f'{PYENV_ROOT}/pyenv.d/virtualenv/after.bash']
+    'virtualenv_hooks.bash': [f'{PYENV_ROOT}/pyenv.d/virtualenv/after.bash']
 }
 
 
