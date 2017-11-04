@@ -22,6 +22,10 @@ set ruler
 set ttyfast
 set backspace=indent,eol,start
 set laststatus=2
+augroup vim_resized
+    autocmd!
+    autocmd VimResized * wincmd =
+augroup END
 
 " line numbers
 set number
@@ -36,15 +40,18 @@ set linebreak
 
 " searching options
 set incsearch
-set nohlsearch
 set showcmd
 set ignorecase
 set smartcase
+set nohlsearch  " see keys.vimrc for mapping to clear highlighting
 
 " disable backups
 set nobackup
 set nowritebackup
 set noswapfile
+
+" autoreload
+set autoread
 
 " configs to use ag for :grep
 if executable('ag')

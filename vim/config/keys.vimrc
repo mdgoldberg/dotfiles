@@ -11,10 +11,8 @@ imap Jk <ESC>
 imap jK <ESC> imap Kj <ESC>
 imap kJ <ESC>
 
-" zoom in on a vim window/split (use "<C-w> =" to reset)
-set wmh=0
-set wmw=0
-nnoremap <C-w>z <C-w>_ <bar> <C-w>\|
+" tmux-style zoom in on a vim window/split in a new tab (use wq/q to reset)
+nnoremap <leader>z :tabnew % <CR>
 
 " use ESC to leave insert mode in nvim terminal buffers
 " and activate other ways I leave insert mode
@@ -65,12 +63,17 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>s :split<CR>
 noremap <leader>l :TagbarToggle<CR>
-noremap <leader>f :Autoformat<CR>
+noremap <leader>f :Neoformat<CR>
 
-" jedi mappings (TODO?)
-
-" iron mappings (TODO)
+" iron mappings
 let g:iron_map_defaults=0
+nmap <leader>x <Plug>(iron-send-motion)
+vmap <leader>x <Plug>(iron-send-motion)
+nmap <leader>X ggVG<Plug>(iron-send-motion)
+
+" use tab to cycle through deoplete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 " netrw mappings
 augroup netrw_mappings
