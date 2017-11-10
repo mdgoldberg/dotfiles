@@ -76,7 +76,7 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore-dir .git -g ""'  # to find hidden files
+export FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' -l ''"  # to find hidden files
 
 # prevent Python from generating bytecode
 export PYTHONDONTWRITEBYTECODE=1

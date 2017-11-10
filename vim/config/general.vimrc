@@ -53,9 +53,9 @@ set noswapfile
 " autoreload
 set autoread
 
-" configs to use ag for :grep
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor\ --column\ --vimgrep
+" configs to use rg for :grep
+if executable('rg')
+    set grepprg=rg\ --vimgrep\ --no-heading
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 

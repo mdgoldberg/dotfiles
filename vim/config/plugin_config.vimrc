@@ -19,7 +19,7 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " fzf config for hidden files
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+let $FZF_DEFAULT_COMMAND = "rg --hidden -g '!.git' -l ''"
 let $FZF_DEFAULT_OPTS .= ' --no-height'
 
 " localvimrc configs

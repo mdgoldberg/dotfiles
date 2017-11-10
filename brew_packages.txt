@@ -23,6 +23,7 @@ gcc
 gd
 gdb
 gdbm
+geos
 gettext
 git
 glib
@@ -35,6 +36,7 @@ isl
 isl@0.12
 jemalloc
 jpeg
+jq
 lame
 libevent
 libffi
@@ -46,6 +48,7 @@ libtool
 libuv
 libvterm
 libyaml
+luajit
 macvim
 mongodb
 mpfr
@@ -54,7 +57,9 @@ neovim
 node
 ocaml
 ocamlbuild
+oniguruma
 openssl
+openssl@1.1
 pandoc
 pcre
 perl
@@ -69,16 +74,17 @@ python3
 r
 readline
 reattach-to-user-namespace
+ripgrep
 ruby
 s3cmd
 sqlite
-the_silver_searcher
 tig
 tmux
 tree
 unibilium
 vim
 webp
+wget
 x264
 xvid
 xz
