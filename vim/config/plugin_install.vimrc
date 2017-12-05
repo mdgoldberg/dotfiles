@@ -11,10 +11,10 @@ call plug#begin('~/.vim/plugged')
 " General plugins
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'rafi/awesome-vim-colorschemes'
-Plug 'powerline/fonts'
 Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
 Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-scripts/argtextobj.vim'
@@ -25,9 +25,10 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'bitc/vim-bad-whitespace'
 Plug 'embear/vim-localvimrc'
-Plug 'bling/vim-airline'
 Plug 'vim-scripts/matchit.zip'
 Plug 'sbdchd/neoformat'
+Plug 'itchyny/lightline.vim'
+Plug 'edkolev/tmuxline.vim'
 
 " neovim-only plugins and their alternatives
 if has('nvim')

@@ -3,12 +3,23 @@ set background=dark
 if has('nvim')
     set termguicolors
     " set Vim-specific sequences for RGB colors
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     colorscheme solarized
 else
     colorscheme slate
 endif
+
+" lightline configs
+set noshowmode
+let g:lightline = { 'colorscheme': 'solarized' }
+
+" tmuxline configs
+let g:tmuxline_powerline_separators = 0
+let g:tmuxline_separators = {
+    \ 'left' : '',
+    \ 'left_alt': '>',
+    \ 'right' : '',
+    \ 'right_alt' : '<',
+    \ 'space' : ' '}
 
 " recognize *.tex files as tex, not plaintex
 let g:tex_flavor = "latex"
@@ -49,4 +60,9 @@ let g:deoplete#enable_smart_case = 1
 " disable jedi-vim's completion, just use mappings
 if has('nvim')
     let g:jedi#completions_enabled = 0
+endif
+
+" hook up ripgrep to ack.vim
+if executable('rg')
+    let g:ackprg = 'rg --vimgrep --no-heading'
 endif

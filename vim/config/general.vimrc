@@ -31,9 +31,6 @@ augroup END
 set number
 highlight LineNr ctermfg=gray ctermbg=black
 
-" highlight current line
-set cursorline
-
 " wrap and linebreak
 set wrap
 set linebreak

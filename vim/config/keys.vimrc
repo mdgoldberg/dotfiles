@@ -65,6 +65,10 @@ nnoremap <leader>s :split<CR>
 noremap <leader>l :TagbarToggle<CR>
 noremap <leader>f :Neoformat<CR>
 
+" ack.vim mappings
+nnoremap <Leader>a :Ack
+vnoremap <Leader>a y:Ack <C-r>=fnameescape(@")<CR><CR>
+
 " iron mappings
 let g:iron_map_defaults=0
 nmap <leader>x <Plug>(iron-send-motion)
