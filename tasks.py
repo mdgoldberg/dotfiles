@@ -12,7 +12,6 @@ PYENV_ROOT = os.path.relpath(
     subprocess.run(['pyenv', 'root'], stdout=subprocess.PIPE).stdout.strip().decode('utf-8'),
     HOME_DIR)
 
-
 SRC_DST_MAP = {
     'zshrc': ['.zshrc'],
     'vim': ['.vim'],
@@ -50,9 +49,8 @@ def create_symlinks(ctx):
     for src, dsts in SRC_DST_MAP.items():
         for dst in dsts:
             try:
-                print('{} -> {}'.format(src, dst))
-                create_symlink('{}/{}'.format(DOTFILES_DIR, src),
-                               '{}/{}'.format(HOME_DIR, dst))
+                print(f'{src} -> {dst}')
+                create_symlink(f'{DOTFILES_DIR}/{src}', f'{HOME_DIR}/{dst}')
                 print('Symlink complete!')
             except OSError as e:
                 print(str(e))
@@ -93,13 +91,10 @@ def brew_packages(ctx):
     print("Installing homebrew packages...")
     with open('brew_cask_packages.txt', 'r') as f:
         cask_packages = [p.strip() for p in f.readlines()]
-    ctx.run(
-        'brew cask install {}'.format(' '.join(cask_packages)),
-        echo=True,
-        warn=True)
+    ctx.run(f'brew cask install {" ".join(cask_packages)}', echo=True, warn=True)
     with open('brew_packages.txt', 'r') as f:
         packages = [p.strip() for p in f.readlines()]
-    ctx.run('brew install {}'.format(' '.join(packages)), echo=True)
+    ctx.run(f'brew install {" ".join(packages)}', echo=True)
 
 
 @invoke.task
@@ -155,14 +150,11 @@ def install_oh_my_zsh(ctx):
     print("Installing honukai zsh theme and colors...")
     THEME_URL = ('https://raw.githubusercontent.com/'
                  'oskarkrawczyk/honukai-iterm/master/honukai.zsh-theme')
-    ctx.run(
-        'curl {} -o ~/.oh-my-zsh/themes/honukai.zsh-theme'.format(THEME_URL),
-        echo=True)
+    ctx.run('curl {} -o ~/.oh-my-zsh/themes/honukai.zsh-theme'.format(THEME_URL), echo=True)
     # also notify user for iTerm2 colors
     COLORS_URL = ('https://raw.githubusercontent.com/'
                   'oskarkrawczyk/honukai-iterm/master/honukai.itermcolors')
-    print('\n\nNOTE: Also install the honukai iTerm2 colorscheme '
-          'from {}'.format(COLORS_URL))
+    print('\n\nNOTE: Also install the honukai iTerm2 colorscheme ' 'from {}'.format(COLORS_URL))
 
 
 @invoke.task
@@ -170,9 +162,7 @@ def tmux_packages(ctx):
     """Installs tpm and tmux plugins."""
     print("Installing tpm and tmux plugins...")
     ctx.run(
-        'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm',
-        echo=True,
-        warn=True)
+        'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm', echo=True, warn=True)
     ctx.run('~/.tmux/plugins/tpm/bin/install_plugins', echo=True)
 
 
@@ -180,10 +170,8 @@ def tmux_packages(ctx):
 def pip_packages(ctx):
     """Installs python2 and python3 packages."""
     print("Installing pip2 and pip3 packages...")
-    ctx.run(
-        'python2 -m pip install -r pip2_packages.txt', echo=True, warn=True)
-    ctx.run(
-        'python3 -m pip install -r pip3_packages.txt', echo=True, warn=True)
+    ctx.run('python2 -m pip install -r pip2_packages.txt', echo=True, warn=True)
+    ctx.run('python3 -m pip install -r pip3_packages.txt', echo=True, warn=True)
 
 
 @invoke.task
@@ -227,20 +215,25 @@ def update_tmux(ctx):
 
 
 @invoke.task
-def update_pip(ctx):
-    """Updates all pip packages."""
-    print("Updating pip packages...")
+def update_pip2(ctx):
+    """Updates all pip packages for python2."""
+    print("Updating pip2 packages...")
     ctx.run(
         'pip2 freeze --local | grep -v "^\-e" | cut -d = -f 1  | '
         'xargs -n1 pip2 install -U',
         echo=True,
         warn=True)
-    ctx.run('pip2 freeze > pip2_packages.txt', echo=True)
+    ctx.run('pip2 freeze > pip2_packages.txt', echo=True, warn=True)
+
+
+@invoke.task
+def update_pip3(ctx):
+    """Updates all pip packages for python3."""
+    print("Updating pip3 packages...")
     ctx.run(
         'pip3 freeze --local | grep -v "^\-e" | cut -d = -f 1  | '
         'xargs -n1 pip3 install -U',
-        echo=True,
-        warn=True)
+        echo=True)
     ctx.run('pip3 freeze > pip3_packages.txt', echo=True)
 
 

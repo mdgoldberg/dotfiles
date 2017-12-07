@@ -72,6 +72,7 @@ source "$DOTFILES_DIR/zshrc_config/`uname`.zshrc"
 # pyenv and pyenv-virtualenvwrapper startup and config
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+export PYENV_ROOT="$(pyenv root)"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # fzf config
