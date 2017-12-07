@@ -66,7 +66,7 @@ noremap <leader>l :TagbarToggle<CR>
 noremap <leader>f :Neoformat<CR>
 
 " ack.vim mappings
-nnoremap <Leader>a :Ack
+nnoremap <expr> <Leader>a ":Ack "
 vnoremap <Leader>a y:Ack <C-r>=fnameescape(@")<CR><CR>
 
 " iron mappings
