@@ -75,6 +75,9 @@ eval "$(pyenv virtualenv-init -)"
 export PYENV_ROOT="$(pyenv root)"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
+# thefuck config
+eval $(thefuck --alias)
+
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' -l ''"  # to find hidden files

@@ -66,3 +66,9 @@ endif
 if executable('rg')
     let g:ackprg = 'rg --vimgrep --no-heading'
 endif
+
+" make it so ack doesn't jump to first match by default
+cnoreabbrev Ack Ack!
+
+" fugitive-gitlab config
+let g:fugitive_gitlab_domains = ['http://git.2nd.io']

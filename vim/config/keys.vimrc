@@ -67,6 +67,7 @@ noremap <leader>f :Neoformat<CR>
 
 " ack.vim mappings
 nnoremap <expr> <Leader>a ":Ack "
+nnoremap <Leader>* :Ack<CR>
 vnoremap <Leader>a y:Ack <C-r>=fnameescape(@")<CR><CR>
 
 " iron mappings

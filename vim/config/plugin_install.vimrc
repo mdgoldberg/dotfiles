@@ -15,14 +15,20 @@ Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
+Plug 'brooth/far.vim'
 Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine'
+Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'tommcdo/vim-exchange'
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'bitc/vim-bad-whitespace'
 Plug 'embear/vim-localvimrc'
 Plug 'vim-scripts/matchit.zip'
@@ -41,10 +47,6 @@ endif
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'vim-scripts/argtextobj.vim'
 
-" TODO: learn these plugins
-Plug 'tommcdo/vim-exchange'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-abolish'
 " TODO: install & learn easymotion/sneak/etc.
 
 " Python plugins
