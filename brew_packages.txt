@@ -8,6 +8,7 @@ bmake
 cairo
 camlp4
 clasp
+clingo
 cloog
 cmake
 colordiff
@@ -40,11 +41,13 @@ jq
 lame
 libevent
 libffi
+libidn2
 libmpc
 libpng
 libtermkey
 libtiff
 libtool
+libunistring
 libuv
 libvterm
 libyaml
@@ -78,6 +81,7 @@ ripgrep
 ruby
 s3cmd
 sqlite
+thefuck
 tig
 tmux
 tree
