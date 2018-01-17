@@ -62,7 +62,8 @@ nnoremap <leader>t :Tags<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>s :split<CR>
-noremap <leader>l :TagbarToggle<CR>
+noremap <leader>p :TagbarToggle<CR>
+noremap <leader>l :ALELint<CR>
 noremap <leader>f :ALEFix<CR>
 
 " ack.vim mappings
