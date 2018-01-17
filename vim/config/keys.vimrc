@@ -63,10 +63,10 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>s :split<CR>
 noremap <leader>l :TagbarToggle<CR>
-noremap <leader>f :Neoformat<CR>
+noremap <leader>f :ALEFix<CR>
 
 " ack.vim mappings
-nnoremap <expr> <Leader>a ":Ack "
+nnoremap <expr> <Leader>a ":Ack! ''<LEFT>"
 nnoremap <Leader>* :Ack<CR>
 vnoremap <Leader>a y:Ack <C-r>=fnameescape(@")<CR><CR>
 

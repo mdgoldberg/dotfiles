@@ -15,14 +15,30 @@ let g:lightline = { 'colorscheme': 'solarized' }
 " tmuxline configs
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_separators = {
-    \ 'left' : '',
-    \ 'left_alt': '>',
-    \ 'right' : '',
-    \ 'right_alt' : '<',
-    \ 'space' : ' '}
+            \ 'left' : '',
+            \ 'left_alt': '>',
+            \ 'right' : '',
+            \ 'right_alt' : '<',
+            \ 'space' : ' '}
 
 " recognize *.tex files as tex, not plaintex
 let g:tex_flavor = "latex"
+
+" Ale configs + integration with lightline (lang-specific configs are in in ftplugin/*.vim)
+let g:ale_open_list = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:lightline.component_expand = {
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
+let g:lightline.component_type = {
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \ }
+let g:lightline.active = { 'right': [[ 'linter_errors', 'linter_warnings', 'linter_ok' ]] }
 
 " Set Ultisnips configs
 let g:UltiSnipsExpandTrigger="<leader><tab>"
@@ -57,18 +73,10 @@ let g:iron_repl_open_cmd = 'botright vertical split'
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 
-" disable jedi-vim's completion, just use mappings
-if has('nvim')
-    let g:jedi#completions_enabled = 0
-endif
-
 " hook up ripgrep to ack.vim
 if executable('rg')
     let g:ackprg = 'rg --vimgrep --no-heading'
 endif
-
-" make it so ack doesn't jump to first match by default
-cnoreabbrev Ack Ack!
 
 " fugitive-gitlab config
 let g:fugitive_gitlab_domains = ['http://git.2nd.io']

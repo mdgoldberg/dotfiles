@@ -15,6 +15,12 @@ set encoding=utf-8
 " Make it pretty
 let python_highlight_all=1
 
+" configure ALE for python
+let b:ale_fixers = ['remove_trailing_lines', 'trim_whitespace', 'isort', 'yapf']
+
+" set up red vertical line at 101st column
+set colorcolumn=101
+
 " virtualenv support
 " if has('python')
 " 	py << EOF
@@ -29,5 +35,7 @@ let python_highlight_all=1
 " 	EOF
 " endif
 
-" set up red vertical line at 101st column
-set colorcolumn=101
+" disable jedi-vim's completion, just use mappings
+" if has('nvim')
+"     let g:jedi#completions_enabled = 0
+" endif
