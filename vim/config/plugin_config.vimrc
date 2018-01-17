@@ -26,9 +26,7 @@ let g:tex_flavor = "latex"
 
 " Ale configs + integration with lightline (lang-specific configs are in in ftplugin/*.vim)
 let g:ale_open_list = 1
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_echo_msg_format = '[%linter%] %s% [code]%'
 let g:lightline.component_expand = {
       \  'linter_warnings': 'lightline#ale#warnings',
       \  'linter_errors': 'lightline#ale#errors',

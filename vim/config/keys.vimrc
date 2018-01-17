@@ -53,7 +53,10 @@ endfunction
 let mapleader = ","
 nnoremap <expr> <leader>w winnr('$') > 1 ? ":q<CR>" : ":tabclose<CR>"
 nnoremap <leader>q :qall<CR>
-nnoremap <leader>c :cclose<CR>:pclose<CR>:lclose<CR>
+nnoremap <leader>cq :cclose<CR>
+nnoremap <leader>cc :cclose<CR>
+nnoremap <leader>cl :lclose<CR>
+nnoremap <leader>cp :pclose<CR>
 nnoremap <tab> :tabnext<CR>
 nnoremap <S-tab> :tabprevious<CR>
 nnoremap <leader>e :FZF<CR>
