@@ -21,7 +21,6 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'vim-scripts/argtextobj.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-unimpaired'
@@ -56,6 +55,7 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
 
 " Other language-specific plugins
+Plug 'cespare/vim-toml', { 'for': ['toml'] }
 Plug 'jalvesaq/Nvim-R', { 'for': ['r', 'rnoweb'] }
 Plug 'derekwyatt/vim-scala', { 'for': ['scala'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
