@@ -24,6 +24,7 @@ SRC_DST_MAP = {
     'gitignore_global': ['.gitignore_global'],
     'ctags': ['.ctags'],
     'style.yapf': ['.config/yapf/style'],
+    'flake8': ['.flake8'],
     'virtualenv_hooks.bash': [f'{PYENV_ROOT}/pyenv.d/virtualenv/after.bash']
 }
 
