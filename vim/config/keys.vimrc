@@ -49,6 +49,9 @@ function! TabIsEmpty()
     return winnr('$') == 1 && len(expand('%')) == 0 && line2byte(line('$') + 1) <= 2
 endfunction
 
+" set leader key to comma
+let mapleader = ","
+
 " shortcuts for opening/closing/navigating windows/tabs
 noremap <expr> <leader>n TabIsEmpty() ? ":FZF<CR>" : ":tabnew<CR>:FZF<CR>"
 nnoremap <expr> <leader>w winnr('$') > 1 ? ":q<CR>" : ":tabclose<CR>"
@@ -65,7 +68,6 @@ nnoremap <leader>cl :lclose<CR>
 nnoremap <leader>cp :pclose<CR>
 
 " shortcuts to other common commands
-let mapleader = ","
 nnoremap <leader>e :FZF<CR>
 nnoremap <leader>t :Tags<CR>
 nnoremap <leader>b :Buffers<CR>
