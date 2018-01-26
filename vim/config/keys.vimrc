@@ -53,17 +53,16 @@ endfunction
 let mapleader = ","
 
 " shortcuts for opening/closing/navigating windows/tabs
-noremap <expr> <leader>n TabIsEmpty() ? ":FZF<CR>" : ":tabnew<CR>:FZF<CR>"
+noremap <expr> <leader>op TabIsEmpty() ? ":FZF<CR>" : ":tabnew<CR>:FZF<CR>"
 nnoremap <expr> <leader>w winnr('$') > 1 ? ":q<CR>" : ":tabclose<CR>"
 nnoremap <leader>q :qall<CR>
 nnoremap <tab> :tabnext<CR>
 nnoremap <S-tab> :tabprevious<CR>
 nnoremap <leader>oq :copen<CR>
-nnoremap <leader>oc :copen<CR>
-nnoremap <leader>ol :lopen<CR>
-nnoremap <leader>op :popen<CR>
 nnoremap <leader>cq :cclose<CR>
+nnoremap <leader>oc :copen<CR>
 nnoremap <leader>cc :cclose<CR>
+nnoremap <leader>ol :lopen<CR>
 nnoremap <leader>cl :lclose<CR>
 nnoremap <leader>cp :pclose<CR>
 
