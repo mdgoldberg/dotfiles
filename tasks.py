@@ -6,7 +6,7 @@ import subprocess
 import invoke
 
 HOME_DIR = os.getenv('HOME')
-DOTFILES_DIR = '{}/dotfiles'.format(HOME_DIR)
+DOTFILES_DIR = '{HOME_DIR}/dotfiles'.format(HOME_DIR=HOME_DIR)
 
 PYENV_ROOT = os.path.relpath(
     subprocess.run(['pyenv', 'root'], stdout=subprocess.PIPE).stdout.strip().decode('utf-8'),
@@ -25,7 +25,8 @@ SRC_DST_MAP = {
     'ctags': ['.ctags'],
     'style.yapf': ['.config/yapf/style'],
     'flake8': ['.flake8'],
-    'virtualenv_hooks.bash': [f'{PYENV_ROOT}/pyenv.d/virtualenv/after.bash']
+    'virtualenv_hooks.bash':
+    ['{PYENV_ROOT}/pyenv.d/virtualenv/after.bash'.format(PYENV_ROOT=PYENV_ROOT)]
 }
 
 
@@ -50,8 +51,10 @@ def create_symlinks(ctx):
     for src, dsts in SRC_DST_MAP.items():
         for dst in dsts:
             try:
-                print(f'{src} -> {dst}')
-                create_symlink(f'{DOTFILES_DIR}/{src}', f'{HOME_DIR}/{dst}')
+                print('{src} -> {dst}'.format(src=src, dst=dst))
+                src_filename = '{DOTFILES_DIR}/{src}'.format(DOTFILES_DIR, src)
+                dst_filename = '{HOME_DIR}/{dst}'.format(DOTFILES_DIR, dst)
+                create_symlink(src_filename, dst_filename)
                 print('Symlink complete!')
             except OSError as e:
                 print(str(e))
@@ -92,10 +95,15 @@ def brew_packages(ctx):
     print("Installing homebrew packages...")
     with open('brew_cask_packages.txt', 'r') as f:
         cask_packages = [p.strip() for p in f.readlines()]
-    ctx.run(f'brew cask install {" ".join(cask_packages)}', echo=True, warn=True)
+    cask_packages_str = ' '.join(cask_packages)
+    ctx.run(
+        'brew cask install {cask_packages_str}'.format(cask_packages_str=cask_packages_str),
+        echo=True,
+        warn=True)
     with open('brew_packages.txt', 'r') as f:
         packages = [p.strip() for p in f.readlines()]
-    ctx.run(f'brew install {" ".join(packages)}', echo=True)
+    packages_str = ' '.join(packages)
+    ctx.run('brew install {packages_str}'.format(packages_str=packages_str), echo=True)
 
 
 @invoke.task
@@ -105,15 +113,10 @@ def linuxbrew_packages(ctx):
         print('Not on Linux, so not installing linuxbrew packages!')
         return
     print("Installing linuxbrew packages...")
-    # with open('brew_cask_packages.txt', 'r') as f:
-    #     cask_packages = [p.strip() for p in f.readlines()]
-    # ctx.run(
-    #     'brew cask install {}'.format(' '.join(cask_packages)),
-    #     echo=True, warn=True
-    # )
     with open('linuxbrew_packages.txt', 'r') as f:
         packages = [p.strip() for p in f.readlines()]
-    ctx.run('linuxbrew install {}'.format(' '.join(packages)), echo=True)
+    packages_str = ' '.join(packages)
+    ctx.run('linuxbrew install {packages_str}'.format(packages_str=packages_str), echo=True)
 
 
 @invoke.task
@@ -246,7 +249,7 @@ def update_vim(ctx):
     ctx.run('nvim +PlugClean +PlugInstall +PlugUpdate +qall', echo=True)
 
 
-@invoke.task(pre=[update_brew, update_tmux, update_pip, update_vim])
+@invoke.task(pre=[update_brew, update_tmux, update_pip2, update_pip3, update_vim])
 def update_packages(ctx):
     """Updates all brew, pip, and vim packages."""
     pass
