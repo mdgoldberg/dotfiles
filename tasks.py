@@ -25,8 +25,6 @@ SRC_DST_MAP = {
     'ctags': ['.ctags'],
     'style.yapf': ['.config/yapf/style'],
     'flake8': ['.flake8'],
-    'virtualenv_hooks.bash':
-    ['{PYENV_ROOT}/pyenv.d/virtualenv/after.bash'.format(PYENV_ROOT=PYENV_ROOT)]
 }
 
 
@@ -219,8 +217,14 @@ def update_tmux(ctx):
 
 
 @invoke.task
-def update_pip2(ctx):
-    """Updates all pip packages for python2."""
+def update_pip(ctx):
+    """Updates all pip packages for python3 and python2."""
+    print("Updating pip3 packages...")
+    ctx.run(
+        'pip3 freeze --local | grep -v "^\-e" | cut -d = -f 1  | '
+        'xargs -n1 pip3 install -U',
+        echo=True)
+    ctx.run('pip3 freeze > pip3_packages.txt', echo=True)
     print("Updating pip2 packages...")
     ctx.run(
         'pip2 freeze --local | grep -v "^\-e" | cut -d = -f 1  | '
@@ -231,17 +235,6 @@ def update_pip2(ctx):
 
 
 @invoke.task
-def update_pip3(ctx):
-    """Updates all pip packages for python3."""
-    print("Updating pip3 packages...")
-    ctx.run(
-        'pip3 freeze --local | grep -v "^\-e" | cut -d = -f 1  | '
-        'xargs -n1 pip3 install -U',
-        echo=True)
-    ctx.run('pip3 freeze > pip3_packages.txt', echo=True)
-
-
-@invoke.task
 def update_vim(ctx):
     """Updates all vim plugins."""
     print("Updating vim plugins...")
@@ -249,7 +242,7 @@ def update_vim(ctx):
     ctx.run('nvim +PlugClean +PlugInstall +PlugUpdate +qall', echo=True)
 
 
-@invoke.task(pre=[update_brew, update_tmux, update_pip2, update_pip3, update_vim])
+@invoke.task(pre=[update_brew, update_tmux, update_pip, update_vim])
 def update_packages(ctx):
     """Updates all brew, pip, and vim packages."""
     pass
