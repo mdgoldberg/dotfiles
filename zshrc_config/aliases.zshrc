@@ -13,7 +13,7 @@ alias r="r -q"
 alias lc="latexmk -c; echo ''; ls"
 alias diff="colordiff"
 alias register_pypi="python setup.py register"
-alias upload_pypi="rm -rf dist && python setup.py sdist bdist_wheel && twine upload dist/* && rm -rf dist build *.egg_info"
+alias upload_pypi="rm -rf dist && python setup.py sdist bdist_wheel && twine upload dist/* && rm -rf dist build *.egg-info"
 alias new_data_analysis="cookiecutter https://github.com/drivendata/cookiecutter-data-science"
 
 # side projects/employment
