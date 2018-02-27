@@ -30,12 +30,14 @@ Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'bitc/vim-bad-whitespace'
 Plug 'embear/vim-localvimrc'
 Plug 'vim-scripts/matchit.zip'
 Plug 'itchyny/lightline.vim'
 Plug 'edkolev/tmuxline.vim'
+Plug 'easymotion/vim-easymotion'
 
 " neovim-only plugins and their alternatives
 if has('nvim')
@@ -47,8 +49,6 @@ endif
 " indent and function argument text objects
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'vim-scripts/argtextobj.vim'
-
-" TODO: install & learn easymotion/sneak/etc.
 
 " Python plugins
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
