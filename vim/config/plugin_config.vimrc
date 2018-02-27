@@ -10,7 +10,33 @@ endif
 
 " lightline configs
 set noshowmode
-let g:lightline = { 'colorscheme': 'solarized' }
+let g:lightline = {
+    \ 'colorscheme': 'solarized',
+    \ 'active': {
+    \       'left': [
+    \           [ 'mode', 'paste' ],
+    \           [ 'gitbranch', 'readonly' ],
+    \           [ 'filename', 'modified' ]
+    \       ],
+    \       'right': [
+    \           [ 'linter_errors', 'linter_warnings', 'linter_ok' ],
+    \           [ 'lineinfo', 'percent' ],
+    \           [ 'fileencoding', 'filetype' ],
+    \       ],
+    \ },
+    \ 'component_function': {
+    \       'gitbranch': 'fugitive#head'
+    \ },
+    \ 'component_expand': {
+    \       'linter_warnings': 'lightline#ale#warnings',
+    \       'linter_errors': 'lightline#ale#errors',
+    \       'linter_ok': 'lightline#ale#ok',
+    \ },
+    \ 'component_type': {
+    \       'linter_warnings': 'warning',
+    \       'linter_errors': 'error',
+    \ },
+\ }
 
 " tmuxline configs
 let g:tmuxline_powerline_separators = 0
@@ -24,20 +50,10 @@ let g:tmuxline_separators = {
 " recognize *.tex files as tex, not plaintex
 let g:tex_flavor = "latex"
 
-" Ale configs + integration with lightline (lang-specific configs are in in ftplugin/*.vim)
+" Ale configs (lang-specific configs are in in ftplugin/*.vim)
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_echo_msg_format = '[%linter%] %s% [code]%'
-let g:lightline.component_expand = {
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
-      \ }
-let g:lightline.component_type = {
-      \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
-      \ }
-let g:lightline.active = { 'right': [[ 'linter_errors', 'linter_warnings', 'linter_ok' ]] }
 
 " Set Ultisnips configs
 let g:UltiSnipsExpandTrigger="<leader><tab>"
