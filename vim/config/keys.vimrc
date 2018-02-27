@@ -76,10 +76,13 @@ noremap <leader>p :TagbarToggle<CR>
 noremap <leader>l :ALELint<CR>
 noremap <leader>f :ALEFix<CR>
 
+" to open tag under word in vertical split
+nnoremap <C-w><C-[> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
 " ack.vim mappings
 nnoremap <expr> <Leader>a ":Ack! ''<LEFT>"
-nnoremap <Leader>* :Ack<CR>
-vnoremap <Leader>a y:Ack <C-r>=fnameescape(@")<CR><CR>
+nnoremap <expr> <Leader>* ":Ack! '\\b<cword>\\b'<CR>"
+vnoremap <Leader>a y:Ack! <C-r>=fnameescape(@")<CR><CR>
 
 " iron mappings
 let g:iron_map_defaults=0
