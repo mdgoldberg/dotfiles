@@ -57,6 +57,7 @@ if executable('rg')
 endif
 
 " quickfix configs
+au FileType qf wincmd J
 augroup quickfix
     autocmd!
     autocmd QuickFixCmdPost [^l]* cwindow
