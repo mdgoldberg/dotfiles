@@ -71,6 +71,11 @@ let g:localvimrc_persistent = 1
 " vinegar/netrw configs
 let g:netrw_liststyle = 3
 
+" easymotion configs
+let g:EasyMotion_startofline = 0
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_use_smartsign_us = 1
+
 " Tagbar configs
 let g:tagbar_sort = 0
 
@@ -84,14 +89,13 @@ let g:python3_host_prog = $HOME . '/.pyenv/versions/python3_venv/bin/python'
 " iron.nvim configs
 let g:iron_repl_open_cmd = 'botright vertical split'
 
-" deoplete configs
+" deoplete configs - last two map auto-complete to tab
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
+inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
 
 " hook up ripgrep to ack.vim
 if executable('rg')
     let g:ackprg = 'rg --vimgrep --no-heading'
 endif
-
-" fugitive-gitlab config
-let g:fugitive_gitlab_domains = ['http://git.2nd.io']

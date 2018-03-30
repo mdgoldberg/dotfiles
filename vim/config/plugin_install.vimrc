@@ -54,11 +54,9 @@ Plug 'vim-scripts/argtextobj.vim'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
 
-" Other language-specific plugins
-Plug 'cespare/vim-toml', { 'for': ['toml'] }
+" Other language plugins
+Plug 'sheerun/vim-polyglot'
 Plug 'jalvesaq/Nvim-R', { 'for': ['r', 'rnoweb'] }
-Plug 'derekwyatt/vim-scala', { 'for': ['scala'] }
-Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
 Plug 'prettier/vim-prettier', {
             \ 'do': 'npm install prettier',
             \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }

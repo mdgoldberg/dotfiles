@@ -2,3 +2,4 @@ source $HOME/dotfiles/vim/config/general.vimrc
 source $HOME/dotfiles/vim/config/plugin_install.vimrc
 source $HOME/dotfiles/vim/config/plugin_config.vimrc
 source $HOME/dotfiles/vim/config/keys.vimrc
+source $HOME/dotfiles/vim/config/secrets.vimrc

@@ -50,7 +50,7 @@ function! TabIsEmpty()
 endfunction
 
 " set leader key to comma
-let mapleader = ","
+let mapleader = "\<space>"
 
 " shortcuts for opening/closing/navigating windows/tabs
 noremap <expr> <leader>op TabIsEmpty() ? ":FZF<CR>" : ":tabnew<CR>:FZF<CR>"
@@ -73,16 +73,25 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>s :split<CR>
 noremap <leader>p :TagbarToggle<CR>
-noremap <leader>l :ALELint<CR>
 noremap <leader>f :ALEFix<CR>
+"
+" easymotion configs
+map  <leader>/ <Plug>(easymotion-sn)
+omap <leader>/ <Plug>(easymotion-tn)
+map  <leader>n <Plug>(easymotion-next)
+map  <leader>N <Plug>(easymotion-prev)
+map <leader>l <Plug>(easymotion-lineforward)
+map <leader>j <Plug>(easymotion-j)
+map <leader>k <Plug>(easymotion-k)
+map <leader>h <Plug>(easymotion-linebackward)
 
 " to open tag under word in vertical split
 nnoremap <C-w><C-[> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " ack.vim mappings
-nnoremap <expr> <Leader>a ":Ack! ''<LEFT>"
-nnoremap <expr> <Leader>* ":Ack! '\\b<cword>\\b'<CR>"
-vnoremap <Leader>a y:Ack! <C-r>=fnameescape(@")<CR><CR>
+nnoremap <expr> <leader>a ":Ack! ''<LEFT>"
+nnoremap <expr> <leader>* ":Ack! '\\b<cword>\\b'<CR>"
+vnoremap <leader>a y:Ack! <C-r>=fnameescape(@")<CR><CR>
 
 " iron mappings
 let g:iron_map_defaults=0
