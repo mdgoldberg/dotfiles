@@ -80,7 +80,7 @@ let g:EasyMotion_use_smartsign_us = 1
 let g:tagbar_sort = 0
 
 " gitgutter configs
-let g:gitgutter_realtime = 0
+set updatetime=100
 
 " python versions
 let g:python_host_prog = $HOME . '/.pyenv/versions/python2_venv/bin/python'

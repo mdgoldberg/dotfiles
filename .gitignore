@@ -4,6 +4,6 @@
 **/*.swp
 vim/autoload
 vim/plugged
-vim/init.vim
+vim/config/secrets.vimrc
 .secrets
 .overwrite

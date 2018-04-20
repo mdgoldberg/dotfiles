@@ -85,12 +85,15 @@ export FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' -l ''"  # to find hidden file
 # prevent Python from generating bytecode
 export PYTHONDONTWRITEBYTECODE=1
 
+# enables zsh autocomplete when using invoke (make for Python)
+source $DATA_DIR/pyinvoke_completions.zsh
+
+# pipenv command line completion
+eval "$(pipenv --completion)"
+
 # holds passwords and API tokens that shouldn't be in source control
 touch $DOTFILES_DIR/.secrets
 source $DOTFILES_DIR/.secrets
-
-# enables zsh autocomplete when using invoke (make for Python)
-source $DATA_DIR/pyinvoke_completions.zsh
 
 # overwrite defaults
 touch $DOTFILES_DIR/.overwrite

@@ -24,6 +24,7 @@ SRC_DST_MAP = {
     'gitignore_global': ['.gitignore_global'],
     'ctags': ['.ctags'],
     'style.yapf': ['.config/yapf/style'],
+    'isort.cfg': ['.isort.cfg'],
     'flake8': ['.flake8'],
 }
 
@@ -36,8 +37,7 @@ def create_symlink(src, dst):
         shutil.rmtree(dst)
     # make sure necessary directories exist
     base_dir = os.path.dirname(dst)
-    if not os.path.exists(base_dir):
-        os.makedirs(base_dir)
+    os.makedirs(base_dir, exist_ok=True)
     # make a symlink
     os.symlink(src, dst)
 
@@ -49,9 +49,9 @@ def create_symlinks(ctx):
     for src, dsts in SRC_DST_MAP.items():
         for dst in dsts:
             try:
-                print('{src} -> {dst}'.format(src=src, dst=dst))
-                src_filename = '{DOTFILES_DIR}/{src}'.format(DOTFILES_DIR, src)
-                dst_filename = '{HOME_DIR}/{dst}'.format(DOTFILES_DIR, dst)
+                src_filename = '{}/{}'.format(DOTFILES_DIR, src)
+                dst_filename = '{}/{}'.format(HOME_DIR, dst)
+                print('{src} -> {dst}'.format(src=src_filename, dst=dst_filename))
                 create_symlink(src_filename, dst_filename)
                 print('Symlink complete!')
             except OSError as e:

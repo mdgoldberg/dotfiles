@@ -74,6 +74,7 @@ nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>s :split<CR>
 noremap <leader>p :TagbarToggle<CR>
 noremap <leader>f :ALEFix<CR>
+noremap <leader>z :terminal<CR>i
 "
 " easymotion configs
 map  <leader>/ <Plug>(easymotion-sn)
