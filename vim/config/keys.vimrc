@@ -54,6 +54,7 @@ let mapleader = "\<space>"
 
 " shortcuts for opening/closing/navigating windows/tabs
 noremap <expr> <leader>op TabIsEmpty() ? ":FZF<CR>" : ":tabnew<CR>:FZF<CR>"
+noremap <expr> <leader>oz TabIsEmpty() ? ":terminal<CR>i" : ":tabnew<CR>:terminal<CR>i"
 nnoremap <expr> <leader>w winnr('$') > 1 ? ":q<CR>" : ":tabclose<CR>"
 nnoremap <leader>q :qall<CR>
 nnoremap <tab> :tabnext<CR>
