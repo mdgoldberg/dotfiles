@@ -7,23 +7,14 @@ alias vimrc="$EDITOR $HOME/.vim/vimrc"
 alias htop="sudo htop"
 alias gloga='git log --oneline --decorate --color --graph --all'
 alias py="python"
-alias py2="python2"
-alias py3="python3"
 alias ipy="ipython"
-alias ipy2="ipython2"
-alias ipy3="ipython3"
-alias pip2="python2 -m pip"
-alias pip3="python3 -m pip"
+alias pydb="python -m ipdb -c continue"
 alias r="r -q"
 alias lc="latexmk -c; echo ''; ls"
 alias diff="colordiff"
 alias register_pypi="python setup.py register"
 alias upload_pypi="rm -rf dist && python setup.py sdist bdist_wheel && twine upload dist/* && rm -rf dist build *.egg_info"
 alias new_data_analysis="cookiecutter https://github.com/drivendata/cookiecutter-data-science"
-
-# side projects/employment
-alias sportsref="cd $HOME/Dropbox/CodeStuff/sports_analytics/sportsref"
-alias dotfiles="cd $HOME/dotfiles"
 
 # side projects/employment
 alias turch="cd $HOME/Dropbox/Turchin/"
