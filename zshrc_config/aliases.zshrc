@@ -9,6 +9,7 @@ alias gloga='git log --oneline --decorate --color --graph --all'
 alias py="python"
 alias ipy="ipython"
 alias pydb="python -m ipdb -c continue"
+alias pip_upgrade="pip freeze --local | grep -v "^\-e" | cut -d = -f 1  | xargs -n1 pip install -U"
 alias r="r -q"
 alias lc="latexmk -c; echo ''; ls"
 alias diff="colordiff"
