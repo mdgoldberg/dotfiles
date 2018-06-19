@@ -17,6 +17,7 @@ let python_highlight_all=1
 
 " configure ALE for python
 let b:ale_fixers = ['remove_trailing_lines', 'trim_whitespace', 'isort', 'yapf']
+let b:ale_linters = ['flake8', 'pylint']
 
 " set up red vertical line at 101st column
 set colorcolumn=101

@@ -48,7 +48,7 @@ endif
 
 " indent and function argument text objects
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'vim-scripts/argtextobj.vim'
+Plug 'PeterRincker/vim-argumentative'
 
 " Python plugins
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }

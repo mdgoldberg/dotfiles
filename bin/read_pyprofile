@@ -1,0 +1,11 @@
+#! /usr/bin/env python3
+
+import argparse
+import pstats
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('profile_path')
+    args = parser.parse_args()
+    prof = pstats.Stats(args.profile_path).strip_dirs().sort_stats('time')
+    prof.print_stats(200)
