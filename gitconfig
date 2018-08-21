@@ -16,5 +16,3 @@
 	ff = false
 [pull]
     ff = only
-[credential]
-	helper = osxkeychain

@@ -88,7 +88,8 @@ export PYTHONDONTWRITEBYTECODE=1
 # enables zsh autocomplete when using invoke (make for Python)
 source $DATA_DIR/pyinvoke_completions.zsh
 
-# pipenv command line completion
+# pipenv config + command line completion
+export PIPENV_VENV_IN_PROJECT=true
 eval "$(pipenv --completion)"
 
 # holds passwords and API tokens that shouldn't be in source control
