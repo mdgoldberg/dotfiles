@@ -82,7 +82,10 @@ set wildmode=list:longest
 set hidden
 
 " open all folds by default
-au BufRead * normal zR
+augroup folds
+    au!
+    au BufRead * normal zR
+augroup END
 
 " set encoding to UTF8
 set encoding=utf-8
@@ -95,6 +98,3 @@ set expandtab
 
 " always show tab line to avoid annoying resize
 set showtabline=2
-
-" useful for using buffers
-set hidden

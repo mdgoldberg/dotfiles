@@ -55,10 +55,20 @@ let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_echo_msg_format = '[%linter%] %s% [code]%'
 
+" autocomplete (ncm2 and language-server) configs
+augroup ncm2
+    au!
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+augroup END
+set completeopt=menuone,noselect,noinsert
+
+" LanguageClient-neovim configs
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['pyls'],
+    \ }
+
 " Set Ultisnips configs
-let g:UltiSnipsExpandTrigger="<leader><tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
 
 " fzf config for hidden files
 let $FZF_DEFAULT_COMMAND = "rg --hidden -g '!.git' -l ''"
@@ -82,18 +92,21 @@ let g:tagbar_sort = 0
 " gitgutter configs
 set updatetime=100
 
+" disable Jedi-vim autocompletion and enable call-signatures options
+let g:jedi#auto_initialization = 1
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#completions_command = ""
+let g:jedi#show_call_signatures = "1"
+
 " python versions
-let g:python_host_prog = $HOME . '/.pyenv/versions/python2_venv/bin/python'
-let g:python3_host_prog = $HOME . '/.pyenv/versions/python3_venv/bin/python'
+let g:python_host_prog = $HOME . '/.pyenv/versions/2.7.14/bin/python2'
+let g:python3_host_prog = $HOME . '/.pyenv/versions/3.7.0/bin/python3.7'
 
 " iron.nvim configs
 let g:iron_repl_open_cmd = 'botright vertical split'
-
-" deoplete configs - last two map auto-complete to tab
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
 
 " hook up ripgrep to ack.vim
 if executable('rg')

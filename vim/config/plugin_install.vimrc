@@ -41,8 +41,22 @@ Plug 'easymotion/vim-easymotion'
 
 " neovim-only plugins and their alternatives
 if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'zchee/deoplete-jedi'
+    " autocomplete
+    Plug 'roxma/nvim-yarp'
+    Plug 'ncm2/ncm2'
+    Plug 'autozimu/LanguageClient-neovim', {
+      \ 'branch': 'next',
+      \ 'do': './install.sh',
+      \ }
+
+    " NCM2 Sources
+    Plug 'ncm2/ncm2-path'
+    Plug 'HansPinckaers/ncm2-jedi'
+    Plug 'ncm2/ncm2-ultisnips'
+    Plug 'ncm2/ncm2-tagprefix'
+    Plug 'wellle/tmux-complete.vim'
+
+    " repl within neovim
     Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
 
@@ -50,12 +64,10 @@ endif
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'PeterRincker/vim-argumentative'
 
-" Python plugins
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
-
-" Other language plugins
+" language plugins
 Plug 'sheerun/vim-polyglot'
+Plug 'davidhalter/jedi-vim'
+Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
 Plug 'jalvesaq/Nvim-R', { 'for': ['r', 'rnoweb'] }
 Plug 'prettier/vim-prettier', {
             \ 'do': 'npm install prettier',

@@ -2,6 +2,9 @@
 nnoremap ; :
 vnoremap ; :
 
+" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+inoremap <C-c> <ESC>
+
 " use jk or kj to leave insert mode and return to normal mode
 imap jk <ESC>
 imap kj <ESC>
@@ -10,9 +13,6 @@ imap KJ <ESC>
 imap Jk <ESC>
 imap jK <ESC> imap Kj <ESC>
 imap kJ <ESC>
-
-" tmux-style zoom in on a vim window/split in a new tab (use wq/q to reset)
-nnoremap <leader>z :tabnew % <CR>
 
 " use ESC to leave insert mode in nvim terminal buffers
 " and activate other ways I leave insert mode
@@ -76,7 +76,7 @@ nnoremap <leader>s :split<CR>
 noremap <leader>p :TagbarToggle<CR>
 noremap <leader>f :ALEFix<CR>
 noremap <leader>z :terminal<CR>i
-"
+
 " easymotion configs
 map  <leader>/ <Plug>(easymotion-sn)
 omap <leader>/ <Plug>(easymotion-tn)
@@ -95,15 +95,26 @@ nnoremap <expr> <leader>a ":Ack! ''<LEFT>"
 nnoremap <expr> <leader>* ":Ack! '\\b<cword>\\b'<CR>"
 vnoremap <leader>a y:Ack! <C-r>=fnameescape(@")<CR><CR>
 
+" autocomplete mappings
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent> <expr> <CR> (pumvisible() && empty(v:completed_item)) ?  "\<c-y>\<cr>" : "\<CR>"
+
+" ultisnips configs
+let g:UltiSnipsExpandTrigger="<leader><tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" LanguageClient-neovim mappings
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> <leader>d :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
+
 " iron mappings
 let g:iron_map_defaults=0
 nmap <leader>x <Plug>(iron-send-motion)
 vmap <leader>x <Plug>(iron-send-motion)
 nmap <leader>X ggVG<Plug>(iron-send-motion)
-
-" use tab to cycle through deoplete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 
 " netrw mappings
 augroup netrw_mappings
