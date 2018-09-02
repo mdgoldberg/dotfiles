@@ -55,7 +55,7 @@ let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_echo_msg_format = '[%linter%] %s% [code]%'
 
-" autocomplete (ncm2 and language-server) configs
+" ncm2 configs
 augroup ncm2
     au!
     autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -66,8 +66,9 @@ set completeopt=menuone,noselect,noinsert
 let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ }
+let g:LanguageClient_settingsPath = $HOME . '/.vim/settings.json'
 
-" Set Ultisnips configs
+" Ultisnips configs
 let g:UltiSnipsRemoveSelectModeMappings = 0
 
 " fzf config for hidden files
@@ -90,7 +91,7 @@ let g:EasyMotion_use_smartsign_us = 1
 let g:tagbar_sort = 0
 
 " gitgutter configs
-set updatetime=100
+set updatetime=750
 
 " disable Jedi-vim autocompletion and enable call-signatures options
 let g:jedi#auto_initialization = 1
