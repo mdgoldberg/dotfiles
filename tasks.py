@@ -26,6 +26,7 @@ SRC_DST_MAP = {
     'style.yapf': ['.config/yapf/style'],
     'isort.cfg': ['.isort.cfg'],
     'flake8': ['.flake8'],
+    'psqlrc': ['.psqlrc']
 }
 
 
