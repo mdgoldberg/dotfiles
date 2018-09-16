@@ -67,6 +67,7 @@ let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ }
 let g:LanguageClient_settingsPath = $HOME . '/.vim/settings.json'
+let g:LanguageClient_diagnosticsList = "Disabled"  " let ALE linting populate loclist
 
 " Ultisnips configs
 let g:UltiSnipsRemoveSelectModeMappings = 0
@@ -91,7 +92,7 @@ let g:EasyMotion_use_smartsign_us = 1
 let g:tagbar_sort = 0
 
 " gitgutter configs
-set updatetime=750
+set updatetime=200
 
 " disable Jedi-vim autocompletion and enable call-signatures options
 let g:jedi#auto_initialization = 1

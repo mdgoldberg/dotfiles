@@ -102,8 +102,8 @@ inoremap <silent> <expr> <CR> (pumvisible() && empty(v:completed_item)) ?  "\<c-
 
 " ultisnips configs
 let g:UltiSnipsExpandTrigger="<leader><tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<C-l>"
+let g:UltiSnipsJumpBackwardTrigger="<C-h>"
 
 " LanguageClient-neovim mappings
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>

@@ -51,10 +51,7 @@ if has('nvim')
 
     " NCM2 Sources
     Plug 'ncm2/ncm2-path'
-    Plug 'HansPinckaers/ncm2-jedi'
     Plug 'ncm2/ncm2-ultisnips'
-    Plug 'ncm2/ncm2-tagprefix'
-    Plug 'wellle/tmux-complete.vim'
 
     " repl within neovim
     Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }
