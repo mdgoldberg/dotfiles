@@ -69,5 +69,6 @@ Plug 'jalvesaq/Nvim-R', { 'for': ['r', 'rnoweb'] }
 Plug 'prettier/vim-prettier', {
             \ 'do': 'npm install prettier',
             \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
+Plug 'hashivim/vim-terraform'
 
 call plug#end()

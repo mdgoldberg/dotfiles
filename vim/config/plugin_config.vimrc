@@ -104,8 +104,8 @@ let g:jedi#completions_command = ""
 let g:jedi#show_call_signatures = "1"
 
 " python versions
-let g:python_host_prog = $HOME . '/.pyenv/versions/2.7.14/bin/python2'
-let g:python3_host_prog = $HOME . '/.pyenv/versions/3.7.0/bin/python3.7'
+let g:python_host_prog = $HOME . '/.pyenv/shims/python2'
+let g:python3_host_prog = $HOME . '/.pyenv/shims/python3'
 
 " iron.nvim configs
 let g:iron_repl_open_cmd = 'botright vertical split'
@@ -114,3 +114,7 @@ let g:iron_repl_open_cmd = 'botright vertical split'
 if executable('rg')
     let g:ackprg = 'rg --vimgrep --no-heading'
 endif
+
+" terraform
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
