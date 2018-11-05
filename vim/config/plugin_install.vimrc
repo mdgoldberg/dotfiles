@@ -63,12 +63,22 @@ Plug 'PeterRincker/vim-argumentative'
 
 " language plugins
 Plug 'sheerun/vim-polyglot'
+
+" python
 Plug 'davidhalter/jedi-vim'
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
-Plug 'jalvesaq/Nvim-R', { 'for': ['r', 'rnoweb'] }
+
+" typescript
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'ncm2/nvim-typescript', {'do': './install.sh'}
 Plug 'prettier/vim-prettier', {
             \ 'do': 'npm install prettier',
             \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
+
+" R
+Plug 'jalvesaq/Nvim-R', { 'for': ['r', 'rnoweb'] }
+
+" terraform
 Plug 'hashivim/vim-terraform'
 
 call plug#end()
