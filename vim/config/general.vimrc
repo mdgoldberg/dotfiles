@@ -87,7 +87,7 @@ augroup folds
     au BufRead * normal zR
 augroup END
 
-" set encoding to UTF8
+set fileformat=unix
 set encoding=utf-8
 
 " default tab settings - expand tabs to 4 spaces

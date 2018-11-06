@@ -63,9 +63,10 @@ augroup END
 set completeopt=menuone,noselect,noinsert
 
 " LanguageClient-neovim configs
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['pyls'],
-    \ }
+let g:LanguageClient_serverCommands = {}
+let g:LanguageClient_serverCommands.python = ['pyls']
+let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+let g:LanguageClient_serverCommands.typescript = ['javascript-typescript-stdio']
 let g:LanguageClient_settingsPath = $HOME . '/.vim/settings.json'
 let g:LanguageClient_diagnosticsList = "Disabled"  " let ALE linting populate loclist
 

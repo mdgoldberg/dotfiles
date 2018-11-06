@@ -68,9 +68,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'davidhalter/jedi-vim'
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
 
-" typescript
+" javascript / typescript
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'ncm2/nvim-typescript', {'do': './install.sh'}
 Plug 'prettier/vim-prettier', {
             \ 'do': 'npm install prettier',
             \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }

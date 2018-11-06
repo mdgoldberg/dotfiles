@@ -107,8 +107,10 @@ let g:UltiSnipsJumpBackwardTrigger="<C-h>"
 
 " LanguageClient-neovim mappings
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> <leader>d :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <leader>d :call LanguageClient#textDocument_typeDefinition()<CR>
 nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> <leader>u :call LanguageClient#textDocument_references()<CR>
 
 " iron mappings
 let g:iron_map_defaults=0
