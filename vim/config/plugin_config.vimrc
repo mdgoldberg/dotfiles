@@ -25,7 +25,8 @@ let g:lightline = {
     \       ],
     \ },
     \ 'component_function': {
-    \       'gitbranch': 'fugitive#head'
+    \       'gitbranch': 'fugitive#head',
+    \       'filename': 'LightlineFilename',
     \ },
     \ 'component_expand': {
     \       'linter_warnings': 'lightline#ale#warnings',
@@ -37,6 +38,10 @@ let g:lightline = {
     \       'linter_errors': 'error',
     \ },
 \ }
+
+function! LightlineFilename()
+    return fnamemodify(expand("%"), ":~:.")
+endfunction
 
 " tmuxline configs
 let g:tmuxline_powerline_separators = 0
