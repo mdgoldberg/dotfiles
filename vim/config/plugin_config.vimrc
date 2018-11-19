@@ -60,6 +60,17 @@ let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_echo_msg_format = '[%linter%] %s% [code]%'
 
+" Ale linters
+let g:ale_linters = {}
+let g:ale_linters['python'] = ['flake8']
+let g:ale_fixers['typescript'] = ['tslint']
+
+" Ale fixers
+let g:ale_fixers = {}
+let g:ale_fixers['json'] = ['prettier']
+let g:ale_fixers['python'] = ['remove_trailing_lines', 'trim_whitespace', 'isort', 'yapf']
+let g:ale_fixers['typescript'] = ['prettier']
+
 " ncm2 configs
 augroup ncm2
     au!
@@ -69,9 +80,9 @@ set completeopt=menuone,noselect,noinsert
 
 " LanguageClient-neovim configs
 let g:LanguageClient_serverCommands = {}
-let g:LanguageClient_serverCommands.python = ['pyls']
-let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
-let g:LanguageClient_serverCommands.typescript = ['javascript-typescript-stdio']
+let g:LanguageClient_serverCommands['python'] = ['pyls']
+let g:LanguageClient_serverCommands['javascript'] = ['javascript-typescript-stdio']
+let g:LanguageClient_serverCommands['typescript'] = ['javascript-typescript-stdio']
 let g:LanguageClient_settingsPath = $HOME . '/.vim/settings.json'
 let g:LanguageClient_diagnosticsList = "Disabled"  " let ALE linting populate loclist
 
@@ -124,3 +135,4 @@ endif
 " terraform
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
+let g:terraform_commentsring='//%s'
