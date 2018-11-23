@@ -60,16 +60,17 @@ let g:ale_lint_on_enter = 0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_echo_msg_format = '[%linter%] %s% [code]%'
 
-" Ale linters
+" Ale language settings
 let g:ale_linters = {}
-let g:ale_linters['python'] = ['flake8']
-let g:ale_fixers['typescript'] = ['tslint']
-
-" Ale fixers
 let g:ale_fixers = {}
-let g:ale_fixers['json'] = ['prettier']
+
+let g:ale_linters['python'] = ['flake8']
 let g:ale_fixers['python'] = ['remove_trailing_lines', 'trim_whitespace', 'isort', 'yapf']
+
+let g:ale_linters['typescript'] = ['tslint']
 let g:ale_fixers['typescript'] = ['prettier']
+
+let g:ale_fixers['json'] = ['prettier']
 
 " ncm2 configs
 augroup ncm2

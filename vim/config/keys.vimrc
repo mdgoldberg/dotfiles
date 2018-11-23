@@ -38,12 +38,6 @@ vnoremap 0 g0
 vnoremap ^ g^
 vnoremap $ g$
 
-" move through windows using CTRL+ h, j, k, l
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-
 " function to check whether there is an open file in the current tab
 function! TabIsEmpty()
     return winnr('$') == 1 && len(expand('%')) == 0 && line2byte(line('$') + 1) <= 2
