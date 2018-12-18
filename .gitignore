@@ -6,4 +6,3 @@ vim/autoload
 vim/plugged
 vim/config/secrets.vimrc
 .secrets
-.overwrite

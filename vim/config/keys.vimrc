@@ -1,3 +1,6 @@
+" set leader key to comma
+let mapleader = "\<space>"
+
 " use ; instead of :
 nnoremap ; :
 vnoremap ; :
@@ -11,21 +14,16 @@ imap kj <ESC>
 imap JK <ESC>
 imap KJ <ESC>
 imap Jk <ESC>
-imap jK <ESC> imap Kj <ESC>
+imap jK <ESC>
+imap Kj <ESC>
 imap kJ <ESC>
 
 " use ESC to leave insert mode in nvim terminal buffers
-" and activate other ways I leave insert mode
+" and allow JK and KJ to leave terminal mode
 if has('nvim')
     tnoremap <ESC> <C-\><C-n>
-    tmap jk <ESC>
-    tmap kj <ESC>
     tmap JK <ESC>
     tmap KJ <ESC>
-    tmap Jk <ESC>
-    tmap jK <ESC>
-    tmap Kj <ESC>
-    tmap kJ <ESC>
 endif
 
 " make movements visual lines instead of actual lines
@@ -38,13 +36,14 @@ vnoremap 0 g0
 vnoremap ^ g^
 vnoremap $ g$
 
+" use leader-c and leader-p to copy/paste to/from system clipboard
+noremap <leader>cbc "+y
+noremap <leader>cbp "+p
+
 " function to check whether there is an open file in the current tab
 function! TabIsEmpty()
     return winnr('$') == 1 && len(expand('%')) == 0 && line2byte(line('$') + 1) <= 2
 endfunction
-
-" set leader key to comma
-let mapleader = "\<space>"
 
 " shortcuts for opening/closing/navigating windows/tabs
 noremap <expr> <leader>op TabIsEmpty() ? ":FZF<CR>" : ":tabnew<CR>:FZF<CR>"
@@ -112,15 +111,9 @@ nmap <leader>x <Plug>(iron-send-motion)
 vmap <leader>x <Plug>(iron-send-motion)
 nmap <leader>X ggVG<Plug>(iron-send-motion)
 
-" netrw mappings
-augroup netrw_mappings
-    autocmd!
-    autocmd filetype netrw call NetrwMappings()
-augroup END
-function! NetrwMappings()
-    nnoremap <buffer> <leader>w <C-^>
-    nnoremap <buffer> <leader>q <C-^>
-endfunction
+" ranger.vim mapping
+let g:ranger_map_keys = 0
+nmap - :Ranger<CR>
 
 " TODO: read the maximum-awesome vimrc for key mappings
 " TODO: add mappings for useful plugins I've added but don't use much

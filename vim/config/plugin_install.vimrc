@@ -11,7 +11,8 @@ call plug#begin('~/.vim/plugged')
 " General plugins
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'rafi/awesome-vim-colorschemes'
-Plug 'tpope/vim-vinegar'
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'

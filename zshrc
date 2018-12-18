@@ -23,7 +23,7 @@ command -v nvim > /dev/null && export EDITOR=nvim || export EDITOR=vim
 # Plugins can be found in $HOME/.oh-my-zsh/plugins/*
 # Custom plugins may be added to $HOME/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump python pip history sudo)
+plugins=(git autojump pip history kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -82,6 +82,14 @@ export FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' -l ''"  # to find hidden file
 
 # prevent Python from generating bytecode
 export PYTHONDONTWRITEBYTECODE=1
+
+# prevent Python from buffering stdout/stderr
+export PYTHONUNBUFFERED=1
+
+# nvm config
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
 
 # enables zsh autocomplete when using invoke (make for Python)
 source $DATA_DIR/pyinvoke_completions.zsh

@@ -4,10 +4,11 @@
 [core]
 	editor = nvim
 	excludesfile = $HOME/.gitignore_global
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [push]
 	default = current
 [color]
-	ui = auto
+	ui = true
 [init]
 	templatedir = ~/.git_template
 [alias]
@@ -16,3 +17,17 @@
 	ff = false
 [pull]
     ff = only
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[diff-so-fancy]
+	markEmptyLines = false

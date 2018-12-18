@@ -84,6 +84,7 @@ let g:LanguageClient_serverCommands = {}
 let g:LanguageClient_serverCommands['python'] = ['pyls']
 let g:LanguageClient_serverCommands['javascript'] = ['javascript-typescript-stdio']
 let g:LanguageClient_serverCommands['typescript'] = ['javascript-typescript-stdio']
+let g:LanguageClient_serverCommands['javascript.jsx'] = ['javascript-typescript-stdio']
 let g:LanguageClient_settingsPath = $HOME . '/.vim/settings.json'
 let g:LanguageClient_diagnosticsList = "Disabled"  " let ALE linting populate loclist
 
@@ -98,13 +99,16 @@ let $FZF_DEFAULT_OPTS .= ' --no-height'
 let g:localvimrc_sandbox = 0
 let g:localvimrc_persistent = 1
 
-" vinegar/netrw configs
-let g:netrw_liststyle = 3
-
 " easymotion configs
 let g:EasyMotion_startofline = 0
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_smartsign_us = 1
+
+" ranger configs
+let g:ranger_replace_netrw = 1
+
+" bclose configs (dependency of ranger.vim, but don't need mapping)
+let g:bclose_no_plugin_maps = 1
 
 " Tagbar configs
 let g:tagbar_sort = 0
