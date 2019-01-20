@@ -8,22 +8,9 @@ vnoremap ; :
 " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
 inoremap <C-c> <ESC>
 
-" use jk or kj to leave insert mode and return to normal mode
-imap jk <ESC>
-imap kj <ESC>
-imap JK <ESC>
-imap KJ <ESC>
-imap Jk <ESC>
-imap jK <ESC>
-imap Kj <ESC>
-imap kJ <ESC>
-
 " use ESC to leave insert mode in nvim terminal buffers
-" and allow JK and KJ to leave terminal mode
 if has('nvim')
     tnoremap <ESC> <C-\><C-n>
-    tmap JK <ESC>
-    tmap KJ <ESC>
 endif
 
 " make movements visual lines instead of actual lines

@@ -23,7 +23,7 @@ command -v nvim > /dev/null && export EDITOR=nvim || export EDITOR=vim
 # Plugins can be found in $HOME/.oh-my-zsh/plugins/*
 # Custom plugins may be added to $HOME/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autojump pip history kubectl)
+plugins=(git autojump pip)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,8 +88,29 @@ export PYTHONUNBUFFERED=1
 
 # nvm config
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+nvm() {
+    unset -f nvm
+    export NVM_DIR=~/.nvm
+    [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+    nvm "$@"
+}
+
+node() {
+    unset -f node
+    export NVM_DIR=~/.nvm
+    [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+    node "$@"
+}
+
+npm() {
+    unset -f npm
+    export NVM_DIR=~/.nvm
+    [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+    npm "$@"
+}
 
 # enables zsh autocomplete when using invoke (make for Python)
 source $DATA_DIR/pyinvoke_completions.zsh
@@ -102,6 +123,6 @@ eval "$(pipenv --completion)"
 touch $DOTFILES_DIR/.secrets
 source $DOTFILES_DIR/.secrets
 
-# overwrite defaults
-touch $DOTFILES_DIR/.overwrite
-source $DOTFILES_DIR/.overwrite
+# update $PATH
+export PATH=$HOME/.ssi/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH

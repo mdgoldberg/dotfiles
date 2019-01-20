@@ -18,6 +18,10 @@ alias register_pypi="python setup.py register"
 alias upload_pypi="rm -rf dist && python setup.py sdist bdist_wheel && twine upload dist/* && rm -rf dist build *.egg-info"
 alias new_data_analysis="cookiecutter https://github.com/drivendata/cookiecutter-data-science"
 
+alias k='kubectl'
+alias kp='kubectl -n prod'
+alias kd='kubectl -n dev'
+
 # side projects/employment
 alias turch="cd $HOME/Dropbox/Turchin/"
 alias spotifyproj="cd $HOME/Dropbox/CodeStuff/spotify2itunes/"
