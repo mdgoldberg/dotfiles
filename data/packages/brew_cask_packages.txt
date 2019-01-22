@@ -1,0 +1,9 @@
+docker
+font-inconsolata
+font-iosevka
+insomnia
+iterm2
+java
+mactex
+skim
+xquartz

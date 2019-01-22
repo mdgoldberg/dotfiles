@@ -1,4 +1,0 @@
-#!/bin/sh
-
-easy_install invoke
-inv fresh-install
