@@ -13,7 +13,7 @@ PYENV_ROOT = os.path.relpath(
     HOME_DIR)
 
 SRC_DST_MAP = {
-    'zshrc': ['.zshrc'],
+    'zsh/zshrc': ['.zshrc'],
     'vim': ['.vim'],
     'vim/vimrc': ['.vimrc'],
     'vim/init.vim': ['.config/nvim/init.vim'],

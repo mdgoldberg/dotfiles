@@ -6,17 +6,6 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="geoffgarside"
 
-# no auto-correction
-unsetopt correct
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
-
 # Preferred editor for local and remote sessions
 command -v nvim > /dev/null && export EDITOR=nvim || export EDITOR=vim
 
@@ -43,8 +32,8 @@ export LESS=-iXFR
 disable r
 
 # source my aliases
-source $HOME/dotfiles/zshrc_config/aliases.zshrc
-source $HOME/dotfiles/zshrc_config/school.zshrc
+source $HOME/dotfiles/zsh/aliases.zsh
+source $HOME/dotfiles/zsh/school.zsh
 
 # automatically ls after cd
 function chpwd() {
@@ -58,23 +47,19 @@ export DATA_DIR=$DOTFILES_DIR/data
 export BIN_DIR=$DOTFILES_DIR/bin
 
 # configuring PATH
-export PATH=""
-export PATH=$PATH:$BIN_DIR
-export PATH=$PATH:/usr/local/bin:/usr/local/sbin
-export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin
-export PATH=$PATH:/opt/X11/bin:/Library/TeX/texbin
+export PATH=$BIN_DIR:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/opt/X11/bin:/Library/TeX/texbin:$HOME/.ssi/bin
+
 export MANPATH="/usr/local/man:$MANPATH"
 
 # platform-specific configs
-touch "$DOTFILES_DIR/zshrc_config/`uname`.zshrc"
-source "$DOTFILES_DIR/zshrc_config/`uname`.zshrc"
+PLATFORM_ZSH_CONFIG="$DOTFILES_DIR/zsh/`uname`.zsh"
+[[ -f $PLATFORM_ZSH_CONFIG ]] && source $PLATFORM_ZSH_CONFIG
 
 # pyenv startup and config
-eval "$(pyenv init -)"
-export PYENV_ROOT="$(pyenv root)"
-
-# thefuck config
-eval $(thefuck --alias)
+export PYENV_ROOT=$HOME/.pyenv
+PYENV_INIT_SCRIPT=$DATA_DIR/cache/_pyenv_init_script
+[[ ! -f $PYENV_INIT_SCRIPT ]] && pyenv init - > $PYENV_INIT_SCRIPT
+source $PYENV_INIT_SCRIPT
 
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -90,7 +75,6 @@ export PYTHONUNBUFFERED=1
 export NVM_DIR="$HOME/.nvm"
 nvm() {
     unset -f nvm
-    export NVM_DIR=~/.nvm
     [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
     [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
     nvm "$@"
@@ -98,7 +82,6 @@ nvm() {
 
 node() {
     unset -f node
-    export NVM_DIR=~/.nvm
     [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
     [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
     node "$@"
@@ -106,7 +89,6 @@ node() {
 
 npm() {
     unset -f npm
-    export NVM_DIR=~/.nvm
     [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
     [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
     npm "$@"
@@ -115,14 +97,14 @@ npm() {
 # enables zsh autocomplete when using invoke (make for Python)
 source $DATA_DIR/pyinvoke_completions.zsh
 
-# pipenv config + command line completion
+# pipenv config
 export PIPENV_VENV_IN_PROJECT=true
-eval "$(pipenv --completion)"
+
+# pipenv auto-completion
+PIPENV_COMPLETION_SCRIPT=$DATA_DIR/cache/_pipenv_completion_script
+[[ ! -f $PIPENV_COMPLETION_SCRIPT ]] && pipenv --completion > $PIPENV_COMPLETION_SCRIPT
+source $PIPENV_COMPLETION_SCRIPT
 
 # holds passwords and API tokens that shouldn't be in source control
 touch $DOTFILES_DIR/.secrets
 source $DOTFILES_DIR/.secrets
-
-# update $PATH
-export PATH=$HOME/.ssi/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
