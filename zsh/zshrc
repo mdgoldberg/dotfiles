@@ -14,6 +14,8 @@ command -v nvim > /dev/null && export EDITOR=nvim || export EDITOR=vim
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git autojump pip)
 
+export DISABLE_UNTRACKED_FILES_DIRTY="true"
+
 source $ZSH/oh-my-zsh.sh
 
 # User Configuration
@@ -54,12 +56,14 @@ export MANPATH="/usr/local/man:$MANPATH"
 # platform-specific configs
 PLATFORM_ZSH_CONFIG="$DOTFILES_DIR/zsh/`uname`.zsh"
 [[ -f $PLATFORM_ZSH_CONFIG ]] && source $PLATFORM_ZSH_CONFIG
+unset PLATFORM_ZSH_CONFIG
 
 # pyenv startup and config
 export PYENV_ROOT=$HOME/.pyenv
 PYENV_INIT_SCRIPT=$DATA_DIR/cache/_pyenv_init_script
 [[ ! -f $PYENV_INIT_SCRIPT ]] && pyenv init - > $PYENV_INIT_SCRIPT
 source $PYENV_INIT_SCRIPT
+unset PYENV_INIT_SCRIPT
 
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -104,6 +108,7 @@ export PIPENV_VENV_IN_PROJECT=true
 PIPENV_COMPLETION_SCRIPT=$DATA_DIR/cache/_pipenv_completion_script
 [[ ! -f $PIPENV_COMPLETION_SCRIPT ]] && pipenv --completion > $PIPENV_COMPLETION_SCRIPT
 source $PIPENV_COMPLETION_SCRIPT
+unset PIPENV_COMPLETION_SCRIPT
 
 # holds passwords and API tokens that shouldn't be in source control
 touch $DOTFILES_DIR/.secrets
