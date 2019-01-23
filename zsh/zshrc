@@ -14,6 +14,9 @@ disable r
 setopt interactivecomments
 
 # share history across sessions
+export HISTFILE=$HOME/.zsh_history
+export HISTSIZE=100000
+export SAVEHIST=$HISTSIZE
 setopt inc_append_history
 setopt share_history
 
