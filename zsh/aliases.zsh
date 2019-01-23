@@ -1,29 +1,23 @@
 alias vim="nvim"
 alias cat="bat"
-command -v python3 >/dev/null 2>&1 || alias vim="nvim"
-alias lsash="ls -laSh"
-alias zshrc="$EDITOR $HOME/.zshrc"
-alias reload_zshrc="source $HOME/.zshrc"
-alias vimrc="$EDITOR $HOME/.vim/vimrc"
 alias htop="sudo htop"
-alias gloga='git log --oneline --decorate --color --graph --all'
+alias r="r -q"
+alias d="docker"
+alias m="make"
+alias diff="colordiff"
+
+alias k="kubectl"
+alias kp="kubectl -n prod"
+alias kd="kubectl -n dev"
+
 alias py="python"
 alias ipy="ipython"
 alias pydb="python -m ipdb -c continue"
-alias pip_upgrade="pip freeze --local | grep -v "^\-e" | cut -d = -f 1  | xargs -n1 pip install -U"
-alias r="r -q"
-alias lc="latexmk -c; echo ''; ls"
-alias diff="colordiff"
-alias register_pypi="python setup.py register"
-alias upload_pypi="rm -rf dist && python setup.py sdist bdist_wheel && twine upload dist/* && rm -rf dist build *.egg-info"
+
+alias zshrc="$EDITOR $HOME/.zshrc"
+alias reload_zshrc="source $HOME/.zshrc"
+alias vimrc="$EDITOR $HOME/.vim/vimrc"
+
 alias new_data_analysis="cookiecutter https://github.com/drivendata/cookiecutter-data-science"
 
-alias k='kubectl'
-alias kp='kubectl -n prod'
-alias kd='kubectl -n dev'
-
-# side projects/employment
-alias turch="cd $HOME/Dropbox/Turchin/"
-alias spotifyproj="cd $HOME/Dropbox/CodeStuff/spotify2itunes/"
-alias sportsref="cd $HOME/Dropbox/CodeStuff/sports_analytics/sportsref"
 alias dotfiles="cd $HOME/dotfiles"

@@ -2,7 +2,7 @@
 command -v nvim > /dev/null && export EDITOR=nvim || export EDITOR=vim
 
 # enable shift+tab for going back in auto complete menu
-bindkey '^[[Z' reverse-menu-complete
+bindkey "^[[Z" reverse-menu-complete
 #
 # use emacs key-bindings in shell
 bindkey -e
@@ -10,11 +10,22 @@ bindkey -e
 # disable vim's r command so it doesn't interfere with R lang
 disable r
 
+# allow comments on command line
+setopt interactivecomments
+
+# share history across sessions
+setopt inc_append_history
+setopt share_history
+
 # automatically ls after cd
 function chpwd() {
     emulate -L zsh
     ls
 }
+
+# set word style so delimiters like `.` and `/` are recognized
+autoload -U select-word-style
+select-word-style bash
 
 # configuring some environment variables
 export DOTFILES_DIR=$HOME/dotfiles
@@ -62,6 +73,37 @@ export ZSH_AUTOSUGGEST_USE_ASYNC=true
 # pipenv config
 export PIPENV_VENV_IN_PROJECT=true
 
+# spaceship prompt config
+export SPACESHIP_PROMPT_ADD_NEWLINE=false
+export SPACESHIP_PROMPT_DEFAULT_PREFIX="• "
+export SPACESHIP_DIR_PREFIX=$SPACESHIP_PROMPT_DEFAULT_PREFIX
+export SPACESHIP_GIT_PREFIX=$SPACESHIP_PROMPT_DEFAULT_PREFIX
+export SPACESHIP_GIT_STATUS_UNTRACKED=""
+export SPACESHIP_GIT_STATUS_STASHED=""
+export SPACESHIP_TIME_SHOW=true
+export SPACESHIP_JOBS_AMOUNT_PREFIX=" "
+export SPACESHIP_JOBS_AMOUNT_THRESHOLD=0
+export SPACESHIP_VENV_SYMBOL="🐍 "
+export SPACESHIP_BATTERY_SHOW="always"
+export SPACESHIP_PROMPT_ORDER=(
+  time          # Time stamps section
+  user          # Username section
+  dir           # Current directory section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  exec_time     # Execution time
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+)
+export SPACESHIP_RPROMPT_ORDER=(
+  venv          # virtualenv section
+  pyenv         # Pyenv section
+  aws           # Amazon Web Services section
+  terraform     # Terraform workspace section
+  battery       # Battery level and status
+)
+
 # pipenv auto-completion
 PIPENV_COMPLETION_SCRIPT=$DATA_DIR/cache/_pipenv_completion_script
 [[ ! -f $PIPENV_COMPLETION_SCRIPT ]] && pipenv --completion > $PIPENV_COMPLETION_SCRIPT
@@ -77,9 +119,10 @@ source $DOTFILES_DIR/zsh/aliases.zsh
 source $DOTFILES_DIR/zsh/school.zsh
 
 # load antibody plugins
+ZSH_PLUGINS_FILE=$DOTFILES_DIR/zsh/zsh_plugins.txt
 BUNDLED_ZSH_PLUGINS_FILE=$DATA_DIR/cache/bundled_zsh_plugins.zsh
-if [[ (! -f $BUNDLED_ZSH_PLUGINS_FILE) || -N $BUNDLED_ZSH_PLUGINS_FILE ]]; then
-    antibody bundle < $DOTFILES_DIR/zsh/zsh_plugins.txt > $BUNDLED_ZSH_PLUGINS_FILE
+if [[ (! -f $BUNDLED_ZSH_PLUGINS_FILE) || -N $ZSH_PLUGINS_FILE ]]; then
+    antibody bundle < $ZSH_PLUGINS_FILE > $BUNDLED_ZSH_PLUGINS_FILE
 fi
 source $BUNDLED_ZSH_PLUGINS_FILE
-unset BUNDLED_ZSH_PLUGINS_FILE
+unset ZSH_PLUGINS_FILE BUNDLED_ZSH_PLUGINS_FILE

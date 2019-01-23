@@ -26,7 +26,7 @@ def update_pip(ctx):
     print("Updating pip2 packages...")
     PY2_PIP = 'python2 -m pip'
     ctx.run(rf'{PY2_PIP} freeze --local | grep -v "^\-e" | cut -d = -f 1  | '
-            'xargs -n1 {PY2_PIP} install -U',
+            f'xargs -n1 {PY2_PIP} install -U',
             echo=True,
             warn=True)
     ctx.run(f'{PY2_PIP} freeze > {PYTHON2_PACKAGES_FILE}', echo=True, warn=True)
