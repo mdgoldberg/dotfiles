@@ -5,6 +5,8 @@ alias r="r -q"
 alias d="docker"
 alias m="make"
 alias diff="colordiff"
+alias ls="exa"
+alias l="exa --long --header --git"
 
 alias k="kubectl"
 alias kp="kubectl -n prod"

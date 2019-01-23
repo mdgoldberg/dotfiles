@@ -17,11 +17,9 @@ setopt interactivecomments
 setopt inc_append_history
 setopt share_history
 
-# automatically ls after cd
-function chpwd() {
-    emulate -L zsh
-    ls
-}
+# easier cd'ing (can just use path/var)
+setopt autocd
+setopt cdablevars
 
 # set word style so delimiters like `.` and `/` are recognized
 autoload -U select-word-style
@@ -116,12 +114,12 @@ source $DOTFILES_DIR/.secrets
 
 # source my aliases
 source $DOTFILES_DIR/zsh/aliases.zsh
-source $DOTFILES_DIR/zsh/school.zsh
 
 # load antibody plugins
 ZSH_PLUGINS_FILE=$DOTFILES_DIR/zsh/zsh_plugins.txt
 BUNDLED_ZSH_PLUGINS_FILE=$DATA_DIR/cache/bundled_zsh_plugins.zsh
-if [[ (! -f $BUNDLED_ZSH_PLUGINS_FILE) || -N $ZSH_PLUGINS_FILE ]]; then
+if [[ ! -f $BUNDLED_ZSH_PLUGINS_FILE || $ZSH_PLUGINS_FILE -nt $BUNDLED_ZSH_PLUGINS_FILE ]]; then
+    echo "Regenerating $BUNDLED_ZSH_PLUGINS_FILE..."
     antibody bundle < $ZSH_PLUGINS_FILE > $BUNDLED_ZSH_PLUGINS_FILE
 fi
 source $BUNDLED_ZSH_PLUGINS_FILE
