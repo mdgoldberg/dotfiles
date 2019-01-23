@@ -2,7 +2,7 @@ chrissicool/zsh-256color
 
 denysdovhan/spaceship-prompt
 zsh-users/zsh-autosuggestions
-# desyncr/auto-ls
+desyncr/auto-ls
 
 robbyrussell/oh-my-zsh path:plugins/git
 robbyrussell/oh-my-zsh path:plugins/tmux
