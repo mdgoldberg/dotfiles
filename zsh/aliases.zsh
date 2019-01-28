@@ -7,6 +7,7 @@ alias m="make"
 alias diff="colordiff"
 alias ls="exa"
 alias l="exa --long --header --git"
+alias md="mkdir -p"
 
 alias k="kubectl"
 alias kp="kubectl -n prod"
