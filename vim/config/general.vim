@@ -40,7 +40,7 @@ set incsearch
 set showcmd
 set ignorecase
 set smartcase
-set nohlsearch  " see keys.vimrc for mapping to clear highlighting
+set nohlsearch  " see keys.vim for mapping to clear highlighting
 
 " disable backups
 set nobackup

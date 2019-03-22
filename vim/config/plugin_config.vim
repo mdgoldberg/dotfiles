@@ -29,13 +29,13 @@ let g:lightline = {
     \       'filename': 'LightlineFilename',
     \ },
     \ 'component_expand': {
-    \       'linter_warnings': 'lightline#ale#warnings',
     \       'linter_errors': 'lightline#ale#errors',
+    \       'linter_warnings': 'lightline#ale#warnings',
     \       'linter_ok': 'lightline#ale#ok',
     \ },
     \ 'component_type': {
-    \       'linter_warnings': 'warning',
     \       'linter_errors': 'error',
+    \       'linter_warnings': 'warning',
     \ },
 \ }
 
@@ -56,8 +56,11 @@ let g:tmuxline_separators = {
 let g:tex_flavor = "latex"
 
 " Ale configs (lang-specific configs are in in ftplugin/*.vim)
-let g:ale_lint_on_enter = 0
+let g:ale_completion_enabled = 0
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_open_list = 1
 let g:ale_echo_msg_format = '[%linter%] %s% [code]%'
 
 " Ale language settings
@@ -72,24 +75,12 @@ let g:ale_fixers['typescript'] = ['prettier']
 
 let g:ale_fixers['json'] = ['prettier']
 
-" ncm2 configs
-augroup ncm2
-    au!
-    autocmd BufEnter * call ncm2#enable_for_buffer()
-augroup END
-set completeopt=menuone,noselect,noinsert
-
-" LanguageClient-neovim configs
-let g:LanguageClient_serverCommands = {}
-let g:LanguageClient_serverCommands['python'] = ['pyls']
-let g:LanguageClient_serverCommands['javascript'] = ['javascript-typescript-stdio']
-let g:LanguageClient_serverCommands['typescript'] = ['javascript-typescript-stdio']
-let g:LanguageClient_serverCommands['javascript.jsx'] = ['javascript-typescript-stdio']
-let g:LanguageClient_settingsPath = $HOME . '/.vim/settings.json'
-let g:LanguageClient_diagnosticsList = "Disabled"  " let ALE linting populate loclist
-
-" Ultisnips configs
-let g:UltiSnipsRemoveSelectModeMappings = 0
+" coc.nvim configs
+let g:coc_global_extensions = ['coc-json', 'coc-pyls', 'coc-tsserver', 'coc-yaml', 'coc-snippets', 'coc-highlight']
+" tab/S-tab to cycle through, C-e to select
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <C-e> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
 " fzf config for hidden files
 let $FZF_DEFAULT_COMMAND = "rg --hidden -g '!.git' -l ''"

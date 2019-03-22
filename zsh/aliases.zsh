@@ -1,6 +1,5 @@
 alias vim="nvim"
 alias cat="bat"
-alias htop="sudo htop"
 alias r="r -q"
 alias d="docker"
 alias m="make"
@@ -9,9 +8,11 @@ alias ls="exa"
 alias l="exa --long --header --git"
 alias md="mkdir -p"
 
+alias gdh="git diff HEAD~1 HEAD"
+
 alias k="kubectl"
-alias kp="kubectl -n prod"
-alias kd="kubectl -n dev"
+
+alias p="pachctl"
 
 alias py="python"
 alias ipy="ipython"

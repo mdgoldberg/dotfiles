@@ -75,22 +75,32 @@ nnoremap <expr> <leader>a ":Ack! ''<LEFT>"
 nnoremap <expr> <leader>* ":Ack! '\\b<cword>\\b'<CR>"
 vnoremap <leader>a y:Ack! <C-r>=fnameescape(@")<CR><CR>
 
-" autocomplete mappings
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <silent> <expr> <CR> (pumvisible() && empty(v:completed_item)) ?  "\<c-y>\<cr>" : "\<CR>"
+" coc.nvim mappings
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+nmap <leader>r <Plug>(coc-rename)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
-" ultisnips configs
-let g:UltiSnipsExpandTrigger="<C-e>"
-let g:UltiSnipsJumpForwardTrigger="<C-l>"
-let g:UltiSnipsJumpBackwardTrigger="<C-h>"
+" TESTING
+vmap <leader>g  <Plug>(coc-format-selected)
+nmap <leader>g  <Plug>(coc-format-selected)
+vmap <leader>m  <Plug>(coc-codeaction-selected)
+nmap <leader>m  <Plug>(coc-codeaction-selected)
 
-" LanguageClient-neovim mappings
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <leader>d :call LanguageClient#textDocument_typeDefinition()<CR>
-nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
-nnoremap <silent> <leader>u :call LanguageClient#textDocument_references()<CR>
+augroup coc
+    autocmd!
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup END
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " iron mappings
 let g:iron_map_defaults=0

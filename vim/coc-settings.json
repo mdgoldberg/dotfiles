@@ -1,0 +1,7 @@
+{
+  "diagnostic.enable": false,
+  "pyls.plugins.mccabe.enabled": false,
+  "pyls.plugins.pyflakes.enabled": false,
+  "pyls.plugins.pydocstyle.enabled": false,
+  "pyls.plugins.pycodestyle.enabled": false
+}

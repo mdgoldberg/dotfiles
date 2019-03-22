@@ -18,7 +18,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'w0rp/ale'
 Plug 'maximbaz/lightline-ale'
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'majutsushi/tagbar'
 Plug 'christoomey/vim-tmux-navigator'
@@ -27,6 +26,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
@@ -43,16 +43,7 @@ Plug 'easymotion/vim-easymotion'
 " neovim-only plugins and their alternatives
 if has('nvim')
     " autocomplete
-    Plug 'roxma/nvim-yarp'
-    Plug 'ncm2/ncm2'
-    Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': './install.sh',
-      \ }
-
-    " NCM2 Sources
-    Plug 'ncm2/ncm2-path'
-    Plug 'ncm2/ncm2-ultisnips'
+    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
     " repl within neovim
     Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }

@@ -18,11 +18,14 @@ PYENV_ROOT = os.path.relpath(
 
 PYTHON_VERSIONS = ['3.6.7', '2.7.14']
 
+NVIM_CONFIG_DIR = os.path.join('.config', 'nvim')
+
 SRC_DST_MAP = {
     os.path.join('zsh', 'zshrc'): ['.zshrc'],
     'vim': ['.vim'],
     os.path.join('vim', 'vimrc'): ['.vimrc'],
-    os.path.join('vim', 'init.vim'): [os.path.join('.config', 'nvim', 'init.vim')],
+    os.path.join('vim', 'init.vim'): [os.path.join(NVIM_CONFIG_DIR, 'init.vim')],
+    os.path.join('vim', 'coc-settings.json'): [os.path.join(NVIM_CONFIG_DIR, 'coc-settings.json')],
     'tmux.conf': ['.tmux.conf'],
     'gitconfig': ['.gitconfig'],
     'pypirc': ['.pypirc'],
