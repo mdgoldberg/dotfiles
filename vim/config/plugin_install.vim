@@ -56,10 +56,6 @@ Plug 'PeterRincker/vim-argumentative'
 " language plugins
 Plug 'sheerun/vim-polyglot'
 
-" python
-Plug 'davidhalter/jedi-vim'
-Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
-
 " javascript / typescript
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'prettier/vim-prettier', {

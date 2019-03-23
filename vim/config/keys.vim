@@ -83,11 +83,9 @@ nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" TESTING
-vmap <leader>g  <Plug>(coc-format-selected)
-nmap <leader>g  <Plug>(coc-format-selected)
-vmap <leader>m  <Plug>(coc-codeaction-selected)
-nmap <leader>m  <Plug>(coc-codeaction-selected)
+" if I switch formatting from ale to coc.nvim
+" vmap <leader>g  <Plug>(coc-format-selected)
+" nmap <leader>g  <Plug>(coc-format)
 
 augroup coc
     autocmd!
