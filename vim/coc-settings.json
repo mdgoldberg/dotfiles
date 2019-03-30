@@ -1,7 +1,23 @@
 {
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    },
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
+    }
+  },
   "diagnostic.enable": false,
   "pyls.plugins.mccabe.enabled": false,
   "pyls.plugins.pyflakes.enabled": false,
   "pyls.plugins.pydocstyle.enabled": false,
-  "pyls.plugins.pycodestyle.enabled": false
+  "pyls.plugins.pycodestyle.enabled": false,
+  "yaml.format.singleQuote": true,
+  "yaml.format.bracketSpacing": true,
+  "tsserver.organizeImportOnSave": true
 }

@@ -72,15 +72,23 @@ let g:ale_fixers['python'] = ['remove_trailing_lines', 'trim_whitespace', 'isort
 
 let g:ale_linters['typescript'] = ['tslint']
 let g:ale_fixers['typescript'] = ['prettier']
-
+let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fixers['json'] = ['prettier']
 
 " coc.nvim configs
 let g:coc_global_extensions = ['coc-json', 'coc-pyls', 'coc-tsserver', 'coc-yaml', 'coc-snippets', 'coc-highlight']
 " tab/S-tab to cycle through, C-e to select
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <Tab>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<Tab>" :
+            \ coc#refresh()
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <silent><expr> <C-e> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 " fzf config for hidden files
 let $FZF_DEFAULT_COMMAND = "rg --hidden -g '!.git' -l ''"
