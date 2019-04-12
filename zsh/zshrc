@@ -45,7 +45,13 @@ export DATA_DIR=$DOTFILES_DIR/data
 export BIN_DIR=$DOTFILES_DIR/bin
 
 # configuring PATH
-export PATH=$BIN_DIR:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/opt/X11/bin:/Library/TeX/texbin:$HOME/.ssi/bin
+export PATH=$BIN_DIR
+export PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+export PATH=$PATH:/opt/X11/bin
+export PATH=$PATH:/Library/TeX/texbin
+export PATH=$PATH:$HOME/.poetry/bin
+export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/go/bin
 
 export MANPATH="/usr/local/man:$MANPATH"
 
