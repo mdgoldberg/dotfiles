@@ -55,6 +55,8 @@ export PATH=$PATH:$HOME/go/bin
 
 export MANPATH="/usr/local/man:$MANPATH"
 
+mkdir -p $DATA_DIR/cache
+
 # platform-specific configs
 PLATFORM_ZSH_CONFIG="$DOTFILES_DIR/zsh/`uname`.zsh"
 [[ -f $PLATFORM_ZSH_CONFIG ]] && source $PLATFORM_ZSH_CONFIG
@@ -124,10 +126,12 @@ export SPACESHIP_RPROMPT_ORDER=(
 )
 
 # pipenv auto-completion
-PIPENV_COMPLETION_SCRIPT=$DATA_DIR/cache/_pipenv_completion_script
-[[ ! -f $PIPENV_COMPLETION_SCRIPT ]] && pipenv --completion > $PIPENV_COMPLETION_SCRIPT
-source $PIPENV_COMPLETION_SCRIPT
-unset PIPENV_COMPLETION_SCRIPT
+if command -v pipenv >/dev/null 2>&1; then
+    PIPENV_COMPLETION_SCRIPT=$DATA_DIR/cache/_pipenv_completion_script
+    [[ ! -f $PIPENV_COMPLETION_SCRIPT ]] && pipenv --completion > $PIPENV_COMPLETION_SCRIPT
+    source $PIPENV_COMPLETION_SCRIPT
+    unset PIPENV_COMPLETION_SCRIPT
+fi
 
 # holds passwords and API tokens that shouldn't be in source control
 touch $DOTFILES_DIR/zsh/secrets.zsh
