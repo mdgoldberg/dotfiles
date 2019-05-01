@@ -25,8 +25,8 @@ setopt autocd
 setopt cdablevars
 
 # autocomplete configs
-autoload -U compinit
-compinit
+# autoload -U compinit
+# compinit
 setopt no_auto_remove_slash  # autocomplete trailing slashes for directories
 
 # use C-x C-e (or C-x e) to open shell command in $EDITOR
@@ -79,10 +79,6 @@ export PYTHONDONTWRITEBYTECODE=1
 # prevent Python from buffering stdout/stderr
 export PYTHONUNBUFFERED=1
 
-# nvm config
-export NVM_DIR="$HOME/.nvm"
-source $DOTFILES_DIR/zsh/lazy_load_node.zsh
-
 # you-should-use config
 export YSU_MESSAGE_POSITION="after"
 export YSU_MODE=ALL
@@ -124,6 +120,14 @@ export SPACESHIP_RPROMPT_ORDER=(
   terraform     # Terraform workspace section
   battery       # Battery level and status
 )
+
+# nodenv auto-complete
+if command -v nodenv >/dev/null 2>&1; then
+    NODENV_COMPLETION_SCRIPT=$DATA_DIR/cache/_nodenv_completion_script
+    [[ ! -f $NODENV_COMPLETION_SCRIPT ]] && nodenv init - > $NODENV_COMPLETION_SCRIPT
+    source $NODENV_COMPLETION_SCRIPT
+    unset NODENV_COMPLETION_SCRIPT
+fi
 
 # pipenv auto-completion
 if command -v pipenv >/dev/null 2>&1; then
