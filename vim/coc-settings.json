@@ -5,27 +5,16 @@
       "args": ["start"],
       "filetypes": ["sh"],
       "ignoredRootPaths": ["~"]
-    },
-    "dockerfile": {
-      "command": "docker-langserver",
-      "filetypes": ["dockerfile"],
-      "args": ["--stdio"]
-    },
-    "golang": {
-      "command": "go-langserver",
-      "filetypes": ["go"],
-      "initializationOptions": {
-        "gocodeCompletionEnabled": true,
-        "diagnosticsEnabled": true,
-        "lintTool": "golint"
-      }
     }
   },
+
   "diagnostic.enable": false,
-  "pyls.plugins.mccabe.enabled": false,
-  "pyls.plugins.pyflakes.enabled": false,
-  "pyls.plugins.pydocstyle.enabled": false,
-  "pyls.plugins.pycodestyle.enabled": false,
+
+  "python.formatting.provider": "yapf",
+  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.jediEnabled": false,
+
   "yaml.format.singleQuote": true,
   "yaml.format.bracketSpacing": true,
   "tsserver.organizeImportOnSave": true

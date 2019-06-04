@@ -77,16 +77,24 @@ let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fixers['json'] = ['prettier']
 
 " coc.nvim configs
-let g:coc_global_extensions = ['coc-json', 'coc-pyls', 'coc-tsserver', 'coc-yaml', 'coc-snippets', 'coc-highlight']
-" tab/S-tab to cycle through, C-e to select
-inoremap <expr> <Tab>
-            \ pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<Tab>" :
-            \ coc#refresh()
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+let g:coc_global_extensions = ['coc-python', 'coc-tsserver', 'coc-snippets', 'coc-json', 'coc-docker', 'coc-yaml', 'coc-highlight']
+
+inoremap <silent><expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <silent><expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? coc#_select_confirm() :
+    \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 " Navigate snippet placeholders using tab
-let g:coc_snippet_next = '<Tab>'
+let g:coc_snippet_next = '<tab>'
 let g:coc_snippet_prev = '<S-Tab>'
 
 function! s:check_back_space() abort
@@ -129,8 +137,7 @@ let g:jedi#completions_command = ""
 let g:jedi#show_call_signatures = "1"
 
 " python versions
-let g:python_host_prog = $HOME . '/.pyenv/shims/python2'
-let g:python3_host_prog = $HOME . '/.pyenv/shims/python3'
+let g:python3_host_prog = $HOME . '/.pyenv/versions/3.6.7/bin/python'
 
 " iron.nvim configs
 let g:iron_repl_open_cmd = 'botright vertical split'

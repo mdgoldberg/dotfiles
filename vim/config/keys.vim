@@ -90,6 +90,7 @@ nmap <silent> gr <Plug>(coc-references)
 augroup coc
     autocmd!
     autocmd CursorHold * silent call CocActionAsync('highlight')
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup END
 
 function! s:show_documentation()
