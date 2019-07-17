@@ -53,9 +53,18 @@ nnoremap <leader>t :Tags<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>s :split<CR>
-noremap <leader>p :TagbarToggle<CR>
+noremap <leader>p :TagbarToggle<CR><C-w>=
 noremap <leader>f :ALEFix<CR>
 noremap <leader>z :terminal<CR>i
+
+" code search commands
+" TODO: convert ack.vim uses to fzf.vim and stop using ack.vim
+noremap <leader>g :Rg<CR>
+nnoremap <expr> <leader>a ":Ack! ''<LEFT>"
+nnoremap <expr> <leader>* ":Ack! '<cword>'<CR>"
+
+" TODO: this isn't working
+" vnoremap <expr> <leader>a ':Ack! <C-r>=fnameescape(@")<CR><CR>'
 
 " easymotion configs
 map  <leader>/ <Plug>(easymotion-sn)
@@ -69,11 +78,6 @@ map <leader>h <Plug>(easymotion-linebackward)
 
 " to open tag under word in vertical split
 nnoremap <C-w><C-[> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-
-" ack.vim mappings
-nnoremap <expr> <leader>a ":Ack! ''<LEFT>"
-nnoremap <expr> <leader>* ":Ack! '\\b<cword>\\b'<CR>"
-vnoremap <leader>a y:Ack! <C-r>=fnameescape(@")<CR><CR>
 
 " coc.nvim mappings
 nnoremap <silent> K :call <SID>show_documentation()<CR>

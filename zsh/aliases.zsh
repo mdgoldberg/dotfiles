@@ -11,6 +11,7 @@ alias md="mkdir -p"
 alias gdh="git diff HEAD~1 HEAD"
 
 alias k="kubectl"
+alias kswitch="kubectl config use-context"
 
 alias p="pachctl"
 
