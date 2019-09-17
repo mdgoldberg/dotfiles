@@ -46,7 +46,7 @@ export BIN_DIR=$DOTFILES_DIR/bin
 
 # configuring PATH
 export PATH=$BIN_DIR
-export PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+export PATH=$PATH:/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin
 export PATH=$PATH:/opt/X11/bin
 export PATH=$PATH:/Library/TeX/texbin
 export PATH=$PATH:$HOME/.poetry/bin
