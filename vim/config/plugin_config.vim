@@ -75,6 +75,7 @@ let g:ale_linters['typescript'] = ['tslint']
 let g:ale_fixers['typescript'] = ['prettier']
 let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fixers['json'] = ['prettier']
+let g:ale_fixers['markdown'] = ['prettier']
 
 " coc.nvim configs
 let g:coc_global_extensions = ['coc-python', 'coc-tsserver', 'coc-snippets', 'coc-json', 'coc-docker', 'coc-yaml', 'coc-highlight']
