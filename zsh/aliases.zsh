@@ -26,3 +26,7 @@ alias vimrc="$EDITOR $HOME/.vim/vimrc"
 alias new_data_analysis="cookiecutter https://github.com/drivendata/cookiecutter-data-science"
 
 alias dotfiles="cd $HOME/dotfiles"
+
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
