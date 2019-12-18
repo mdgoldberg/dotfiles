@@ -9,7 +9,6 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " General plugins
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'

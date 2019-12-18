@@ -2,8 +2,7 @@
 set background=dark
 if has('nvim')
     set termguicolors
-    " set Vim-specific sequences for RGB colors
-    colorscheme solarized
+    colorscheme gruvbox
 else
     colorscheme slate
 endif
@@ -11,7 +10,7 @@ endif
 " lightline configs
 set noshowmode
 let g:lightline = {
-    \ 'colorscheme': 'solarized',
+    \ 'colorscheme': 'gruvbox',
     \ 'active': {
     \       'left': [
     \           [ 'mode', 'paste' ],
@@ -76,6 +75,7 @@ let g:ale_fixers['typescript'] = ['prettier']
 let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fixers['json'] = ['prettier']
 let g:ale_fixers['markdown'] = ['prettier']
+let g:ale_fixers['yaml'] = ['prettier']
 
 " coc.nvim configs
 let g:coc_global_extensions = ['coc-python', 'coc-tsserver', 'coc-rls', 'coc-snippets', 'coc-json', 'coc-docker', 'coc-yaml', 'coc-highlight']
