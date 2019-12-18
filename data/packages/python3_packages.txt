@@ -10,7 +10,6 @@ Click==7.0
 configparser==3.5.0
 databricks-cli==0.8.2
 dataclasses==0.6
--e git+git@git.2nd.io:data-tools/s3-data-delivery.git@5b5abc494f2d2b7f137749514451d0e3c0bd99fc#egg=datadelivery
 decorator==4.3.0
 defusedxml==0.5.0
 docutils==0.14
