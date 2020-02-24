@@ -102,44 +102,44 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=103"
 export PIPENV_VENV_IN_PROJECT=true
 
 # spaceship prompt config
-# export SPACESHIP_PROMPT_DEFAULT_PREFIX=" "
-# export SPACESHIP_PROMPT_DEFAULT_SUFFIX=" "
-# export SPACESHIP_PROMPT_ADD_NEWLINE=false
+export SPACESHIP_PROMPT_DEFAULT_PREFIX=" "
+export SPACESHIP_PROMPT_DEFAULT_SUFFIX=" "
+export SPACESHIP_PROMPT_ADD_NEWLINE=false
 
-# export SPACESHIP_TIME_SHOW=true
+export SPACESHIP_TIME_SHOW=true
 
-# export SPACESHIP_KUBECONTEXT_PREFIX="("
-# export SPACESHIP_KUBECONTEXT_SYMBOL=""
-# export SPACESHIP_KUBECONTEXT_SUFFIX=")"
+export SPACESHIP_KUBECONTEXT_PREFIX="("
+export SPACESHIP_KUBECONTEXT_SYMBOL=""
+export SPACESHIP_KUBECONTEXT_SUFFIX=")"
 
-# export SPACESHIP_VENV_SYMBOL="🐍 "
-# export SPACESHIP_VENV_COLOR="green"
-# export SPACESHIP_VENV_SUFFIX=""
+export SPACESHIP_VENV_SYMBOL="🐍 "
+export SPACESHIP_VENV_COLOR="green"
+export SPACESHIP_VENV_SUFFIX=""
 
-# export SPACESHIP_DIR_PREFIX=" "
-# export SPACESHIP_DIR_COLOR="blue"
-# export SPACESHIP_DIR_TRUNC_REPO=false
+export SPACESHIP_DIR_PREFIX=" "
+export SPACESHIP_DIR_COLOR="blue"
+export SPACESHIP_DIR_TRUNC_REPO=false
 
-# export SPACESHIP_GIT_PREFIX=""
-# export SPACESHIP_GIT_STATUS_UNTRACKED=""
-# export SPACESHIP_GIT_STATUS_STASHED=""
+export SPACESHIP_GIT_PREFIX=""
+export SPACESHIP_GIT_STATUS_UNTRACKED=""
+export SPACESHIP_GIT_STATUS_STASHED=""
 
-# export SPACESHIP_JOBS_AMOUNT_PREFIX=" "
-# export SPACESHIP_JOBS_AMOUNT_THRESHOLD=0
+export SPACESHIP_JOBS_AMOUNT_PREFIX=" "
+export SPACESHIP_JOBS_AMOUNT_THRESHOLD=0
 
-# export SPACESHIP_PROMPT_ORDER=(
-#   time          # Time stamps section
-#   user          # Username section
-#   kubecontext   # Kubectl context section
-#   venv          # virtualenv section
-#   dir           # Current directory section
-#   host          # Hostname section
-#   git           # Git section (git_branch + git_status)
-#   exec_time     # Execution time
-#   jobs          # Background jobs indicator
-#   char          # Prompt character
-# )
-# export SPACESHIP_RPROMPT_ORDER=()
+export SPACESHIP_PROMPT_ORDER=(
+  time          # Time stamps section
+  user          # Username section
+  kubecontext   # Kubectl context section
+  venv          # virtualenv section
+  dir           # Current directory section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  exec_time     # Execution time
+  jobs          # Background jobs indicator
+  char          # Prompt character
+)
+export SPACESHIP_RPROMPT_ORDER=()
 
 # nodenv auto-complete
 if command -v nodenv >/dev/null 2>&1; then
