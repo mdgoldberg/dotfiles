@@ -6,6 +6,7 @@ autoconf
 autojump
 automake
 awscli
+bandwhich
 bat
 bdw-gc
 bmake
@@ -153,8 +154,10 @@ pyenv
 python
 python3
 python@2
+python@3.8
 r
 ranger
+rbenv
 readline
 reattach-to-user-namespace
 redis
@@ -162,6 +165,7 @@ ripgrep
 rtmpdump
 rubberband
 ruby
+ruby-build
 s3cmd
 sdl2
 shfmt
