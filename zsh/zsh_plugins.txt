@@ -1,6 +1,8 @@
 chrissicool/zsh-256color
 
-denysdovhan/spaceship-prompt
+# denysdovhan/spaceship-prompt
+romkatv/powerlevel10k
+zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-completions
 desyncr/auto-ls

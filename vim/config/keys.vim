@@ -33,7 +33,7 @@ function! TabIsEmpty()
 endfunction
 
 " shortcuts for opening/closing/navigating windows/tabs
-noremap <expr> <leader>op TabIsEmpty() ? ":FZF<CR>" : ":tabnew<CR>:FZF<CR>"
+noremap <expr> <leader>op TabIsEmpty() ? ":FzfPreviewProjectFiles<CR>" : ":tabnew<CR>:FzfPreviewProjectFiles<CR>"
 noremap <expr> <leader>oz TabIsEmpty() ? ":terminal<CR>i" : ":tabnew<CR>:terminal<CR>i"
 nnoremap <expr> <leader>w winnr('$') > 1 ? ":q<CR>" : ":tabclose<CR>"
 nnoremap <leader>q :qall<CR>
@@ -41,16 +41,13 @@ nnoremap <tab> :tabnext<CR>
 nnoremap <S-tab> :tabprevious<CR>
 nnoremap <leader>oq :copen<CR>
 nnoremap <leader>cq :cclose<CR>
-nnoremap <leader>oc :copen<CR>
-nnoremap <leader>cc :cclose<CR>
 nnoremap <leader>ol :lopen<CR>
 nnoremap <leader>cl :lclose<CR>
 nnoremap <leader>cp :pclose<CR>
 
 " shortcuts to other common commands
+" TODO: more FzfPreview
 nnoremap <leader>e :FZF<CR>
-nnoremap <leader>t :Tags<CR>
-nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>s :split<CR>
 noremap <leader>p :TagbarToggle<CR><C-w>=
@@ -58,13 +55,8 @@ noremap <leader>f :ALEFix<CR>
 noremap <leader>z :terminal<CR>i
 
 " code search commands
-" TODO: convert ack.vim uses to fzf.vim and stop using ack.vim
-noremap <leader>g :Rg<CR>
-nnoremap <expr> <leader>a ":Ack! ''<LEFT>"
-nnoremap <expr> <leader>* ":Ack! '<cword>'<CR>"
-
-" TODO: this isn't working
-" vnoremap <expr> <leader>a ':Ack! <C-r>=fnameescape(@")<CR><CR>'
+noremap <leader>g :FzfPreviewProjectGrep<CR>
+nnoremap <silent> <Leader>* :FzfPreviewProjectGrep <C-R><C-W><CR>
 
 " easymotion configs
 map  <leader>/ <Plug>(easymotion-sn)

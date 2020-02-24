@@ -42,6 +42,11 @@ set ignorecase
 set smartcase
 set nohlsearch  " see keys.vim for mapping to clear highlighting
 
+if has('nvim')
+    " incremental feedback on substitute commands
+    set inccommand=split
+endif
+
 " disable backups
 set nobackup
 set nowritebackup

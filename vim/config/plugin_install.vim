@@ -12,9 +12,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'mileszs/ack.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'yuki-ycino/fzf-preview.vim'
 Plug 'w0rp/ale'
 Plug 'maximbaz/lightline-ale'
 Plug 'honza/vim-snippets'
@@ -42,7 +41,7 @@ Plug 'easymotion/vim-easymotion'
 " neovim-only plugins and their alternatives
 if has('nvim')
     " autocomplete
-    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+    Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': { -> coc#util#install()}}
 
     " repl within neovim
     Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }

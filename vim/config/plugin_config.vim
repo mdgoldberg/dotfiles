@@ -78,7 +78,7 @@ let g:ale_fixers['markdown'] = ['prettier']
 let g:ale_fixers['yaml'] = ['prettier']
 
 " coc.nvim configs
-let g:coc_global_extensions = ['coc-python', 'coc-tsserver', 'coc-rls', 'coc-snippets', 'coc-json', 'coc-docker', 'coc-yaml', 'coc-highlight']
+let g:coc_global_extensions = ['coc-python', 'coc-tsserver', 'coc-rust-analyzer', 'coc-snippets', 'coc-json', 'coc-docker', 'coc-yaml', 'coc-highlight']
 
 inoremap <silent><expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <silent><expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
