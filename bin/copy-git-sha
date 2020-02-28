@@ -1,7 +1,12 @@
 #! /bin/bash
 ref=$1
 
-gitSha=$(git rev-parse $1 | tr -d '\n')
-
-echo "$gitSha copied"
-echo -n $gitSha | pbcopy
+gitSha=$(git rev-parse $1 2>/dev/null)
+if [ $? -ne 0 ]; then
+    echo "$ref isn't a valid reference";
+    exit 1
+else
+    gitSha=$(echo $gitSha | tr -d '\n')
+    echo "$gitSha copied"
+    echo -n $gitSha | pbcopy
+fi
