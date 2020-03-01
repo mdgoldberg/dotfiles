@@ -12,7 +12,6 @@ bdw-gc
 bmake
 boost
 cairo
-camlp4
 ceres-solver
 clasp
 clingo
@@ -124,8 +123,6 @@ nettle
 node-build
 nodenv
 numpy
-ocaml
-ocamlbuild
 oniguruma
 openblas
 opencore-amr
