@@ -1,9 +1,6 @@
 # set editor to nvim when present, else vim
 command -v nvim > /dev/null && export EDITOR=nvim || export EDITOR=vim
 
-# powerlevel10k config
-source ~/.p10k.zsh
-
 # enable shift+tab for going back in auto complete menu
 bindkey "^[[Z" reverse-menu-complete
 
@@ -160,6 +157,9 @@ fi
 # holds passwords and API tokens that shouldn't be in source control
 touch $DOTFILES_DIR/zsh/secrets.zsh
 source $DOTFILES_DIR/zsh/secrets.zsh
+
+# powerlevel10k config
+source $DOTFILES_DIR/zsh/p10k.zsh
 
 # source my aliases
 source $DOTFILES_DIR/zsh/aliases.zsh
