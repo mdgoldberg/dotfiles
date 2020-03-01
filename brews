@@ -114,7 +114,6 @@ luarocks
 lzo
 make
 metis
-mongodb
 mpfr
 mplayer
 msgpack
@@ -137,7 +136,6 @@ openssl
 openssl@1.1
 opus
 p11-kit
-pachctl@1.8
 pachctl@1.9
 pandoc
 pcre
