@@ -24,8 +24,8 @@ vnoremap ^ g^
 vnoremap $ g$
 
 " use leader-c and leader-p to copy/paste to/from system clipboard
-noremap <leader>cbc "+y
-noremap <leader>cbp "+p
+noremap <leader>y "+y
+noremap <leader>p "+p
 
 " function to check whether there is an open file in the current tab
 function! TabIsEmpty()
@@ -33,7 +33,7 @@ function! TabIsEmpty()
 endfunction
 
 " shortcuts for opening/closing/navigating windows/tabs
-noremap <expr> <leader>op TabIsEmpty() ? ":FzfPreviewProjectFiles<CR>" : ":tabnew<CR>:FzfPreviewProjectFiles<CR>"
+noremap <expr> <leader>op TabIsEmpty() ? ":Files<CR>" : ":tabnew<CR>:Files<CR>"
 noremap <expr> <leader>oz TabIsEmpty() ? ":terminal<CR>i" : ":tabnew<CR>:terminal<CR>i"
 nnoremap <expr> <leader>w winnr('$') > 1 ? ":q<CR>" : ":tabclose<CR>"
 nnoremap <leader>q :qall<CR>
@@ -46,17 +46,17 @@ nnoremap <leader>cl :lclose<CR>
 nnoremap <leader>cp :pclose<CR>
 
 " shortcuts to other common commands
-" TODO: more FzfPreview
-nnoremap <leader>e :FZF<CR>
+nnoremap <leader>e :Files<CR>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>s :split<CR>
-noremap <leader>p :TagbarToggle<CR><C-w>=
+noremap <leader>t :Vista coc<CR><C-w>=
+nnoremap <leader>b :Buffers<CR>
 noremap <leader>f :ALEFix<CR>
 noremap <leader>z :terminal<CR>i
 
 " code search commands
-noremap <leader>g :FzfPreviewProjectGrep<CR>
-nnoremap <silent> <Leader>* :FzfPreviewProjectGrep <C-R><C-W><CR>
+noremap <leader>g :Rg<CR>
+nnoremap <silent> <leader>* :Rg <C-R><C-W><CR>
 
 " easymotion configs
 map  <leader>/ <Plug>(easymotion-sn)

@@ -10,7 +10,7 @@
 
   "diagnostic.enable": false,
 
-  "python.formatting.provider": "yapf",
+  "python.formatting.provider": "black",
   "python.linting.flake8Enabled": false,
   "python.linting.pylintEnabled": false,
   "python.jediEnabled": false,

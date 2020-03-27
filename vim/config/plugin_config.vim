@@ -15,7 +15,7 @@ let g:lightline = {
     \       'left': [
     \           [ 'mode', 'paste' ],
     \           [ 'gitbranch', 'readonly' ],
-    \           [ 'filename', 'modified' ]
+    \           [ 'filename', 'modified', 'method' ],
     \       ],
     \       'right': [
     \           [ 'linter_errors', 'linter_warnings', 'linter_ok' ],
@@ -26,6 +26,7 @@ let g:lightline = {
     \ 'component_function': {
     \       'gitbranch': 'fugitive#head',
     \       'filename': 'LightlineFilename',
+    \       'method': 'NearestMethodOrFunction',
     \ },
     \ 'component_expand': {
     \       'linter_errors': 'lightline#ale#errors',
@@ -40,6 +41,10 @@ let g:lightline = {
 
 function! LightlineFilename()
     return fnamemodify(expand("%"), ":~:.")
+endfunction
+
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 
 " tmuxline configs
@@ -122,6 +127,7 @@ let g:tagbar_sort = 0
 
 " gitgutter configs
 set updatetime=200
+let g:gitgutter_map_keys = 0
 
 " disable Jedi-vim autocompletion and enable call-signatures options
 let g:jedi#auto_initialization = 1
