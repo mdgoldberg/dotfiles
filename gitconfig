@@ -11,8 +11,6 @@
 	ui = true
 [init]
 	templatedir = ~/.git_template
-[alias]
-	ctags = !.git/hooks/ctags
 [merge]
 	ff = false
 [pull]

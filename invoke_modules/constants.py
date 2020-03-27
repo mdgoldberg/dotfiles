@@ -31,7 +31,6 @@ SRC_DST_MAP = {
     'pypirc': ['.pypirc'],
     'git_template': ['.git_template'],
     'gitignore_global': ['.gitignore_global'],
-    'ctags': ['.ctags'],
     'style.yapf': [os.path.join('.config', 'yapf', 'style')],
     'isort.cfg': ['.isort.cfg'],
     'flake8': ['.flake8'],
