@@ -139,7 +139,8 @@ let g:jedi#completions_command = ""
 let g:jedi#show_call_signatures = "1"
 
 " python versions
-let g:python3_host_prog = $HOME . '/.pyenv/versions/3.6.7/bin/python'
+let pyver = system('pyenv global | head -n 1 | tr -d "\n"')
+let g:python3_host_prog = $HOME . '/.pyenv/versions/' . pyver . '/bin/python'
 
 " iron.nvim configs
 let g:iron_repl_open_cmd = 'botright vertical split'
