@@ -82,6 +82,11 @@ let g:ale_fixers['json'] = ['prettier']
 let g:ale_fixers['markdown'] = ['prettier']
 let g:ale_fixers['yaml'] = ['prettier']
 
+augroup jsonc
+    autocmd!
+    autocmd FileType json syntax match Comment +\/\/.\+$+
+augroup end
+
 " coc.nvim configs
 let g:coc_global_extensions = ['coc-python', 'coc-tsserver', 'coc-rust-analyzer', 'coc-snippets', 'coc-json', 'coc-docker', 'coc-yaml', 'coc-highlight']
 
@@ -122,21 +127,9 @@ let g:ranger_replace_netrw = 1
 " bclose configs (dependency of ranger.vim, but don't need mapping)
 let g:bclose_no_plugin_maps = 1
 
-" Tagbar configs
-let g:tagbar_sort = 0
-
 " gitgutter configs
 set updatetime=200
 let g:gitgutter_map_keys = 0
-
-" disable Jedi-vim autocompletion and enable call-signatures options
-let g:jedi#auto_initialization = 1
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#smart_auto_mappings = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#completions_command = ""
-let g:jedi#show_call_signatures = "1"
 
 " python versions
 let pyver = system('pyenv global | head -n 1 | tr -d "\n"')
@@ -144,11 +137,6 @@ let g:python3_host_prog = $HOME . '/.pyenv/versions/' . pyver . '/bin/python'
 
 " iron.nvim configs
 let g:iron_repl_open_cmd = 'botright vertical split'
-
-" hook up ripgrep to ack.vim
-if executable('rg')
-    let g:ackprg = 'rg --vimgrep --no-heading'
-endif
 
 " terraform
 let g:terraform_align=1

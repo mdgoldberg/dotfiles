@@ -11,7 +11,7 @@
   "diagnostic.enable": false,
 
   "python.formatting.provider": "black",
-  "python.linting.flake8Enabled": false,
+  "python.linting.flake8Enabled": true,
   "python.linting.pylintEnabled": false,
   "python.jediEnabled": false,
 
