@@ -49,14 +49,20 @@ nnoremap <leader>cp :pclose<CR>
 nnoremap <leader>e :Files<CR>
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>s :split<CR>
-noremap <leader>t :Vista coc<CR><C-w>=
+noremap <leader>tl :Vista<CR>
+noremap <leader>tf :Vista finder<CR>
 nnoremap <leader>b :Buffers<CR>
 noremap <leader>f :ALEFix<CR>
 noremap <leader>z :terminal<CR>i
 
 " code search commands
-noremap <leader>g :Rg<CR>
-nnoremap <silent> <leader>* :Rg <C-R><C-W><CR>
+noremap <expr> <leader>a ":Rg ''<LEFT>"
+nnoremap <expr> <leader>* ":Rg '<C-R><C-W>'"
+
+" git
+nnoremap <leader>gs :Gstatus<CR>
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap [c <Plug>(GitGutterPrevHunk)
 
 " easymotion configs
 map  <leader>/ <Plug>(easymotion-sn)

@@ -109,8 +109,16 @@ let g:coc_snippet_next = '<tab>'
 let g:coc_snippet_prev = '<S-Tab>'
 
 " fzf config for hidden files
-let $FZF_DEFAULT_COMMAND = "rg --hidden -g '!.git' -l ''"
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".<q-args>, 1, <bang>0)
+let $FZF_DEFAULT_COMMAND = "fd --type file --hidden"
 let $FZF_DEFAULT_OPTS .= ' --no-height'
+
+" context.vim configs
+let g:context_nvim_no_redraw = 0
+
+" vista configs
+let g:vista_default_executive = "coc"
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 " localvimrc configs
 let g:localvimrc_sandbox = 0
