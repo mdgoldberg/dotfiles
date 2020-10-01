@@ -74,40 +74,31 @@ map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
 map <leader>h <Plug>(easymotion-linebackward)
 
+" nvim-lsp
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> gt    <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
+
 " to open tag under word in vertical split
 nnoremap <C-w><C-[> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
-" coc.nvim mappings
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-nmap <leader>r <Plug>(coc-rename)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gt <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" trigger completion with C-space or tab
+imap <silent> <c-space> <Plug>(completion_trigger)
+imap <tab> <Plug>(completion_smart_tab)
+imap <s-tab> <Plug>(completion_smart_s_tab)
 
-" if I switch formatting from ale to coc.nvim
-" vmap <leader>g  <Plug>(coc-format-selected)
-" nmap <leader>g  <Plug>(coc-format)
+" Goto previous/next diagnostic warning/error
+nnoremap <silent> g[ <cmd>PrevDiagnosticCycle<cr>
+nnoremap <silent> g] <cmd>NextDiagnosticCycle<cr>
 
-augroup coc
-    autocmd!
-    autocmd CursorHold * silent call CocActionAsync('highlight')
-    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup END
-
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" iron mappings
-let g:iron_map_defaults=0
-nmap <leader>x <Plug>(iron-send-motion)
-vmap <leader>x <Plug>(iron-send-motion)
-nmap <leader>X ggVG<Plug>(iron-send-motion)
+" if I switch formatting from ale to nvim-lsp
+nmap <leader>g  <cmd>lua vim.lsp.buf.formatting()<CR>
 
 " ranger.vim mapping
 let g:ranger_map_keys = 0
