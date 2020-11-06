@@ -43,10 +43,6 @@ function! LightlineFilename()
     return fnamemodify(expand("%"), ":~:.")
 endfunction
 
-function! NearestMethodOrFunction() abort
-  return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
-
 " tmuxline configs
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_separators = {
@@ -87,37 +83,74 @@ augroup jsonc
     autocmd FileType json syntax match Comment +\/\/.\+$+
 augroup end
 
-" coc.nvim configs
-let g:coc_global_extensions = ['coc-python', 'coc-tsserver', 'coc-rust-analyzer', 'coc-snippets', 'coc-json', 'coc-docker', 'coc-yaml', 'coc-highlight']
+" nvim-lsp
+lua <<EOF
 
-inoremap <silent><expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <silent><expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+local nvim_lsp = require'nvim_lsp'
+local diagnostic_attach = require'diagnostic'.on_attach
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+nvim_lsp.jedi_language_server.setup{on_attach=diagnostic_attach}
+nvim_lsp.rust_analyzer.setup{on_attach=diagnostic_attach}
+nvim_lsp.bashls.setup{on_attach=diagnostic_attach}
+nvim_lsp.dockerls.setup{on_attach=diagnostic_attach}
+nvim_lsp.terraformls.setup{on_attach=diagnostic_attach}
+nvim_lsp.tsserver.setup{on_attach=diagnostic_attach}
+nvim_lsp.yamlls.setup{on_attach=diagnostic_attach}
 
-inoremap <silent><expr> <TAB>
-    \ pumvisible() ? coc#_select_confirm() :
-    \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ coc#refresh()
+EOF
 
-" Navigate snippet placeholders using tab
-let g:coc_snippet_next = '<tab>'
-let g:coc_snippet_prev = '<S-Tab>'
+augroup formatting
+    autocmd!
+    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+augroup end
+
+
+" completion-nvim
+let g:completion_enable_snippet = 'vim-vsnip'
+augroup completion
+    autocmd!
+    autocmd BufEnter * lua require'completion'.on_attach()
+augroup end
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing message extra message when using completion
+set shortmess+=c
+
+
+" diagnostic-nvim
+let g:diagnostic_enable_virtual_text = 1
+let g:diagnostic_trimmed_virtual_text = '40'
+let g:diagnostic_insert_delay = 1  " don't show diagnostics while in insert mode
+set signcolumn=yes
+
+augroup diagnostics
+    autocmd!
+    autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
+augroup end
+
+
+" lsp extensions
+augroup lsp_extensions
+    autocmd!
+    autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = ' ', highlight = "Comment" }
+augroup end
+
+
+" " coc.nvim configs
+" let g:coc_global_extensions = ['coc-python', 'coc-tsserver', 'coc-rust-analyzer', 'coc-snippets', 'coc-json', 'coc-docker', 'coc-yaml', 'coc-highlight']
 
 " fzf config for hidden files
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".<q-args>, 1, <bang>0)
-let $FZF_DEFAULT_COMMAND = "fd --type file --hidden"
+let $FZF_DEFAULT_COMMAND = "fd --type file --hidden -E .git"
 let $FZF_DEFAULT_OPTS .= ' --no-height'
 
 " context.vim configs
 let g:context_nvim_no_redraw = 0
 
 " vista configs
-let g:vista_default_executive = "coc"
+let g:vista_default_executive = "nvim_lsp"
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 " localvimrc configs
@@ -142,9 +175,6 @@ let g:gitgutter_map_keys = 0
 " python versions
 let pyver = system('pyenv global | head -n 1 | tr -d "\n"')
 let g:python3_host_prog = $HOME . '/.pyenv/versions/' . pyver . '/bin/python'
-
-" iron.nvim configs
-let g:iron_repl_open_cmd = 'botright vertical split'
 
 " terraform
 let g:terraform_align=1

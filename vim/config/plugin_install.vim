@@ -14,7 +14,6 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'wellle/context.vim'
 Plug 'w0rp/ale'
 Plug 'maximbaz/lightline-ale'
 Plug 'honza/vim-snippets'
@@ -39,13 +38,15 @@ Plug 'itchyny/lightline.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'easymotion/vim-easymotion'
 
-" neovim-only plugins and their alternatives
+" neovim-only plugins
 if has('nvim')
-    " autocomplete
-    Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': { -> coc#util#install()}}
-
-    " repl within neovim
-    Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }
+    " LSP, autocomplete, etc.
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-lua/completion-nvim'
+    Plug 'nvim-lua/diagnostic-nvim'
+    Plug 'tjdevries/lsp_extensions.nvim'
+    Plug 'hrsh7th/vim-vsnip'
+    Plug 'hrsh7th/vim-vsnip-integ'
 endif
 
 " indent and function argument text objects

@@ -56,6 +56,7 @@ export PATH=$PATH:/Library/TeX/texbin
 export PATH=$PATH:$HOME/.poetry/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:$HOME/.dotnet
 
 export MANPATH="/usr/local/man:$MANPATH"
 
@@ -79,7 +80,7 @@ unset RBENV_INIT_SCRIPT
 
 # fzf config
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' -l ''"  # to find hidden files
+export FZF_DEFAULT_COMMAND="fd --type --hidden -E .git"  # to find hidden files
 
 # prevent Python from generating bytecode
 export PYTHONDONTWRITEBYTECODE=1
@@ -163,6 +164,7 @@ source $DOTFILES_DIR/zsh/p10k.zsh
 
 # source my aliases
 source $DOTFILES_DIR/zsh/aliases.zsh
+source $DOTFILES_DIR/zsh/kube_aliases.zsh
 
 # load antibody plugins
 ZSH_PLUGINS_FILE=$DOTFILES_DIR/zsh/zsh_plugins.txt
