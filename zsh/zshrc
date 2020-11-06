@@ -164,6 +164,7 @@ source $DOTFILES_DIR/zsh/p10k.zsh
 
 # source my aliases
 source $DOTFILES_DIR/zsh/aliases.zsh
+source $DOTFILES_DIR/zsh/kube_aliases.zsh
 
 # load antibody plugins
 ZSH_PLUGINS_FILE=$DOTFILES_DIR/zsh/zsh_plugins.txt
