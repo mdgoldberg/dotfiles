@@ -87,15 +87,14 @@ augroup end
 lua <<EOF
 
 local nvim_lsp = require'nvim_lsp'
-local diagnostic_attach = require'diagnostic'.on_attach
 
-nvim_lsp.jedi_language_server.setup{on_attach=diagnostic_attach}
-nvim_lsp.rust_analyzer.setup{on_attach=diagnostic_attach}
-nvim_lsp.bashls.setup{on_attach=diagnostic_attach}
-nvim_lsp.dockerls.setup{on_attach=diagnostic_attach}
-nvim_lsp.terraformls.setup{on_attach=diagnostic_attach}
-nvim_lsp.tsserver.setup{on_attach=diagnostic_attach}
-nvim_lsp.yamlls.setup{on_attach=diagnostic_attach}
+nvim_lsp.jedi_language_server.setup{}
+nvim_lsp.rust_analyzer.setup{}
+nvim_lsp.bashls.setup{}
+nvim_lsp.dockerls.setup{}
+nvim_lsp.terraformls.setup{}
+nvim_lsp.tsserver.setup{}
+nvim_lsp.yamlls.setup{}
 
 EOF
 
@@ -120,14 +119,20 @@ set shortmess+=c
 
 
 " diagnostic-nvim
-let g:diagnostic_enable_virtual_text = 1
-let g:diagnostic_trimmed_virtual_text = '40'
-let g:diagnostic_insert_delay = 1  " don't show diagnostics while in insert mode
+lua << EOF
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = true,
+    signs = true,
+    update_in_insert = false,
+  }
+)
+EOF
 set signcolumn=yes
 
 augroup diagnostics
     autocmd!
-    autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
+    autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 augroup end
 
 

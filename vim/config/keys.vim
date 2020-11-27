@@ -75,6 +75,7 @@ map <leader>k <Plug>(easymotion-k)
 map <leader>h <Plug>(easymotion-linebackward)
 
 " nvim-lsp
+nnoremap <silent> <leader>r    <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
@@ -94,8 +95,9 @@ imap <tab> <Plug>(completion_smart_tab)
 imap <s-tab> <Plug>(completion_smart_s_tab)
 
 " Goto previous/next diagnostic warning/error
-nnoremap <silent> g[ <cmd>PrevDiagnosticCycle<cr>
-nnoremap <silent> g] <cmd>NextDiagnosticCycle<cr>
+nnoremap <leader>g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <leader>g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <leader>od <cmd>vim.lsp.diagnostic.set_loclist()<CR>
 
 " if I switch formatting from ale to nvim-lsp
 nmap <leader>g  <cmd>lua vim.lsp.buf.formatting()<CR>

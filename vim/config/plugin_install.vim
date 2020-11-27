@@ -43,7 +43,6 @@ if has('nvim')
     " LSP, autocomplete, etc.
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-lua/completion-nvim'
-    Plug 'nvim-lua/diagnostic-nvim'
     Plug 'tjdevries/lsp_extensions.nvim'
     Plug 'hrsh7th/vim-vsnip'
     Plug 'hrsh7th/vim-vsnip-integ'
