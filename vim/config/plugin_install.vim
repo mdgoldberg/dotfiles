@@ -46,6 +46,7 @@ if has('nvim')
     Plug 'tjdevries/lsp_extensions.nvim'
     Plug 'hrsh7th/vim-vsnip'
     Plug 'hrsh7th/vim-vsnip-integ'
+    Plug 'ojroques/nvim-lspfuzzy'
 endif
 
 " indent and function argument text objects
