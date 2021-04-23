@@ -109,3 +109,18 @@ set expandtab
 
 " always show tab line to avoid annoying resize
 set showtabline=2
+
+" fix for gx in netrw (used by :Ggbrowse)
+" from: https://github.com/vim/vim/issues/4738#issuecomment-798790444
+function! OpenURLUnderCursor()
+	let s:uri = expand('<cWORD>')
+	let s:uri = matchstr(s:uri, "[a-z]*:\/\/[^ >,;)'\"]*")
+	let s:uri = substitute(s:uri, '#', '\\#', '')
+	" let s:uri = substitute(s:uri, '?', '\\?', '')
+	" let s:uri = shellescape(s:uri, 1)
+	if s:uri != ''
+		silent exec "!xdg-open '".s:uri."' > /dev/null"
+		:redraw!
+	endif
+endfunction
+nnoremap gx :call OpenURLUnderCursor()<CR>
