@@ -71,6 +71,9 @@ let g:ale_fixers['*'] = ['remove_trailing_lines', 'trim_whitespace']
 let g:ale_linters['python'] = ['flake8']
 let g:ale_fixers['python'] = ['remove_trailing_lines', 'trim_whitespace', 'isort', 'black']
 
+let g:ale_linters['rust'] = ['analyzer']
+let g:ale_fixers['rust'] = ['remove_trailing_lines', 'trim_whitespace', 'rustfmt']
+
 let g:ale_linters['typescript'] = ['tslint']
 let g:ale_fixers['typescript'] = ['prettier']
 let g:ale_fixers['javascript'] = ['prettier']

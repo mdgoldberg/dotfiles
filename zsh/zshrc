@@ -29,6 +29,11 @@ setopt cdablevars
 # autocomplete configs
 setopt no_auto_remove_slash  # autocomplete trailing slashes for directories
 
+# makes compinit recognize files here
+fpath+=~/.zfunc
+
+
+# do compinit
 autoload -Uz compinit
 if [ $(date +'%j') != $(/usr/bin/stat -f '%Sm' -t '%j' ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
   compinit
@@ -114,12 +119,14 @@ if command -v nodenv >/dev/null 2>&1; then
     unset NODENV_COMPLETION_SCRIPT
 fi
 
-poetry auto-completion
-if command -v poetry >/dev/null 2>&1; then
-    POETRY_COMPLETION_SCRIPT=$CACHE_DIR/_poetry_completion_script
-    [[ ! -f $POETRY_COMPLETION_SCRIPT ]] && poetry completions zsh > $POETRY_COMPLETION_SCRIPT
-    source $POETRY_COMPLETION_SCRIPT
-    unset POETRY_COMPLETION_SCRIPT
+POETRY_COMPLETION_PATH=$CACHE_DIR/_poetry_completion_script
+POETRY_COMPLETION_DEST=$HOME/.zfunc/_poetry
+if  [[ ! -f $POETRY_COMPLETION_PATH ]] || [[ ! -a $POETRY_COMPLETION_DEST ]]; then
+    [[ ! -f $POETRY_COMPLETION_PATH ]] && poetry completions zsh > $POETRY_COMPLETION_PATH
+    mkdir -p $(dirname $POETRY_COMPLETION_DEST)
+    rm -f $POETRY_COMPLETION_DEST
+    ln -s $POETRY_COMPLETION_PATH $POETRY_COMPLETION_DEST
+    unset POETRY_COMPLETION_PATH POETRY_COMPLETION_DEST
 fi
 
 # holds passwords and API tokens that shouldn't be in source control
@@ -142,3 +149,6 @@ if [[ ! -f $BUNDLED_ZSH_PLUGINS_FILE || $ZSH_PLUGINS_FILE -nt $BUNDLED_ZSH_PLUGI
 fi
 source $BUNDLED_ZSH_PLUGINS_FILE
 unset ZSH_PLUGINS_FILE BUNDLED_ZSH_PLUGINS_FILE
+
+export AWS_ACCESS_KEY_ID=$(aws configure get default.aws_access_key_id)
+export AWS_SECRET_ACCESS_KEY=$(aws configure get default.aws_secret_access_key)
