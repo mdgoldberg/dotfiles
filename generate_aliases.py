@@ -29,39 +29,35 @@ def main():
     # (alias, full, allow_when_oneof, incompatible_with)
     cmds = [
         ("kv", "kubectl --context viking", None, None),
-        ("ks", "kubectl --context scholar", None, None),
+        ("kkf", "kubectl --context kubeflow --namespace kubeflow", None, None),
     ]
 
     globs = [
-        ("p", "--namespace=prod", None, None),
+        ("p", "--namespace=prod", ["kv"], None),
         ("pach", "--namespace=pachyderm", ["kv"], None),
-        ("d", "--namespace=dev", None, None),
+        ("d", "--namespace=dev", ["kv"], None),
     ]
 
     ops = [
-        ("a", "apply --recursive -f", None, None),
-        ("ex", "exec -i -t", None, None),
         ("lo", "logs -f", None, None),
-        ("lop", "logs -f -p", None, None),
         ("g", "get", None, None),
         ("d", "describe", None, None),
-        ("rm", "delete", None, None),
     ]
 
     res = [
-        ("po", "pods", ["g", "d", "rm"], None),
-        ("dep", "deployment", ["g", "d", "rm"], None),
-        ("cj", "cronjob", ["g", "d", "rm"], None),
-        ("rc", "replicationcontroller", ["g", "d", "rm"], None),
-        ("svc", "service", ["g", "d", "rm"], None),
-        ("no", "nodes", ["g", "d"], ["sys"]),
+        ("po", "pods", ["g", "d"], None),
+        ("dep", "deployment", ["g", "d"], None),
+        ("cj", "cronjob", ["g", "d"], None),
+        ("rc", "replicationcontroller", ["g", "d"], None),
+        ("svc", "service", ["g", "d"], None),
+        ("no", "nodes", ["g", "d"], None),
     ]
     res_types = [r[0] for r in res]
 
     args = [
         ("oyaml", "-o=yaml", ["g"], ["owide", "ojson", "sl"]),
         ("ojson", "-o=json", ["g"], ["owide", "oyaml", "sl"]),
-        ("all", "--all-namespaces", ["g", "d"], ["rm", "f", "no", "sys"]),
+        ("all", "--all-namespaces", ["g", "d"], ["f", "no"]),
         (
             "sl",
             "--show-labels",
@@ -73,13 +69,12 @@ def main():
     # these accept a value, so they need to be at the end and
     # mutually exclusive within each other.
     positional_args = [
-        ("f", "--recursive -f", ["g", "d", "rm"], res_types + ["all", "l"]),
-        ("l", "-l", ["g", "d", "rm"], ["f", "all"]),
+        ("l", "-l", ["g", "d"], ["f", "all"]),
         (
             "n",
             "--namespace",
-            ["g", "d", "rm", "lo", "ex", "pf"],
-            ["ns", "no", "sys", "all"],
+            ["g", "d", "lo", "ex", "pf"],
+            ["ns", "no", "all"],
         ),
     ]
 

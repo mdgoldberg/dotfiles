@@ -10,7 +10,6 @@ desyncr/auto-ls
 robbyrussell/oh-my-zsh path:plugins/git
 robbyrussell/oh-my-zsh path:plugins/tmux
 robbyrussell/oh-my-zsh path:plugins/docker
-darvid/zsh-poetry
 webyneter/docker-aliases
 
 MichaelAquilina/zsh-you-should-use

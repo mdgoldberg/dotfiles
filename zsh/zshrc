@@ -78,9 +78,10 @@ PLATFORM_ZSH_CONFIG="$DOTFILES_DIR/zsh/`uname`.zsh"
 unset PLATFORM_ZSH_CONFIG
 
 # pyenv startup and config
-export PYENV_ROOT=$HOME/.pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 PYENV_INIT_SCRIPT=$CACHE_DIR/_pyenv_init_script
-[[ ! -f $PYENV_INIT_SCRIPT ]] && pyenv init - > $PYENV_INIT_SCRIPT
+[[ ! -f $PYENV_INIT_SCRIPT ]] && pyenv init --path > $PYENV_INIT_SCRIPT
 source $PYENV_INIT_SCRIPT
 unset PYENV_INIT_SCRIPT
 

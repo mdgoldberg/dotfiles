@@ -11,6 +11,7 @@
 	ui = true
 [init]
 	templatedir = ~/.git_template
+	defaultBranch = main
 [merge]
 	ff = false
 [pull]
@@ -31,3 +32,5 @@
 	whitespace = red reverse
 [diff-so-fancy]
 	markEmptyLines = false
+[rerere]
+	enabled = true
