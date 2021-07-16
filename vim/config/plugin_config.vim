@@ -44,13 +44,7 @@ endfunction
 " endfunction
 
 " tmuxline configs
-let g:tmuxline_powerline_separators = 0
-let g:tmuxline_separators = {
-            \ 'left' : '',
-            \ 'left_alt': '>',
-            \ 'right' : '',
-            \ 'right_alt' : '<',
-            \ 'space' : ' '}
+let g:tmuxline_powerline_separators = 1
 
 " Ale configs (lang-specific configs are in in ftplugin/*.vim)
 let g:ale_completion_enabled = 0
