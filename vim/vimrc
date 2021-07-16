@@ -1,5 +1,0 @@
-source $HOME/dotfiles/vim/config/general.vim
-source $HOME/dotfiles/vim/config/plugin_install.vim
-source $HOME/dotfiles/vim/config/plugin_config.vim
-source $HOME/dotfiles/vim/config/keys.vim
-source $HOME/dotfiles/vim/config/secrets.vim

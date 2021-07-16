@@ -1,0 +1,117 @@
+local lsp_status = require("lsp-status")
+lsp_status.register_progress()
+
+local nvim_lsp = require("lspconfig")
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...)
+    vim.api.nvim_buf_set_keymap(bufnr, ...)
+  end
+  local function buf_set_option(...)
+    vim.api.nvim_buf_set_option(bufnr, ...)
+  end
+
+  -- lsp_status integration
+  -- lsp_status.on_attach(client)
+
+  --Enable completion triggered by <c-x><c-o>
+  -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = {noremap = true, silent = true}
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>", opts)
+  buf_set_keymap("n", "gd", "<CMD>lua vim.lsp.buf.definition()<CR>", opts)
+  buf_set_keymap("n", "K", "<CMD>lua vim.lsp.buf.hover()<CR>", opts)
+  buf_set_keymap("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>", opts)
+  buf_set_keymap("n", "<C-k>", "<CMD>lua vim.lsp.buf.signature_help()<CR>", opts)
+  buf_set_keymap("n", "<leader>wa", "<CMD>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+  buf_set_keymap("n", "<leader>wr", "<CMD>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+  buf_set_keymap("n", "<leader>wl", "<CMD>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+  buf_set_keymap("n", "gt", "<CMD>lua vim.lsp.buf.type_definition()<CR>", opts)
+  buf_set_keymap("n", "<leader>r", "<CMD>lua vim.lsp.buf.rename()<CR>", opts)
+  buf_set_keymap("n", "<leader>ca", "<CMD>lua vim.lsp.buf.code_action()<CR>", opts)
+  buf_set_keymap("n", "gr", "<CMD>lua vim.lsp.buf.references()<CR>", opts)
+  buf_set_keymap("n", "<leader>h", "<CMD>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+  -- buf_set_keymap('n', '[d', '<CMD>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  -- buf_set_keymap('n', ']d', '<CMD>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap("n", "<leader>od", "<CMD>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+  buf_set_keymap("n", "<leader>g", "<CMD>lua vim.lsp.buf.formatting()<CR>", opts)
+end
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = {"pyright", "rust_analyzer", "tsserver", "dockerls", "bashls", "terraformls", "yamlls"}
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    capabilities = lsp_status.capabilities,
+    flags = {
+      debounce_text_changes = 150
+    }
+  }
+end
+
+-- rust inlay type hints via lsp_extensions
+vim.api.nvim_exec(
+  [[
+autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = ' ', highlight = "Comment", enabled = { "TypeHint", "ChainingHint", "ParameterHint" } }
+]],
+  false
+)
+
+-- workspace diagnostics from lsp_extensions
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+  vim.lsp.with(
+  require("lsp_extensions.workspace.diagnostic").handler,
+  {
+    signs = {
+      severity_limit = "Error"
+    }
+  }
+)
+
+-- nvim-lightbulb
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
+
+-- trouble for diagnostics
+require("trouble").setup(
+  {
+    auto_open = false,
+    auto_close = true
+  }
+)
+
+local trouble_opts = {silent = true, noremap = true}
+vim.api.nvim_set_keymap("n", "<leader>xx", "<CMD>TroubleToggle<CR>", trouble_opts)
+vim.api.nvim_set_keymap("n", "<leader>xw", "<CMD>Trouble lsp_workspace_diagnostics<CR>", trouble_opts)
+vim.api.nvim_set_keymap("n", "<leader>xd", "<CMD>Trouble lsp_document_diagnostics<CR>", trouble_opts)
+vim.api.nvim_set_keymap("n", "<leader>xl", "<CMD>Trouble loclist<CR>", trouble_opts)
+vim.api.nvim_set_keymap("n", "<leader>xq", "<CMD>Trouble quickfix<CR>", trouble_opts)
+vim.api.nvim_set_keymap("n", "gR", "<CMD>Trouble lsp_references<CR>", trouble_opts)
+vim.api.nvim_set_keymap(
+  "n",
+  "]d",
+  '<CMD>lua require("trouble").next({skip_groups = true, jump = true})<CR>',
+  trouble_opts
+)
+vim.api.nvim_set_keymap(
+  "n",
+  "[d",
+  '<CMD>lua require("trouble").previous({skip_groups = true, jump = true})<CR>',
+  trouble_opts
+)
+
+-- fun pictogram symbols
+require("lspkind").init(
+  {
+    -- enables text annotations
+    with_text = true,
+    -- default symbol map
+    -- can be either 'default' or 'codicons' for codicon preset (requires vscode-codicons font installed)
+    preset = "default"
+  }
+)

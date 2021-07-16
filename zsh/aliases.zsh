@@ -21,7 +21,6 @@ alias pydb="python -m ipdb -c continue"
 
 alias zshrc="$EDITOR $HOME/.zshrc"
 alias reload_zshrc="source $HOME/.zshrc"
-alias vimrc="$EDITOR $HOME/.vim/vimrc"
 
 alias new_data_analysis="cookiecutter https://github.com/drivendata/cookiecutter-data-science"
 
