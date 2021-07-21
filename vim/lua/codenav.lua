@@ -16,7 +16,7 @@ vim.api.nvim_set_keymap(
     {expr = true, noremap = true}
 )
 
-vim.api.nvim_set_keymap("n", "<leader>a", "<CMD>lua require('fzf-lua').grep()<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>a", "<CMD>grep ''<LEFT>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>l", "<CMD>lua require('fzf-lua').live_grep()<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<leader>*", "<CMD>lua require('fzf-lua').grep_cword()<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>*", "<CMD>grep <cword><CR>", {noremap = true})
 vim.api.nvim_set_keymap("v", "<leader>*", "<CMD>lua require('fzf-lua').grep_visual()<CR>", {noremap = true})

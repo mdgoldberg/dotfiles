@@ -54,6 +54,7 @@ return require("packer").startup(
 
     -- general
     use "navarasu/onedark.nvim"
+    use 'b3nj5m1n/kommentary'
 
     -- use 'dense-analysis/ale'
     -- use 'maximbaz/lightline-ale'
@@ -62,7 +63,6 @@ return require("packer").startup(
     use "airblade/vim-gitgutter"
     use "Yggdroot/indentLine"
     use "tpope/vim-unimpaired"
-    use "tpope/vim-commentary"
     use "tpope/vim-surround"
     use "tpope/vim-repeat"
     use "tommcdo/vim-exchange"
