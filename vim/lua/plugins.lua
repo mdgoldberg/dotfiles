@@ -22,9 +22,8 @@ return require("packer").startup(
       "nvim-lua/lsp_extensions.nvim",
       "kosayoda/nvim-lightbulb",
       "onsails/lspkind-nvim",
-      {"folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons"},
-      "folke/lsp-colors.nvim" -- sets default colors for diagnostics if not set in colorscheme
-      -- 'ray-x/lsp_signature.nvim',
+      "folke/lsp-colors.nvim", -- sets default colors for diagnostics if not set in colorscheme
+      'ray-x/lsp_signature.nvim',
     }
 
     -- tree-sitter
