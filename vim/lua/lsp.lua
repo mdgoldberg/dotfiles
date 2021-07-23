@@ -14,7 +14,10 @@ local on_attach = function(client, bufnr)
   end
 
   -- lsp_status integration
-  -- lsp_status.on_attach(client)
+  lsp_status.on_attach(client)
+
+  -- lsp_signature integration
+  require('lsp_signature').on_attach()
 
   --Enable completion triggered by <c-x><c-o>
   -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -76,34 +79,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
 
 -- nvim-lightbulb
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
-
--- trouble for diagnostics
-require("trouble").setup(
-  {
-    auto_open = false,
-    auto_close = true
-  }
-)
-
-local trouble_opts = {silent = true, noremap = true}
-vim.api.nvim_set_keymap("n", "<leader>xx", "<CMD>TroubleToggle<CR>", trouble_opts)
-vim.api.nvim_set_keymap("n", "<leader>xw", "<CMD>Trouble lsp_workspace_diagnostics<CR>", trouble_opts)
-vim.api.nvim_set_keymap("n", "<leader>xd", "<CMD>Trouble lsp_document_diagnostics<CR>", trouble_opts)
-vim.api.nvim_set_keymap("n", "<leader>xl", "<CMD>Trouble loclist<CR>", trouble_opts)
-vim.api.nvim_set_keymap("n", "<leader>xq", "<CMD>Trouble quickfix<CR>", trouble_opts)
-vim.api.nvim_set_keymap("n", "gR", "<CMD>Trouble lsp_references<CR>", trouble_opts)
-vim.api.nvim_set_keymap(
-  "n",
-  "]d",
-  '<CMD>lua require("trouble").next({skip_groups = true, jump = true})<CR>',
-  trouble_opts
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "[d",
-  '<CMD>lua require("trouble").previous({skip_groups = true, jump = true})<CR>',
-  trouble_opts
-)
 
 -- fun pictogram symbols
 require("lspkind").init(
