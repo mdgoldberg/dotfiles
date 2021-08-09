@@ -1,4 +1,8 @@
-require("telescope").setup({})
+require("telescope").setup({
+    defaults = {
+        file_sorter = require('telescope.sorters').get_fzy_sorter
+    }
+})
 
 -- function to check whether there is an open file in the current tab
 vim.cmd [[

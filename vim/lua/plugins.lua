@@ -60,7 +60,6 @@ return require("packer").startup(
     -- use 'honza/vim-snippets'
     use "christoomey/vim-tmux-navigator"
     use "airblade/vim-gitgutter"
-    use "Yggdroot/indentLine"
     use "tpope/vim-unimpaired"
     use "tpope/vim-surround"
     use "tpope/vim-repeat"
