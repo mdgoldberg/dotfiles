@@ -30,7 +30,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "gd", "<CMD>lua vim.lsp.buf.definition()<CR>", opts)
   buf_set_keymap("n", "K", "<CMD>lua vim.lsp.buf.hover()<CR>", opts)
   buf_set_keymap("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>", opts)
-  buf_set_keymap("n", "<C-k>", "<CMD>lua vim.lsp.buf.signature_help()<CR>", opts)
+  buf_set_keymap("n", "<leader>k", "<CMD>lua vim.lsp.buf.signature_help()<CR>", opts)
   -- buf_set_keymap("n", "<leader>wa", "<CMD>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
   -- buf_set_keymap("n", "<leader>wr", "<CMD>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
   -- buf_set_keymap("n", "<leader>wl", "<CMD>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
@@ -67,7 +67,7 @@ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua
 )
 
 -- workspace diagnostics from lsp_extensions
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
+--[[ vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(
   require("lsp_extensions.workspace.diagnostic").handler,
   {
@@ -75,7 +75,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] =
       severity_limit = "Error"
     }
   }
-)
+) ]]
 
 -- nvim-lightbulb
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
