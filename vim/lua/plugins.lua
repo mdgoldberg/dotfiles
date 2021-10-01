@@ -52,7 +52,7 @@ return require("packer").startup(
     use {"simrat39/rust-tools.nvim", ft = {"rust"}}
 
     -- general
-    use "navarasu/onedark.nvim"
+    use 'christianchiarulli/nvcode-color-schemes.vim'
     use 'b3nj5m1n/kommentary'
 
     -- use 'dense-analysis/ale'

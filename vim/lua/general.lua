@@ -15,9 +15,15 @@ vim.api.nvim_set_option("smartcase", true)
 vim.api.nvim_set_option("hlsearch", false)
 
 -- colorscheme
+vim.api.nvim_set_var("nvcode_termcolors", 256)
 vim.api.nvim_set_option("termguicolors", true)
-vim.g.onedark_style = 'deep'
-vim.cmd [[colorscheme onedark]]
+vim.cmd([[colorscheme onedark]])
+
+-- checks if terminal has 24-bit color support
+if vim.fn.has("termguicolors") == 1 then
+    vim.o.termguicolors = true
+    vim.cmd([[hi LineNr ctermbg=NONE guibg=NONE]])
+end
 
 -- resize windows when tmux pane size changes
 vim.cmd [[autocmd VimResized * wincmd =]]
