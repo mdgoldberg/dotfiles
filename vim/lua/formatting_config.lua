@@ -59,8 +59,8 @@ require("formatter").setup(
       rust = {
         function()
           return {
-            exe = "cargo fmt",
-            args = {"--emit=stdout"},
+            exe = "rustfmt",
+            args = {"--edition=2018", "--emit=stdout"},
             stdin = true
           }
         end
