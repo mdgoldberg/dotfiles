@@ -68,6 +68,7 @@ let g:ale_fixers['rust'] = ['remove_trailing_lines', 'trim_whitespace', 'rustfmt
 let g:ale_linters['typescript'] = ['tslint']
 let g:ale_fixers['typescript'] = ['prettier']
 let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fixers['markdown'] = ['prettier']
 let g:ale_fixers['json'] = ['prettier']
 let g:ale_fixers['markdown'] = ['prettier']
 let g:ale_fixers['yaml'] = ['prettier']
