@@ -63,7 +63,14 @@ require("formatter").setup(
             args = {"-"},
             stdin = true
           }
-        end
+        end,
+        function()
+          return {
+            exe = "isort",
+            args = {"-"},
+            stdin = true
+          }
+        end,
       },
       rust = {
         function()
