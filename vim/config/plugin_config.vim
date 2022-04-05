@@ -82,8 +82,8 @@ augroup end
 set shortmess+=c
 
 " fzf config for hidden files
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".<q-args>, 1, <bang>0)
-let $FZF_DEFAULT_COMMAND = "fd --type file --hidden -E .git"
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --follow --line-number --no-heading --color=always --smart-case ".<q-args>, 1, <bang>0)
+let $FZF_DEFAULT_COMMAND = "fd --follow --type file --hidden -E .git"
 let $FZF_DEFAULT_OPTS .= ' --no-height'
 
 " easymotion configs
