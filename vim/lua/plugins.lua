@@ -24,12 +24,15 @@ return require("packer").startup(
       "onsails/lspkind-nvim",
       "folke/lsp-colors.nvim", -- sets default colors for diagnostics if not set in colorscheme
       'ray-x/lsp_signature.nvim',
+      {'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix' },
+
     }
 
     -- tree-sitter
     use {
       {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"},
-      "nvim-treesitter/nvim-treesitter-textobjects"
+      'nvim-treesitter/nvim-treesitter-refactor',
+      "nvim-treesitter/nvim-treesitter-textobjects",
     }
 
     -- code navigation
@@ -50,10 +53,16 @@ return require("packer").startup(
 
     -- language-specific
     use {"simrat39/rust-tools.nvim", ft = {"rust"}}
+    use {
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+        ft = {"markdown"}
+    }
 
     -- general
     use 'christianchiarulli/nvcode-color-schemes.vim'
-    use 'b3nj5m1n/kommentary'
+    use 'numToStr/Comment.nvim'
+    use 'chipsenkbeil/distant.nvim'
 
     -- use 'dense-analysis/ale'
     -- use 'maximbaz/lightline-ale'
