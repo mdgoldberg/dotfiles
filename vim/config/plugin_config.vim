@@ -101,6 +101,9 @@ let g:bclose_no_plugin_maps = 1
 set updatetime=200
 let g:gitgutter_map_keys = 0
 
+" python versions
+let g:python3_host_prog = $HOME . '/.asdf/shims/python3'
+
 " terraform
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
