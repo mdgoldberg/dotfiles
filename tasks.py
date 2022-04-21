@@ -9,7 +9,7 @@ from invoke_modules.homebrew import install_homebrew
 from invoke_modules.homebrew import brew_packages, update_brew
 from invoke_modules.linuxbrew import install_linuxbrew  # noqa
 from invoke_modules.linuxbrew import linuxbrew_packages  # noqa
-from invoke_modules.python import pip_packages, pyenv_install
+from invoke_modules.python import pip_packages
 from invoke_modules.tmux import tmux_packages, update_tmux
 from invoke_modules.vim import vim_plugins
 
@@ -57,8 +57,7 @@ def remove_symlinks(ctx):
 
 
 @invoke.task(pre=[
-    install_homebrew, brew_packages, create_symlinks, tmux_packages, vim_plugins, pyenv_install,
-    pip_packages
+    install_homebrew, brew_packages, create_symlinks, tmux_packages, vim_plugins, pip_packages
 ])
 def fresh_install(ctx):
     """Installs all tools (brew, zsh, tmux, vim) from scratch, and installs

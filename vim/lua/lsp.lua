@@ -58,16 +58,8 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- rust inlay type hints via lsp_extensions
-vim.api.nvim_exec(
-  [[
-autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = ' ', highlight = "Comment", enabled = { "TypeHint", "ChainingHint", "ParameterHint" } }
-]],
-  false
-)
-
 -- workspace diagnostics from lsp_extensions
---[[ vim.lsp.handlers["textDocument/publishDiagnostics"] =
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
   vim.lsp.with(
   require("lsp_extensions.workspace.diagnostic").handler,
   {
@@ -75,7 +67,17 @@ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua
       severity_limit = "Error"
     }
   }
-) ]]
+)
+
+-- nvim-lsputils
+vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+vim.lsp.handlers['textDocument/references'] = require'lsputil.locations'.references_handler
+vim.lsp.handlers['textDocument/definition'] = require'lsputil.locations'.definition_handler
+vim.lsp.handlers['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
+vim.lsp.handlers['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
+vim.lsp.handlers['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
+vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
+vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
 
 -- nvim-lightbulb
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
@@ -84,7 +86,7 @@ vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_li
 require("lspkind").init(
   {
     -- enables text annotations
-    with_text = true,
+    mode = 'symbol_text',
     -- default symbol map
     -- can be either 'default' or 'codicons' for codicon preset (requires vscode-codicons font installed)
     preset = "default"

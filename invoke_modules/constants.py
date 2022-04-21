@@ -12,13 +12,6 @@ LINUXBREW_PACKAGES_FILE = os.path.join(PACKAGES_DIR, "linuxbrew_packages.txt")
 PYTHON2_PACKAGES_FILE = os.path.join(PACKAGES_DIR, "python2_packages.txt")
 PYTHON3_PACKAGES_FILE = os.path.join(PACKAGES_DIR, "python3_packages.txt")
 
-PYENV_ROOT = os.path.relpath(
-    subprocess.run(["pyenv", "root"], stdout=subprocess.PIPE)
-    .stdout.strip()
-    .decode("utf-8"),
-    HOME_DIR,
-)
-
 PYTHON_VERSIONS = ["3.6.7", "2.7.14"]
 
 NVIM_CONFIG_DIR = os.path.join(".config", "nvim")

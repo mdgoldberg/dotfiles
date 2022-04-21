@@ -49,8 +49,3 @@ vim.api.nvim_set_option("expandtab", true)
 
 -- always show tabs at top
 vim.api.nvim_set_option("showtabline", 2)
-
-
--- MISC PLUGINS
-
-require('Comment').setup()

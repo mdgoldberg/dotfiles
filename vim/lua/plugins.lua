@@ -52,7 +52,7 @@ return require("packer").startup(
     use {"francoiscabrol/ranger.vim", requires = {"rbgrouleff/bclose.vim"}}
 
     -- language-specific
-    use {"simrat39/rust-tools.nvim", ft = {"rust"}}
+    use {"simrat39/rust-tools.nvim", ft = {"rust"}, config = function() require('rust-tools').setup() end}
     use {
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
@@ -61,7 +61,7 @@ return require("packer").startup(
 
     -- general
     use 'christianchiarulli/nvcode-color-schemes.vim'
-    use 'numToStr/Comment.nvim'
+    use {'numToStr/Comment.nvim', config = function() require('Comment').setup() end}
     use 'chipsenkbeil/distant.nvim'
 
     -- use 'dense-analysis/ale'

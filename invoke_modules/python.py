@@ -1,15 +1,7 @@
 import invoke
 
 from invoke_modules.constants import (PYTHON2_PACKAGES_FILE,
-                                      PYTHON3_PACKAGES_FILE, PYTHON_VERSIONS)
-
-
-@invoke.task
-def pyenv_install(ctx):
-    """Installs PYTHON_VERSIONS via pyenv."""
-    # TODO
-    print(PYTHON_VERSIONS)
-    raise NotImplementedError
+                                      PYTHON3_PACKAGES_FILE)
 
 
 @invoke.task

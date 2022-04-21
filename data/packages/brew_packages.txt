@@ -242,7 +242,6 @@ pugixml
 pulsar
 pulsarctl
 pybind11
-pyenv
 pyqt
 pyqt@5
 python
