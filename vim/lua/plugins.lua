@@ -52,6 +52,7 @@ return require("packer").startup(
     use {"francoiscabrol/ranger.vim", requires = {"rbgrouleff/bclose.vim"}}
 
     -- language-specific
+    use {"chrisbra/csv.vim", ft = {"csv"} }
     use {"simrat39/rust-tools.nvim", ft = {"rust"}, config = function() require('rust-tools').setup() end}
     use {
         "iamcco/markdown-preview.nvim",
