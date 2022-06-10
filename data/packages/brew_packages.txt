@@ -35,10 +35,10 @@ coreutils
 cpanminus
 cscope
 ctags
+datamash
 dav1d
 dbus
 diff-so-fancy
-dive
 dlib
 double-conversion
 eigen
@@ -110,7 +110,6 @@ keychain
 kops
 krb5
 kubernetes-cli
-kubernetes-helm
 kustomize
 lame
 lbzip2
@@ -217,10 +216,6 @@ openssl@1.1
 openssl@3
 opus
 p11-kit
-pachctl@1.10
-pachctl@1.12
-pachctl@1.13
-pachctl@2.0
 pandoc
 pango
 pcre
@@ -239,14 +234,10 @@ postgresql@9.6
 protobuf
 pstree
 pugixml
-pulsar
-pulsarctl
 pybind11
 pyqt
 pyqt@5
-python
 python-tabulate
-python3
 python@2
 python@3.10
 python@3.8
@@ -256,7 +247,6 @@ qt@5
 r
 ranger
 rav1e
-rbac-lookup
 rbenv
 readline
 reattach-to-user-namespace
@@ -285,7 +275,6 @@ szip
 tbb
 tcl-tk
 terraform
-terraform-ls
 terraform@0.11
 tesseract
 the_silver_searcher
@@ -312,6 +301,7 @@ xvid
 xz
 youtube-dl
 yq
+zenith
 zeromq
 zimg
 zlib
@@ -319,3 +309,13 @@ zsh
 zsh-completions
 zsh-syntax-highlighting
 zstd
+fairwindsops/tap/rbac-lookup
+hashicorp/tap/terraform-ls
+pachyderm/tap/pachctl@1.10
+pachyderm/tap/pachctl@1.12
+pachyderm/tap/pachctl@1.13
+pachyderm/tap/pachctl@2.0
+pachyderm/tap/pachctl@2.2
+streamnative/streamnative/pulsar
+streamnative/streamnative/pulsarctl
+wagoodman/dive/dive
