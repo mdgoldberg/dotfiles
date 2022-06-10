@@ -6,14 +6,8 @@ import invoke
 from invoke_modules.constants import HOME_DIR
 from invoke_modules.constants import DOTFILES_DIR, SRC_DST_MAP
 from invoke_modules.homebrew import install_homebrew
-from invoke_modules.homebrew import brew_packages, update_brew
-from invoke_modules.linuxbrew import install_linuxbrew  # noqa
-from invoke_modules.linuxbrew import linuxbrew_packages  # noqa
-from invoke_modules.python import pip_packages
-from invoke_modules.tmux import tmux_packages, update_tmux
-from invoke_modules.vim import vim_plugins
-
-from invoke_modules.python import update_pip  # noqa; noqa
+from invoke_modules.homebrew import brew_packages
+from invoke_modules.tmux import tmux_packages, update_tmux  # flake8: ignore
 
 
 def create_symlink(src, dst):
@@ -57,7 +51,7 @@ def remove_symlinks(ctx):
 
 
 @invoke.task(pre=[
-    install_homebrew, brew_packages, create_symlinks, tmux_packages, vim_plugins, pip_packages
+    install_homebrew, brew_packages, create_symlinks, tmux_packages
 ])
 def fresh_install(ctx):
     """Installs all tools (brew, zsh, tmux, vim) from scratch, and installs
@@ -66,13 +60,3 @@ def fresh_install(ctx):
     NOTE: DOES NOT INSTALL PYTHON PACKAGES BY DEFAULT. USE FLAG IF NEEDED.
     """
     pass
-
-
-@invoke.task(pre=[update_brew, update_tmux, update_pip, vim_plugins])
-def update_packages(ctx):
-    """Updates packages for brew, tmux, pip, and vim. Updates lists of these packages stored
-    locally."""
-    pass
-
-
-# TODO: fonts from https://github.com/google/fonts/archive/master.zip

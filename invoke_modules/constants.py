@@ -1,7 +1,6 @@
 import os
-import subprocess
 
-HOME_DIR = os.getenv("HOME")
+HOME_DIR = os.environ["HOME"]
 DOTFILES_DIR = os.path.join(HOME_DIR, "dotfiles")
 
 PACKAGES_DIR = os.path.join(DOTFILES_DIR, "data", "packages")

@@ -35,13 +35,3 @@ def brew_packages(ctx):
         cask_packages = [p.strip() for p in f.readlines()]
     cask_packages_str = ' '.join(cask_packages)
     ctx.run(f'brew cask install {cask_packages_str}', echo=True, warn=True)
-
-
-@invoke.task
-def update_brew(ctx):
-    """Updates all brew packages."""
-    print("Updating brew and brew packages...")
-    ctx.run('brew update', echo=True, warn=True)
-    ctx.run('brew upgrade', echo=True, warn=True)
-    ctx.run(f'brew list > {BREW_PACKAGES_FILE}', echo=True)
-    ctx.run(f'brew cask list > {BREW_CASK_PACKAGES_FILE}', echo=True)
