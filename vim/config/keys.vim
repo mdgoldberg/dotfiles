@@ -14,14 +14,14 @@ if has('nvim')
 endif
 
 " make movements visual lines instead of actual lines
-nnoremap j gj
-nnoremap k gk
-nnoremap 0 g0
-nnoremap ^ g^
-nnoremap $ g$
-vnoremap 0 g0
-vnoremap ^ g^
-vnoremap $ g$
+" nnoremap j gj
+" nnoremap k gk
+" nnoremap 0 g0
+" nnoremap ^ g^
+" nnoremap $ g$
+" vnoremap 0 g0
+" vnoremap ^ g^
+" vnoremap $ g$
 
 " use leader-c and leader-p to copy/paste to/from system clipboard
 noremap <leader>y "+y
