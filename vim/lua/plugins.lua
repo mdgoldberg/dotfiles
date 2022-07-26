@@ -71,6 +71,7 @@ return require("packer").startup(
         run = function() vim.fn["mkdp#util#install"]() end,
         ft = {"markdown"}
     }
+    use 'hashivim/vim-terraform'
 
     -- general
     use {
@@ -83,6 +84,16 @@ return require("packer").startup(
     use 'christianchiarulli/nvcode-color-schemes.vim'
     use {'numToStr/Comment.nvim', config = function() require('Comment').setup() end}
     use 'chipsenkbeil/distant.nvim'  -- remote
+    use {
+        "folke/which-key.nvim",   -- remembering key bindings
+        config = function()
+            require("which-key").setup {}
+        end
+    }
+    use {
+        "luukvbaal/stabilize.nvim",
+        config = function() require("stabilize").setup() end
+    }
 
     use "christoomey/vim-tmux-navigator"
     use "airblade/vim-gitgutter"
@@ -94,19 +105,13 @@ return require("packer").startup(
     use "tpope/vim-fugitive"
     use "tpope/vim-rhubarb"
     use "shumphrey/fugitive-gitlab.vim"
-    use "bitc/vim-bad-whitespace"
+    use "ntpeters/vim-better-whitespace"
     use "edkolev/tmuxline.vim"
     -- use 'easymotion/vim-easymotion'
 
     -- indent and function argument text objects
     use "michaeljsmith/vim-indent-object"
     use "PeterRincker/vim-argumentative"
-
-    -- language plugins
-    -- use 'sheerun/vim-polyglot'
-
-    -- terraform
-    use 'hashivim/vim-terraform'
 
   end
 )
