@@ -51,7 +51,7 @@ local servers = {"pyright", "rust_analyzer", "tsserver", "dockerls", "bashls", "
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
-    capabilities = lsp_status.capabilities,
+    capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_status.capabilities),
     flags = {
       debounce_text_changes = 150
     }
