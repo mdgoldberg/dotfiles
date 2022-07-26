@@ -38,7 +38,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "<leader>r", "<CMD>lua vim.lsp.buf.rename()<CR>", opts)
   buf_set_keymap("n", "<leader>ca", "<CMD>lua vim.lsp.buf.code_action()<CR>", opts)
   buf_set_keymap("n", "gr", "<CMD>lua vim.lsp.buf.references()<CR>", opts)
-  buf_set_keymap("n", "<leader>h", "<CMD>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+  buf_set_keymap("n", "<leader>h", "<CMD>lua vim.diagnostic.open_float()<CR>", opts)
   -- buf_set_keymap('n', '[d', '<CMD>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   -- buf_set_keymap('n', ']d', '<CMD>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap("n", "<leader>od", "<CMD>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
@@ -58,16 +58,8 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- workspace diagnostics from lsp_extensions
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-  vim.lsp.with(
-  require("lsp_extensions.workspace.diagnostic").handler,
-  {
-    signs = {
-      severity_limit = "Error"
-    }
-  }
-)
+-- lsp_lines: disable virtual_text since it's redundant due to lsp_lines
+vim.diagnostic.config({ virtual_text = false, virtual_lines = true, update_in_insert = true })
 
 -- nvim-lsputils
 vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler

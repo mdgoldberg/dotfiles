@@ -19,12 +19,17 @@ return require("packer").startup(
     use {
       "neovim/nvim-lspconfig",
       "nvim-lua/lsp-status.nvim",
-      "nvim-lua/lsp_extensions.nvim",
       "kosayoda/nvim-lightbulb",
       "onsails/lspkind-nvim",
       "folke/lsp-colors.nvim", -- sets default colors for diagnostics if not set in colorscheme
       'ray-x/lsp_signature.nvim',
       {'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix' },
+      {
+          "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+          config = function()
+              require("lsp_lines").setup()
+          end,
+      },
 
     }
 
