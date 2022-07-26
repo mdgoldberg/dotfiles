@@ -61,13 +61,17 @@ return require("packer").startup(
     }
 
     -- general
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        config = function()
+            require("lualine").setup {}
+        end
+    }
     use 'christianchiarulli/nvcode-color-schemes.vim'
     use {'numToStr/Comment.nvim', config = function() require('Comment').setup() end}
-    use 'chipsenkbeil/distant.nvim'
+    use 'chipsenkbeil/distant.nvim'  -- remote
 
-    -- use 'dense-analysis/ale'
-    -- use 'maximbaz/lightline-ale'
-    -- use 'honza/vim-snippets'
     use "christoomey/vim-tmux-navigator"
     use "airblade/vim-gitgutter"
     use "tpope/vim-unimpaired"
