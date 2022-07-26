@@ -1,11 +1,11 @@
-set runtimepath+=~/.vim,~/.vim/after
+set runtimepath+=~/.vim
 set packpath+=~/.vim
 
 source $HOME/dotfiles/vim/config/general.vim
 source $HOME/dotfiles/vim/config/plugin_config.vim
-source $HOME/dotfiles/vim/config/keys.vim
 source $HOME/dotfiles/vim/config/secrets.vim
 
+lua require('keys')
 lua require('general')
 lua require('plugins')
 lua require('lsp')

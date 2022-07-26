@@ -24,3 +24,21 @@ vim.api.nvim_set_keymap("n", "<leader>a", ":grep ''<LEFT>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>l", "<CMD>lua require('fzf-lua').live_grep()<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>*", ":grep <cword><CR> :copen<CR>", {noremap = true})
 vim.api.nvim_set_keymap("v", "<leader>*", "<CMD>lua require('fzf-lua').grep_visual()<CR>", {noremap = true})
+
+-- git
+vim.api.nvim_set_keymap("n", "]c", "<Plug>(GitGutterNextHunk)", {})
+vim.api.nvim_set_keymap("n", "[c", "<Plug>(GitGutterPrevHunk)", {})
+
+-- ranger
+vim.g.ranger_map_keys = 0
+vim.api.nvim_set_keymap("n", "-", ":Ranger<CR>", {})
+
+-- easymotion configs
+-- map  <leader>/ <Plug>(easymotion-sn)
+-- omap <leader>/ <Plug>(easymotion-tn)
+-- map  <leader>n <Plug>(easymotion-next)
+-- map  <leader>N <Plug>(easymotion-prev)
+-- map <leader>l <Plug>(easymotion-lineforward)
+-- map <leader>j <Plug>(easymotion-j)
+-- map <leader>k <Plug>(easymotion-k)
+-- map <leader>h <Plug>(easymotion-linebackward)
