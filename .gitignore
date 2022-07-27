@@ -4,6 +4,6 @@
 **/*.swp
 vim/autoload
 vim/plugged
-vim/config/secrets.vim
+vim/lua/secrets.lua
 zsh/secrets.zsh
 data/cache
