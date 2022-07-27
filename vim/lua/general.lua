@@ -49,3 +49,9 @@ vim.api.nvim_set_option("expandtab", true)
 
 -- always show tabs at top
 vim.api.nvim_set_option("showtabline", 2)
+
+-- configs to use rg for :grep
+if vim.fn.executable('rg') then
+    vim.api.nvim_set_option("grepprg", "rg --vimgrep --no-heading")
+    vim.api.nvim_set_option("grepformat", "%f:%l:%c:%m,%f:%l:%m")
+end
