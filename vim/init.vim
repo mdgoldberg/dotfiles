@@ -1,8 +1,6 @@
 set runtimepath+=~/.vim
 set packpath+=~/.vim
 
-source $HOME/dotfiles/vim/config/general.vim
-
 lua require('keys')
 lua require('general')
 lua require('plugins')

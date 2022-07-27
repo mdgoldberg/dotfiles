@@ -73,6 +73,10 @@ vim.api.nvim_set_keymap("n", "[c", "<Plug>(GitGutterPrevHunk)", {})
 -- ranger
 vim.g.ranger_map_keys = 0
 vim.api.nvim_set_keymap("n", "-", ":Ranger<CR>", {})
+vim.g.ranger_replace_netrw = 1
+
+-- bclose configs (dependency of ranger.vim, but don't need mapping)
+vim.g.bclose_no_plugin_maps = 1
 
 -- easymotion configs
 -- map  <leader>/ <Plug>(easymotion-sn)
