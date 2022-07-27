@@ -73,6 +73,17 @@ return require("packer").startup(
     }
     use 'hashivim/vim-terraform'
 
+    -- git
+    use "lewis6991/gitsigns.nvim"
+    use "rhysd/conflict-marker.vim"
+    use "tpope/vim-fugitive"
+    use "tpope/vim-rhubarb"
+    use "shumphrey/fugitive-gitlab.vim"
+
+    -- text objects
+    use "michaeljsmith/vim-indent-object"
+    use "PeterRincker/vim-argumentative"
+
     -- general
     use {
         'nvim-lualine/lualine.nvim',
@@ -94,23 +105,15 @@ return require("packer").startup(
         "luukvbaal/stabilize.nvim",
         config = function() require("stabilize").setup() end
     }
-    use "lewis6991/gitsigns.nvim"
     use "christoomey/vim-tmux-navigator"
     use "tpope/vim-unimpaired"
     use "tpope/vim-surround"
     use "tpope/vim-repeat"
     use "tommcdo/vim-exchange"
     use "tpope/vim-abolish"
-    use "tpope/vim-fugitive"
-    use "tpope/vim-rhubarb"
-    use "shumphrey/fugitive-gitlab.vim"
     use "ntpeters/vim-better-whitespace"
     use "edkolev/tmuxline.vim"
     -- use 'easymotion/vim-easymotion'
-
-    -- indent and function argument text objects
-    use "michaeljsmith/vim-indent-object"
-    use "PeterRincker/vim-argumentative"
 
   end
 )
