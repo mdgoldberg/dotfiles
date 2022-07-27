@@ -94,9 +94,8 @@ return require("packer").startup(
         "luukvbaal/stabilize.nvim",
         config = function() require("stabilize").setup() end
     }
-
+    use "lewis6991/gitsigns.nvim"
     use "christoomey/vim-tmux-navigator"
-    use "airblade/vim-gitgutter"
     use "tpope/vim-unimpaired"
     use "tpope/vim-surround"
     use "tpope/vim-repeat"
