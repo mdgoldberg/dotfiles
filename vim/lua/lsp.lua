@@ -2,6 +2,7 @@ local lsp_status = require("lsp-status")
 lsp_status.register_progress()
 
 local nvim_lsp = require("lspconfig")
+local navic = require("nvim-navic")
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -15,6 +16,9 @@ local on_attach = function(client, bufnr)
 
   -- lsp_status integration
   lsp_status.on_attach(client)
+
+  -- nvim-navic integration
+  navic.attach(client, bufnr)
 
   -- lsp_signature integration
   require('lsp_signature').on_attach()

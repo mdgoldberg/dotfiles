@@ -21,8 +21,9 @@ return require("packer").startup(
       "nvim-lua/lsp-status.nvim",
       "kosayoda/nvim-lightbulb",
       "onsails/lspkind-nvim",
-      "folke/lsp-colors.nvim", -- sets default colors for diagnostics if not set in colorscheme
       'ray-x/lsp_signature.nvim',
+      "folke/lsp-colors.nvim", -- sets default colors for diagnostics if not set in colorscheme
+      "SmiteshP/nvim-navic",  -- show current code contex in statusline/winbar
       {'RishabhRD/nvim-lsputils', requires = 'RishabhRD/popfix' },
       {
           "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
@@ -85,26 +86,12 @@ return require("packer").startup(
     use "PeterRincker/vim-argumentative"
 
     -- general
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-        config = function()
-            require("lualine").setup {}
-        end
-    }
+    use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
     use 'christianchiarulli/nvcode-color-schemes.vim'
     use {'numToStr/Comment.nvim', config = function() require('Comment').setup() end}
     use 'chipsenkbeil/distant.nvim'  -- remote
-    use {
-        "folke/which-key.nvim",   -- remembering key bindings
-        config = function()
-            require("which-key").setup {}
-        end
-    }
-    use {
-        "luukvbaal/stabilize.nvim",
-        config = function() require("stabilize").setup() end
-    }
+    use {"folke/which-key.nvim", config = function() require("which-key").setup() end}   -- remembering key bindings
+    use {"luukvbaal/stabilize.nvim", config = function() require("stabilize").setup{} end}  -- stabilize window/cursor when quickfix opens
     use "christoomey/vim-tmux-navigator"
     use "tpope/vim-unimpaired"
     use "tpope/vim-surround"
