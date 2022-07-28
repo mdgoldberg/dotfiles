@@ -37,15 +37,17 @@ return require("packer").startup(
     -- tree-sitter
     use {
       {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"},
-      'nvim-treesitter/nvim-treesitter-refactor',
+      "nvim-treesitter/nvim-treesitter-context",
+      "nvim-treesitter/nvim-treesitter-refactor",
       "nvim-treesitter/nvim-treesitter-textobjects",
     }
 
     -- code navigation
     use {
-        { "nvim-telescope/telescope.nvim", requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim"} },
-        { 'ibhagwan/fzf-lua', requires = { 'kyazdani42/nvim-web-devicons', 'vijaymarupudi/nvim-fzf' } },
         { 'junegunn/fzf', run = './install --bin', },
+        { 'ibhagwan/fzf-lua', requires = { 'kyazdani42/nvim-web-devicons', 'vijaymarupudi/nvim-fzf' } },
+        { "nvim-telescope/telescope.nvim", requires = {"nvim-lua/plenary.nvim"} },
+        {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
     }
 
     -- autocomplete and snippets

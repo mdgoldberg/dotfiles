@@ -1,8 +1,31 @@
+local actions = require "telescope.actions"
+
 require("telescope").setup({
     defaults = {
-        file_sorter = require('telescope.sorters').get_fzy_sorter
-    }
+        mappings = {
+            i = {
+                -- ["<C-CR>"] = actions.send_selected_to_qflist + actions.select_default,
+                ["<C-SPACE>"] = actions.send_selected_to_qflist + actions.open_qflist,
+                ["<C-a>"] = actions.send_to_qflist + actions.open_qflist,
+            },
+            n = {
+                -- ["<C-CR>"] = actions.send_selected_to_qflist + actions.select_default,
+                ["<C-SPACE>"] = actions.send_selected_to_qflist + actions.open_qflist,
+                ["<C-a>"] = actions.send_to_qflist + actions.open_qflist,
+            },
+        },
+
+    },
+    extensions = {
+        fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            override_file_sorter = true,
+            case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+        },
+    },
 })
+require('telescope').load_extension('fzf')
 
 require('gitsigns').setup {
     on_attach = function(bufnr)
