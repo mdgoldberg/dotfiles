@@ -4,12 +4,12 @@ require("telescope").setup({
     defaults = {
         mappings = {
             i = {
-                -- ["<C-CR>"] = actions.send_selected_to_qflist + actions.select_default,
+                -- ["<CR>"] = actions.send_selected_to_qflist + actions.select_default,
                 ["<C-SPACE>"] = actions.send_selected_to_qflist + actions.open_qflist,
                 ["<C-a>"] = actions.send_to_qflist + actions.open_qflist,
             },
             n = {
-                -- ["<C-CR>"] = actions.send_selected_to_qflist + actions.select_default,
+                -- ["<CR>"] = actions.send_selected_to_qflist + actions.select_default,
                 ["<C-SPACE>"] = actions.send_selected_to_qflist + actions.open_qflist,
                 ["<C-a>"] = actions.send_to_qflist + actions.open_qflist,
             },
@@ -75,27 +75,28 @@ function! TabIsEmpty()
 endfunction
 ]]
 
-vim.api.nvim_set_keymap("n", "<leader>e", "<CMD>lua require('telescope.builtin').find_files()<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<leader>b", "<CMD>lua require('telescope.builtin').buffers()<CR>", {noremap = true})
-vim.api.nvim_set_keymap(
+local telescope_builtin = require('telescope.builtin')
+vim.keymap.set("n", "<leader>b", telescope_builtin.buffers, {noremap = true})
+vim.keymap.set("n", "<leader>e", telescope_builtin.find_files, {noremap = true})
+vim.keymap.set(
     "n",
     "<leader>op",
-    'TabIsEmpty() ? ":Telescope find_files<CR>" : ":tabnew<CR>:Telescope find_files<CR>"',
+    'TabIsEmpty() ? ":lua require(\'telescope.builtin\').find_files()<CR>" : ":tabnew<CR>:lua require(\'telescope.builtin\').find_files()<CR>"',
     {expr = true, noremap = true}
 )
 
-vim.api.nvim_set_keymap("n", "<leader>a", ":grep ''<LEFT>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<leader>l", "<CMD>lua require('fzf-lua').live_grep()<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<leader>*", ":grep <cword><CR> :copen<CR>", {noremap = true})
-vim.api.nvim_set_keymap("v", "<leader>*", "<CMD>lua require('fzf-lua').grep_visual()<CR>", {noremap = true})
+vim.keymap.set("n", "<leader>g", ":grep ''<LEFT>", {noremap = true})
+vim.keymap.set("n", "<leader>*", ":grep <cword><CR> :copen<CR>", {noremap = true})
+vim.keymap.set("v", "<leader>*", require('fzf-lua').grep_visual, {noremap = true})
+vim.keymap.set("n", "<leader>l", require('fzf-lua').live_grep, {noremap = true})
 
 -- git
-vim.api.nvim_set_keymap("n", "]c", "<Plug>(GitGutterNextHunk)", {})
-vim.api.nvim_set_keymap("n", "[c", "<Plug>(GitGutterPrevHunk)", {})
+vim.keymap.set("n", "]c", "<Plug>(GitGutterNextHunk)", {})
+vim.keymap.set("n", "[c", "<Plug>(GitGutterPrevHunk)", {})
 
 -- ranger
 vim.g.ranger_map_keys = 0
-vim.api.nvim_set_keymap("n", "-", ":Ranger<CR>", {})
+vim.keymap.set("n", "-", ":Ranger<CR>", {})
 vim.g.ranger_replace_netrw = 1
 
 -- bclose configs (dependency of ranger.vim, but don't need mapping)

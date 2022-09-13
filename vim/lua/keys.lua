@@ -8,6 +8,8 @@ vim.api.nvim_set_keymap("v", ";", ":", {noremap = true})
 -- use leader-c and leader-p to copy/paste to/from system clipboard
 vim.api.nvim_set_keymap("n", "<leader>y", '"+y', {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>p", '"+p', {noremap = true})
+vim.api.nvim_set_keymap("v", "<leader>y", '"+y', {noremap = true})
+vim.api.nvim_set_keymap("v", "<leader>p", '"+p', {noremap = true})
 
 -- shortcuts for opening/closing/navigating windows/tabs
 vim.api.nvim_set_keymap("n", "<leader>w", "winnr('$') > 1 ? ':q<CR>' : ':tabclose<CR>'", {expr = true, noremap = true})

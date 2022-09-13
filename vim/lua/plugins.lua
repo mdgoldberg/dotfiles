@@ -19,7 +19,10 @@ return require("packer").startup(
     use {
       "neovim/nvim-lspconfig",
       "nvim-lua/lsp-status.nvim",
-      "kosayoda/nvim-lightbulb",
+      {
+          'kosayoda/nvim-lightbulb',
+          requires = 'antoinemadec/FixCursorHold.nvim',
+      },
       "onsails/lspkind-nvim",
       'ray-x/lsp_signature.nvim',
       "folke/lsp-colors.nvim", -- sets default colors for diagnostics if not set in colorscheme
@@ -56,6 +59,8 @@ return require("packer").startup(
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
+    -- use 'davidsierradz/cmp-conventionalcommits'
+    use 'lukas-reineke/cmp-rg'
     use 'L3MON4D3/LuaSnip'
     use "rafamadriz/friendly-snippets"
     use 'saadparwaiz1/cmp_luasnip'
@@ -68,17 +73,17 @@ return require("packer").startup(
 
     -- language-specific
     use {"chrisbra/csv.vim", ft = {"csv"} }
-    use {"simrat39/rust-tools.nvim", ft = {"rust"}, config = function() require('rust-tools').setup() end}
+    use { "simrat39/rust-tools.nvim" }
     use {
         "iamcco/markdown-preview.nvim",
+        ft = {"markdown"},
         run = function() vim.fn["mkdp#util#install"]() end,
-        ft = {"markdown"}
     }
     use 'hashivim/vim-terraform'
 
     -- git
     use "lewis6991/gitsigns.nvim"
-    use "rhysd/conflict-marker.vim"
+    use {'akinsho/git-conflict.nvim', tag = "*", config = function() require('git-conflict').setup() end}
     use "tpope/vim-fugitive"
     use "tpope/vim-rhubarb"
     use "shumphrey/fugitive-gitlab.vim"
@@ -93,16 +98,17 @@ return require("packer").startup(
     use {'numToStr/Comment.nvim', config = function() require('Comment').setup() end}
     use 'chipsenkbeil/distant.nvim'  -- remote
     use {"folke/which-key.nvim", config = function() require("which-key").setup() end}   -- remembering key bindings
-    use {"luukvbaal/stabilize.nvim", config = function() require("stabilize").setup{} end}  -- stabilize window/cursor when quickfix opens
+    use {"luukvbaal/stabilize.nvim", config = function() require("stabilize").setup() end}  -- stabilize window/cursor when quickfix opens
     use "christoomey/vim-tmux-navigator"
     use "tpope/vim-unimpaired"
-    use "tpope/vim-surround"
+    use {"kylechui/nvim-surround", config = function() require("nvim-surround").setup() end}
     use "tpope/vim-repeat"
     use "tommcdo/vim-exchange"
     use "tpope/vim-abolish"
     use "ntpeters/vim-better-whitespace"
     use "edkolev/tmuxline.vim"
     -- use 'easymotion/vim-easymotion'
+    use { "Pocco81/true-zen.nvim", config = function() require("true-zen").setup { integrations = { tmux = true, lualine = true } } end }
 
   end
 )
