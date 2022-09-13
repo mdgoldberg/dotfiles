@@ -78,7 +78,7 @@ unset PLATFORM_ZSH_CONFIG
 
 # fzf config
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND="fd --type --hidden -E .git"  # to find hidden files
+export FZF_DEFAULT_COMMAND="fd --type f --hidden -E .git"  # to find hidden files
 
 # prevent Python from generating bytecode
 export PYTHONDONTWRITEBYTECODE=1
