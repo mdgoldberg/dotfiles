@@ -101,13 +101,3 @@ vim.g.ranger_replace_netrw = 1
 
 -- bclose configs (dependency of ranger.vim, but don't need mapping)
 vim.g.bclose_no_plugin_maps = 1
-
--- easymotion configs
--- map  <leader>/ <Plug>(easymotion-sn)
--- omap <leader>/ <Plug>(easymotion-tn)
--- map  <leader>n <Plug>(easymotion-next)
--- map  <leader>N <Plug>(easymotion-prev)
--- map <leader>l <Plug>(easymotion-lineforward)
--- map <leader>j <Plug>(easymotion-j)
--- map <leader>k <Plug>(easymotion-k)
--- map <leader>h <Plug>(easymotion-linebackward)

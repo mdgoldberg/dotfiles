@@ -65,7 +65,6 @@ export PATH=$BIN_DIR
 export PATH=$PATH:/usr/local/opt/llvm/bin
 export PATH=$PATH:/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin
 export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/.poetry/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/go/bin
 
@@ -94,8 +93,8 @@ export YSU_MODE=ALL
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=103"
 
-# pipenv config
-export PIPENV_VENV_IN_PROJECT=true
+# for ai.vim
+export OPENAI_API_KEY="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"
 
 POETRY_COMPLETION_PATH=$CACHE_DIR/_poetry_completion_script
 POETRY_COMPLETION_DEST=$HOME/.zfunc/_poetry

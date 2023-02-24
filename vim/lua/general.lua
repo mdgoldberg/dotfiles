@@ -1,23 +1,20 @@
-vim.api.nvim_set_option("signcolumn", "yes")
+vim.o.updatetime = 500
+vim.wo.signcolumn = 'yes'
 
-vim.api.nvim_set_option("mouse", "a")
+vim.o.mouse = 'a'
 
 -- keep at least 3 lines on either side of cursor in window
-vim.api.nvim_set_option("scrolloff", 3)
+vim.o.scrolloff = 3
 
-vim.api.nvim_set_option("smartindent", true)
+vim.o.smartindent = true
 
-vim.api.nvim_win_set_option(0, 'number', true)
+vim.o.number = true
+vim.o.relativenumber = true
 
-vim.api.nvim_set_option("ignorecase", true)
-vim.api.nvim_set_option("smartcase", true)
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
-vim.api.nvim_set_option("hlsearch", false)
-
--- colorscheme
-vim.api.nvim_set_var("nvcode_termcolors", 256)
-vim.api.nvim_set_option("termguicolors", true)
-vim.cmd([[colorscheme onedark]])
+vim.o.hlsearch = false
 
 -- checks if terminal has 24-bit color support
 if vim.fn.has("termguicolors") == 1 then
@@ -29,33 +26,30 @@ end
 vim.cmd [[autocmd VimResized * wincmd =]]
 
 -- incremental feedback on substitute commands
-vim.api.nvim_set_option("inccommand", "split")
+vim.o.inccommand = 'split'
 
 -- disable backups
-vim.api.nvim_set_option("backup", false)
-vim.api.nvim_set_option("writebackup", false)
-vim.api.nvim_set_option("swapfile", false)
+vim.o.backup = false
+vim.o.writebackup = false
+vim.o.swapfile = false
 
 -- keep buffers open when tab is closed
-vim.api.nvim_set_option("hidden", true)
-
--- keep buffers open when tab is closed
-vim.api.nvim_set_option("hidden", true)
+vim.o.hidden = true
 
 -- default tab settings
-vim.api.nvim_set_option("shiftwidth", 0) -- falls back to tabstop as default
-vim.api.nvim_set_option("tabstop", 4)
-vim.api.nvim_set_option("expandtab", true)
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
+vim.o.expandtab = true
 
 -- always show tabs at top
-vim.api.nvim_set_option("showtabline", 2)
+vim.o.showtabline = 2
 
 vim.g.python3_host_prog = os.getenv("HOME") .. '/.asdf/shims/python3'
 
 -- configs to use rg for :grep
 if vim.fn.executable('rg') then
-    vim.api.nvim_set_option("grepprg", "rg --vimgrep --no-heading")
-    vim.api.nvim_set_option("grepformat", "%f:%l:%c:%m,%f:%l:%m")
+    vim.o.grepprg = "rg --vimgrep --no-heading"
+    vim.o.grepformat = "%f:%l:%c:%m,%f:%l:%m"
 end
 
 -- avoid showing extra message when using completion
@@ -81,7 +75,7 @@ function! OpenURLUnderCursor()
 	endif
 endfunction
 ]]
-vim.api.nvim_set_keymap("n", "gx", ":call OpenURLUnderCursor()<CR>", {noremap = true})
+vim.keymap.set("n", "gx", ":call OpenURLUnderCursor()<CR>", {noremap = true})
 
 vim.cmd [[
 " fzf config for hidden files
@@ -90,23 +84,39 @@ let $FZF_DEFAULT_COMMAND = "fd --follow --type file --hidden -E .git"
 let $FZF_DEFAULT_OPTS .= ' --no-height'
 ]]
 
--- easymotion configs
--- let g:EasyMotion_startofline = 0
--- let g:EasyMotion_smartcase = 1
--- let g:EasyMotion_use_smartsign_us = 1
+vim.g.strip_whitespace_on_save = 1
 
--- disable annoying beep on errors
--- set noerrorbells
--- augroup error_bells
---     autocmd!
---     autocmd GUIEnter * set vb t_vb=
--- augroup END
---
--- better tab completion on commands
--- set wildmode=list:longest
---
--- open all folds by default
--- augroup folds
---     au!
---     au BufRead * normal zR
--- augroup END
+-- colorscheme
+vim.cmd([[colorscheme tokyonight]])
+require("tokyonight").setup({
+  on_highlights = function(hl, c)
+    local prompt = "#2d3149"
+    hl.TelescopeNormal = {
+      bg = c.bg_dark,
+      fg = c.fg_dark,
+    }
+    hl.TelescopeBorder = {
+      bg = c.bg_dark,
+      fg = c.bg_dark,
+    }
+    hl.TelescopePromptNormal = {
+      bg = prompt,
+    }
+    hl.TelescopePromptBorder = {
+      bg = prompt,
+      fg = prompt,
+    }
+    hl.TelescopePromptTitle = {
+      bg = prompt,
+      fg = prompt,
+    }
+    hl.TelescopePreviewTitle = {
+      bg = c.bg_dark,
+      fg = c.bg_dark,
+    }
+    hl.TelescopeResultsTitle = {
+      bg = c.bg_dark,
+      fg = c.bg_dark,
+    }
+  end,
+})

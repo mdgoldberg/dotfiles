@@ -18,17 +18,13 @@ NVIM_CONFIG_DIR = os.path.join(".config", "nvim")
 SRC_DST_MAP = {
     os.path.join("zsh", "zshrc"): [".zshrc"],
     "vim": [".vim"],
-    os.path.join("vim", "init.vim"): [os.path.join(NVIM_CONFIG_DIR, "init.vim")],
+    os.path.join("vim", "init.lua"): [os.path.join(NVIM_CONFIG_DIR, "init.lua")],
     os.path.join("vim", "lua"): [os.path.join(NVIM_CONFIG_DIR, "lua")],
-    os.path.join("vim", "coc-settings.json"): [
-        os.path.join(NVIM_CONFIG_DIR, "coc-settings.json")
-    ],
     "tmux.conf": [".tmux.conf"],
     "gitconfig": [".gitconfig"],
     "pypirc": [".pypirc"],
     "git_template": [".git_template"],
     "gitignore_global": [".gitignore_global"],
-    "style.yapf": [os.path.join(".config", "yapf", "style")],
     "isort.cfg": [".isort.cfg"],
     "flake8": [".flake8"],
     "psqlrc": [".psqlrc"],

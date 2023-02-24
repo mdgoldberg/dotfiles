@@ -2,20 +2,15 @@ require "nvim-treesitter.configs".setup {
   ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
     enable = true, -- false will disable the whole extension
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false
   },
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm"
-    }
+      init_selection = '<c-space>',
+      node_incremental = '<c-space>',
+      scope_incremental = '<c-s>',
+      node_decremental = '<c-backspace>',
+    },
   },
   indent = {
     enable = true
@@ -27,17 +22,12 @@ require "nvim-treesitter.configs".setup {
       lookahead = true,
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-        -- Or you can define your own textobjects like this
-        ["iF"] = {
-          python = "(function_definition) @function",
-          cpp = "(function_definition) @function",
-          c = "(function_definition) @function",
-          java = "(method_declaration) @function"
-        }
+        ['aa'] = '@parameter.outer',
+        ['ia'] = '@parameter.inner',
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@class.outer',
+        ['ic'] = '@class.inner',
       }
     },
     move = {
@@ -63,11 +53,11 @@ require "nvim-treesitter.configs".setup {
     swap = {
       enable = false,
       -- swap_next = {
-      --   ["<leader>l"] = "@parameter.inner"
+      --   ['<leader>a'] = '@parameter.inner',
       -- },
       -- swap_previous = {
-      --   ["<leader>h"] = "@parameter.inner"
-      -- }
+      --   ['<leader>A'] = '@parameter.inner',
+      -- },
     },
     lsp_interop = {
       enable = true,

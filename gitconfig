@@ -17,6 +17,7 @@
 	ff = false
 [pull]
     ff = only
+	rebase = merges
 [fetch]
     prune = true
 [color "diff-highlight"]

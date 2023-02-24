@@ -1,0 +1,11 @@
+vim.opt.runtimepath:append(',~/.vim')
+vim.opt.packpath:append(',~/.vim')
+
+require('keys')
+require('general')
+require('plugins')
+require('lsp')
+require('completion')
+require('codenav')
+require('statusline')
+require('secrets')
