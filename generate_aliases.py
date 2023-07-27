@@ -34,7 +34,7 @@ def main():
 
     globs = [
         ("p", "--namespace=prod", ["kv"], None),
-        ("pach", "--namespace=pachyderm", ["kv"], None),
+        ("pach", "--namespace=pachyderm-v2", ["kv"], None),
         ("d", "--namespace=dev", ["kv"], None),
     ]
 
