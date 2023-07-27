@@ -7,3 +7,4 @@ vim/plugged
 vim/lua/secrets.lua
 zsh/secrets.zsh
 data/cache
+pypirc
