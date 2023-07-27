@@ -8,3 +8,4 @@ vim/lua/secrets.lua
 zsh/secrets.zsh
 data/cache
 pypirc
+zsh/kube_aliases.zsh
