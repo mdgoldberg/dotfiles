@@ -59,7 +59,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = {"pyright", "tsserver", "dockerls", "bashls", "terraformls", "yamlls", "graphql", "sumneko_lua"}
+local servers = {"pyright", "tsserver", "dockerls", "bashls", "terraformls", "yamlls", "graphql", "lua_ls"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -84,7 +84,7 @@ rt.setup({
 rt.inlay_hints.enable()
 
 -- special Lua setup
-require'lspconfig'.sumneko_lua.setup {
+require'lspconfig'.lua_ls.setup {
   settings = {
     Lua = {
       runtime = {
@@ -123,7 +123,6 @@ local sources = {
     diagnostics.commitlint,
     diagnostics.curlylint,
     diagnostics.eslint,
-    diagnostics.mypy,
     diagnostics.ruff,
     diagnostics.todo_comments,
     formatting.black,
