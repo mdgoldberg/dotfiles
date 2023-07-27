@@ -1,6 +1,5 @@
 chrissicool/zsh-256color
 
-# denysdovhan/spaceship-prompt
 romkatv/powerlevel10k
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions
@@ -9,8 +8,8 @@ desyncr/auto-ls
 
 # robbyrussell/oh-my-zsh path:plugins/asdf
 robbyrussell/oh-my-zsh path:plugins/git
-# robbyrussell/oh-my-zsh path:plugins/tmux
-robbyrussell/oh-my-zsh path:plugins/docker
+robbyrussell/oh-my-zsh path:plugins/tmux
+# robbyrussell/oh-my-zsh path:plugins/docker
 webyneter/docker-aliases
 
 MichaelAquilina/zsh-you-should-use

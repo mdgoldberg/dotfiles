@@ -1,6 +1,5 @@
 alias vim="nvim"
 alias cat="bat"
-alias r="r -q"
 alias d="docker"
 alias m="make"
 alias diff="colordiff"
