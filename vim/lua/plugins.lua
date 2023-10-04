@@ -18,14 +18,12 @@ return require("packer").startup(
         -- LSP
         use {
             "neovim/nvim-lspconfig",
-            "kosayoda/nvim-lightbulb",
             "jose-elias-alvarez/null-ls.nvim",
+            "lukas-reineke/lsp-format.nvim",
             {"j-hui/fidget.nvim", tag = "legacy"}, -- LSP progess bar (e.g. seeing rust-analyzer progress)
             "nvim-lua/lsp-status.nvim", -- utilities for custom status line components (TODO: set it up)
             "onsails/lspkind-nvim", --  adds vscode-like pictograms
-            'ray-x/lsp_signature.nvim', -- LSP signature autocomplete (TODO: DO KEYMAPS)
             "folke/lsp-colors.nvim", -- sets default colors for diagnostics if not set in colorscheme
-            "SmiteshP/nvim-navic", -- show current code context in statusline/winbar
         }
 
         -- tree-sitter
@@ -36,7 +34,7 @@ return require("packer").startup(
                     pcall(require('nvim-treesitter.install').update { with_sync = true })
                 end,
             },
-            "nvim-treesitter/nvim-treesitter-context",
+            -- "nvim-treesitter/nvim-treesitter-context",
             "nvim-treesitter/nvim-treesitter-refactor",
             "nvim-treesitter/nvim-treesitter-textobjects",
         }
@@ -75,7 +73,7 @@ return require("packer").startup(
 
         -- git
         use "lewis6991/gitsigns.nvim"
-        use { 'akinsho/git-conflict.nvim', tag = "*", config = function() require('git-conflict').setup() end }
+        use { 'akinsho/git-conflict.nvim', tag = "*", config = function() require('git-conflict').setup({}) end }
         use "tpope/vim-fugitive"
         use "tpope/vim-rhubarb"
         use "shumphrey/fugitive-gitlab.vim"
@@ -102,9 +100,9 @@ return require("packer").startup(
         use "tommcdo/vim-exchange"
 
         -- new
-        use { 'simrat39/symbols-outline.nvim', config = function() require("symbols-outline").setup() end }
+        -- use { 'simrat39/symbols-outline.nvim', config = function() require("symbols-outline").setup() end }
         use { 'stevearc/dressing.nvim', config = function() require('dressing').setup() end }
-        use 'chipsenkbeil/distant.nvim' -- remote
+        -- use 'chipsenkbeil/distant.nvim' -- remote
         -- keybindings: C-space, C-n
         use {
             'jackMort/ChatGPT.nvim',
