@@ -63,13 +63,14 @@ CACHE_DIR=$DATA_DIR/cache
 mkdir -p $CACHE_DIR
 
 # configuring PATH
-# /Users/matthew.goldberg/.local/bin
 export PATH=$BIN_DIR
 export PATH=$PATH:/usr/local/opt/llvm/bin
 export PATH=$PATH:/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:/Applications/kitty.app/Contents/MacOS/
+
 
 export MANPATH="/usr/local/man:$MANPATH"
 
