@@ -1,5 +1,3 @@
-chrissicool/zsh-256color
-
 romkatv/powerlevel10k
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions
