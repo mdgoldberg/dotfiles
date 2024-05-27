@@ -38,7 +38,7 @@ fpath+=~/.zfunc
 
 # do compinit
 autoload -Uz compinit
-if [ $(date +'%j') != $(/usr/bin/stat -f '%Sm' -t '%j' ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
+if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' $HOME/.zcompdump) ]; then
   compinit
 else
   compinit -C
