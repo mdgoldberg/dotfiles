@@ -36,3 +36,5 @@
 	markEmptyLines = false
 [rerere]
 	enabled = true
+[credential]
+	helper = store
