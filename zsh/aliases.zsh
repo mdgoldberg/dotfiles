@@ -7,8 +7,6 @@ alias ls="exa"
 alias l="exa --long --header --git"
 alias md="mkdir -p"
 
-alias gdh="git diff HEAD~1 HEAD"
-
 alias k="kubectl"
 alias kswitch="kubectl config use-context"
 
@@ -17,6 +15,10 @@ alias p="pachctl"
 alias py="python"
 alias ipy="ipython"
 alias pydb="python -m ipdb -c continue"
+
+alias vimk="NVIM_APPNAME=nvim-kickstart nvim"
+alias viml="NVIM_APPNAME=nvim-lazyvim nvim"
+alias lg="lazygit"
 
 alias zshrc="$EDITOR $HOME/.zshrc"
 alias reload_zshrc="source $HOME/.zshrc"

@@ -9,4 +9,4 @@ robbyrussell/oh-my-zsh path:plugins/git
 # robbyrussell/oh-my-zsh path:plugins/docker
 webyneter/docker-aliases
 
-MichaelAquilina/zsh-you-should-use
+# MichaelAquilina/zsh-you-should-use
