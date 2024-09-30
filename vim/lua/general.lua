@@ -44,8 +44,6 @@ vim.o.expandtab = true
 -- always show tabs at top
 vim.o.showtabline = 2
 
-vim.g.python3_host_prog = os.getenv("HOME") .. '/.asdf/shims/python3'
-
 -- configs to use rg for :grep
 if vim.fn.executable('rg') then
     vim.o.grepprg = "rg --vimgrep --no-heading"
