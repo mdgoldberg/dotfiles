@@ -1,6 +1,6 @@
 [user]
 	name = Matt Goldberg
-	email = matt.goldberg7@gmail.com
+	email = matthew.goldberg@geniussports.com
 [core]
 	editor = nvim
 	excludesfile = $HOME/.gitignore_global

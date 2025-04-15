@@ -1,5 +1,18 @@
  # zmodload zsh/zprof
 
+# configuring PATH
+export PATH=$BIN_DIR
+export PATH=$PATH:/opt/homebrew/bin
+export PATH=$PATH:/usr/local/opt/llvm/bin
+export PATH=$PATH:/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:/Applications/kitty.app/Contents/MacOS/
+
+# fnm
+eval "$(fnm env --use-on-cd --shell zsh)"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -33,16 +46,21 @@ setopt cdablevars
 # autocomplete configs
 setopt no_auto_remove_slash  # autocomplete trailing slashes for directories
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # makes compinit recognize files here
 fpath+=~/.zfunc
 
 # do compinit
 autoload -Uz compinit
-if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' $HOME/.zcompdump) ]; then
-  compinit
-else
-  compinit -C
-fi
+
+for dump in ~/.zcompdump(N.mh+24); do
+    compinit
+done
+
+compinit -C
+
+zstyle ':completion:*' menu yes select
 
 # use C-x C-e (or C-x e) to open shell command in $EDITOR
 autoload -U edit-command-line
@@ -62,15 +80,10 @@ export BIN_DIR=$DOTFILES_DIR/bin
 CACHE_DIR=$DATA_DIR/cache
 mkdir -p $CACHE_DIR
 
-# configuring PATH
-export PATH=$BIN_DIR
-export PATH=$PATH:/usr/local/opt/llvm/bin
-export PATH=$PATH:/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/.cargo/bin
-export PATH=$PATH:$HOME/go/bin
-export PATH=$PATH:/Applications/kitty.app/Contents/MacOS/
+alias ibrew='arch --x86_64 /usr/local/Homebrew/bin/brew'
 
+# adds ~/.cargo/bin
+source "$HOME/.cargo/env"
 
 export MANPATH="/usr/local/man:$MANPATH"
 
@@ -82,9 +95,6 @@ unset PLATFORM_ZSH_CONFIG
 # fzf config
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="fd --type f --hidden -E .git"  # to find hidden files
-
-# prevent Python from generating bytecode
-export PYTHONDONTWRITEBYTECODE=1
 
 # prevent Python from buffering stdout/stderr
 export PYTHONUNBUFFERED=1
@@ -137,4 +147,9 @@ zstyle ':completion:*' menu select
 P10K_CONFIG=$DOTFILES_DIR/zsh/p10k.zsh
 [[ ! -f $P10K_CONFIG ]] || source $P10K_CONFIG
 
+eval "$(direnv hook zsh)"
+
 # zprof
+
+# Added by Windsurf
+export PATH="/Users/matthew.goldberg/.codeium/windsurf/bin:$PATH"
