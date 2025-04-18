@@ -16,8 +16,6 @@ alias py="python"
 alias ipy="ipython"
 alias pydb="python -m ipdb -c continue"
 
-alias vimk="NVIM_APPNAME=nvim-kickstart nvim"
-alias viml="NVIM_APPNAME=nvim-lazyvim nvim"
 alias lg="lazygit"
 
 alias zshrc="$EDITOR $HOME/.zshrc"
