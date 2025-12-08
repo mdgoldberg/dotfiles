@@ -23,7 +23,6 @@ SRC_DST_MAP = {
     "tmux.conf": [".tmux.conf"],
     "gitconfig": [".gitconfig"],
     "pypirc": [".pypirc"],
-    "git_template": [".git_template"],
     "gitignore_global": [".gitignore_global"],
     "isort.cfg": [".isort.cfg"],
     "flake8": [".flake8"],
