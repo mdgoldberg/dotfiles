@@ -107,16 +107,6 @@ export YSU_MODE=ALL
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=103"
 
-POETRY_COMPLETION_PATH=$CACHE_DIR/_poetry_completion_script
-POETRY_COMPLETION_DEST=$HOME/.zfunc/_poetry
-if  [[ ! -f $POETRY_COMPLETION_PATH ]] || [[ ! -a $POETRY_COMPLETION_DEST ]]; then
-    [[ ! -f $POETRY_COMPLETION_PATH ]] && poetry completions zsh > $POETRY_COMPLETION_PATH
-    mkdir -p $(dirname $POETRY_COMPLETION_DEST)
-    rm -f $POETRY_COMPLETION_DEST
-    ln -s $POETRY_COMPLETION_PATH $POETRY_COMPLETION_DEST
-    unset POETRY_COMPLETION_PATH POETRY_COMPLETION_DEST
-fi
-
 # holds passwords and API tokens that shouldn't be in source control
 touch $DOTFILES_DIR/zsh/secrets.zsh
 source $DOTFILES_DIR/zsh/secrets.zsh
