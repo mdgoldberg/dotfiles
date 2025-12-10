@@ -9,3 +9,4 @@ zsh/secrets.zsh
 data/cache
 pypirc
 zsh/kube_aliases.zsh
+zsh/p10k.zsh.zwc

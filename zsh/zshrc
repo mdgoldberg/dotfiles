@@ -118,12 +118,14 @@ source $DOTFILES_DIR/zsh/p10k.zsh
 source $DOTFILES_DIR/zsh/aliases.zsh
 source $DOTFILES_DIR/zsh/kube_aliases.zsh
 
-# load antibody plugins
+# load antidote plugins
+source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+
 ZSH_PLUGINS_FILE=$DOTFILES_DIR/zsh/zsh_plugins.txt
 BUNDLED_ZSH_PLUGINS_FILE=$CACHE_DIR/bundled_zsh_plugins.zsh
 if [[ ! -f $BUNDLED_ZSH_PLUGINS_FILE || $ZSH_PLUGINS_FILE -nt $BUNDLED_ZSH_PLUGINS_FILE ]]; then
     echo "Regenerating $BUNDLED_ZSH_PLUGINS_FILE..."
-    antibody bundle < $ZSH_PLUGINS_FILE > $BUNDLED_ZSH_PLUGINS_FILE
+    antidote bundle < $ZSH_PLUGINS_FILE > $BUNDLED_ZSH_PLUGINS_FILE
 fi
 source $BUNDLED_ZSH_PLUGINS_FILE
 unset ZSH_PLUGINS_FILE BUNDLED_ZSH_PLUGINS_FILE
@@ -140,6 +142,3 @@ P10K_CONFIG=$DOTFILES_DIR/zsh/p10k.zsh
 eval "$(direnv hook zsh)"
 
 # zprof
-
-# Added by Windsurf
-export PATH="/Users/matthew.goldberg/.codeium/windsurf/bin:$PATH"
