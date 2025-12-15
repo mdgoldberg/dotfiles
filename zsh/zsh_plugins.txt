@@ -1,12 +1,33 @@
-romkatv/powerlevel10k
-zsh-users/zsh-syntax-highlighting
-zsh-users/zsh-autosuggestions
+# autocompletions
+mattmc3/ez-compinit
 zsh-users/zsh-completions
+
+# theme/features
 desyncr/auto-ls
+romkatv/powerlevel10k
 
+# utility
+romkatv/zsh-defer
+
+# oh-my-zsh
+getantidote/use-omz
+# ohmyzsh/ohmyzsh path:lib
+ohmyzsh/ohmyzsh path:plugins/copybuffer
+ohmyzsh/ohmyzsh path:plugins/copyfile
+ohmyzsh/ohmyzsh path:plugins/copypath
+ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/git
-# robbyrussell/oh-my-zsh path:plugins/tmux
-# robbyrussell/oh-my-zsh path:plugins/docker
-webyneter/docker-aliases
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 
+# Add macOS specific plugins
+ohmyzsh/ohmyzsh path:plugins/brew conditional:is-macos
+ohmyzsh/ohmyzsh path:plugins/macos conditional:is-macos
+
+# fish-like
+zsh-users/zsh-autosuggestions
+zdharma-continuum/fast-syntax-highlighting kind:defer
+zsh-users/zsh-history-substring-search
+
+# not sure I'm committed to these
 # MichaelAquilina/zsh-you-should-use
+# webyneter/docker-aliases

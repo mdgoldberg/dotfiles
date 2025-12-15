@@ -1,24 +1,56 @@
- # zmodload zsh/zprof
+# zmodload zsh/zprof
 
-# configuring PATH
-export PATH=$BIN_DIR
-export PATH=$PATH:/opt/homebrew/bin
-export PATH=$PATH:/usr/local/opt/llvm/bin
-export PATH=$PATH:/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/.cargo/bin
-export PATH=$PATH:$HOME/go/bin
-export PATH=$PATH:/Applications/kitty.app/Contents/MacOS/
+# configuring paths
+export DOTFILES_DIR=$HOME/dotfiles
+export DATA_DIR=$DOTFILES_DIR/data
+export BIN_DIR=$DOTFILES_DIR/bin
 
-# fnm
-eval "$(fnm env --use-on-cd --shell zsh)"
+CACHE_DIR=$DATA_DIR/cache
+mkdir -p "$CACHE_DIR"
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+typeset -U path
+
+# explicitly set to use ARM-based homebrew
+export HOMEBREW_PREFIX="/opt/homebrew"
+
+# homebrew setup (cached to avoid repeated brew calls)
+# --------
+# This code prefers an explicit HOMEBREW_PREFIX, then any pre-set BREW_PREFIX, then whatever path
+# the brew command points to, and only if brew isn’t on PATH does it fall back to the standard install
+# directories.
+if command -v brew >/dev/null 2>&1; then
+    _brew_bin=${commands[brew]:-$(command -v brew)}
+    BREW_PREFIX=${HOMEBREW_PREFIX:-${BREW_PREFIX:-${_brew_bin:A:h:h}}}
+elif [[ -z $BREW_PREFIX ]]; then
+    if [[ -d /opt/homebrew ]]; then
+        BREW_PREFIX=/opt/homebrew
+    elif [[ -d /usr/local/Homebrew ]]; then
+        BREW_PREFIX=/usr/local
+    elif [[ -d /usr/local ]]; then
+        BREW_PREFIX=/usr/local
+    fi
 fi
+
+if [[ -n $BREW_PREFIX ]]; then
+    export HOMEBREW_PREFIX=$BREW_PREFIX
+    export HOMEBREW_CELLAR=${HOMEBREW_CELLAR:-$BREW_PREFIX/Cellar}
+    export HOMEBREW_REPOSITORY=${HOMEBREW_REPOSITORY:-$BREW_PREFIX}
+    export MANPATH="$BREW_PREFIX/share/man:${MANPATH:-}"
+    export INFOPATH="$BREW_PREFIX/share/info:${INFOPATH:-}"
+fi
+
+if [[ $- == *l* && -z ${HOMEBREW_PREFIX:-} && -n ${_brew_bin:-} ]]; then
+    eval "$("$_brew_bin" shellenv)"
+fi
+unset _brew_bin
+
+path=(
+    "$BREW_PREFIX/bin" "$BREW_PREFIX/sbin"
+    "$BIN_DIR"
+    /usr/local/opt/llvm/bin
+    /usr/local/bin /bin /sbin /usr/bin /usr/sbin /usr/local/sbin
+    "$HOME/.local/bin" "$HOME/.cargo/bin" "$HOME/go/bin"
+)
 
 # set editor to nvim when present, else vim
 command -v nvim > /dev/null && export EDITOR=nvim || export EDITOR=vim
@@ -33,7 +65,7 @@ bindkey -e
 setopt interactivecomments
 
 # share history across sessions
-export HISTFILE=$HOME/.zsh_history
+export HIpSTFILE=$HOME/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
 setopt inc_append_history
@@ -46,21 +78,8 @@ setopt cdablevars
 # autocomplete configs
 setopt no_auto_remove_slash  # autocomplete trailing slashes for directories
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# makes compinit recognize files here
-fpath+=~/.zfunc
-
-# do compinit
-autoload -Uz compinit
-
-for dump in ~/.zcompdump(N.mh+24); do
-    compinit
-done
-
-compinit -C
-
 zstyle ':completion:*' menu yes select
+zstyle ':plugin:ez-compinit' 'compstyle' 'ohmy'
 
 # use C-x C-e (or C-x e) to open shell command in $EDITOR
 autoload -U edit-command-line
@@ -72,25 +91,10 @@ bindkey '^xe' edit-command-line
 autoload -U select-word-style
 select-word-style bash
 
-# configuring some environment variables
-export DOTFILES_DIR=$HOME/dotfiles
-export DATA_DIR=$DOTFILES_DIR/data
-export BIN_DIR=$DOTFILES_DIR/bin
-
-CACHE_DIR=$DATA_DIR/cache
-mkdir -p $CACHE_DIR
-
 alias ibrew='arch --x86_64 /usr/local/Homebrew/bin/brew'
 
-# adds ~/.cargo/bin
+# cargo setup
 source "$HOME/.cargo/env"
-
-export MANPATH="/usr/local/man:$MANPATH"
-
-# platform-specific configs
-PLATFORM_ZSH_CONFIG="$DOTFILES_DIR/zsh/`uname`.zsh"
-[[ -f $PLATFORM_ZSH_CONFIG ]] && source $PLATFORM_ZSH_CONFIG
-unset PLATFORM_ZSH_CONFIG
 
 # fzf config
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
@@ -108,37 +112,56 @@ export ZSH_AUTOSUGGEST_USE_ASYNC=true
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=103"
 
 # holds passwords and API tokens that shouldn't be in source control
-touch $DOTFILES_DIR/zsh/secrets.zsh
-source $DOTFILES_DIR/zsh/secrets.zsh
-
-# powerlevel10k config
-source $DOTFILES_DIR/zsh/p10k.zsh
+[[ -r $DOTFILES_DIR/zsh/secrets.zsh ]] && source $DOTFILES_DIR/zsh/secrets.zsh
 
 # source my aliases
 source $DOTFILES_DIR/zsh/aliases.zsh
 source $DOTFILES_DIR/zsh/kube_aliases.zsh
 
-# load antidote plugins
-source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+# AWS: prefer profile-based auth (aws-vault/SSO); no long-lived env vars here
+export AWS_SDK_LOAD_CONFIG=1
+
+eval "$(direnv hook zsh)"
+
+# eval "$(starship init zsh)"
+# eval "$(oh-my-posh init zsh)"
+source $DOTFILES_DIR/zsh/p10k.zsh
+
+# used in zsh_plugins as conditional
+function is-macos() {
+  [[ $OSTYPE == darwin* ]]
+}
+
+# load antidote plugins (reuse cached Homebrew prefix)
+ANTIDOTE_ZSH=${BREW_PREFIX:+$BREW_PREFIX/opt/antidote/share/antidote/antidote.zsh}
+[[ -z $ANTIDOTE_ZSH && -r /opt/homebrew/opt/antidote/share/antidote/antidote.zsh ]] && ANTIDOTE_ZSH=/opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+[[ -z $ANTIDOTE_ZSH && -r /usr/local/opt/antidote/share/antidote/antidote.zsh ]] && ANTIDOTE_ZSH=/usr/local/opt/antidote/share/antidote/antidote.zsh
+[[ -r $ANTIDOTE_ZSH ]] && source "$ANTIDOTE_ZSH"
+unset ANTIDOTE_ZSH
 
 ZSH_PLUGINS_FILE=$DOTFILES_DIR/zsh/zsh_plugins.txt
 BUNDLED_ZSH_PLUGINS_FILE=$CACHE_DIR/bundled_zsh_plugins.zsh
-if [[ ! -f $BUNDLED_ZSH_PLUGINS_FILE || $ZSH_PLUGINS_FILE -nt $BUNDLED_ZSH_PLUGINS_FILE ]]; then
-    echo "Regenerating $BUNDLED_ZSH_PLUGINS_FILE..."
-    antidote bundle < $ZSH_PLUGINS_FILE > $BUNDLED_ZSH_PLUGINS_FILE
+BUNDLED_ZSH_PLUGINS_ZWC=$BUNDLED_ZSH_PLUGINS_FILE.zwc
+if command -v antidote >/dev/null 2>&1; then
+    if [[ ! -f $BUNDLED_ZSH_PLUGINS_FILE || ! -f $BUNDLED_ZSH_PLUGINS_ZWC || $ZSH_PLUGINS_FILE -nt $BUNDLED_ZSH_PLUGINS_FILE || $BUNDLED_ZSH_PLUGINS_FILE -nt $BUNDLED_ZSH_PLUGINS_ZWC ]]; then
+        echo "Regenerating $BUNDLED_ZSH_PLUGINS_FILE..."
+        antidote bundle < $ZSH_PLUGINS_FILE > $BUNDLED_ZSH_PLUGINS_FILE
+        rm -f $BUNDLED_ZSH_PLUGINS_ZWC
+        zcompile -U $BUNDLED_ZSH_PLUGINS_FILE
+    fi
+    source $BUNDLED_ZSH_PLUGINS_FILE
 fi
-source $BUNDLED_ZSH_PLUGINS_FILE
-unset ZSH_PLUGINS_FILE BUNDLED_ZSH_PLUGINS_FILE
+unset ZSH_PLUGINS_FILE BUNDLED_ZSH_PLUGINS_FILE BUNDLED_ZSH_PLUGINS_ZWC
 
-export AWS_ACCESS_KEY_ID=$(aws configure get default.aws_access_key_id)
-export AWS_SECRET_ACCESS_KEY=$(aws configure get default.aws_secret_access_key)
-
-zstyle ':completion:*' menu select
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-P10K_CONFIG=$DOTFILES_DIR/zsh/p10k.zsh
-[[ ! -f $P10K_CONFIG ]] || source $P10K_CONFIG
-
-eval "$(direnv hook zsh)"
+# defer heavier tool setup to avoid blocking prompt
+if command -v zsh-defer >/dev/null 2>&1; then
+    if command -v fnm >/dev/null 2>&1; then
+        zsh-defer -t 0.05 'eval "$(fnm env --use-on-cd --shell zsh)"'
+    fi
+else
+    if command -v fnm >/dev/null 2>&1; then
+        eval "$(fnm env --use-on-cd --shell zsh)"
+    fi
+fi
 
 # zprof
