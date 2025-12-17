@@ -12,12 +12,15 @@ romkatv/zsh-defer
 # oh-my-zsh
 getantidote/use-omz
 # ohmyzsh/ohmyzsh path:lib
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+
+# omz plugins that provide cli tools
 ohmyzsh/ohmyzsh path:plugins/copybuffer
 ohmyzsh/ohmyzsh path:plugins/copyfile
 ohmyzsh/ohmyzsh path:plugins/copypath
 ohmyzsh/ohmyzsh path:plugins/extract
-ohmyzsh/ohmyzsh path:plugins/git
-ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+ohmyzsh/ohmyzsh path:plugins/zoxide
 
 # Add macOS specific plugins
 ohmyzsh/ohmyzsh path:plugins/brew conditional:is-macos
