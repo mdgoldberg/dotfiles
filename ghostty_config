@@ -15,7 +15,7 @@ keybind = ctrl+space>l=new_split:right
 keybind = ctrl+space>z=toggle_split_zoom
 keybind = ctrl+space>x=close_surface
 
-keybind = ctrl+a>n=next_tab
-keybind = ctrl+a>p=previous_tab
+keybind = ctrl+space>n=next_tab
+keybind = ctrl+spacea>p=previous_tab
 
 keybind = super+r=reload_config
