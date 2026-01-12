@@ -1,12 +1,12 @@
 mouse-hide-while-typing = true
 scrollback-limit = 1000000
 
-keybind = ctrl+n=new_window
+# keybind = ctrl+n=new_window
 
-keybind = ctrl+h=goto_split:left
-keybind = ctrl+j=goto_split:bottom
-keybind = ctrl+k=goto_split:top
-keybind = ctrl+l=goto_split:right
+# keybind = ctrl+h=goto_split:left
+# keybind = ctrl+j=goto_split:bottom
+# keybind = ctrl+k=goto_split:top
+# keybind = ctrl+l=goto_split:right
 
 keybind = ctrl+space>h=new_split:left
 keybind = ctrl+space>j=new_split:down
@@ -19,3 +19,6 @@ keybind = ctrl+space>n=next_tab
 keybind = ctrl+space>p=previous_tab
 
 keybind = super+r=reload_config
+
+keybind = global:cmd+\=toggle_quick_terminal
+quick-terminal-position = bottom
