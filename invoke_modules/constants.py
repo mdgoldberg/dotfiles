@@ -28,4 +28,5 @@ SRC_DST_MAP = {
     "flake8": [".flake8"],
     "psqlrc": [".psqlrc"],
     "ghostty_config": [os.path.join(".config", "ghostty", "config")],
+    "Brewfile": [".Brewfile"],
 }
