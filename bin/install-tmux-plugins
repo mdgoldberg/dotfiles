@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+tpm_dir="$HOME/.tmux/plugins/tpm"
+
+if [ ! -d "$tpm_dir" ]; then
+  git clone https://github.com/tmux-plugins/tpm "$tpm_dir"
+fi
+
+if [ -x "$tpm_dir/bin/install_plugins" ]; then
+  "$tpm_dir/bin/install_plugins"
+else
+  echo "tmux plugin manager not found at $tpm_dir/bin/install_plugins"
+  exit 1
+fi

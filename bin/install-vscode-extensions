@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
+BREWFILE="${BREWFILE:-$DOTFILES_DIR/Brewfile}"
+
+if [ ! -f "$BREWFILE" ]; then
+  echo "Brewfile not found at $BREWFILE"
+  exit 1
+fi
+
+export PATH="$HOME/.local/bin:$PATH"
+
+ensure_code_cli() {
+  if command -v code >/dev/null 2>&1; then
+    return 0
+  fi
+
+  code_source="/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
+  if [ -x "$code_source" ]; then
+    mkdir -p "$HOME/.local/bin"
+    ln -sf "$code_source" "$HOME/.local/bin/code"
+  fi
+
+  command -v code >/dev/null 2>&1
+}
+
+extensions=()
+while IFS= read -r extension; do
+  if [ -n "$extension" ]; then
+    extensions+=("$extension")
+  fi
+done < <(awk -F'"' '/^[[:space:]]*vscode[[:space:]]+"/ {print $2}' "$BREWFILE")
+
+if [ "${#extensions[@]}" -eq 0 ]; then
+  echo "No VS Code extensions found in Brewfile."
+  exit 0
+fi
+
+if ! ensure_code_cli; then
+  echo "code command not found in PATH; skipping VS Code extensions."
+  exit 0
+fi
+
+installed_extensions="$(code --list-extensions 2>/dev/null || true)"
+
+for extension in "${extensions[@]}"; do
+  if printf '%s\n' "$installed_extensions" | grep -Fxq "$extension"; then
+    echo "VS Code extension already installed: $extension"
+  else
+    code --install-extension "$extension"
+  fi
+done

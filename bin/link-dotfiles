@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
+HOME_DIR="${HOME_DIR:-$HOME}"
+
+links=(
+  "zsh/zshrc:.zshrc"
+  "vim:.vim"
+  "vim/init.lua:.config/nvim/init.lua"
+  "vim/lua:.config/nvim/lua"
+  "tmux.conf:.tmux.conf"
+  "gitconfig:.gitconfig"
+  "pypirc:.pypirc"
+  "gitignore_global:.gitignore_global"
+  "isort.cfg:.isort.cfg"
+  "flake8:.flake8"
+  "psqlrc:.psqlrc"
+  "ghostty_config:.config/ghostty/config"
+  "Brewfile:.Brewfile"
+)
+
+for link in "${links[@]}"; do
+  src="${link%%:*}"
+  dst="${link#*:}"
+
+  src_path="$DOTFILES_DIR/$src"
+  dst_path="$HOME_DIR/$dst"
+
+  if [ ! -e "$src_path" ]; then
+    echo "Missing source file: $src_path"
+    continue
+  fi
+
+  if [ -e "$dst_path" ] || [ -L "$dst_path" ]; then
+    rm -rf "$dst_path"
+  fi
+
+  mkdir -p "$(dirname "$dst_path")"
+  ln -s "$src_path" "$dst_path"
+  echo "$src_path -> $dst_path"
+done

@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
+BREWFILE="${BREWFILE:-$DOTFILES_DIR/Brewfile}"
+
+if [ ! -f "$BREWFILE" ]; then
+  echo "Brewfile not found at $BREWFILE"
+  exit 1
+fi
+
+export PATH="$HOME/.cargo/bin:$PATH"
+if [ -f "$HOME/.cargo/env" ]; then
+  # shellcheck disable=SC1091
+  source "$HOME/.cargo/env"
+fi
+
+packages=()
+while IFS= read -r package; do
+  if [ -n "$package" ]; then
+    packages+=("$package")
+  fi
+done < <(awk -F'"' '/^[[:space:]]*cargo[[:space:]]+"/ {print $2}' "$BREWFILE")
+
+if [ "${#packages[@]}" -eq 0 ]; then
+  echo "No cargo packages found in Brewfile."
+  exit 0
+fi
+
+if ! command -v cargo >/dev/null 2>&1; then
+  echo "cargo not found in PATH; skipping cargo package installs."
+  exit 0
+fi
+
+installed_packages="$(
+  cargo install --list 2>/dev/null || true
+)"
+installed_packages="$(printf '%s\n' "$installed_packages" | awk '/^[^ ]+ v/ {print $1}')"
+
+for package in "${packages[@]}"; do
+  if printf '%s\n' "$installed_packages" | grep -Fxq "$package"; then
+    echo "cargo package already installed: $package"
+  else
+    cargo install "$package"
+  fi
+done

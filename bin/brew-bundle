@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
+BREWFILE="${BREWFILE:-$DOTFILES_DIR/Brewfile}"
+GLOBAL_BREWFILE="$HOME/.Brewfile"
+
+if ! command -v brew >/dev/null 2>&1; then
+  echo "brew not found in PATH. Install Homebrew before running brew bundle."
+  exit 1
+fi
+
+if [ ! -f "$BREWFILE" ]; then
+  echo "Brewfile not found at $BREWFILE"
+  exit 1
+fi
+
+ln -sfn "$BREWFILE" "$GLOBAL_BREWFILE"
+
+filtered_brewfile="$(mktemp)"
+trap 'rm -f "$filtered_brewfile"' EXIT
+
+# brew bundle doesn't support cargo/vscode in all versions; handle those separately.
+awk '
+  /^[[:space:]]*cargo[[:space:]]+"/ { next }
+  /^[[:space:]]*vscode[[:space:]]+"/ { next }
+  { print }
+' "$BREWFILE" > "$filtered_brewfile"
+
+HOMEBREW_BUNDLE_FILE_GLOBAL="$filtered_brewfile" brew bundle --global --no-upgrade
+
+"$SCRIPT_DIR/install-cargo-packages"
+"$SCRIPT_DIR/install-vscode-extensions"
