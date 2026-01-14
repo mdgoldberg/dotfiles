@@ -104,3 +104,7 @@ cargo "cargo-semver-checks"
 cargo "cargo-tarpaulin"
 cargo "ck-search"
 cargo "imessage-exporter"
+# Modern replacement for ps written in Rust
+brew "procs"
+# Yet another cross-platform graphical process/system monitor
+brew "bottom"
