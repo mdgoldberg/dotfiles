@@ -1,5 +1,0 @@
-docker
-font-devicons
-font-hack-nerd-font
-insomnia
-skim
