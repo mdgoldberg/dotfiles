@@ -89,6 +89,8 @@ cask "ghostty"
 cask "podman-desktop"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Open-source code editor
+cask "visual-studio-code"
 vscode "anysphere.cursorpyright"
 vscode "ms-azuretools.vscode-containers"
 vscode "ms-azuretools.vscode-docker"
