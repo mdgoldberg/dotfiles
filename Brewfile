@@ -1,3 +1,4 @@
+tap "anomalyco/tap"
 tap "oven-sh/bun"
 tap "patrickhoefler/tap"
 tap "slp/krunkit"
@@ -5,14 +6,20 @@ tap "slp/krunkit"
 brew "antidote"
 # Library for manipulating PNG images
 brew "libpng"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
 # Software library to render fonts
 brew "freetype"
 # Binary installation for rust projects
 brew "cargo-binstall"
 # Command-line csv viewer
 brew "csvlens"
+# Good-lookin' diffs with diff-highlight and more
+brew "diff-so-fancy"
 # Load/unload environment variables based on $PWD
 brew "direnv"
+# .NET Core
+brew "dotnet"
 # Embeddable SQL OLAP Database Management System
 brew "duckdb"
 # More intuitive version of du in rust
@@ -41,8 +48,6 @@ brew "go"
 brew "jpeg"
 # Handy way to save and run project-specific commands
 brew "just"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.13"
 # Next-gen compiler infrastructure
 brew "llvm"
 # LLVM Project Linker
@@ -59,6 +64,8 @@ brew "podman"
 brew "pre-commit"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
 # Software environment for statistical computing
 brew "r"
 # Persistent key-value database, with built-in net interface
@@ -71,10 +78,14 @@ brew "tmux"
 brew "tree-sitter"
 # Parser generator tool
 brew "tree-sitter-cli"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# The AI coding agent built for the terminal.
+brew "anomalyco/tap/opencode"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
 # Visualize your multi-stage Dockerfile
@@ -89,12 +100,16 @@ cask "ghostty"
 cask "podman-desktop"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Team communication and collaboration software
+cask "slack"
 # Open-source code editor
 cask "visual-studio-code"
-vscode "anysphere.cursorpyright"
 vscode "ms-azuretools.vscode-containers"
 vscode "ms-azuretools.vscode-docker"
+vscode "ms-python.debugpy"
 vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
+vscode "ms-python.vscode-python-envs"
 vscode "vscodevim.vim"
 cargo "bacon"
 cargo "cargo-audit"
