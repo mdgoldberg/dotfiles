@@ -8,6 +8,8 @@ brew "antidote"
 brew "libpng"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Yet another cross-platform graphical process/system monitor
+brew "bottom"
 # Software library to render fonts
 brew "freetype"
 # Binary installation for rust projects
@@ -26,7 +28,9 @@ brew "duckdb"
 brew "dust"
 # Modern, maintained replacement for ls
 brew "eza"
-# Play, record, convert, and stream audio and video
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
@@ -34,6 +38,8 @@ brew "fish"
 brew "fnm"
 # Terminal JSON viewer
 brew "fx"
+# Command-line interface for SQLite
+brew "sqlite"
 # Interact with Google Gemini AI models from the command-line
 brew "gemini-cli"
 # GitHub command-line tool
@@ -62,6 +68,8 @@ brew "pnpm"
 brew "podman"
 # Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
+# Modern replacement for ps written in Rust
+brew "procs"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
 # Interpreted, interactive, object-oriented programming language
@@ -119,7 +127,3 @@ cargo "cargo-semver-checks"
 cargo "cargo-tarpaulin"
 cargo "ck-search"
 cargo "imessage-exporter"
-# Modern replacement for ps written in Rust
-brew "procs"
-# Yet another cross-platform graphical process/system monitor
-brew "bottom"
