@@ -28,3 +28,5 @@ alias dotfiles="cd $HOME/dotfiles"
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+
+alias cd="z"
