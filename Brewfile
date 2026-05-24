@@ -38,8 +38,8 @@ brew "fish"
 brew "fnm"
 # Terminal JSON viewer
 brew "fx"
-# Command-line interface for SQLite
-brew "sqlite"
+# Command-line fuzzy finder written in Go
+brew "fzf"
 # Interact with Google Gemini AI models from the command-line
 brew "gemini-cli"
 # GitHub command-line tool
@@ -54,6 +54,8 @@ brew "go"
 brew "jpeg"
 # Handy way to save and run project-specific commands
 brew "just"
+# LLM inference in C/C++
+brew "llama.cpp"
 # Next-gen compiler infrastructure
 brew "llvm"
 # LLVM Project Linker
@@ -62,6 +64,10 @@ brew "lld"
 brew "lstr"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Create, run, and share large language models (LLMs)
+brew "ollama"
+# AI agent toolkit
+brew "pi-coding-agent"
 # Fast, disk space efficient package manager
 brew "pnpm"
 # Tool for managing OCI containers and pods
@@ -100,10 +106,14 @@ brew "oven-sh/bun/bun"
 brew "patrickhoefler/tap/dockerfilegraph"
 # A CLI tool to start Linux KVM or macOS Hypervisor framework virtual machines using the libkrun platform.
 brew "slp/krunkit/krunkit"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
 # Browse, manage, inspect containers and images
 cask "podman-desktop"
 # Control your tools with a few keystrokes
@@ -127,3 +137,4 @@ cargo "cargo-semver-checks"
 cargo "cargo-tarpaulin"
 cargo "ck-search"
 cargo "imessage-exporter"
+uv "mlx-lm"

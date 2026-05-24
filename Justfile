@@ -21,3 +21,6 @@ cargo:
 
 vscode:
     ./bin/install-vscode-extensions
+
+generate-brewfile:
+    ./bin/generate-brewfile

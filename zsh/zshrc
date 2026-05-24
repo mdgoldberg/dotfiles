@@ -103,9 +103,33 @@ alias ibrew='arch --x86_64 /usr/local/Homebrew/bin/brew'
 # cargo setup
 source "$HOME/.cargo/env"
 
-# fzf config
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND="fd --type f --hidden -E .git"  # to find hidden files
+# fzf config - source from Homebrew installation
+FZF_SHELL_DIR="$HOMEBREW_PREFIX/opt/fzf/shell"
+[[ -f "$FZF_SHELL_DIR/key-bindings.zsh" ]] && source "$FZF_SHELL_DIR/key-bindings.zsh"
+[[ -f "$FZF_SHELL_DIR/completion.zsh" ]] && source "$FZF_SHELL_DIR/completion.zsh"
+
+# Use fd for file finding (respects .gitignore, includes hidden files)
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type d --hidden --strip-cwd-prefix --exclude .git"
+
+# Better fzf defaults with preview and keybindings
+# export FZF_DEFAULT_OPTS="
+#   --height 40%
+#   --layout=reverse
+#   --border
+#   --preview 'bat --color=always --line-range :500 {} 2>/dev/null || cat {} 2>/dev/null || echo {}'
+#   --preview-window='right:50%:wrap'
+#   --bind 'ctrl-/:change-preview-window(down|hidden|)'
+#   --bind 'ctrl-y:preview-up,ctrl-e:preview-down'
+#   --bind 'ctrl-u:half-page-up,ctrl-d:half-page-down'
+#   --bind 'ctrl-w:preview-half-page-up,ctrl-s:preview-half-page-down'
+#   --bind 'ctrl-b:page-up,ctrl-f:page-down'
+#   --bind 'ctrl-r:toggle-all'
+#   --bind 'ctrl-a:toggle-preview'
+#   --bind 'shift-up:preview-top,shift-down:preview-bottom'
+#   --color='hl:green,hl+:green:bold,pointer:red,marker:red:bold'
+# "
 
 # prevent Python from buffering stdout/stderr
 export PYTHONUNBUFFERED=1

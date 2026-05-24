@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
+BREWFILE="${BREWFILE:-$DOTFILES_DIR/Brewfile}"
+
+if ! command -v brew >/dev/null 2>&1; then
+  echo "brew not found in PATH. Install Homebrew before running this script."
+  exit 1
+fi
+
+echo "Generating Brewfile at $BREWFILE..."
+
+# Backup existing Brewfile if it exists
+if [ -f "$BREWFILE" ]; then
+  backup_file="${BREWFILE}.backup.$(date +%Y%m%d_%H%M%S)"
+  echo "Backing up existing Brewfile to $backup_file"
+  cp "$BREWFILE" "$backup_file"
+fi
+
+# Generate new Brewfile
+brew bundle dump --describe --file="$BREWFILE" --force
+
+echo "Brewfile generated successfully!"
+echo "Backup created at: ${backup_file:-'No backup needed'}"
+
