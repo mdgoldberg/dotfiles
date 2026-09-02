@@ -63,11 +63,12 @@ fi
 unset _brew_bin
 
 path=(
+    "$HOME/.local/bin" 
     "$BREW_PREFIX/bin" "$BREW_PREFIX/sbin"
     "$BIN_DIR"
     /usr/local/opt/llvm/bin
     /usr/local/bin /bin /sbin /usr/bin /usr/sbin /usr/local/sbin
-    "$HOME/.local/bin" "$HOME/.cargo/bin" "$HOME/go/bin"
+    "$HOME/.cargo/bin" "$HOME/go/bin"
 )
 
 # set editor to nvim when present, else vim
