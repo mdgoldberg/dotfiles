@@ -20,7 +20,7 @@ if [ -f "$BREWFILE" ]; then
 fi
 
 # Generate new Brewfile
-brew bundle dump --describe --file="$BREWFILE" --force
+brew bundle dump --file="$BREWFILE" --force
 
 echo "Brewfile generated successfully!"
 echo "Backup created at: ${backup_file:-'No backup needed'}"
