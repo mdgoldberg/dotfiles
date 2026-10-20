@@ -169,8 +169,6 @@ cask "podman-desktop"
 cask "raycast"
 # Team communication and collaboration software
 cask "slack"
-# JDK from the Eclipse Foundation (Adoptium)
-cask "temurin@17"
 # Open-source code editor
 cask "visual-studio-code"
 vscode "1yib.rust-bundle"
@@ -218,7 +216,6 @@ npm "@commitlint/config-conventional"
 npm "@fission-ai/openspec"
 npm "@mermaid-js/mermaid-cli"
 npm "@mixedbread/mgrep"
-npm "@ssi/shelbot-cli"
 npm "eslint"
 npm "neovim"
 npm "semver"
